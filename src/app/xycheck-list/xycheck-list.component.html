@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col"></th>
+    @for (x of XAxis; track x) {
+      <th scope="col">{{ x }}</th>
+    }
+  </tr>
+  </thead>
+  <tbody>
+  @for (y of YAxis; track y) {
+    <tr>
+      <th scope="row">{{y}}</th>
+      @for (x of XAxis; track x) {
+        <td>{{ this.getter(x, y) ? "X" : ""}}</td>
+      }
+    </tr>
+  }
+  </tbody>
+</table>
