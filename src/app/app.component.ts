@@ -45,7 +45,34 @@ export class AppComponent {
     }
     let hero = Heroes[x as keyof typeof Heroes];
     let aspect = Aspects[y as keyof typeof Aspects];
-    return this.stats.plays.some(p => p.Players.some(p => p.Hero == hero && p.Aspect == aspect))
+    return this.stats.plays.some(p => p.Won && p.Players.some(p => p.Hero == hero && p.Aspect == aspect));
+  }
+
+  scenarioHeroGetter = (x: string, y: string) => {
+    if (!this.stats) {
+      return false;
+    }
+    let scenario = Scenarios[x as keyof typeof Scenarios];
+    let hero = Heroes[y as keyof typeof Heroes];
+    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Players.some(p => p.Hero == hero));
+  }
+
+  scenarioModuleGetter = (x: string, y: string) => {
+    if (!this.stats) {
+      return false;
+    }
+    let scenario = Scenarios[x as keyof typeof Scenarios];
+    let module = Modulars[y as keyof typeof Modulars];
+    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Modular == module);
+  }
+
+  scenarioDifficultyGetter = (x: string, y: string) => {
+    if (!this.stats) {
+      return false;
+    }
+    let scenario = Scenarios[x as keyof typeof Scenarios];
+    let difficulty = Difficulty[y as keyof typeof Difficulty];
+    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Difficulty == difficulty);
   }
 
   //TODO: can we instead get the enum values?

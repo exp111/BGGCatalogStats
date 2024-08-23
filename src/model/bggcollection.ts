@@ -31,6 +31,7 @@ export interface PlayerPlayEntry {
   playId: number; // the id of the play
   playerId: number; // the id of the player
   score: number;
+  winner: number;
 }
 
 export enum CustomFieldTypes {

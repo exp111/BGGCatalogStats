@@ -48,6 +48,7 @@ export interface MarvelChampionsPlay {
   Modular: Modulars; //TODO: support multiple modulars
   Difficulty: Difficulty;
   Time: number;
+  Won: boolean;
 }
 
 export interface MarvelChampionsStats {

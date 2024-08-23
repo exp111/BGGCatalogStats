@@ -8,11 +8,27 @@
   </div>
 } @else {
   <div>
-    Total Plays: {{this.stats.plays.length}}
+    <p>Total Plays: {{this.stats.plays.length}}</p>
+    <p>Hero - Aspect</p>
     <app-xycheck-list
     [XAxis]="enumToArray(Heroes)"
     [YAxis]="enumToArray(Aspects)"
     [getter]="this.heroAspectGetter"></app-xycheck-list>
+    <p>Scenario - Hero</p>
+    <app-xycheck-list
+      [XAxis]="enumToArray(Scenarios)"
+      [YAxis]="enumToArray(Heroes)"
+      [getter]="this.scenarioHeroGetter"></app-xycheck-list>
+    <p>Scenario - Modular</p>
+    <app-xycheck-list
+      [XAxis]="enumToArray(Scenarios)"
+      [YAxis]="enumToArray(Modulars)"
+      [getter]="this.scenarioModuleGetter"></app-xycheck-list>
+    <p>Scenario - Difficulty</p>
+    <app-xycheck-list
+      [XAxis]="enumToArray(Scenarios)"
+      [YAxis]="enumToArray(Difficulty)"
+      [getter]="this.scenarioDifficultyGetter"></app-xycheck-list>
     @for (play of this.stats.plays; track play.Id) {
       <div class="card card-body">
         <p>Id: {{ play.Id }}</p>

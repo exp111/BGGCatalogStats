@@ -167,6 +167,7 @@ export class BackupReaderService {
         console.error(`Difficulty Value ${this.sanitizeForEnum(difficulty.value)} can not be parsed`);
         return ret;
       }
+      obj.Won = players.some(p => p.winner == 1)
       plays.push(obj);
     }
     ret.plays = plays;
