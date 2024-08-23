@@ -9,26 +9,31 @@
 } @else {
   <div>
     <p>Total Plays: {{this.stats.plays.length}}</p>
+    <p>Hero Winrate</p>
+    <app-table
+      [XAxis]="['Winrate']"
+      [YAxis]="enumToArray(Heroes)"
+      [getter]="this.heroWinrateGetter.bind(this)"></app-table>
     <p>Hero - Aspect</p>
-    <app-xycheck-list
+    <app-checklist
     [XAxis]="enumToArray(Heroes)"
     [YAxis]="enumToArray(Aspects)"
-    [getter]="this.heroAspectGetter"></app-xycheck-list>
+    [getter]="this.heroAspectGetter.bind(this)"></app-checklist>
     <p>Scenario - Hero</p>
-    <app-xycheck-list
+    <app-checklist
       [XAxis]="enumToArray(Scenarios)"
       [YAxis]="enumToArray(Heroes)"
-      [getter]="this.scenarioHeroGetter"></app-xycheck-list>
+      [getter]="this.scenarioHeroGetter.bind(this)"></app-checklist>
     <p>Scenario - Modular</p>
-    <app-xycheck-list
+    <app-checklist
       [XAxis]="enumToArray(Scenarios)"
       [YAxis]="enumToArray(Modulars)"
-      [getter]="this.scenarioModuleGetter"></app-xycheck-list>
+      [getter]="this.scenarioModuleGetter.bind(this)"></app-checklist>
     <p>Scenario - Difficulty</p>
-    <app-xycheck-list
+    <app-checklist
       [XAxis]="enumToArray(Scenarios)"
       [YAxis]="enumToArray(Difficulty)"
-      [getter]="this.scenarioDifficultyGetter"></app-xycheck-list>
+      [getter]="this.scenarioDifficultyGetter.bind(this)"></app-checklist>
     @for (play of this.stats.plays; track play.Id) {
       <div class="card card-body">
         <p>Id: {{ play.Id }}</p>

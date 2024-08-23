@@ -3,7 +3,8 @@ import {RouterOutlet} from '@angular/router';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BackupReaderService} from "./backup-reader.service";
 import {Aspects, Difficulty, Heroes, MarvelChampionsStats, Modulars, Scenarios} from "../model/marvelchampions";
-import {XYCheckListComponent} from "./xycheck-list/xycheck-list.component";
+import {TableComponent} from "./app-table/table.component";
+import {ChecklistComponent} from "./app-table/checklist.component";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import {XYCheckListComponent} from "./xycheck-list/xycheck-list.component";
   imports: [
     RouterOutlet,
     NgbModule,
-    XYCheckListComponent
+    TableComponent,
+    ChecklistComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -33,31 +35,44 @@ export class AppComponent {
   }
 
   readFile(text: string) {
-    console.log(text);
     let backup = JSON.parse(text);
     this.stats = this.backupReader.marvelChampions(backup);
-    console.log(this.stats);
   }
 
-  heroAspectGetter = (x: string, y: string) => {
+  heroWinrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let hero = Heroes[y as keyof typeof Heroes];
+    let heroPlays = this.stats.plays.filter(p => p.Players.some(pl => pl.Hero == hero));
+    let wins = heroPlays.reduce((a, b) => a + Number(b.Won), 0);
+    let plays = heroPlays.length;
+    let rate = 0;
+    if (plays > 0) {
+      rate = wins / plays * 100;
+    }
+    return `${rate.toFixed(1)}% (${wins}/${plays})`;
+  }
+
+  heroAspectGetter(x: string, y: string) {
     if (!this.stats) {
       return false;
     }
     let hero = Heroes[x as keyof typeof Heroes];
     let aspect = Aspects[y as keyof typeof Aspects];
-    return this.stats.plays.some(p => p.Won && p.Players.some(p => p.Hero == hero && p.Aspect == aspect));
+    return this.stats.plays.some(p => p.Won && p.Players.some(pl => pl.Hero == hero && pl.Aspect == aspect));
   }
 
-  scenarioHeroGetter = (x: string, y: string) => {
+  scenarioHeroGetter(x: string, y: string) {
     if (!this.stats) {
       return false;
     }
     let scenario = Scenarios[x as keyof typeof Scenarios];
     let hero = Heroes[y as keyof typeof Heroes];
-    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Players.some(p => p.Hero == hero));
+    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Players.some(pl => pl.Hero == hero));
   }
 
-  scenarioModuleGetter = (x: string, y: string) => {
+  scenarioModuleGetter(x: string, y: string) {
     if (!this.stats) {
       return false;
     }
@@ -66,7 +81,7 @@ export class AppComponent {
     return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Modular == module);
   }
 
-  scenarioDifficultyGetter = (x: string, y: string) => {
+  scenarioDifficultyGetter(x: string, y: string) {
     if (!this.stats) {
       return false;
     }

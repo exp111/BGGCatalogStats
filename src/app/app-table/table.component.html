@@ -12,7 +12,7 @@
     <tr>
       <th scope="row">{{y}}</th>
       @for (x of XAxis; track x) {
-        <td>{{ this.getter(x, y) ? "X" : ""}}</td>
+        <td>{{ this.getValue(x, y) }}</td>
       }
     </tr>
   }
