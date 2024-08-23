@@ -9,6 +9,10 @@
 } @else {
   <div>
     Total Plays: {{this.stats.plays.length}}
+    <app-xycheck-list
+    [XAxis]="enumToArray(Heroes)"
+    [YAxis]="enumToArray(Aspects)"
+    [getter]="this.heroAspectGetter"></app-xycheck-list>
     @for (play of this.stats.plays; track play.Id) {
       <div class="card card-body">
         <p>Id: {{ play.Id }}</p>
