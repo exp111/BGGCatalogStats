@@ -1,0 +1,20 @@
+td {
+  &.true {
+    background: var(--bs-success);
+  }
+  &.false {
+    background: var(--bs-danger);
+  }
+}
+
+th {
+  &.full {
+    background: var(--bs-success);
+  }
+  &.incomplete {
+    background: var(--bs-warning);
+  }
+  &.empty {
+    background: var(--bs-danger);
+  }
+}
