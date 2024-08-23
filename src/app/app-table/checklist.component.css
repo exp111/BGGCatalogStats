@@ -1,9 +1,9 @@
 td {
   &.true {
-    background: var(--bs-success);
+    background: var(--bs-success-bg-subtle);
   }
   &.false {
-    background: var(--bs-danger);
+    background: var(--bs-danger-bg-subtle);
   }
 }
 

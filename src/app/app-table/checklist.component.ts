@@ -1,11 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {TableComponent} from "./table.component";
 
 @Component({
   selector: 'app-checklist',
   standalone: true,
   imports: [],
-  templateUrl: './checklist.component.html',
+  templateUrl: './table.component.html',
   styleUrl: './checklist.component.css'
 })
 export class ChecklistComponent extends TableComponent {
@@ -13,7 +13,7 @@ export class ChecklistComponent extends TableComponent {
     return this.getter(x, y) ? "X" : "";
   }
 
-  getRowClass(x: string) {
+  override getColumnClass(x: string) {
     let empty = true;
     let full = true;
     for (let y of this.YAxis) {
@@ -24,5 +24,22 @@ export class ChecklistComponent extends TableComponent {
       }
     }
     return full ? "full" : empty ? "empty" : "incomplete";
+  }
+
+  override getRowClass(y: string) {
+    let empty = true;
+    let full = true;
+    for (let x of this.XAxis) {
+      if (!this.getter(x, y)) {
+        full = false;
+      } else {
+        empty = false;
+      }
+    }
+    return full ? "full" : empty ? "empty" : "incomplete";
+  }
+
+  override getCellClass(x: string, y: string) {
+    return this.getter(x, y) ? "true" : "false";
   }
 }

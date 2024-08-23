@@ -1,39 +1,45 @@
 @if (!this.stats) {
-  <div class="input-group">
-    <label class="input-group-text" for="fileInput">Upload</label>
-    <input id="fileInput"
-           type="file"
-           class="form-control"
-           (change)="onFileLoad($any($event))">
-  </div>
-} @else {
+  <div class="position-absolute top-50 w-100 d-flex justify-content-center">
+    <div class="w-75 p-5 card">
+      <div class="card-body input-group">
+        <label class="input-group-text" for="fileInput">Upload BGG Collection Export here</label>
+        <input id="fileInput"
+               type="file"
+               class="form-control"
+               (change)="onFileLoad($any($event))">
+      </div>
+    </div>
+    </div>
+    } @else {
   <div>
-    <p>Total Plays: {{this.stats.plays.length}}</p>
-    <p>Hero Winrate</p>
+    <h4>Total Plays: {{ this.stats.plays.length }}</h4>
+    <h4>Hero Winrate</h4>
     <app-table
       [XAxis]="['Winrate']"
       [YAxis]="enumToArray(Heroes)"
+      [cellClassGetter]="this.heroWinrateCellClassGetter.bind(this)"
       [getter]="this.heroWinrateGetter.bind(this)"></app-table>
-    <p>Hero - Aspect</p>
+    <h4>Hero - Aspect</h4>
     <app-checklist
-    [XAxis]="enumToArray(Heroes)"
-    [YAxis]="enumToArray(Aspects)"
-    [getter]="this.heroAspectGetter.bind(this)"></app-checklist>
-    <p>Scenario - Hero</p>
+      [XAxis]="enumToArray(Heroes)"
+      [YAxis]="enumToArray(Aspects)"
+      [getter]="this.heroAspectGetter.bind(this)"></app-checklist>
+    <h4>Scenario - Hero</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
       [YAxis]="enumToArray(Heroes)"
       [getter]="this.scenarioHeroGetter.bind(this)"></app-checklist>
-    <p>Scenario - Modular</p>
+    <h4>Scenario - Modular</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
       [YAxis]="enumToArray(Modulars)"
       [getter]="this.scenarioModuleGetter.bind(this)"></app-checklist>
-    <p>Scenario - Difficulty</p>
+    <h4>Scenario - Difficulty</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
       [YAxis]="enumToArray(Difficulty)"
       [getter]="this.scenarioDifficultyGetter.bind(this)"></app-checklist>
+    <h4>Plays</h4>
     @for (play of this.stats.plays; track play.Id) {
       <div class="card card-body">
         <p>Id: {{ play.Id }}</p>

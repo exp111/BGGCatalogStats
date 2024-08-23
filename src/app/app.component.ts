@@ -54,6 +54,10 @@ export class AppComponent {
     return `${rate.toFixed(1)}% (${wins}/${plays})`;
   }
 
+  heroWinrateCellClassGetter(value: string) {
+    return value.startsWith("0.0%") ? "table-danger" : value.startsWith("100.0%") ? "table-success" : "";
+  }
+
   heroAspectGetter(x: string, y: string) {
     if (!this.stats) {
       return false;
