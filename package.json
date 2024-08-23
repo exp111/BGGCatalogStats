@@ -1,5 +1,5 @@
 {
-  "name": "bggcollection",
+  "name": "bggcollectionstats",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --configuration='production' --base-href='/BGGCollection/'"
+    "deploy": "ng build --configuration='production' --base-href='/BGGCollectionStats/'"
   },
   "private": true,
   "dependencies": {
