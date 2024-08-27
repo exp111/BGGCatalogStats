@@ -6,6 +6,7 @@
         <input id="fileInput"
                type="file"
                class="form-control"
+               accept=".json"
                (change)="onFileLoad($any($event))">
       </div>
     </div>
@@ -13,6 +14,15 @@
     } @else {
   <div>
     <h4>Total Plays: {{ this.stats.plays.length }}</h4>
+<div class="form-check">
+    <input id="onlyMeCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyMe"/>
+    <label for="onlyMeCheckbox" class="form-check-label">Only me?</label>
+</div>
+    <h4>Hero Playrate</h4>
+    <app-table
+      [XAxis]="['Playrate']"
+      [YAxis]="enumToArray(Heroes)"
+      [getter]="this.heroPlayrateGetter.bind(this)"></app-table>
     <h4>Hero Winrate</h4>
     <app-table
       [XAxis]="['Winrate']"

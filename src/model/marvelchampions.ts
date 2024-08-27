@@ -37,6 +37,7 @@ export enum Difficulty {
 
 export interface MarvelChampionsPlayer {
   Name: string;
+  IsMe: boolean;
   Hero: Heroes;
   Aspect: Aspects;
 }

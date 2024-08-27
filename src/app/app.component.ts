@@ -2,9 +2,18 @@ import {ChangeDetectorRef, Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BackupReaderService} from "./backup-reader.service";
-import {Aspects, Difficulty, Heroes, MarvelChampionsStats, Modulars, Scenarios} from "../model/marvelchampions";
+import {
+  Aspects,
+  Difficulty,
+  Heroes,
+  MarvelChampionsPlay,
+  MarvelChampionsStats,
+  Modulars,
+  Scenarios
+} from "../model/marvelchampions";
 import {TableComponent} from "./app-table/table.component";
 import {ChecklistComponent} from "./app-table/checklist.component";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +22,8 @@ import {ChecklistComponent} from "./app-table/checklist.component";
     RouterOutlet,
     NgbModule,
     TableComponent,
-    ChecklistComponent
+    ChecklistComponent,
+    FormsModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -21,6 +31,7 @@ import {ChecklistComponent} from "./app-table/checklist.component";
 export class AppComponent {
   title = 'BGGCollectionStats';
   stats?: MarvelChampionsStats;
+  onlyMe: boolean = false;
 
   constructor(protected backupReader: BackupReaderService) {
     (window as any).app = this;
@@ -39,12 +50,33 @@ export class AppComponent {
     this.stats = this.backupReader.marvelChampions(backup);
   }
 
+  playHasHero(play: MarvelChampionsPlay, hero: Heroes, aspect?: Aspects) {
+    return play.Players.some(p => p.Hero == hero
+      && (!this.onlyMe || p.IsMe)
+      && (!aspect || p.Aspect == aspect));
+  }
+
+  heroPlayrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let hero = Heroes[y as keyof typeof Heroes];
+    let totalPlays = this.stats.plays.length;
+    let heroPlays = this.stats.plays.filter(p => this.playHasHero(p, hero));
+    let plays = heroPlays.length;
+    let rate = 0;
+    if (plays > 0) {
+      rate = plays / totalPlays * 100;
+    }
+    return `${rate.toFixed(1)}% (${plays}/${totalPlays})`
+  }
+
   heroWinrateGetter(_: string, y: string) {
     if (!this.stats) {
       return "";
     }
     let hero = Heroes[y as keyof typeof Heroes];
-    let heroPlays = this.stats.plays.filter(p => p.Players.some(pl => pl.Hero == hero));
+    let heroPlays = this.stats.plays.filter(p => this.playHasHero(p, hero));
     let wins = heroPlays.reduce((a, b) => a + Number(b.Won), 0);
     let plays = heroPlays.length;
     let rate = 0;
@@ -64,7 +96,7 @@ export class AppComponent {
     }
     let hero = Heroes[x as keyof typeof Heroes];
     let aspect = Aspects[y as keyof typeof Aspects];
-    return this.stats.plays.some(p => p.Won && p.Players.some(pl => pl.Hero == hero && pl.Aspect == aspect));
+    return this.stats.plays.some(p => p.Won && this.playHasHero(p, hero, aspect));
   }
 
   scenarioHeroGetter(x: string, y: string) {
@@ -73,7 +105,7 @@ export class AppComponent {
     }
     let scenario = Scenarios[x as keyof typeof Scenarios];
     let hero = Heroes[y as keyof typeof Heroes];
-    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Players.some(pl => pl.Hero == hero));
+    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, hero));
   }
 
   scenarioModuleGetter(x: string, y: string) {
@@ -94,7 +126,7 @@ export class AppComponent {
     return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Difficulty == difficulty);
   }
 
-  //TODO: can we instead get the enum values?
+  //TODO: can we instead get the enum values instead of strings?
   enumToArray(e: any) {
     // filter out the indexes
     return Object.values(e).filter(v => Number.isNaN(Number(v))) as string[];

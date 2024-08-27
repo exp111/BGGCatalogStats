@@ -60,6 +60,7 @@ export class BackupReaderService {
     }
     // name
     ret.Name = player.name;
+    ret.IsMe = player.me == 1;
     // find hero
     let hero = this.getFieldValue(backup, heroField.id, entry.playId, entry.id);
     if (!hero) {
