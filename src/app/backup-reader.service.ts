@@ -99,7 +99,8 @@ export class BackupReaderService {
 
   public marvelChampions(backup: BGGCollectionBackup) {
     let ret = {
-      plays: []
+      Plays: [],
+      OwnedPacks: []
     } as MarvelChampionsStats;
     let plays = [];
     // get game id
@@ -108,6 +109,8 @@ export class BackupReaderService {
       console.error("Game not found");
       return ret;
     }
+    let owned = backup.games.filter(g => g.name.startsWith("Marvel Champions: The Card Game"));
+    ret.OwnedPacks = owned.map(g => g.name);
     let gameId = game.id;
     // get custom data fields
     let aspectField = this.findCustomField(backup, gameId, "Aspect");
@@ -171,7 +174,7 @@ export class BackupReaderService {
       obj.Won = players.some(p => p.winner == 1)
       plays.push(obj);
     }
-    ret.plays = plays;
+    ret.Plays = plays;
     return ret;
   }
 }

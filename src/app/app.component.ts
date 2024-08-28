@@ -8,7 +8,7 @@ import {
   Heroes,
   MarvelChampionsPlay,
   MarvelChampionsStats,
-  Modulars,
+  Modulars, PackContent,
   Scenarios
 } from "../model/marvelchampions";
 import {TableComponent} from "./app-table/table.component";
@@ -32,6 +32,7 @@ export class AppComponent {
   title = 'BGGCollectionStats';
   stats?: MarvelChampionsStats;
   onlyMe: boolean = false;
+  onlyOwned: boolean = true;
 
   constructor(protected backupReader: BackupReaderService) {
     (window as any).app = this;
@@ -48,6 +49,8 @@ export class AppComponent {
   readFile(text: string) {
     let backup = JSON.parse(text);
     this.stats = this.backupReader.marvelChampions(backup);
+    console.log(this.stats);
+    console.log(PackContent);
   }
 
   playHasHero(play: MarvelChampionsPlay, hero?: Heroes, aspect?: Aspects) {
@@ -73,8 +76,8 @@ export class AppComponent {
       return "";
     }
     let hero = Heroes[y as keyof typeof Heroes];
-    let heroPlays = this.stats.plays.filter(p => this.playHasHero(p, hero));
-    return this.getRate(this.stats.plays.length, heroPlays.length);
+    let heroPlays = this.stats.Plays.filter(p => this.playHasHero(p, hero));
+    return this.getRate(this.stats.Plays.length, heroPlays.length);
   }
 
   aspectPlayrateGetter(_: string, y: string) {
@@ -82,8 +85,8 @@ export class AppComponent {
       return "";
     }
     let aspect = Aspects[y as keyof typeof Aspects];
-    let aspectPlays = this.stats.plays.filter(p => this.playHasHero(p, undefined, aspect));
-    return this.getRate(this.stats.plays.length, aspectPlays.length);
+    let aspectPlays = this.stats.Plays.filter(p => this.playHasHero(p, undefined, aspect));
+    return this.getRate(this.stats.Plays.length, aspectPlays.length);
   }
 
   scenarioPlayrateGetter(_: string, y: string) {
@@ -91,8 +94,8 @@ export class AppComponent {
       return "";
     }
     let scenario = Scenarios[y as keyof typeof Scenarios];
-    let scenarioPlays = this.stats.plays.filter(p => p.Scenario == scenario);
-    return this.getRate(this.stats.plays.length, scenarioPlays.length);
+    let scenarioPlays = this.stats.Plays.filter(p => p.Scenario == scenario);
+    return this.getRate(this.stats.Plays.length, scenarioPlays.length);
   }
 
   heroWinrateGetter(_: string, y: string) {
@@ -100,7 +103,7 @@ export class AppComponent {
       return "";
     }
     let hero = Heroes[y as keyof typeof Heroes];
-    let heroPlays = this.stats.plays.filter(p => this.playHasHero(p, hero));
+    let heroPlays = this.stats.Plays.filter(p => this.playHasHero(p, hero));
     let wins = this.getWins(heroPlays);
     return this.getRate(heroPlays.length, wins);
   }
@@ -114,7 +117,7 @@ export class AppComponent {
       return "";
     }
     let aspect = Aspects[y as keyof typeof Aspects];
-    let aspectPlays = this.stats.plays.filter(p => this.playHasHero(p, undefined, aspect));
+    let aspectPlays = this.stats.Plays.filter(p => this.playHasHero(p, undefined, aspect));
     let wins = this.getWins(aspectPlays);
     return this.getRate(aspectPlays.length, wins);
   }
@@ -124,7 +127,7 @@ export class AppComponent {
       return "";
     }
     let scenario = Scenarios[y as keyof typeof Scenarios];
-    let scenarioPlays = this.stats.plays.filter(p => p.Scenario == scenario);
+    let scenarioPlays = this.stats.Plays.filter(p => p.Scenario == scenario);
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
   }
@@ -135,7 +138,7 @@ export class AppComponent {
     }
     let scenario = Scenarios[x as keyof typeof Scenarios];
     let hero = Heroes[y as keyof typeof Heroes];
-    let scenarioPlays = this.stats.plays.filter(p => p.Scenario == scenario && this.playHasHero(p, hero));
+    let scenarioPlays = this.stats.Plays.filter(p => p.Scenario == scenario && this.playHasHero(p, hero));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
   }
@@ -146,7 +149,7 @@ export class AppComponent {
     }
     let hero = Heroes[x as keyof typeof Heroes];
     let aspect = Aspects[y as keyof typeof Aspects];
-    let scenarioPlays = this.stats.plays.filter(p => this.playHasHero(p, hero, aspect));
+    let scenarioPlays = this.stats.Plays.filter(p => this.playHasHero(p, hero, aspect));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
   }
@@ -157,7 +160,7 @@ export class AppComponent {
     }
     let scenario = Scenarios[x as keyof typeof Scenarios];
     let aspect = Aspects[y as keyof typeof Aspects];
-    let scenarioPlays = this.stats.plays.filter(p => p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
+    let scenarioPlays = this.stats.Plays.filter(p => p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
   }
@@ -168,7 +171,7 @@ export class AppComponent {
     }
     let hero = Heroes[x as keyof typeof Heroes];
     let aspect = Aspects[y as keyof typeof Aspects];
-    return this.stats.plays.some(p => p.Won && this.playHasHero(p, hero, aspect));
+    return this.stats.Plays.some(p => p.Won && this.playHasHero(p, hero, aspect));
   }
 
   scenarioHeroWonGetter(x: string, y: string) {
@@ -177,7 +180,7 @@ export class AppComponent {
     }
     let scenario = Scenarios[x as keyof typeof Scenarios];
     let hero = Heroes[y as keyof typeof Heroes];
-    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, hero));
+    return this.stats.Plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, hero));
   }
 
   scenarioAspectWonGetter(x: string, y: string) {
@@ -186,7 +189,7 @@ export class AppComponent {
     }
     let scenario = Scenarios[x as keyof typeof Scenarios];
     let aspect = Aspects[y as keyof typeof Aspects];
-    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
+    return this.stats.Plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
   }
 
   scenarioModuleWonGetter(x: string, y: string) {
@@ -195,7 +198,7 @@ export class AppComponent {
     }
     let scenario = Scenarios[x as keyof typeof Scenarios];
     let module = Modulars[y as keyof typeof Modulars];
-    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Modular == module);
+    return this.stats.Plays.some(p => p.Won && p.Scenario == scenario && p.Modular == module);
   }
 
   scenarioDifficultyWonGetter(x: string, y: string) {
@@ -204,13 +207,20 @@ export class AppComponent {
     }
     let scenario = Scenarios[x as keyof typeof Scenarios];
     let difficulty = Difficulty[y as keyof typeof Difficulty];
-    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Difficulty == difficulty);
+    return this.stats.Plays.some(p => p.Won && p.Scenario == scenario && p.Difficulty == difficulty);
   }
 
   //TODO: can we instead get the enum values instead of strings?
   enumToArray(e: any) {
     // filter out the indexes
-    return Object.values(e).filter(v => Number.isNaN(Number(v))) as string[];
+    return Object.values(e).filter(v => Number.isNaN(Number(v))).filter(v => this.ownedCheck(v)) as string[];
+  }
+
+  ownedCheck(e: any) {
+    if (!this.onlyOwned) {
+      return true;
+    }
+    return this.stats?.OwnedPacks.some(p => PackContent[p].includes(e));
   }
 
   protected readonly Heroes = Heroes;

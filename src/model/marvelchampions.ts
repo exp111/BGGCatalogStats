@@ -9,7 +9,7 @@ export enum Heroes {
 }
 
 export enum Aspects {
-  Aggression,
+  Aggression = 7,
   Justice,
   Leadership,
   Protection,
@@ -17,13 +17,13 @@ export enum Aspects {
 }
 
 export enum Scenarios {
-  Rhino,
+  Rhino = 12,
   Klaw,
   Ultron
 }
 
 export enum Modulars {
-  BombThreat,
+  BombThreat = 15,
   MastersOfEvil,
   UnderAttack,
   DoomsdayChair,
@@ -31,8 +31,41 @@ export enum Modulars {
 }
 
 export enum Difficulty {
-  Standard,
+  Standard = 20,
   Expert
+}
+
+function AspectsString(...args: Aspects[]) {
+  return args.map(a => Aspects[a]);
+}
+
+function HeroesString(...args: Heroes[]) {
+  return args.map(a => Heroes[a]);
+}
+
+function ScenariosString(...args: Scenarios[]) {
+  return args.map(a => Scenarios[a]);
+}
+
+function ModularsString(...args: Modulars[]) {
+  return args.map(a => Modulars[a]);
+}
+
+function DifficultyString(...args: Difficulty[]) {
+  return args.map(a => Difficulty[a]);
+}
+
+export const PackContent: ({ [key: string]: any[] }) = {
+  "Marvel Champions: The Card Game": [
+    ...AspectsString(Aspects.Aggression, Aspects.Justice, Aspects.Leadership, Aspects.Protection),
+    ...HeroesString(Heroes.SpiderMan, Heroes.SheHulk, Heroes.BlackPanther, Heroes.IronMan, Heroes.CaptainMarvel),
+    ...ScenariosString(Scenarios.Rhino, Scenarios.Klaw, Scenarios.Ultron),
+    ...ModularsString(Modulars.BombThreat, Modulars.MastersOfEvil, Modulars.UnderAttack, Modulars.DoomsdayChair, Modulars.LegionsOfHydra),
+    ...DifficultyString(Difficulty.Standard, Difficulty.Expert)
+  ],
+  "Marvel Champions: The Card Game \u2013 Deadpool Hero Pack": [
+    ...AspectsString(Aspects.Deadpool), ...HeroesString(Heroes.Deadpool)
+  ]
 }
 
 export interface MarvelChampionsPlayer {
@@ -53,5 +86,6 @@ export interface MarvelChampionsPlay {
 }
 
 export interface MarvelChampionsStats {
-  plays: MarvelChampionsPlay[];
+  Plays: MarvelChampionsPlay[];
+  OwnedPacks: string[];
 }

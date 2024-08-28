@@ -10,14 +10,20 @@
                (change)="onFileLoad($any($event))">
       </div>
     </div>
-    </div>
-    } @else {
+  </div>
+} @else {
   <div>
-    <h4>Total Plays: {{ this.stats.plays.length }}</h4>
-<div class="form-check">
-    <input id="onlyMeCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyMe"/>
-    <label for="onlyMeCheckbox" class="form-check-label">Only me?</label>
-</div>
+    <div class="sticky-top bg-white d-flex gap-3 ps-3">
+      <div class="form-check">
+        <input id="onlyMeCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyMe"/>
+        <label for="onlyMeCheckbox" class="form-check-label">Only me?</label>
+      </div>
+      <div class="form-check">
+        <input id="onlyOwnedCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyOwned"/>
+        <label for="onlyOwnedCheckbox" class="form-check-label">Only owned?</label>
+      </div>
+    </div>
+    <h4>Total Plays: {{ this.stats.Plays.length }}</h4>
     <h4>Hero Playrate</h4>
     <app-table
       [XAxis]="['Playrate']"
@@ -95,7 +101,7 @@
       [cellClassGetter]="this.winrateCellClassGetter"
       [getter]="this.scenarioAspectWinrateGetter.bind(this)"></app-table>
     <h4>Plays</h4>
-    @for (play of this.stats.plays; track play.Id) {
+    @for (play of this.stats.Plays; track play.Id) {
       <div class="card card-body">
         <p>Id: {{ play.Id }}</p>
         <p>Scenario: {{ Scenarios[play.Scenario] }}</p>
