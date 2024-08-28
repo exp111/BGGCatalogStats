@@ -23,32 +23,77 @@
       [XAxis]="['Playrate']"
       [YAxis]="enumToArray(Heroes)"
       [getter]="this.heroPlayrateGetter.bind(this)"></app-table>
+    <h4>Aspect Playrate</h4>
+    <app-table
+      [XAxis]="['Playrate']"
+      [YAxis]="enumToArray(Aspects)"
+      [getter]="this.aspectPlayrateGetter.bind(this)"></app-table>
+    <h4>Scenario Playrate</h4>
+    <app-table
+      [XAxis]="['Playrate']"
+      [YAxis]="enumToArray(Scenarios)"
+      [getter]="this.scenarioPlayrateGetter.bind(this)"></app-table>
     <h4>Hero Winrate</h4>
     <app-table
       [XAxis]="['Winrate']"
       [YAxis]="enumToArray(Heroes)"
-      [cellClassGetter]="this.heroWinrateCellClassGetter.bind(this)"
+      [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
       [getter]="this.heroWinrateGetter.bind(this)"></app-table>
+    <h4>Aspect Winrate</h4>
+    <app-table
+      [XAxis]="['Winrate']"
+      [YAxis]="enumToArray(Aspects)"
+      [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
+      [getter]="this.aspectWinrateGetter.bind(this)"></app-table>
+    <h4>Scenario Winrate</h4>
+    <app-table
+      [XAxis]="['Winrate']"
+      [YAxis]="enumToArray(Scenarios)"
+      [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
+      [getter]="this.scenarioWinrateGetter.bind(this)"></app-table>
     <h4>Hero - Aspect</h4>
     <app-checklist
       [XAxis]="enumToArray(Heroes)"
       [YAxis]="enumToArray(Aspects)"
-      [getter]="this.heroAspectGetter.bind(this)"></app-checklist>
+      [getter]="this.heroAspectWonGetter.bind(this)"></app-checklist>
     <h4>Scenario - Hero</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
       [YAxis]="enumToArray(Heroes)"
-      [getter]="this.scenarioHeroGetter.bind(this)"></app-checklist>
+      [getter]="this.scenarioHeroWonGetter.bind(this)"></app-checklist>
+    <h4>Scenario - Aspect</h4>
+    <app-checklist
+      [XAxis]="enumToArray(Scenarios)"
+      [YAxis]="enumToArray(Aspects)"
+      [getter]="this.scenarioAspectWonGetter.bind(this)"></app-checklist>
     <h4>Scenario - Modular</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
       [YAxis]="enumToArray(Modulars)"
-      [getter]="this.scenarioModuleGetter.bind(this)"></app-checklist>
+      [getter]="this.scenarioModuleWonGetter.bind(this)"></app-checklist>
     <h4>Scenario - Difficulty</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
       [YAxis]="enumToArray(Difficulty)"
-      [getter]="this.scenarioDifficultyGetter.bind(this)"></app-checklist>
+      [getter]="this.scenarioDifficultyWonGetter.bind(this)"></app-checklist>
+    <h4>Scenario - Hero - (Winrate)</h4>
+    <app-table
+      [XAxis]="enumToArray(Scenarios)"
+      [YAxis]="enumToArray(Heroes)"
+      [cellClassGetter]="this.winrateCellClassGetter"
+      [getter]="this.scenarioHeroWinrateGetter.bind(this)"></app-table>
+    <h4>Hero - Aspect (Winrate)</h4>
+    <app-table
+      [XAxis]="enumToArray(Heroes)"
+      [YAxis]="enumToArray(Aspects)"
+      [cellClassGetter]="this.winrateCellClassGetter"
+      [getter]="this.heroAspectWinrateGetter.bind(this)"></app-table>
+    <h4>Scenario - Aspect (Winrate)</h4>
+    <app-table
+      [XAxis]="enumToArray(Scenarios)"
+      [YAxis]="enumToArray(Aspects)"
+      [cellClassGetter]="this.winrateCellClassGetter"
+      [getter]="this.scenarioAspectWinrateGetter.bind(this)"></app-table>
     <h4>Plays</h4>
     @for (play of this.stats.plays; track play.Id) {
       <div class="card card-body">

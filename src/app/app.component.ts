@@ -50,10 +50,22 @@ export class AppComponent {
     this.stats = this.backupReader.marvelChampions(backup);
   }
 
-  playHasHero(play: MarvelChampionsPlay, hero: Heroes, aspect?: Aspects) {
-    return play.Players.some(p => p.Hero == hero
+  playHasHero(play: MarvelChampionsPlay, hero?: Heroes, aspect?: Aspects) {
+    return play.Players.some(p => (hero == undefined || p.Hero == hero)
       && (!this.onlyMe || p.IsMe)
-      && (!aspect || p.Aspect == aspect));
+      && (aspect == undefined || p.Aspect == aspect));
+  }
+
+  getRate(totalPlays: number, plays: number) {
+    let rate = 0;
+    if (plays > 0) {
+      rate = plays / totalPlays * 100;
+    }
+    return `${rate.toFixed(1)}% (${plays}/${totalPlays})`;
+  }
+
+  getWins(plays: MarvelChampionsPlay[]) {
+    return plays.reduce((a, b) => a + Number(b.Won), 0);
   }
 
   heroPlayrateGetter(_: string, y: string) {
@@ -61,14 +73,26 @@ export class AppComponent {
       return "";
     }
     let hero = Heroes[y as keyof typeof Heroes];
-    let totalPlays = this.stats.plays.length;
     let heroPlays = this.stats.plays.filter(p => this.playHasHero(p, hero));
-    let plays = heroPlays.length;
-    let rate = 0;
-    if (plays > 0) {
-      rate = plays / totalPlays * 100;
+    return this.getRate(this.stats.plays.length, heroPlays.length);
+  }
+
+  aspectPlayrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
     }
-    return `${rate.toFixed(1)}% (${plays}/${totalPlays})`
+    let aspect = Aspects[y as keyof typeof Aspects];
+    let aspectPlays = this.stats.plays.filter(p => this.playHasHero(p, undefined, aspect));
+    return this.getRate(this.stats.plays.length, aspectPlays.length);
+  }
+
+  scenarioPlayrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let scenario = Scenarios[y as keyof typeof Scenarios];
+    let scenarioPlays = this.stats.plays.filter(p => p.Scenario == scenario);
+    return this.getRate(this.stats.plays.length, scenarioPlays.length);
   }
 
   heroWinrateGetter(_: string, y: string) {
@@ -77,20 +101,68 @@ export class AppComponent {
     }
     let hero = Heroes[y as keyof typeof Heroes];
     let heroPlays = this.stats.plays.filter(p => this.playHasHero(p, hero));
-    let wins = heroPlays.reduce((a, b) => a + Number(b.Won), 0);
-    let plays = heroPlays.length;
-    let rate = 0;
-    if (plays > 0) {
-      rate = wins / plays * 100;
-    }
-    return `${rate.toFixed(1)}% (${wins}/${plays})`;
+    let wins = this.getWins(heroPlays);
+    return this.getRate(heroPlays.length, wins);
   }
 
-  heroWinrateCellClassGetter(value: string) {
+  winrateCellClassGetter(value: string) {
     return value.startsWith("0.0%") ? "table-danger" : value.startsWith("100.0%") ? "table-success" : "";
   }
 
-  heroAspectGetter(x: string, y: string) {
+  aspectWinrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let aspect = Aspects[y as keyof typeof Aspects];
+    let aspectPlays = this.stats.plays.filter(p => this.playHasHero(p, undefined, aspect));
+    let wins = this.getWins(aspectPlays);
+    return this.getRate(aspectPlays.length, wins);
+  }
+
+  scenarioWinrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let scenario = Scenarios[y as keyof typeof Scenarios];
+    let scenarioPlays = this.stats.plays.filter(p => p.Scenario == scenario);
+    let wins = this.getWins(scenarioPlays);
+    return this.getRate(scenarioPlays.length, wins);
+  }
+
+  scenarioHeroWinrateGetter(x: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let scenario = Scenarios[x as keyof typeof Scenarios];
+    let hero = Heroes[y as keyof typeof Heroes];
+    let scenarioPlays = this.stats.plays.filter(p => p.Scenario == scenario && this.playHasHero(p, hero));
+    let wins = this.getWins(scenarioPlays);
+    return this.getRate(scenarioPlays.length, wins);
+  }
+
+  heroAspectWinrateGetter(x: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let hero = Heroes[x as keyof typeof Heroes];
+    let aspect = Aspects[y as keyof typeof Aspects];
+    let scenarioPlays = this.stats.plays.filter(p => this.playHasHero(p, hero, aspect));
+    let wins = this.getWins(scenarioPlays);
+    return this.getRate(scenarioPlays.length, wins);
+  }
+
+  scenarioAspectWinrateGetter(x: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let scenario = Scenarios[x as keyof typeof Scenarios];
+    let aspect = Aspects[y as keyof typeof Aspects];
+    let scenarioPlays = this.stats.plays.filter(p => p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
+    let wins = this.getWins(scenarioPlays);
+    return this.getRate(scenarioPlays.length, wins);
+  }
+
+  heroAspectWonGetter(x: string, y: string) {
     if (!this.stats) {
       return false;
     }
@@ -99,7 +171,7 @@ export class AppComponent {
     return this.stats.plays.some(p => p.Won && this.playHasHero(p, hero, aspect));
   }
 
-  scenarioHeroGetter(x: string, y: string) {
+  scenarioHeroWonGetter(x: string, y: string) {
     if (!this.stats) {
       return false;
     }
@@ -108,7 +180,16 @@ export class AppComponent {
     return this.stats.plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, hero));
   }
 
-  scenarioModuleGetter(x: string, y: string) {
+  scenarioAspectWonGetter(x: string, y: string) {
+    if (!this.stats) {
+      return false;
+    }
+    let scenario = Scenarios[x as keyof typeof Scenarios];
+    let aspect = Aspects[y as keyof typeof Aspects];
+    return this.stats.plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
+  }
+
+  scenarioModuleWonGetter(x: string, y: string) {
     if (!this.stats) {
       return false;
     }
@@ -117,7 +198,7 @@ export class AppComponent {
     return this.stats.plays.some(p => p.Won && p.Scenario == scenario && p.Modular == module);
   }
 
-  scenarioDifficultyGetter(x: string, y: string) {
+  scenarioDifficultyWonGetter(x: string, y: string) {
     if (!this.stats) {
       return false;
     }
