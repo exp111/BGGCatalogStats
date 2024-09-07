@@ -1,4 +1,4 @@
-import {BaseGameStats} from "./basegamestats";
+import {BaseGamePlay, BaseGameStats} from "./basegamestats";
 
 export enum Heroes {
   SpiderMan,
@@ -102,14 +102,11 @@ export interface MarvelChampionsPlayer {
   Aspect: Aspects; //TODO: support multiple aspects?
 }
 
-export interface MarvelChampionsPlay {
-  Id: number;
+export interface MarvelChampionsPlay extends BaseGamePlay {
   Players: MarvelChampionsPlayer[];
   Scenario: Scenarios;
   Modular: Modulars; //TODO: support multiple modulars
   Difficulty: Difficulty;
-  Time: number;
-  Won: boolean;
 }
 
 export interface MarvelChampionsStats extends BaseGameStats {

@@ -12,7 +12,7 @@ import {
   PackContent,
   Scenarios
 } from "../../model/marvelchampions";
-import {enumToArray, formatFromEnumString} from "../enumUtils";
+import {enumToArray, formatFromEnumString, getEnumValue} from "../enumUtils";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BaseGameComponent} from "../base-game.component";
 
@@ -62,7 +62,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let hero = Heroes[y as keyof typeof Heroes];
+    let hero = getEnumValue(Heroes, y);
     let heroPlays = plays.filter(p => this.playHasHero(p, hero));
     return this.getRate(plays.length, heroPlays.length);
   }
@@ -72,7 +72,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let aspect = Aspects[y as keyof typeof Aspects];
+    let aspect = getEnumValue(Aspects, y);
     let aspectPlays = plays.filter(p => this.playHasHero(p, undefined, aspect));
     return this.getRate(plays.length, aspectPlays.length);
   }
@@ -82,7 +82,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let scenario = Scenarios[y as keyof typeof Scenarios];
+    let scenario = getEnumValue(Scenarios, y);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario);
     return this.getRate(plays.length, scenarioPlays.length);
   }
@@ -92,7 +92,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let hero = Heroes[y as keyof typeof Heroes];
+    let hero = getEnumValue(Heroes, y);
     let heroPlays = plays.filter(p => this.playHasHero(p, hero));
     let wins = this.getWins(heroPlays);
     return this.getRate(heroPlays.length, wins);
@@ -107,7 +107,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let aspect = Aspects[y as keyof typeof Aspects];
+    let aspect = getEnumValue(Aspects, y);
     let aspectPlays = plays.filter(p => this.playHasHero(p, undefined, aspect));
     let wins = this.getWins(aspectPlays);
     return this.getRate(aspectPlays.length, wins);
@@ -118,7 +118,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let scenario = Scenarios[y as keyof typeof Scenarios];
+    let scenario = getEnumValue(Scenarios, y);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario);
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
@@ -129,8 +129,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let scenario = Scenarios[x as keyof typeof Scenarios];
-    let hero = Heroes[y as keyof typeof Heroes];
+    let scenario = getEnumValue(Scenarios, x);
+    let hero = getEnumValue(Heroes, y);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p, hero));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
@@ -141,8 +141,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let hero = Heroes[x as keyof typeof Heroes];
-    let aspect = Aspects[y as keyof typeof Aspects];
+    let hero = getEnumValue(Heroes, x);
+    let aspect = getEnumValue(Aspects, y);
     let scenarioPlays = plays.filter(p => this.playHasHero(p, hero, aspect));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
@@ -153,8 +153,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let scenario = Scenarios[x as keyof typeof Scenarios];
-    let aspect = Aspects[y as keyof typeof Aspects];
+    let scenario = getEnumValue(Scenarios, x);
+    let aspect = getEnumValue(Aspects, y);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
@@ -165,8 +165,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let hero = Heroes[x as keyof typeof Heroes];
-    let aspect = Aspects[y as keyof typeof Aspects];
+    let hero = getEnumValue(Heroes, x);
+    let aspect = getEnumValue(Aspects, y);
     return plays.some(p => p.Won && this.playHasHero(p, hero, aspect));
   }
 
@@ -175,8 +175,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let scenario = Scenarios[x as keyof typeof Scenarios];
-    let hero = Heroes[y as keyof typeof Heroes];
+    let scenario = getEnumValue(Scenarios, x);
+    let hero = getEnumValue(Heroes, y);
     return plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, hero));
   }
 
@@ -185,8 +185,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let scenario = Scenarios[x as keyof typeof Scenarios];
-    let aspect = Aspects[y as keyof typeof Aspects];
+    let scenario = getEnumValue(Scenarios, x);
+    let aspect = getEnumValue(Aspects, y);
     return plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
   }
 
@@ -195,8 +195,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let scenario = Scenarios[x as keyof typeof Scenarios];
-    let module = Modulars[y as keyof typeof Modulars];
+    let scenario = getEnumValue(Scenarios, x);
+    let module = getEnumValue(Modulars, y);
     return plays.some(p => p.Won && p.Scenario == scenario && p.Modular == module);
   }
 
@@ -205,8 +205,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let scenario = Scenarios[x as keyof typeof Scenarios];
-    let difficulty = Difficulty[y as keyof typeof Difficulty];
+    let scenario = getEnumValue(Scenarios, x);
+    let difficulty = getEnumValue(Difficulty, y);
     return plays.some(p => p.Won && p.Scenario == scenario && p.Difficulty == difficulty);
   }
 

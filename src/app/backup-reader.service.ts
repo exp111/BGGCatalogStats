@@ -10,7 +10,7 @@ import {
   Modulars,
   Scenarios
 } from "../model/marvelchampions";
-import {formatToEnumString} from "./enumUtils";
+import {formatToEnumString, getEnumValue} from "./enumUtils";
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +65,7 @@ export class BackupReaderService {
       console.log(entry);
       return ret;
     }
-    ret.Hero = Heroes[formatToEnumString(hero.value) as keyof typeof Heroes];
+    ret.Hero = getEnumValue(Heroes, formatToEnumString(hero.value));
     if (ret.Hero == undefined) {
       console.error(`Hero Value ${formatToEnumString(hero.value)} can not be parsed`);
       return ret;
@@ -78,7 +78,7 @@ export class BackupReaderService {
       console.log(entry);
       return ret;
     }
-    ret.Aspect = Aspects[this.normalizeAspectName(formatToEnumString(aspect.value)) as keyof typeof Aspects];
+    ret.Aspect = getEnumValue(Aspects, this.normalizeAspectName(formatToEnumString(aspect.value)));
     if (ret.Aspect == undefined) {
       console.error(`Aspect Value ${this.normalizeAspectName(formatToEnumString(aspect.value))} can not be parsed`);
       return ret;
@@ -140,7 +140,7 @@ export class BackupReaderService {
         console.log(play);
         return ret;
       }
-      obj.Scenario = Scenarios[formatToEnumString(scenario.value) as keyof typeof Scenarios];
+      obj.Scenario = getEnumValue(Scenarios, formatToEnumString(scenario.value));
       if (obj.Scenario == undefined) {
         console.error(`Scenario Value ${formatToEnumString(scenario.value)} can not be parsed`);
         return ret;
@@ -151,7 +151,7 @@ export class BackupReaderService {
         console.error(`Modular with id ${modularField.id} not found`);
         return ret;
       }
-      obj.Modular = Modulars[this.normalizeModularName(formatToEnumString(modular.value)) as keyof typeof Modulars];
+      obj.Modular = getEnumValue(Modulars, this.normalizeModularName(formatToEnumString(modular.value)));
       if (obj.Modular == undefined) {
         console.error(`Modular Value ${this.normalizeModularName(formatToEnumString(modular.value))} can not be parsed`);
         return ret;
@@ -162,7 +162,7 @@ export class BackupReaderService {
         console.error(`Difficulty with id ${difficultyField.id} not found`);
         return ret;
       }
-      obj.Difficulty = Difficulty[formatToEnumString(difficulty.value) as keyof typeof Difficulty];
+      obj.Difficulty = getEnumValue(Difficulty, formatToEnumString(difficulty.value));
       if (obj.Difficulty == undefined) {
         console.error(`Difficulty Value ${formatToEnumString(difficulty.value)} can not be parsed`);
         return ret;

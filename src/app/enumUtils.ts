@@ -16,3 +16,8 @@ export function formatFromEnumString(str: string) {
 export function enumToArray(e: any) {
   return Object.values(e).filter(v => Number.isNaN(Number(v))) as string[]; // only strings, ignoring indexes
 }
+
+// Gets the value of a number enum entry by the string key
+export function getEnumValue(enums: any, str: string) {
+  return enums[str as keyof typeof enums];
+}
