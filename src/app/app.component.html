@@ -23,7 +23,7 @@
         <label for="onlyOwnedCheckbox" class="form-check-label">Only owned?</label>
       </div>
     </div>
-    <h4>Total Plays: {{ this.stats.Plays.length }}</h4>
+    <h4>Total Plays: {{ this.getPlays(this.stats).length }}</h4>
     <h4>Hero Playrate</h4>
     <app-table
       [XAxis]="['Playrate']"
@@ -117,7 +117,7 @@
       [cellClassGetter]="this.winrateCellClassGetter"
       [getter]="this.scenarioAspectWinrateGetter.bind(this)"></app-table>
     <h4>Plays</h4>
-    @for (play of this.stats.Plays; track play.Id) {
+    @for (play of this.getPlays(this.stats); track play.Id) {
       <div class="card card-body">
         <p>Id: {{ play.Id }}</p>
         <p>Scenario: {{ this.formatter(Scenarios[play.Scenario]) }}</p>
