@@ -14,7 +14,7 @@ import {
 import {TableComponent} from "./app-table/table.component";
 import {ChecklistComponent} from "./app-table/checklist.component";
 import {FormsModule} from "@angular/forms";
-import {formatFromEnumString} from "./enumUtils";
+import {enumToArray, formatFromEnumString} from "./enumUtils";
 
 @Component({
   selector: 'app-root',
@@ -212,7 +212,10 @@ export class AppComponent {
   //TODO: can we instead get the enum values instead of strings?
   enumToArray(e: any) {
     // filter out the values
-    return Object.values(e).filter(v => Number.isNaN(Number(v))).filter(v => this.ownedCheck(v)) as string[];
+    return enumToArray(e)
+      .filter(v => v != "END") // ignore end marker
+      .filter(v => this.ownedCheck(v) // only show owned
+      ) as string[];
   }
 
   ownedCheck(e: any) {

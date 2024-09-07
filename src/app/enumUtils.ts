@@ -12,3 +12,7 @@ export function formatFromEnumString(str: string) {
     .replaceAll(/([A-Z])/g, (c) => ` ${c}`) // convert camel case to spaces
     .trim();
 }
+
+export function enumToArray(e: any) {
+  return Object.values(e).filter(v => Number.isNaN(Number(v))) as string[]; // only strings, ignoring indexes
+}

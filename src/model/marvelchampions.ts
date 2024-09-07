@@ -9,36 +9,40 @@ export enum Heroes {
   Hawkeye,
   SpiderWoman,
   GhostSpider,
-  MilesMorales
+  MilesMorales,
+  END
 }
 
 export enum Aspects {
-  Aggression = 11,
+  Aggression = Heroes.END,
   Justice,
   Leadership,
   Protection,
   Deadpool,
+  END
 }
 
 export enum Scenarios {
-  Rhino = 16,
+  Rhino = Aspects.END,
   Klaw,
   Ultron,
   TaskMaster,
   RedSkull,
-  Venom
+  Venom,
+  END
 }
 
 export enum Modulars {
-  BombThreat = 22,
+  BombThreat = Scenarios.END,
   MastersOfEvil,
   UnderAttack,
   DoomsdayChair,
-  LegionsOfHydra
+  LegionsOfHydra,
+  END
 }
 
 export enum Difficulty {
-  Standard = 27,
+  Standard = Modulars.END,
   Expert
 }
 
