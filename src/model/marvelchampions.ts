@@ -13,15 +13,15 @@ export enum Heroes {
 }
 
 export enum Aspects {
-  Aggression = 7,
+  Aggression = 11,
   Justice,
   Leadership,
   Protection,
-  Deadpool
+  Deadpool,
 }
 
 export enum Scenarios {
-  Rhino = 12,
+  Rhino = 16,
   Klaw,
   Ultron,
   TaskMaster,
@@ -30,7 +30,7 @@ export enum Scenarios {
 }
 
 export enum Modulars {
-  BombThreat = 15,
+  BombThreat = 22,
   MastersOfEvil,
   UnderAttack,
   DoomsdayChair,
@@ -38,7 +38,7 @@ export enum Modulars {
 }
 
 export enum Difficulty {
-  Standard = 20,
+  Standard = 27,
   Expert
 }
 
@@ -93,7 +93,7 @@ export interface MarvelChampionsPlayer {
   Name: string;
   IsMe: boolean;
   Hero: Heroes;
-  Aspect: Aspects;
+  Aspect: Aspects; //TODO: support multiple aspects?
 }
 
 export interface MarvelChampionsPlay {

@@ -1,12 +1,16 @@
 import {Injectable} from '@angular/core';
 import {BGGCollectionBackup, CustomFieldEntry, PlayerPlayEntry} from "../model/bggcollection";
 import {
-  Aspects, Difficulty,
+  Aspects,
+  Difficulty,
   Heroes,
   MarvelChampionsPlay,
   MarvelChampionsPlayer,
-  MarvelChampionsStats, Modulars, Scenarios
+  MarvelChampionsStats,
+  Modulars,
+  Scenarios
 } from "../model/marvelchampions";
+import {formatToEnumString} from "./enumUtils";
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +19,6 @@ export class BackupReaderService {
 
   constructor() {
     (window as any).backupReader = this;
-  }
-
-  private sanitizeForEnum(str: string) {
-    return str
-      .replace(".", "")
-      .replace("-", " ")
-      .replace(/\s(\w)/g, (c) => c[1].toUpperCase())
-      .trim();
   }
 
   private normalizeAspectName(str: string) {
@@ -69,9 +65,9 @@ export class BackupReaderService {
       console.log(entry);
       return ret;
     }
-    ret.Hero = Heroes[this.sanitizeForEnum(hero.value) as keyof typeof Heroes];
+    ret.Hero = Heroes[formatToEnumString(hero.value) as keyof typeof Heroes];
     if (ret.Hero == undefined) {
-      console.error(`Hero Value ${this.sanitizeForEnum(hero.value)} can not be parsed`);
+      console.error(`Hero Value ${formatToEnumString(hero.value)} can not be parsed`);
       return ret;
     }
     // find aspect
@@ -82,9 +78,9 @@ export class BackupReaderService {
       console.log(entry);
       return ret;
     }
-    ret.Aspect = Aspects[this.normalizeAspectName(this.sanitizeForEnum(aspect.value)) as keyof typeof Aspects];
+    ret.Aspect = Aspects[this.normalizeAspectName(formatToEnumString(aspect.value)) as keyof typeof Aspects];
     if (ret.Aspect == undefined) {
-      console.error(`Aspect Value ${this.normalizeAspectName(this.sanitizeForEnum(aspect.value))} can not be parsed`);
+      console.error(`Aspect Value ${this.normalizeAspectName(formatToEnumString(aspect.value))} can not be parsed`);
       return ret;
     }
     return ret;
@@ -144,9 +140,9 @@ export class BackupReaderService {
         console.log(play);
         return ret;
       }
-      obj.Scenario = Scenarios[this.sanitizeForEnum(scenario.value) as keyof typeof Scenarios];
+      obj.Scenario = Scenarios[formatToEnumString(scenario.value) as keyof typeof Scenarios];
       if (obj.Scenario == undefined) {
-        console.error(`Scenario Value ${this.sanitizeForEnum(scenario.value)} can not be parsed`);
+        console.error(`Scenario Value ${formatToEnumString(scenario.value)} can not be parsed`);
         return ret;
       }
       // modular
@@ -155,9 +151,9 @@ export class BackupReaderService {
         console.error(`Modular with id ${modularField.id} not found`);
         return ret;
       }
-      obj.Modular = Modulars[this.normalizeModularName(this.sanitizeForEnum(modular.value)) as keyof typeof Modulars];
+      obj.Modular = Modulars[this.normalizeModularName(formatToEnumString(modular.value)) as keyof typeof Modulars];
       if (obj.Modular == undefined) {
-        console.error(`Modular Value ${this.normalizeModularName(this.sanitizeForEnum(modular.value))} can not be parsed`);
+        console.error(`Modular Value ${this.normalizeModularName(formatToEnumString(modular.value))} can not be parsed`);
         return ret;
       }
       // difficulty
@@ -166,9 +162,9 @@ export class BackupReaderService {
         console.error(`Difficulty with id ${difficultyField.id} not found`);
         return ret;
       }
-      obj.Difficulty = Difficulty[this.sanitizeForEnum(difficulty.value) as keyof typeof Difficulty];
+      obj.Difficulty = Difficulty[formatToEnumString(difficulty.value) as keyof typeof Difficulty];
       if (obj.Difficulty == undefined) {
-        console.error(`Difficulty Value ${this.sanitizeForEnum(difficulty.value)} can not be parsed`);
+        console.error(`Difficulty Value ${formatToEnumString(difficulty.value)} can not be parsed`);
         return ret;
       }
       obj.Won = players.some(p => p.winner == 1)

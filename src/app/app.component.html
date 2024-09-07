@@ -28,6 +28,7 @@
     <app-table
       [XAxis]="['Playrate']"
       [YAxis]="enumToArray(Heroes)"
+      [YFormatter]="this.formatter"
       [getter]="this.heroPlayrateGetter.bind(this)"></app-table>
     <h4>Aspect Playrate</h4>
     <app-table
@@ -38,11 +39,13 @@
     <app-table
       [XAxis]="['Playrate']"
       [YAxis]="enumToArray(Scenarios)"
+      [YFormatter]="this.formatter"
       [getter]="this.scenarioPlayrateGetter.bind(this)"></app-table>
     <h4>Hero Winrate</h4>
     <app-table
       [XAxis]="['Winrate']"
       [YAxis]="enumToArray(Heroes)"
+      [YFormatter]="this.formatter"
       [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
       [getter]="this.heroWinrateGetter.bind(this)"></app-table>
     <h4>Aspect Winrate</h4>
@@ -55,48 +58,61 @@
     <app-table
       [XAxis]="['Winrate']"
       [YAxis]="enumToArray(Scenarios)"
+      [YFormatter]="this.formatter"
       [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
       [getter]="this.scenarioWinrateGetter.bind(this)"></app-table>
     <h4>Hero - Aspect</h4>
     <app-checklist
       [XAxis]="enumToArray(Heroes)"
+      [XFormatter]="this.formatter"
       [YAxis]="enumToArray(Aspects)"
       [getter]="this.heroAspectWonGetter.bind(this)"></app-checklist>
     <h4>Scenario - Hero</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
+      [XFormatter]="this.formatter"
       [YAxis]="enumToArray(Heroes)"
+      [YFormatter]="this.formatter"
       [getter]="this.scenarioHeroWonGetter.bind(this)"></app-checklist>
     <h4>Scenario - Aspect</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
+      [XFormatter]="this.formatter"
       [YAxis]="enumToArray(Aspects)"
       [getter]="this.scenarioAspectWonGetter.bind(this)"></app-checklist>
     <h4>Scenario - Modular</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
+      [XFormatter]="this.formatter"
       [YAxis]="enumToArray(Modulars)"
+      [YFormatter]="this.formatter"
       [getter]="this.scenarioModuleWonGetter.bind(this)"></app-checklist>
     <h4>Scenario - Difficulty</h4>
     <app-checklist
       [XAxis]="enumToArray(Scenarios)"
+      [XFormatter]="this.formatter"
       [YAxis]="enumToArray(Difficulty)"
+      [YFormatter]="this.formatter"
       [getter]="this.scenarioDifficultyWonGetter.bind(this)"></app-checklist>
     <h4>Scenario - Hero - (Winrate)</h4>
     <app-table
       [XAxis]="enumToArray(Scenarios)"
+      [XFormatter]="this.formatter"
       [YAxis]="enumToArray(Heroes)"
+      [YFormatter]="this.formatter"
       [cellClassGetter]="this.winrateCellClassGetter"
       [getter]="this.scenarioHeroWinrateGetter.bind(this)"></app-table>
     <h4>Hero - Aspect (Winrate)</h4>
     <app-table
       [XAxis]="enumToArray(Heroes)"
+      [XFormatter]="this.formatter"
       [YAxis]="enumToArray(Aspects)"
       [cellClassGetter]="this.winrateCellClassGetter"
       [getter]="this.heroAspectWinrateGetter.bind(this)"></app-table>
     <h4>Scenario - Aspect (Winrate)</h4>
     <app-table
       [XAxis]="enumToArray(Scenarios)"
+      [XFormatter]="this.formatter"
       [YAxis]="enumToArray(Aspects)"
       [cellClassGetter]="this.winrateCellClassGetter"
       [getter]="this.scenarioAspectWinrateGetter.bind(this)"></app-table>
@@ -104,13 +120,13 @@
     @for (play of this.stats.Plays; track play.Id) {
       <div class="card card-body">
         <p>Id: {{ play.Id }}</p>
-        <p>Scenario: {{ Scenarios[play.Scenario] }}</p>
-        <p>Modular: {{ Modulars[play.Modular] }}</p>
-        <p>Difficulty: {{ Difficulty[play.Difficulty] }}</p>
+        <p>Scenario: {{ this.formatter(Scenarios[play.Scenario]) }}</p>
+        <p>Modular: {{ this.formatter(Modulars[play.Modular]) }}</p>
+        <p>Difficulty: {{ this.formatter(Difficulty[play.Difficulty]) }}</p>
         <p>Players: {{ play.Players.length }}</p>
         <ul>
           @for (player of play.Players; track player.Name) {
-            <li>{{ player.Name }}: {{ Heroes[player.Hero] }} ({{ Aspects[player.Aspect] }})</li>
+            <li>{{ player.Name }}: {{ this.formatter(Heroes[player.Hero]) }} ({{ this.formatter(Aspects[player.Aspect]) }})</li>
           }
         </ul>
       </div>

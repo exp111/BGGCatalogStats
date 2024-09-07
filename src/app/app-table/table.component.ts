@@ -10,7 +10,9 @@ import {Component, Input} from '@angular/core';
 export class TableComponent {
   //TODO: cache + listen to ngonchanges
   @Input() XAxis!: string[];
+  @Input() XFormatter?: (x: string) => string;
   @Input() YAxis!: string[];
+  @Input() YFormatter?: (y: string) => string;
   @Input() getter!: (x: string, y: string) => any;
   @Input() columnClassGetter?: (x: string) => string;
   @Input() rowClassGetter?: (y: string) => string;
@@ -18,6 +20,14 @@ export class TableComponent {
 
   protected getValue(x: string, y: string) {
     return this.getter(x, y);
+  }
+
+  protected getXHeader(x: string) {
+    return this.XFormatter ? this.XFormatter(x) : x;
+  }
+
+  protected getYHeader(y: string) {
+    return this.YFormatter ? this.YFormatter(y) : y;
   }
 
   protected getColumnClass(x: string) {

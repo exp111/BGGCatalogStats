@@ -14,6 +14,7 @@ import {
 import {TableComponent} from "./app-table/table.component";
 import {ChecklistComponent} from "./app-table/checklist.component";
 import {FormsModule} from "@angular/forms";
+import {formatFromEnumString} from "./enumUtils";
 
 @Component({
   selector: 'app-root',
@@ -219,6 +220,13 @@ export class AppComponent {
       return true;
     }
     return this.stats?.OwnedPacks.some(p => PackContent[p].includes(e));
+  }
+
+  formatter(val: string) {
+    if (!val) {
+      return "unknown";
+    }
+    return formatFromEnumString(val);
   }
 
   protected readonly Heroes = Heroes;

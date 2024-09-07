@@ -3,14 +3,14 @@
   <tr>
     <th scope="col"></th>
     @for (x of XAxis; track x) {
-      <th scope="col" [class]="this.getColumnClass(x)">{{ x }}</th>
+      <th scope="col" [class]="this.getColumnClass(x)">{{ this.getXHeader(x) }}</th>
     }
   </tr>
   </thead>
   <tbody>
     @for (y of YAxis; track y) {
       <tr>
-        <th scope="row" [class]="this.getRowClass(y)">{{y}}</th>
+        <th scope="row" [class]="this.getRowClass(y)">{{ this.getYHeader(y) }}</th>
         @for (x of XAxis; track x) {
           <td [class]="this.getCellClass(x, y)">{{ this.getValue(x, y) }}</td>
         }
