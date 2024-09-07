@@ -1,3 +1,5 @@
+import {BaseGameStats} from "./basegamestats";
+
 export enum Heroes {
   SpiderMan,
   SheHulk,
@@ -110,7 +112,7 @@ export interface MarvelChampionsPlay {
   Won: boolean;
 }
 
-export interface MarvelChampionsStats {
+export interface MarvelChampionsStats extends BaseGameStats {
   Plays: MarvelChampionsPlay[];
   OwnedPacks: string[];
 }

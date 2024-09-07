@@ -12,12 +12,12 @@ import {
   PackContent,
   Scenarios
 } from "../../model/marvelchampions";
-import {BackupReaderService} from "../backup-reader.service";
 import {enumToArray, formatFromEnumString} from "../enumUtils";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {BaseGameComponent} from "../base-game.component";
 
 @Component({
-  selector: 'app-marvelchampions',
+  selector: 'app-marvel-champions',
   standalone: true,
   imports: [
     ChecklistComponent,
@@ -29,28 +29,11 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './marvel-champions.component.html',
   styleUrl: './marvel-champions.component.css'
 })
-export class MarvelChampionsComponent {
-  static Title = 'Marvel Champions Stats';
-  stats?: MarvelChampionsStats;
+export class MarvelChampionsComponent extends BaseGameComponent {
+  static override Title = 'Marvel Champions Stats';
+  declare stats?: MarvelChampionsStats;
   onlyMe: boolean = false;
   onlyOwned: boolean = true;
-
-  constructor(protected backupReader: BackupReaderService) {
-    (window as any).app = this;
-  }
-
-  onFileLoad(event: Event & { target: HTMLInputElement }) {
-    const files = event.target.files;
-    if (files?.length != null && files?.length > 0) {
-      const file = files[0];
-      file.text().then((f) => this.readFile(f));
-    }
-  }
-
-  readFile(text: string) {
-    let backup = JSON.parse(text);
-    this.stats = this.backupReader.marvelChampions(backup);
-  }
 
   playHasHero(play: MarvelChampionsPlay, hero?: Heroes, aspect?: Aspects) {
     return play.Players.some(p => (hero == undefined || p.Hero == hero)
