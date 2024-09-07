@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BGGCollectionBackup, CustomFieldEntry, PlayerPlayEntry} from "../model/bggcollection";
+import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../model/bggcatalog";
 import {
   Aspects,
   Difficulty,
@@ -39,14 +39,14 @@ export class BackupReaderService {
   }
 
   //TODO: these should all be methods on backup/other classes?
-  private getFieldValue(backup: BGGCollectionBackup, fieldId: number, entityId: number, playerId?: number) {
+  private getFieldValue(backup: BGGCatalogBackup, fieldId: number, entityId: number, playerId?: number) {
     return backup.customData.find(d => d.fieldId == fieldId
       && d.entityId == entityId
       && (playerId == null || d.playerId == playerId)
     );
   }
 
-  private marvelChampionsPlayer(entry: PlayerPlayEntry, backup: BGGCollectionBackup, heroField: CustomFieldEntry, aspectField: CustomFieldEntry) {
+  private marvelChampionsPlayer(entry: PlayerPlayEntry, backup: BGGCatalogBackup, heroField: CustomFieldEntry, aspectField: CustomFieldEntry) {
     let ret = {} as MarvelChampionsPlayer;
     // get player
     let player = backup.players.find(p => p.id == entry.playerId);
@@ -86,14 +86,14 @@ export class BackupReaderService {
     return ret;
   }
 
-  private findCustomField(backup: BGGCollectionBackup, gameId: number, name: string) {
+  private findCustomField(backup: BGGCatalogBackup, gameId: number, name: string) {
     return backup.customFields.find(p =>
       p.selectedGames.split(",").map(g => Number(g)).includes(gameId)
       && p.name.toLowerCase() == name.toLowerCase()
     );
   }
 
-  public marvelChampions(backup: BGGCollectionBackup) {
+  public marvelChampions(backup: BGGCatalogBackup) {
     let ret = {
       Plays: [],
       OwnedPacks: []

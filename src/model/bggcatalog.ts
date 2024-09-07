@@ -60,7 +60,7 @@ export interface CustomDataEntry {
   playerId?: number; // the id of the player play entry, NOT THE PLAYER ID
 }
 
-export interface BGGCollectionBackup {
+export interface BGGCatalogBackup {
   games: GameEntry[];
   players: PlayerEntry[];
   locations: LocationEntry[];

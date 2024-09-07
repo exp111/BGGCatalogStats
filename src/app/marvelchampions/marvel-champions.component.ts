@@ -26,10 +26,10 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     FormsModule,
     NgbModule,
   ],
-  templateUrl: './marvelchampions.component.html',
-  styleUrl: './marvelchampions.component.css'
+  templateUrl: './marvel-champions.component.html',
+  styleUrl: './marvel-champions.component.css'
 })
-export class MarvelchampionsComponent {
+export class MarvelChampionsComponent {
   static Title = 'Marvel Champions Stats';
   stats?: MarvelChampionsStats;
   onlyMe: boolean = false;
