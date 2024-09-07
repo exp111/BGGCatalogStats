@@ -1,5 +1,7 @@
-import {BaseGamePlay, BaseGameStats} from "./base-game-stats";
+import {BaseGamePlay, BaseGamePlayer, BaseGameStats} from "./base-game-stats";
 import {enumValuesToStrings} from "../app/enum-utils";
+
+export const MC_GAME_NAME = "Marvel Champions: The Card Game";
 
 export enum Heroes {
   SpiderMan,
@@ -76,9 +78,7 @@ export const PackContent: ({ [key: string]: any[] }) = {
   ]
 }
 
-export interface MarvelChampionsPlayer {
-  Name: string;
-  IsMe: boolean;
+export interface MarvelChampionsPlayer extends BaseGamePlayer {
   Hero: Heroes;
   Aspect: Aspects; //TODO: support multiple aspects?
 }

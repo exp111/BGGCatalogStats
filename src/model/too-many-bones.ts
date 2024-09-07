@@ -1,6 +1,8 @@
 import {BaseGamePlay, BaseGamePlayer, BaseGameStats} from "./base-game-stats";
 import {enumValuesToStrings} from "../app/enum-utils";
 
+export const TMB_GAME_NAME = "Too Many Bones";
+
 export enum Gearlocs {
   Patches,
   Boomer,
@@ -36,8 +38,6 @@ export const BoxContent: ({ [key: string]: any[] }) = {
 }
 
 export interface TooManyBonesPlayer extends BaseGamePlayer {
-  Name: string;
-  IsMe: boolean;
   Gearloc: Gearlocs;
 }
 
