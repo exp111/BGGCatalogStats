@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../model/bggcatalog";
+import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../model/bgg-catalog";
 import {
   Aspects,
   Difficulty,
@@ -9,8 +9,8 @@ import {
   MarvelChampionsStats,
   Modulars,
   Scenarios
-} from "../model/marvelchampions";
-import {formatToEnumString, getEnumValue} from "./enumUtils";
+} from "../model/marvel-champions";
+import {formatToEnumString, getEnumValue} from "./enum-utils";
 
 @Injectable({
   providedIn: 'root'
@@ -94,6 +94,87 @@ export class BackupReaderService {
   }
 
   public marvelChampions(backup: BGGCatalogBackup) {
+    let ret = {
+      Plays: [],
+      OwnedPacks: []
+    } as MarvelChampionsStats;
+    let plays = [];
+    // get game id
+    let game = backup.games.find(g => g.name == "Marvel Champions: The Card Game");
+    if (!game) {
+      console.error("Game not found");
+      return ret;
+    }
+    let owned = backup.games.filter(g => g.name.startsWith("Marvel Champions: The Card Game"));
+    ret.OwnedPacks = owned.map(g => g.name);
+    let gameId = game.id;
+    // get custom data fields
+    let aspectField = this.findCustomField(backup, gameId, "Aspect");
+    let heroField = this.findCustomField(backup, gameId, "Hero");
+    let scenarioField = this.findCustomField(backup, gameId, "Villain");
+    let modularField = this.findCustomField(backup, gameId, "Modular");
+    let difficultyField = this.findCustomField(backup, gameId, "Difficulty");
+    if (!aspectField || !heroField || !scenarioField || !modularField || !difficultyField) {
+      console.error("Cant find custom fields");
+      return ret;
+    }
+    // plays
+    for (let play of backup.plays) {
+      // only check game plays
+      if (play.gameId != gameId) {
+        continue;
+      }
+      let obj = {
+        Id: play.id,
+        Players: [] as MarvelChampionsPlayer[],
+      } as MarvelChampionsPlay;
+      // players
+      let players = backup.playersPlays.filter(p => p.playId == play.id);
+      for (let player of players) {
+        obj.Players.push(this.marvelChampionsPlayer(player, backup, heroField, aspectField));
+      }
+      // scenario
+      let scenario = this.getFieldValue(backup, scenarioField.id, play.id);
+      if (!scenario) {
+        console.error(`Scenario with id ${scenarioField.id} not found`);
+        console.log(play);
+        return ret;
+      }
+      obj.Scenario = getEnumValue(Scenarios, formatToEnumString(scenario.value));
+      if (obj.Scenario == undefined) {
+        console.error(`Scenario Value ${formatToEnumString(scenario.value)} can not be parsed`);
+        return ret;
+      }
+      // modular
+      let modular = this.getFieldValue(backup, modularField.id, play.id);
+      if (!modular) {
+        console.error(`Modular with id ${modularField.id} not found`);
+        return ret;
+      }
+      obj.Modular = getEnumValue(Modulars, this.normalizeModularName(formatToEnumString(modular.value)));
+      if (obj.Modular == undefined) {
+        console.error(`Modular Value ${this.normalizeModularName(formatToEnumString(modular.value))} can not be parsed`);
+        return ret;
+      }
+      // difficulty
+      let difficulty = this.getFieldValue(backup, difficultyField.id, play.id);
+      if (!difficulty) {
+        console.error(`Difficulty with id ${difficultyField.id} not found`);
+        return ret;
+      }
+      obj.Difficulty = getEnumValue(Difficulty, formatToEnumString(difficulty.value));
+      if (obj.Difficulty == undefined) {
+        console.error(`Difficulty Value ${formatToEnumString(difficulty.value)} can not be parsed`);
+        return ret;
+      }
+      obj.Won = players.some(p => p.winner == 1)
+      plays.push(obj);
+    }
+    ret.Plays = plays;
+    return ret;
+  }
+
+  public tooManyBones(backup: BGGCatalogBackup) {
     let ret = {
       Plays: [],
       OwnedPacks: []

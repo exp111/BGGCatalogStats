@@ -11,8 +11,8 @@ import {
   Modulars,
   PackContent,
   Scenarios
-} from "../../model/marvelchampions";
-import {enumToArray, formatFromEnumString, getEnumValue} from "../enumUtils";
+} from "../../model/marvel-champions";
+import {enumToArray, formatFromEnumString, getEnumValue} from "../enum-utils";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BaseGameComponent} from "../base-game.component";
 

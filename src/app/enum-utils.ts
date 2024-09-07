@@ -21,3 +21,8 @@ export function enumToArray(e: any) {
 export function getEnumValue(enums: any, str: string) {
   return enums[str as keyof typeof enums];
 }
+
+// Maps a list of enum values to their key strings
+export function enumValuesToStrings(enums: any, ...args: any[]) {
+  return args.map(a => enums[a]);
+}

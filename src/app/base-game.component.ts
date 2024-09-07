@@ -1,6 +1,6 @@
 import {BackupReaderService} from "./backup-reader.service";
 import {Directive} from "@angular/core";
-import {BaseGameStats} from "../model/basegamestats";
+import {BaseGameStats} from "../model/base-game-stats";
 
 @Directive()
 export abstract class BaseGameComponent {

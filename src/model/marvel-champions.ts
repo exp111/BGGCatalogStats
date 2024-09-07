@@ -1,4 +1,5 @@
-import {BaseGamePlay, BaseGameStats} from "./basegamestats";
+import {BaseGamePlay, BaseGameStats} from "./base-game-stats";
+import {enumValuesToStrings} from "../app/enum-utils";
 
 export enum Heroes {
   SpiderMan,
@@ -48,49 +49,29 @@ export enum Difficulty {
   Expert
 }
 
-function AspectsString(...args: Aspects[]) {
-  return args.map(a => Aspects[a]);
-}
-
-function HeroesString(...args: Heroes[]) {
-  return args.map(a => Heroes[a]);
-}
-
-function ScenariosString(...args: Scenarios[]) {
-  return args.map(a => Scenarios[a]);
-}
-
-function ModularsString(...args: Modulars[]) {
-  return args.map(a => Modulars[a]);
-}
-
-function DifficultyString(...args: Difficulty[]) {
-  return args.map(a => Difficulty[a]);
-}
-
 export const PackContent: ({ [key: string]: any[] }) = {
   "Marvel Champions: The Card Game": [
-    ...AspectsString(Aspects.Aggression, Aspects.Justice, Aspects.Leadership, Aspects.Protection),
-    ...HeroesString(Heroes.SpiderMan, Heroes.SheHulk, Heroes.BlackPanther, Heroes.IronMan, Heroes.CaptainMarvel),
-    ...ScenariosString(Scenarios.Rhino, Scenarios.Klaw, Scenarios.Ultron),
-    ...ModularsString(Modulars.BombThreat, Modulars.MastersOfEvil, Modulars.UnderAttack, Modulars.DoomsdayChair, Modulars.LegionsOfHydra),
-    ...DifficultyString(Difficulty.Standard, Difficulty.Expert)
+    ...enumValuesToStrings(Aspects, Aspects.Aggression, Aspects.Justice, Aspects.Leadership, Aspects.Protection),
+    ...enumValuesToStrings(Heroes, Heroes.SpiderMan, Heroes.SheHulk, Heroes.BlackPanther, Heroes.IronMan, Heroes.CaptainMarvel),
+    ...enumValuesToStrings(Scenarios, Scenarios.Rhino, Scenarios.Klaw, Scenarios.Ultron),
+    ...enumValuesToStrings(Modulars, Modulars.BombThreat, Modulars.MastersOfEvil, Modulars.UnderAttack, Modulars.DoomsdayChair, Modulars.LegionsOfHydra),
+    ...enumValuesToStrings(Difficulty, Difficulty.Standard, Difficulty.Expert)
   ],
   "Marvel Champions: The Card Game \u2013 Deadpool Hero Pack": [
-    ...AspectsString(Aspects.Deadpool), ...HeroesString(Heroes.Deadpool)
+    ...enumValuesToStrings(Aspects, Aspects.Deadpool), ...enumValuesToStrings(Heroes, Heroes.Deadpool)
   ],
   "Marvel Champions: The Card Game \u2013 Doctor Strange Hero Pack": [
-    ...HeroesString(Heroes.DoctorStrange),
+    ...enumValuesToStrings(Heroes, Heroes.DoctorStrange),
     //TODO: modular?
   ],
   "Marvel Champions: The Card Game \u2013 The Rise of Red Skull": [
-    ...HeroesString(Heroes.Hawkeye, Heroes.SpiderWoman),
-    ...ScenariosString(Scenarios.TaskMaster, Scenarios.RedSkull)
+    ...enumValuesToStrings(Heroes, Heroes.Hawkeye, Heroes.SpiderWoman),
+    ...enumValuesToStrings(Scenarios, Scenarios.TaskMaster, Scenarios.RedSkull)
     //TODO: remaining
   ],
   "Marvel Champions: The Card Game \u2013 Sinister Motives": [
-    ...HeroesString(Heroes.GhostSpider, Heroes.MilesMorales),
-    ...ScenariosString(Scenarios.Venom)
+    ...enumValuesToStrings(Heroes, Heroes.GhostSpider, Heroes.MilesMorales),
+    ...enumValuesToStrings(Scenarios, Scenarios.Venom)
     //TODO: remaining
   ]
 }
