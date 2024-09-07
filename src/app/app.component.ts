@@ -49,8 +49,6 @@ export class AppComponent {
   readFile(text: string) {
     let backup = JSON.parse(text);
     this.stats = this.backupReader.marvelChampions(backup);
-    console.log(this.stats);
-    console.log(PackContent);
   }
 
   playHasHero(play: MarvelChampionsPlay, hero?: Heroes, aspect?: Aspects) {
@@ -212,7 +210,7 @@ export class AppComponent {
 
   //TODO: can we instead get the enum values instead of strings?
   enumToArray(e: any) {
-    // filter out the indexes
+    // filter out the values
     return Object.values(e).filter(v => Number.isNaN(Number(v))).filter(v => this.ownedCheck(v)) as string[];
   }
 

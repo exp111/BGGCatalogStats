@@ -5,7 +5,11 @@ export enum Heroes {
   IronMan,
   CaptainMarvel,
   Deadpool,
-  DoctorStrange
+  DoctorStrange,
+  Hawkeye,
+  SpiderWoman,
+  GhostSpider,
+  MilesMorales
 }
 
 export enum Aspects {
@@ -19,7 +23,10 @@ export enum Aspects {
 export enum Scenarios {
   Rhino = 12,
   Klaw,
-  Ultron
+  Ultron,
+  TaskMaster,
+  RedSkull,
+  Venom
 }
 
 export enum Modulars {
@@ -65,6 +72,20 @@ export const PackContent: ({ [key: string]: any[] }) = {
   ],
   "Marvel Champions: The Card Game \u2013 Deadpool Hero Pack": [
     ...AspectsString(Aspects.Deadpool), ...HeroesString(Heroes.Deadpool)
+  ],
+  "Marvel Champions: The Card Game \u2013 Doctor Strange Hero Pack": [
+    ...HeroesString(Heroes.DoctorStrange),
+    //TODO: modular?
+  ],
+  "Marvel Champions: The Card Game \u2013 The Rise of Red Skull": [
+    ...HeroesString(Heroes.Hawkeye, Heroes.SpiderWoman),
+    ...ScenariosString(Scenarios.TaskMaster, Scenarios.RedSkull)
+    //TODO: remaining
+  ],
+  "Marvel Champions: The Card Game \u2013 Sinister Motives": [
+    ...HeroesString(Heroes.GhostSpider, Heroes.MilesMorales),
+    ...ScenariosString(Scenarios.Venom)
+    //TODO: remaining
   ]
 }
 
