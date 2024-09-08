@@ -33,8 +33,6 @@ import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-bac
 export class MarvelChampionsComponent extends BaseGameComponent {
   static override Title = 'Marvel Champions Stats';
   declare stats?: MarvelChampionsStats;
-  onlyMe: boolean = false;
-  onlyOwned: boolean = true;
 
   constructor(protected backupService: MCBackupReaderService) {
     super(backupService);
@@ -101,10 +99,6 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     let heroPlays = plays.filter(p => this.playHasHero(p, hero));
     let wins = this.getWins(heroPlays);
     return this.getRate(heroPlays.length, wins);
-  }
-
-  winrateCellClassGetter(value: string) {
-    return value.startsWith("0.0%") ? "table-danger" : value.startsWith("100.0%") ? "table-success" : "";
   }
 
   aspectWinrateGetter(_: string, y: string) {
@@ -215,27 +209,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return plays.some(p => p.Won && p.Scenario == scenario && p.Difficulty == difficulty);
   }
 
-  //TODO: can we instead get the enum values instead of strings?
-  enumToArray(e: any) {
-    // filter out the values
-    return enumToArray(e)
-      .filter(v => v != "END") // ignore end marker
-      .filter(v => this.ownedCheck(v) // only show owned
-      ) as string[];
-  }
-
-  ownedCheck(e: any) {
-    if (!this.onlyOwned) {
-      return true;
-    }
-    return this.stats?.OwnedPacks.some(p => PackContent[p].includes(e));
-  }
-
-  formatter(val: string) {
-    if (!val) {
-      return "unknown";
-    }
-    return formatFromEnumString(val);
+  protected override ownedCheck(e: any) {
+    return this.stats?.OwnedPacks.some(p => PackContent[p].includes(e)) ?? false;
   }
 
   protected readonly Heroes = Heroes;

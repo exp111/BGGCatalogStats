@@ -24,6 +24,54 @@
       </div>
     </div>
     <h4>Total Plays: {{ this.getPlays(this.stats).length }}</h4>
+    <h4>Gearloc Playrate</h4>
+    <app-table
+      [XAxis]="['Playrate']"
+      [YAxis]="enumToArray(Gearlocs)"
+      [YFormatter]="this.formatter"
+      [getter]="this.gearlocPlayrateGetter.bind(this)"></app-table>
+    <h4>Tyrant Playrate</h4>
+    <app-table
+      [XAxis]="['Playrate']"
+      [YAxis]="enumToArray(Tyrants)"
+      [YFormatter]="this.formatter"
+      [getter]="this.tyrantPlayrateGetter.bind(this)"></app-table>
+    <h4>Gearloc Winrate</h4>
+    <app-table
+      [XAxis]="['Winrate']"
+      [YAxis]="enumToArray(Gearlocs)"
+      [YFormatter]="this.formatter"
+      [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
+      [getter]="this.gearlocWinrateGetter.bind(this)"></app-table>
+    <h4>Tyrant Winrate</h4>
+    <app-table
+      [XAxis]="['Winrate']"
+      [YAxis]="enumToArray(Tyrants)"
+      [YFormatter]="this.formatter"
+      [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
+      [getter]="this.tyrantWinrateGetter.bind(this)"></app-table>
+    <h4>Tyrant - Gearloc</h4>
+    <app-checklist
+      [XAxis]="enumToArray(Tyrants)"
+      [XFormatter]="this.formatter"
+      [YAxis]="enumToArray(Gearlocs)"
+      [YFormatter]="this.formatter"
+      [getter]="this.tyrantGearlocWonGetter.bind(this)"></app-checklist>
+    <h4>Tyrant - Difficulty</h4>
+    <app-checklist
+      [XAxis]="enumToArray(Tyrants)"
+      [XFormatter]="this.formatter"
+      [YAxis]="enumToArray(Difficulty)"
+      [YFormatter]="this.formatter"
+      [getter]="this.tyrantDifficultyWonGetter.bind(this)"></app-checklist>
+    <h4>Tyrant - Gearloc - (Winrate)</h4>
+    <app-table
+      [XAxis]="enumToArray(Tyrants)"
+      [XFormatter]="this.formatter"
+      [YAxis]="enumToArray(Gearlocs)"
+      [YFormatter]="this.formatter"
+      [cellClassGetter]="this.winrateCellClassGetter"
+      [getter]="this.tyrantGearlocWinrateGetter.bind(this)"></app-table>
     <h4>Plays</h4>
     @for (play of this.getPlays(this.stats); track play.Id) {
       <div class="card card-body">

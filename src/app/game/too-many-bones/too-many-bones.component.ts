@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ChecklistComponent} from "../../app-table/checklist.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TableComponent} from "../../app-table/table.component";
-import {enumToArray, formatFromEnumString, getEnumValue} from "../../enum-utils";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BaseGameComponent} from "../base-game.component";
 import {
@@ -14,6 +13,7 @@ import {
   Tyrants
 } from "../../../model/too-many-bones";
 import {TMBBackupReaderService} from "../../backup-reader/too-many-bones/tmb-backup-reader.service";
+import {enumToArray, getEnumValue} from "../../enum-utils";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -31,11 +31,11 @@ import {TMBBackupReaderService} from "../../backup-reader/too-many-bones/tmb-bac
 export class TooManyBonesComponent extends BaseGameComponent {
   static override Title = 'Too Many Bones Stats';
   declare stats?: TooManyBonesStats;
-  onlyMe: boolean = false;
-  onlyOwned: boolean = true;
 
   constructor(protected backupService: TMBBackupReaderService) {
     super(backupService);
+    console.log(Difficulty);
+    console.log(enumToArray(Difficulty));
   }
 
   playHasGearloc(play: TooManyBonesPlay, gearloc?: Gearlocs) {
@@ -59,27 +59,82 @@ export class TooManyBonesComponent extends BaseGameComponent {
     return plays.reduce((a, b) => a + Number(b.Won), 0);
   }
 
-  //TODO: can we instead get the enum values instead of strings?
-  enumToArray(e: any) {
-    // filter out the values
-    return enumToArray(e)
-      .filter(v => v != "END") // ignore end marker
-      .filter(v => this.ownedCheck(v) // only show owned
-      ) as string[];
+  gearlocPlayrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let gearloc = getEnumValue(Gearlocs, y);
+    let gearlocPlays = plays.filter(p => this.playHasGearloc(p, gearloc));
+    return this.getRate(plays.length, gearlocPlays.length);
   }
 
-  ownedCheck(e: any) {
-    if (!this.onlyOwned) {
-      return true;
+  tyrantPlayrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
     }
-    return this.stats?.OwnedExpansions.some(p => BoxContent[p].includes(e));
+    let plays = this.getPlays(this.stats);
+    let tyrant = getEnumValue(Tyrants, y);
+    let tyrantPlays = plays.filter(p => p.Tyrant == tyrant);
+    return this.getRate(plays.length, tyrantPlays.length);
   }
 
-  formatter(val: string) {
-    if (!val) {
-      return "unknown";
+  gearlocWinrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
     }
-    return formatFromEnumString(val);
+    let plays = this.getPlays(this.stats);
+    let gearloc = getEnumValue(Gearlocs, y);
+    let gearlocPlays = plays.filter(p => this.playHasGearloc(p, gearloc));
+    let wins = this.getWins(gearlocPlays);
+    return this.getRate(gearlocPlays.length, wins);
+  }
+
+  tyrantWinrateGetter(_: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let tyrant = getEnumValue(Tyrants, y);
+    let tyrantPlays = plays.filter(p => p.Tyrant == tyrant);
+    let wins = this.getWins(tyrantPlays);
+    return this.getRate(tyrantPlays.length, wins);
+  }
+
+  tyrantGearlocWinrateGetter(x: string, y: string) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let tyrant = getEnumValue(Tyrants, x);
+    let gearloc = getEnumValue(Gearlocs, y);
+    let tyrantPlays = plays.filter(p => p.Tyrant == tyrant && this.playHasGearloc(p, gearloc));
+    let wins = this.getWins(tyrantPlays);
+    return this.getRate(tyrantPlays.length, wins);
+  }
+
+  tyrantGearlocWonGetter(x: string, y: string) {
+    if (!this.stats) {
+      return false;
+    }
+    let plays = this.getPlays(this.stats);
+    let tyrant = getEnumValue(Tyrants, x);
+    let gearloc = getEnumValue(Gearlocs, y);
+    return plays.some(p => p.Won && p.Tyrant == tyrant && this.playHasGearloc(p, gearloc));
+  }
+
+  tyrantDifficultyWonGetter(x: string, y: string) {
+    if (!this.stats) {
+      return false;
+    }
+    let plays = this.getPlays(this.stats);
+    let tyrant = getEnumValue(Tyrants, x);
+    let difficulty = getEnumValue(Difficulty, y);
+    return plays.some(p => p.Won && p.Tyrant == tyrant && p.Difficulty == difficulty);
+  }
+
+  protected override ownedCheck(e: any) {
+    return this.stats?.OwnedExpansions.some(p => BoxContent[p].includes(e)) ?? false;
   }
 
   protected readonly Gearlocs = Gearlocs;

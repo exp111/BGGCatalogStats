@@ -32,7 +32,7 @@ export const BoxContent: ({ [key: string]: any[] }) = {
   "Too Many Bones": [
     ...enumValuesToStrings(Gearlocs, Gearlocs.Patches, Gearlocs.Boomer, Gearlocs.Tantrum, Gearlocs.Picket),
     ...enumValuesToStrings(Tyrants, Tyrants.Mulmesh, Tyrants.Nom, Tyrants.Drellen, Tyrants.Marrow, Tyrants.GoblinKing, Tyrants.Gendricks, Tyrants.Duster),
-    ...enumValuesToStrings(Difficulty.Adventurer, Difficulty.Heroic, Difficulty.Legendary)
+    ...enumValuesToStrings(Difficulty, Difficulty.Adventurer, Difficulty.Heroic, Difficulty.Legendary)
   ],
   //TODO: expansions
 }
