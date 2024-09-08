@@ -1,0 +1,42 @@
+@if (!this.stats) {
+  <div class="position-absolute top-50 w-100 d-flex justify-content-center">
+    <div class="w-75 p-5 card">
+      <div class="card-body input-group">
+        <label class="input-group-text" for="fileInput">Upload BGG Catalog Export here</label>
+        <input id="fileInput"
+               type="file"
+               class="form-control"
+               accept=".json"
+               (change)="onFileLoad($any($event))">
+      </div>
+    </div>
+  </div>
+} @else {
+  <div>
+    <div class="sticky-top bg-white d-flex gap-3 ps-3">
+      <div class="form-check">
+        <input id="onlyMeCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyMe"/>
+        <label for="onlyMeCheckbox" class="form-check-label">Only me?</label>
+      </div>
+      <div class="form-check">
+        <input id="onlyOwnedCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyOwned"/>
+        <label for="onlyOwnedCheckbox" class="form-check-label">Only owned?</label>
+      </div>
+    </div>
+    <h4>Total Plays: {{ this.getPlays(this.stats).length }}</h4>
+    <h4>Plays</h4>
+    @for (play of this.getPlays(this.stats); track play.Id) {
+      <div class="card card-body">
+        <p>Id: {{ play.Id }}</p>
+        <p>Tyrant: {{ this.formatter(Tyrants[play.Tyrant]) }}</p>
+        <p>Difficulty: {{ this.formatter(Difficulty[play.Difficulty]) }}</p>
+        <p>Players: {{ play.Players.length }}</p>
+        <ul>
+          @for (player of play.Players; track player.Name) {
+            <li>{{ player.Name }}: {{ this.formatter(Gearlocs[player.Gearloc]) }}</li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+}

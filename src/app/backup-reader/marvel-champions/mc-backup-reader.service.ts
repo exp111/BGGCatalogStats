@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../model/bgg-catalog";
+import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../../../model/bgg-catalog";
 import {
   Aspects,
   Difficulty,
@@ -9,26 +9,14 @@ import {
   MarvelChampionsStats, MC_GAME_NAME,
   Modulars,
   Scenarios
-} from "../model/marvel-champions";
-import {formatToEnumString, getEnumValue} from "./enum-utils";
-import {
-  Gearlocs,
-  TMB_GAME_NAME,
-  Difficulty as TMBDifficulty,
-  TooManyBonesPlay,
-  TooManyBonesPlayer,
-  TooManyBonesStats, Tyrants
-} from "../model/too-many-bones";
+} from "../../../model/marvel-champions";
+import {formatToEnumString, getEnumValue} from "../../enum-utils";
+import {BaseBackupReaderService} from "../base-backup-reader.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class BackupReaderService {
-  //TODO: refactor this service to handle only one game and unify simple tasks into functions
-  constructor() {
-    (window as any).backupReader = this;
-  }
-
+export class MCBackupReaderService extends BaseBackupReaderService {
   private normalizeAspectName(str: string) {
     return {
       "Gerechtigkeit": "Justice",
@@ -46,22 +34,7 @@ export class BackupReaderService {
     }[str] ?? str;
   }
 
-  //TODO: these should all be methods on backup/other classes?
-  private getFieldValue(backup: BGGCatalogBackup, fieldId: number, entityId: number, playerId?: number) {
-    return backup.customData.find(d => d.fieldId == fieldId
-      && d.entityId == entityId
-      && (playerId == null || d.playerId == playerId)
-    );
-  }
-
-  private findCustomField(backup: BGGCatalogBackup, gameId: number, name: string) {
-    return backup.customFields.find(p =>
-      p.selectedGames.split(",").map(g => Number(g)).includes(gameId)
-      && p.name.toLowerCase() == name.toLowerCase()
-    );
-  }
-
-  private marvelChampionsPlayer(entry: PlayerPlayEntry, backup: BGGCatalogBackup, heroField: CustomFieldEntry, aspectField: CustomFieldEntry) {
+  private parsePlayer(entry: PlayerPlayEntry, backup: BGGCatalogBackup, heroField: CustomFieldEntry, aspectField: CustomFieldEntry) {
     let ret = {} as MarvelChampionsPlayer;
     // get player
     let player = backup.players.find(p => p.id == entry.playerId);
@@ -101,7 +74,7 @@ export class BackupReaderService {
     return ret;
   }
 
-  public marvelChampions(backup: BGGCatalogBackup) {
+  public override parse(backup: BGGCatalogBackup) {
     let ret = {
       Plays: [],
       OwnedPacks: []
@@ -139,7 +112,7 @@ export class BackupReaderService {
       // players
       let players = backup.playersPlays.filter(p => p.playId == play.id);
       for (let player of players) {
-        obj.Players.push(this.marvelChampionsPlayer(player, backup, heroField, aspectField));
+        obj.Players.push(this.parsePlayer(player, backup, heroField, aspectField));
       }
       // scenario
       let scenario = this.getFieldValue(backup, scenarioField.id, play.id);
@@ -171,102 +144,6 @@ export class BackupReaderService {
         return ret;
       }
       obj.Difficulty = getEnumValue(Difficulty, formatToEnumString(difficulty.value));
-      if (obj.Difficulty == undefined) {
-        console.error(`Difficulty Value ${formatToEnumString(difficulty.value)} can not be parsed`);
-        return ret;
-      }
-      obj.Won = players.some(p => p.winner == 1)
-      plays.push(obj);
-    }
-    ret.Plays = plays;
-    return ret;
-  }
-
-  // Too Many Bones
-  private tooManyBonesPlayer(entry: PlayerPlayEntry, backup: BGGCatalogBackup, gearlocField: CustomFieldEntry) {
-    let ret = {} as TooManyBonesPlayer;
-    // get player
-    let player = backup.players.find(p => p.id == entry.playerId);
-    if (!player) {
-      console.error(`Player with id ${entry.playerId} not found`);
-      return ret;
-    }
-    // name
-    ret.Name = player.name;
-    ret.IsMe = player.me == 1;
-    // find hero
-    let gearloc = this.getFieldValue(backup, gearlocField.id, entry.playId, entry.id);
-    if (!gearloc) {
-      console.error(`Gearloc field with id ${gearlocField.id} not found`);
-      console.log(backup.plays.find(p => p.id == entry.playId));
-      console.log(entry);
-      return ret;
-    }
-    ret.Gearloc = getEnumValue(Gearlocs, formatToEnumString(gearloc.value));
-    if (ret.Gearloc == undefined) {
-      console.error(`Gearloc Value ${formatToEnumString(gearloc.value)} can not be parsed`);
-      return ret;
-    }
-    return ret;
-  }
-
-  public tooManyBones(backup: BGGCatalogBackup) {
-    let ret = {
-      Plays: [],
-      OwnedExpansions: []
-    } as TooManyBonesStats;
-    let plays = [];
-    // get game id
-    let game = backup.games.find(g => g.name == TMB_GAME_NAME);
-    if (!game) {
-      console.error("Game not found");
-      return ret;
-    }
-    let owned = backup.games.filter(g => g.name.startsWith("Marvel Champions: The Card Game"));
-    ret.OwnedExpansions = owned.map(g => g.name);
-    let gameId = game.id;
-    // get custom data fields
-    let gearlocField = this.findCustomField(backup, gameId, "Gearloc");
-    let tyrantField = this.findCustomField(backup, gameId, "Tyrant");
-    let difficultyField = this.findCustomField(backup, gameId, "Difficulty");
-    if (!gearlocField || !tyrantField || !difficultyField) {
-      console.error("Can't find custom fields");
-      return ret;
-    }
-    // plays
-    for (let play of backup.plays) {
-      // only check game plays
-      if (play.gameId != gameId) {
-        continue;
-      }
-      let obj = {
-        Id: play.id,
-        Players: [] as TooManyBonesPlayer[],
-      } as TooManyBonesPlay;
-      // players
-      let players = backup.playersPlays.filter(p => p.playId == play.id);
-      for (let player of players) {
-        obj.Players.push(this.tooManyBonesPlayer(player, backup, gearlocField));
-      }
-      // scenario
-      let tyrant = this.getFieldValue(backup, tyrantField.id, play.id);
-      if (!tyrant) {
-        console.error(`Tyrant with id ${tyrantField.id} not found`);
-        console.log(play);
-        return ret;
-      }
-      obj.Tyrant = getEnumValue(Tyrants, formatToEnumString(tyrant.value));
-      if (obj.Tyrant == undefined) {
-        console.error(`Scenario Value ${formatToEnumString(tyrant.value)} can not be parsed`);
-        return ret;
-      }
-      // difficulty
-      let difficulty = this.getFieldValue(backup, difficultyField.id, play.id);
-      if (!difficulty) {
-        console.error(`Difficulty with id ${difficultyField.id} not found`);
-        return ret;
-      }
-      obj.Difficulty = getEnumValue(TMBDifficulty, formatToEnumString(difficulty.value));
       if (obj.Difficulty == undefined) {
         console.error(`Difficulty Value ${formatToEnumString(difficulty.value)} can not be parsed`);
         return ret;

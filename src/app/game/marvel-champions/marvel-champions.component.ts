@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {ChecklistComponent} from "../app-table/checklist.component";
+import {ChecklistComponent} from "../../app-table/checklist.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {TableComponent} from "../app-table/table.component";
+import {TableComponent} from "../../app-table/table.component";
 import {
   Aspects,
   Difficulty,
@@ -11,10 +11,11 @@ import {
   Modulars,
   PackContent,
   Scenarios
-} from "../../model/marvel-champions";
-import {enumToArray, formatFromEnumString, getEnumValue} from "../enum-utils";
+} from "../../../model/marvel-champions";
+import {enumToArray, formatFromEnumString, getEnumValue} from "../../enum-utils";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BaseGameComponent} from "../base-game.component";
+import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-backup-reader.service";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -34,6 +35,10 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   declare stats?: MarvelChampionsStats;
   onlyMe: boolean = false;
   onlyOwned: boolean = true;
+
+  constructor(protected backupService: MCBackupReaderService) {
+    super(backupService);
+  }
 
   playHasHero(play: MarvelChampionsPlay, hero?: Heroes, aspect?: Aspects) {
     return play.Players.some(p => (hero == undefined || p.Hero == hero)

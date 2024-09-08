@@ -1,13 +1,13 @@
-import {BackupReaderService} from "./backup-reader.service";
+import {BaseBackupReaderService} from "../backup-reader/base-backup-reader.service";
 import {Directive} from "@angular/core";
-import {BaseGameStats} from "../model/base-game-stats";
+import {BaseGameStats} from "../../model/base-game-stats";
 
 @Directive()
 export abstract class BaseGameComponent {
   static Title: string;
   stats?: BaseGameStats;
 
-  constructor(protected backupReader: BackupReaderService) {
+  constructor(protected backupReader: BaseBackupReaderService) {
     (window as any).app = this;
   }
 
@@ -21,6 +21,6 @@ export abstract class BaseGameComponent {
 
   readFile(text: string) {
     let backup = JSON.parse(text);
-    this.stats = this.backupReader.marvelChampions(backup);
+    this.stats = this.backupReader.parse(backup);
   }
 }
