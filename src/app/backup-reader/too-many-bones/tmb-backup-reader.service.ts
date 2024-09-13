@@ -19,6 +19,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
   protected override enumNormalizers = {
     [Tyrants.END]: this.normalizeTyrantName
   }
+
   private normalizeTyrantName(str: string) {
     return {
       "GoblinK\xf6nig": "GoblinKing",
@@ -37,18 +38,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
     ret.Name = player.name;
     ret.IsMe = player.me == 1;
     // find hero
-    let gearloc = this.getFieldValue(backup, gearlocField.id, entry.playId, entry.id);
-    if (!gearloc) {
-      console.error(`Gearloc field with id ${gearlocField.id} not found`);
-      console.log(backup.plays.find(p => p.id == entry.playId));
-      console.log(entry);
-      return ret;
-    }
-    ret.Gearloc = this.parseEnumValue(Gearlocs, gearloc.value);
-    if (ret.Gearloc == undefined) {
-      console.error(`Gearloc Value ${formatToEnumString(gearloc.value)} can not be parsed`);
-      return ret;
-    }
+    ret.Gearloc = this.parseCustomFieldValuePlayer(backup, entry, gearlocField, Gearlocs);
     return ret;
   }
 
@@ -90,29 +80,10 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
       for (let player of players) {
         obj.Players.push(this.parsePlayer(player, backup, gearlocField));
       }
-      // scenario
-      let tyrant = this.getFieldValue(backup, tyrantField.id, play.id);
-      if (!tyrant) {
-        console.error(`Tyrant with id ${tyrantField.id} not found`);
-        console.log(play);
-        return ret;
-      }
-      obj.Tyrant = this.parseEnumValue(Tyrants, tyrant.value);
-      if (obj.Tyrant == undefined) {
-        console.error(`Scenario Value ${formatToEnumString(tyrant.value)} can not be parsed`);
-        return ret;
-      }
+      // tyrant
+      obj.Tyrant = this.parseCustomFieldValuePlay(backup, play, tyrantField, Tyrants);
       // difficulty
-      let difficulty = this.getFieldValue(backup, difficultyField.id, play.id);
-      if (!difficulty) {
-        console.error(`Difficulty with id ${difficultyField.id} not found`);
-        return ret;
-      }
-      obj.Difficulty = this.parseEnumValue(Difficulty, difficulty.value);
-      if (obj.Difficulty == undefined) {
-        console.error(`Difficulty Value ${formatToEnumString(difficulty.value)} can not be parsed`);
-        return ret;
-      }
+      obj.Difficulty = this.parseCustomFieldValuePlay(backup, play, difficultyField, Difficulty);
       obj.Won = players.some(p => p.winner == 1)
       plays.push(obj);
     }

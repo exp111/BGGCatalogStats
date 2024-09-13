@@ -19,6 +19,7 @@ export interface LocationEntry {
 }
 
 export interface PlayEntry {
+  kind: "PlayEntry";
   id: number;
   playDate: string;
   gameId: number;
@@ -27,6 +28,7 @@ export interface PlayEntry {
 }
 
 export interface PlayerPlayEntry {
+  kind: "PlayerPlayEntry";
   id: number;
   playId: number; // the id of the play
   playerId: number; // the id of the player

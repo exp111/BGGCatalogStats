@@ -21,7 +21,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
   protected override enumNormalizers = {
     [Aspects.END]: this.normalizeAspectName,
     [Modulars.END]: this.normalizeModularName
-  };
+  }
 
   private normalizeAspectName(str: string) {
     return {
@@ -52,31 +52,9 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     ret.Name = player.name;
     ret.IsMe = player.me == 1;
     // find hero
-    let hero = this.getFieldValue(backup, heroField.id, entry.playId, entry.id);
-    if (!hero) {
-      console.error(`Hero field with id ${heroField.id} not found`);
-      console.log(backup.plays.find(p => p.id == entry.playId));
-      console.log(entry);
-      return ret;
-    }
-    ret.Hero = this.parseEnumValue(Heroes, hero.value);
-    if (ret.Hero == undefined) {
-      console.error(`Hero Value ${formatToEnumString(hero.value)} can not be parsed`);
-      return ret;
-    }
+    ret.Hero = this.parseCustomFieldValuePlayer(backup, entry, heroField, Heroes);
     // find aspect
-    let aspect = this.getFieldValue(backup, aspectField.id, entry.playId, entry.id);
-    if (!aspect) {
-      console.error(`Aspect field with id ${heroField.id} not found`);
-      console.log(backup.plays.find(p => p.id == entry.playId));
-      console.log(entry);
-      return ret;
-    }
-    ret.Aspect = this.parseEnumValue(Aspects, aspect.value);
-    if (ret.Aspect == undefined) {
-      console.error(`Aspect Value ${this.normalizeAspectName(formatToEnumString(aspect.value))} can not be parsed`);
-      return ret;
-    }
+    ret.Aspect = this.parseCustomFieldValuePlayer(backup, entry, aspectField, Aspects);
     return ret;
   }
 
@@ -121,39 +99,11 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         obj.Players.push(this.parsePlayer(player, backup, heroField, aspectField));
       }
       // scenario
-      let scenario = this.getFieldValue(backup, scenarioField.id, play.id);
-      if (!scenario) {
-        console.error(`Scenario with id ${scenarioField.id} not found`);
-        console.log(play);
-        return ret;
-      }
-      obj.Scenario = this.parseEnumValue(Scenarios, scenario.value);
-      if (obj.Scenario == undefined) {
-        console.error(`Scenario Value ${formatToEnumString(scenario.value)} can not be parsed`);
-        return ret;
-      }
+      obj.Scenario = this.parseCustomFieldValuePlay(backup, play, scenarioField, Scenarios);
       // modular
-      let modular = this.getFieldValue(backup, modularField.id, play.id);
-      if (!modular) {
-        console.error(`Modular with id ${modularField.id} not found`);
-        return ret;
-      }
-      obj.Modular = this.parseEnumValue(Modulars, modular.value);
-      if (obj.Modular == undefined) {
-        console.error(`Modular Value ${this.normalizeModularName(formatToEnumString(modular.value))} can not be parsed`);
-        return ret;
-      }
+      obj.Modular = this.parseCustomFieldValuePlay(backup, play, modularField, Modulars);
       // difficulty
-      let difficulty = this.getFieldValue(backup, difficultyField.id, play.id);
-      if (!difficulty) {
-        console.error(`Difficulty with id ${difficultyField.id} not found`);
-        return ret;
-      }
-      obj.Difficulty = this.parseEnumValue(Difficulty, difficulty.value);
-      if (obj.Difficulty == undefined) {
-        console.error(`Difficulty Value ${formatToEnumString(difficulty.value)} can not be parsed`);
-        return ret;
-      }
+      obj.Difficulty = this.parseCustomFieldValuePlay(backup, play, difficultyField, Difficulty);
       obj.Won = players.some(p => p.winner == 1)
       plays.push(obj);
     }
