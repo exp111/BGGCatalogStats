@@ -13,7 +13,7 @@ import {
   Tyrants
 } from "../../../model/too-many-bones";
 import {TMBBackupReaderService} from "../../backup-reader/too-many-bones/tmb-backup-reader.service";
-import {enumToArray, getEnumValue} from "../../enum-utils";
+import {getEnumValue} from "../../enum-utils";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -34,8 +34,6 @@ export class TooManyBonesComponent extends BaseGameComponent {
 
   constructor(protected backupService: TMBBackupReaderService) {
     super(backupService);
-    console.log(Difficulty);
-    console.log(enumToArray(Difficulty));
   }
 
   playHasGearloc(play: TooManyBonesPlay, gearloc?: Gearlocs) {

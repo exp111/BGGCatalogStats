@@ -48,7 +48,8 @@ export enum Modulars {
 
 export enum Difficulty {
   Standard = Modulars.END,
-  Expert
+  Expert,
+  END
 }
 
 export const PackContent: ({ [key: string]: any[] }) = {

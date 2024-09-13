@@ -6,17 +6,23 @@ import {
   Heroes,
   MarvelChampionsPlay,
   MarvelChampionsPlayer,
-  MarvelChampionsStats, MC_GAME_NAME,
+  MarvelChampionsStats,
+  MC_GAME_NAME,
   Modulars,
   Scenarios
 } from "../../../model/marvel-champions";
-import {formatToEnumString, getEnumValue} from "../../enum-utils";
+import {formatToEnumString} from "../../enum-utils";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MCBackupReaderService extends BaseBackupReaderService {
+  protected override enumNormalizers = {
+    [Aspects.END]: this.normalizeAspectName,
+    [Modulars.END]: this.normalizeModularName
+  };
+
   private normalizeAspectName(str: string) {
     return {
       "Gerechtigkeit": "Justice",
@@ -53,7 +59,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       console.log(entry);
       return ret;
     }
-    ret.Hero = getEnumValue(Heroes, formatToEnumString(hero.value));
+    ret.Hero = this.parseEnumValue(Heroes, hero.value);
     if (ret.Hero == undefined) {
       console.error(`Hero Value ${formatToEnumString(hero.value)} can not be parsed`);
       return ret;
@@ -66,7 +72,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       console.log(entry);
       return ret;
     }
-    ret.Aspect = getEnumValue(Aspects, this.normalizeAspectName(formatToEnumString(aspect.value)));
+    ret.Aspect = this.parseEnumValue(Aspects, aspect.value);
     if (ret.Aspect == undefined) {
       console.error(`Aspect Value ${this.normalizeAspectName(formatToEnumString(aspect.value))} can not be parsed`);
       return ret;
@@ -121,7 +127,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         console.log(play);
         return ret;
       }
-      obj.Scenario = getEnumValue(Scenarios, formatToEnumString(scenario.value));
+      obj.Scenario = this.parseEnumValue(Scenarios, scenario.value);
       if (obj.Scenario == undefined) {
         console.error(`Scenario Value ${formatToEnumString(scenario.value)} can not be parsed`);
         return ret;
@@ -132,7 +138,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         console.error(`Modular with id ${modularField.id} not found`);
         return ret;
       }
-      obj.Modular = getEnumValue(Modulars, this.normalizeModularName(formatToEnumString(modular.value)));
+      obj.Modular = this.parseEnumValue(Modulars, modular.value);
       if (obj.Modular == undefined) {
         console.error(`Modular Value ${this.normalizeModularName(formatToEnumString(modular.value))} can not be parsed`);
         return ret;
@@ -143,7 +149,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         console.error(`Difficulty with id ${difficultyField.id} not found`);
         return ret;
       }
-      obj.Difficulty = getEnumValue(Difficulty, formatToEnumString(difficulty.value));
+      obj.Difficulty = this.parseEnumValue(Difficulty, difficulty.value);
       if (obj.Difficulty == undefined) {
         console.error(`Difficulty Value ${formatToEnumString(difficulty.value)} can not be parsed`);
         return ret;

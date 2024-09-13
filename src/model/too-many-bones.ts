@@ -25,7 +25,8 @@ export enum Tyrants {
 export enum Difficulty {
   Adventurer = Tyrants.END,
   Heroic,
-  Legendary
+  Legendary,
+  END
 }
 
 export const BoxContent: ({ [key: string]: any[] }) = {

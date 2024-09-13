@@ -1,21 +1,24 @@
 import {Injectable} from '@angular/core';
 import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../../../model/bgg-catalog";
-import {formatToEnumString, getEnumValue} from "../../enum-utils";
+import {formatToEnumString} from "../../enum-utils";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
 import {
+  Difficulty,
   Gearlocs,
   TMB_GAME_NAME,
   TooManyBonesPlay,
   TooManyBonesPlayer,
   TooManyBonesStats,
-  Tyrants,
-  Difficulty
+  Tyrants
 } from "../../../model/too-many-bones";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TMBBackupReaderService extends BaseBackupReaderService {
+  protected override enumNormalizers = {
+    [Tyrants.END]: this.normalizeTyrantName
+  }
   private normalizeTyrantName(str: string) {
     return {
       "GoblinK\xf6nig": "GoblinKing",
@@ -41,7 +44,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
       console.log(entry);
       return ret;
     }
-    ret.Gearloc = getEnumValue(Gearlocs, formatToEnumString(gearloc.value));
+    ret.Gearloc = this.parseEnumValue(Gearlocs, gearloc.value);
     if (ret.Gearloc == undefined) {
       console.error(`Gearloc Value ${formatToEnumString(gearloc.value)} can not be parsed`);
       return ret;
@@ -94,7 +97,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
         console.log(play);
         return ret;
       }
-      obj.Tyrant = getEnumValue(Tyrants, this.normalizeTyrantName(formatToEnumString(tyrant.value)));
+      obj.Tyrant = this.parseEnumValue(Tyrants, tyrant.value);
       if (obj.Tyrant == undefined) {
         console.error(`Scenario Value ${formatToEnumString(tyrant.value)} can not be parsed`);
         return ret;
@@ -105,7 +108,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
         console.error(`Difficulty with id ${difficultyField.id} not found`);
         return ret;
       }
-      obj.Difficulty = getEnumValue(Difficulty, formatToEnumString(difficulty.value));
+      obj.Difficulty = this.parseEnumValue(Difficulty, difficulty.value);
       if (obj.Difficulty == undefined) {
         console.error(`Difficulty Value ${formatToEnumString(difficulty.value)} can not be parsed`);
         return ret;
