@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-help-page',
@@ -9,4 +10,5 @@ import { Component } from '@angular/core';
 })
 export class HelpPageComponent {
   static Title = 'Help';
+  GithubLink = AppComponent.GithubLink;
 }
