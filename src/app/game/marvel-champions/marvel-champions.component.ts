@@ -12,8 +12,7 @@ import {
   PackContent,
   Scenarios
 } from "../../../model/marvel-champions";
-import {enumToArray, formatFromEnumString, getEnumValue} from "../../enum-utils";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {getEnumValue} from "../../enum-utils";
 import {BaseGameComponent} from "../base-game.component";
 import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-backup-reader.service";
 
@@ -25,7 +24,6 @@ import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-bac
     ReactiveFormsModule,
     TableComponent,
     FormsModule,
-    NgbModule,
   ],
   templateUrl: './marvel-champions.component.html',
   styleUrl: './marvel-champions.component.css'

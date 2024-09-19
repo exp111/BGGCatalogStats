@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ChecklistComponent} from "../../app-table/checklist.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TableComponent} from "../../app-table/table.component";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BaseGameComponent} from "../base-game.component";
 import {
   BoxContent,
@@ -23,7 +22,6 @@ import {getEnumValue} from "../../enum-utils";
     ReactiveFormsModule,
     TableComponent,
     FormsModule,
-    NgbModule,
   ],
   templateUrl: './too-many-bones.component.html',
   styleUrl: './too-many-bones.component.css'

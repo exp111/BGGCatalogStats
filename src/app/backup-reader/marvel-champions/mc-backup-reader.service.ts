@@ -65,6 +65,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     } as MarvelChampionsStats;
     let plays = [];
     // get game id
+    //TODO: outsource this to base class. instead iterate over PackContent entries to check names
     let game = backup.games.find(g => g.name == MC_GAME_NAME);
     if (!game) {
       console.error("Game not found");
