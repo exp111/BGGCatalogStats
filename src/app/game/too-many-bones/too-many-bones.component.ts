@@ -130,7 +130,7 @@ export class TooManyBonesComponent extends BaseGameComponent {
   }
 
   protected override ownedCheck(e: any) {
-    return this.stats?.OwnedExpansions.some(p => BoxContent[p].includes(e)) ?? false;
+    return this.stats?.OwnedExpansions.some(p => BoxContent[p] ? BoxContent[p].includes(e) : false) ?? false;
   }
 
   protected readonly Gearlocs = Gearlocs;

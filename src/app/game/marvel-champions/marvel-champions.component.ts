@@ -208,7 +208,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   }
 
   protected override ownedCheck(e: any) {
-    return this.stats?.OwnedPacks.some(p => PackContent[p].includes(e)) ?? false;
+    return this.stats?.OwnedPacks.some(p => PackContent[p] ? PackContent[p].includes(e) : false) ?? false;
   }
 
   protected readonly Heroes = Heroes;

@@ -31,7 +31,10 @@ export enum Scenarios {
   Rhino = Aspects.END,
   Klaw,
   Ultron,
+  Crossbones,
+  AbsorbingMan,
   TaskMaster,
+  Zola,
   RedSkull,
   Venom,
   END
@@ -43,6 +46,10 @@ export enum Modulars {
   UnderAttack,
   DoomsdayChair,
   LegionsOfHydra,
+  HydraAssault,
+  WeaponMaster,
+  HydraPatrol,
+  ExperimentalWeapons,
   END
 }
 
@@ -69,8 +76,8 @@ export const PackContent: ({ [key: string]: any[] }) = {
   ],
   "Marvel Champions: The Card Game \u2013 The Rise of Red Skull": [
     ...enumValuesToStrings(Heroes, Heroes.Hawkeye, Heroes.SpiderWoman),
-    ...enumValuesToStrings(Scenarios, Scenarios.TaskMaster, Scenarios.RedSkull)
-    //TODO: remaining
+    ...enumValuesToStrings(Scenarios, Scenarios.Crossbones, Scenarios.AbsorbingMan, Scenarios.TaskMaster, Scenarios.Zola, Scenarios.RedSkull),
+    ...enumValuesToStrings(Modulars, Modulars.HydraAssault, Modulars.WeaponMaster, Modulars.HydraPatrol, Modulars.ExperimentalWeapons)
   ],
   "Marvel Champions: The Card Game \u2013 Sinister Motives": [
     ...enumValuesToStrings(Heroes, Heroes.GhostSpider, Heroes.MilesMorales),

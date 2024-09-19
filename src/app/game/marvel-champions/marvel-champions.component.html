@@ -125,8 +125,7 @@
       <p>Players: {{ play.Players.length }}</p>
       <ul>
         @for (player of play.Players; track player.Name) {
-          <li>{{ player.Name }}: {{ this.formatter(Heroes[player.Hero]) }} ({{ this.formatter(Aspects[player.Aspect]) }}
-            )
+          <li>{{ player.Name }}: {{ this.formatter(Heroes[player.Hero]) }} ({{ this.formatter(Aspects[player.Aspect]) }})
           </li>
         }
       </ul>

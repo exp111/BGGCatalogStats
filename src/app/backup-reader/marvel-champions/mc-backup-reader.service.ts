@@ -11,7 +11,6 @@ import {
   Modulars,
   Scenarios
 } from "../../../model/marvel-champions";
-import {formatToEnumString} from "../../enum-utils";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
 
 @Injectable({
@@ -36,7 +35,11 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     return {
       "Bombenbedrohung": "BombThreat",
       "UnterBeschuss": "UnderAttack",
-      "HydrasLegionen": "LegionsOfHydra"
+      "HydrasLegionen": "LegionsOfHydra",
+      "HydraAngriff": "HydraAssault",
+      "Waffenmeister": "WeaponMaster",
+      "HydraPatrouille": "HydraPatrol",
+      "ExperimentelleWaffen": "ExperimentalWeapons"
     }[str] ?? str;
   }
 
