@@ -31,6 +31,7 @@ import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-bac
 export class MarvelChampionsComponent extends BaseGameComponent {
   static override Title = 'Marvel Champions Stats';
   declare stats?: MarvelChampionsStats;
+  override exampleFileName = "mc-example";
 
   constructor(protected backupService: MCBackupReaderService) {
     super(backupService);

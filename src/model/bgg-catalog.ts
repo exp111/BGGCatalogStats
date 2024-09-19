@@ -3,6 +3,7 @@ export interface GameEntry {
   name: string;
   minPlayTime: number;
   maxPlayTime: number;
+  addedDate: string;
 }
 
 export interface PlayerEntry {
@@ -11,6 +12,7 @@ export interface PlayerEntry {
   me: number;
   isAnonymous: number;
   isAutoma: number;
+  bggUsername: string;
 }
 
 export interface LocationEntry {
@@ -19,16 +21,15 @@ export interface LocationEntry {
 }
 
 export interface PlayEntry {
-  kind: "PlayEntry";
   id: number;
   playDate: string;
   gameId: number;
   locationId: number;
   length: number;
+  notes: string;
 }
 
 export interface PlayerPlayEntry {
-  kind: "PlayerPlayEntry";
   id: number;
   playId: number; // the id of the play
   playerId: number; // the id of the player

@@ -2,7 +2,8 @@
   <div class="position-absolute top-50 w-100 d-flex justify-content-center">
     <div class="w-75 p-5 card">
       <div class="card-body input-group">
-        <label class="input-group-text" for="fileInput">Upload BGG Catalog Export here</label>
+        <button class="btn btn-outline-primary" (click)="loadExample()">Load Example</button>
+        <label class="input-group-text" for="fileInput">Or upload BGG Catalog Export</label>
         <input id="fileInput"
                type="file"
                class="form-control"
@@ -22,7 +23,7 @@
       <label for="onlyOwnedCheckbox" class="form-check-label">Only owned?</label>
     </div>
   </div>
-  <h4>Total Plays: {{ this.getPlays(this.stats).length }}</h4>
+  <h4>Total Plays: {{ this.getPlays(this.stats).length }}/ Total Won: {{ this.getWins(this.getPlays(this.stats)) }}</h4>
   <h4>Gearloc Playrate</h4>
   <app-table
     [XAxis]="['Playrate']"

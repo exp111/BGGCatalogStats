@@ -29,6 +29,7 @@ import {getEnumValue} from "../../enum-utils";
 export class TooManyBonesComponent extends BaseGameComponent {
   static override Title = 'Too Many Bones Stats';
   declare stats?: TooManyBonesStats;
+  override exampleFileName = "tmb-example";
 
   constructor(protected backupService: TMBBackupReaderService) {
     super(backupService);

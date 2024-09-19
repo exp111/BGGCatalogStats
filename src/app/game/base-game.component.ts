@@ -9,9 +9,14 @@ export abstract class BaseGameComponent {
   stats?: BaseGameStats;
   onlyMe: boolean = false;
   onlyOwned: boolean = true;
+  abstract exampleFileName: string;
 
   constructor(protected backupReader: BaseBackupReaderService) {
     (window as any).app = this;
+  }
+
+  public loadExample() {
+    fetch(`./example/${this.exampleFileName}.json`).then(r => r.text()).then(t => this.readFile(t));
   }
 
   public onFileLoad(event: Event & { target: HTMLInputElement }) {
