@@ -77,7 +77,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     // get custom data fields
     let aspectField = this.findCustomField(backup, gameId, "Aspect");
     let heroField = this.findCustomField(backup, gameId, "Hero");
-    let scenarioField = this.findCustomField(backup, gameId, "Villain");
+    let scenarioField = this.findCustomField(backup, gameId, "Scenario");
     let modularField = this.findCustomField(backup, gameId, "Modular");
     let difficultyField = this.findCustomField(backup, gameId, "Difficulty");
     if (!aspectField || !heroField || !scenarioField || !modularField || !difficultyField) {
