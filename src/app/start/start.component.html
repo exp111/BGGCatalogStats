@@ -1,38 +1,17 @@
-<div class="p-3 m-0">
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 fs-2">BGG Catalog Stats</span>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav ms-lg-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.github.com/exp111/BGGCatalogStats">
-              <img class="navbar-nav-svg" width="24" height="24" src="./img/github.svg" alt="GitHub logo">
-              <small class="d-lg-none ms-2">GitHub</small>
-            </a>
-          </li>
-        </ul>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card link-card" routerLink="/marvelchampions">
+      <img src="./img/mc.png" class="card-img-top" alt="Marvel Champions Cover">
+      <div class="card-body">
+        <h5 class="card-title">Marvel Champions</h5>
       </div>
     </div>
-  </nav>
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-      <div class="card link-card" routerLink="/marvelchampions">
-        <img src="./img/mc.png" class="card-img-top" alt="Marvel Champions Cover">
-        <div class="card-body">
-          <h5 class="card-title">Marvel Champions</h5>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card link-card" routerLink="/toomanybones">
-        <img src="./img/tmb.png" class="card-img-top" alt="Too Many Bones Cover">
-        <div class="card-body">
-          <h5 class="card-title">Too Many Bones</h5>
-        </div>
+  </div>
+  <div class="col">
+    <div class="card link-card" routerLink="/toomanybones">
+      <img src="./img/tmb.png" class="card-img-top" alt="Too Many Bones Cover">
+      <div class="card-body">
+        <h5 class="card-title">Too Many Bones</h5>
       </div>
     </div>
   </div>
