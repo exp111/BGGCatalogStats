@@ -11,6 +11,9 @@ export abstract class BaseBackupReaderService {
     (window as any).backupReader = this;
   }
 
+  /** Can contain enum normalizers that transform string names to their normalized enum value names.
+   *  Allows support for localized or alternative enum value names.
+   **/
   protected abstract enumNormalizers: { [end: number]: (e: string) => string };
 
   /* Parses a string to an enum value of the given enum. Normalizes the name if a normalizer is in {@link enumNormalizers} */
@@ -24,33 +27,30 @@ export abstract class BaseBackupReaderService {
     return getEnumValue(enums, normalizer(formatToEnumString(str)))
   }
 
-  //TODO: merge those
+  private playFieldValueGetter = (backup: BGGCatalogBackup, field: CustomFieldEntry, play: PlayEntry) => this.getFieldValue(backup, field.id, play.id);
+  private playerFieldValueGetter = (backup: BGGCatalogBackup, field: CustomFieldEntry, play: PlayerPlayEntry) => this.getFieldValue(backup, field.id, play.playId, play.id);
+
   /* Parses the value of a custom play field */
   protected parseCustomFieldValuePlay(backup: BGGCatalogBackup, play: PlayEntry, enums: any, field: CustomFieldEntry, multiField?: CustomFieldEntry) {
-    let entry = this.getFieldValue(backup, field.id, play.id);
-    let multiEntry = multiField ? this.getFieldValue(backup, multiField.id, play.id) : undefined;
-    if (!entry && !multiEntry) {
-      console.error(`Custom field ${field.name} (${field.id}) not found`);
-      return multiField ? [] : undefined;
-    }
-    // if the multi field has an entry, prioritize that over the single entry
-    if (multiField) {
-      return multiEntry ? this.parseCustomFieldValues(multiEntry, enums) : [this.parseCustomFieldValue(entry!, enums)];
-    } else {
-      return this.parseCustomFieldValue(entry!, enums);
-    }
+    return this.parseCustomFieldValueGeneric(this.playFieldValueGetter, backup, play, enums, field, multiField);
   }
 
   /* Parses the value of a custom player field */
   protected parseCustomFieldValuePlayer(backup: BGGCatalogBackup, play: PlayerPlayEntry, enums: any, field: CustomFieldEntry, multiField?: CustomFieldEntry) {
-    let entry = this.getFieldValue(backup, field.id, play.playId, play.id);
-    let multiEntry = multiField ? this.getFieldValue(backup, multiField.id, play.playId, play.id) : undefined;
+    return this.parseCustomFieldValueGeneric(this.playerFieldValueGetter, backup, play, enums, field, multiField);
+  }
+
+  private parseCustomFieldValueGeneric(getter: (_1: BGGCatalogBackup, _2: CustomFieldEntry, _3: any) => CustomDataEntry | undefined,
+                                       backup: BGGCatalogBackup, play: PlayEntry | PlayerPlayEntry, enums: any, field: CustomFieldEntry, multiField?: CustomFieldEntry) {
+    let entry = getter(backup, field, play);
+    let multiEntry = multiField ? getter(backup, multiField, play) : undefined;
     if (!entry && !multiEntry) {
       console.error(`Custom field ${field.name} (${field.id}) not found`);
       return multiField ? [] : undefined;
     }
-    // if the multi field has an entry, prioritize that over the single entry
+    // if its a multi field
     if (multiField) {
+      // if the multi field has an entry, prioritize that over the single entry
       return multiEntry ? this.parseCustomFieldValues(multiEntry, enums) : [this.parseCustomFieldValue(entry!, enums)];
     } else {
       return this.parseCustomFieldValue(entry!, enums);
@@ -82,6 +82,7 @@ export abstract class BaseBackupReaderService {
   }
 
   //TODO: should these all be methods on backup/other classes?
+
   /* Gets the value of a custom field */
   protected getFieldValue(backup: BGGCatalogBackup, fieldId: number, entityId: number, playerId?: number) {
     return backup.customData.find(d => d.fieldId == fieldId
