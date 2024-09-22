@@ -3,7 +3,7 @@ import {enumValuesToStrings} from "../app/enum-utils";
 
 export const MC_GAME_NAME = "Marvel Champions: The Card Game";
 
-export enum Heroes {
+export enum Hero {
   SpiderMan,
   SheHulk,
   BlackPanther,
@@ -18,8 +18,8 @@ export enum Heroes {
   END
 }
 
-export enum Aspects {
-  Aggression = Heroes.END,
+export enum Aspect {
+  Aggression = Hero.END,
   Justice,
   Leadership,
   Protection,
@@ -27,8 +27,8 @@ export enum Aspects {
   END
 }
 
-export enum Scenarios {
-  Rhino = Aspects.END,
+export enum Scenario {
+  Rhino = Aspect.END,
   Klaw,
   Ultron,
   Crossbones,
@@ -40,8 +40,8 @@ export enum Scenarios {
   END
 }
 
-export enum Modulars {
-  BombThreat = Scenarios.END,
+export enum Modular {
+  BombThreat = Scenario.END,
   MastersOfEvil,
   UnderAttack,
   DoomsdayChair,
@@ -54,47 +54,47 @@ export enum Modulars {
 }
 
 export enum Difficulty {
-  Standard = Modulars.END,
+  Standard = Modular.END,
   Expert,
   END
 }
 
 export const PackContent: ({ [key: string]: any[] }) = {
   "Marvel Champions: The Card Game": [
-    ...enumValuesToStrings(Aspects, Aspects.Aggression, Aspects.Justice, Aspects.Leadership, Aspects.Protection),
-    ...enumValuesToStrings(Heroes, Heroes.SpiderMan, Heroes.SheHulk, Heroes.BlackPanther, Heroes.IronMan, Heroes.CaptainMarvel),
-    ...enumValuesToStrings(Scenarios, Scenarios.Rhino, Scenarios.Klaw, Scenarios.Ultron),
-    ...enumValuesToStrings(Modulars, Modulars.BombThreat, Modulars.MastersOfEvil, Modulars.UnderAttack, Modulars.DoomsdayChair, Modulars.LegionsOfHydra),
+    ...enumValuesToStrings(Aspect, Aspect.Aggression, Aspect.Justice, Aspect.Leadership, Aspect.Protection),
+    ...enumValuesToStrings(Hero, Hero.SpiderMan, Hero.SheHulk, Hero.BlackPanther, Hero.IronMan, Hero.CaptainMarvel),
+    ...enumValuesToStrings(Scenario, Scenario.Rhino, Scenario.Klaw, Scenario.Ultron),
+    ...enumValuesToStrings(Modular, Modular.BombThreat, Modular.MastersOfEvil, Modular.UnderAttack, Modular.DoomsdayChair, Modular.LegionsOfHydra),
     ...enumValuesToStrings(Difficulty, Difficulty.Standard, Difficulty.Expert)
   ],
   "Marvel Champions: The Card Game \u2013 Deadpool Hero Pack": [
-    ...enumValuesToStrings(Aspects, Aspects.Deadpool), ...enumValuesToStrings(Heroes, Heroes.Deadpool)
+    ...enumValuesToStrings(Aspect, Aspect.Deadpool), ...enumValuesToStrings(Hero, Hero.Deadpool)
   ],
   "Marvel Champions: The Card Game \u2013 Doctor Strange Hero Pack": [
-    ...enumValuesToStrings(Heroes, Heroes.DoctorStrange),
+    ...enumValuesToStrings(Hero, Hero.DoctorStrange),
     //TODO: modular?
   ],
   "Marvel Champions: The Card Game \u2013 The Rise of Red Skull": [
-    ...enumValuesToStrings(Heroes, Heroes.Hawkeye, Heroes.SpiderWoman),
-    ...enumValuesToStrings(Scenarios, Scenarios.Crossbones, Scenarios.AbsorbingMan, Scenarios.TaskMaster, Scenarios.Zola, Scenarios.RedSkull),
-    ...enumValuesToStrings(Modulars, Modulars.HydraAssault, Modulars.WeaponMaster, Modulars.HydraPatrol, Modulars.ExperimentalWeapons)
+    ...enumValuesToStrings(Hero, Hero.Hawkeye, Hero.SpiderWoman),
+    ...enumValuesToStrings(Scenario, Scenario.Crossbones, Scenario.AbsorbingMan, Scenario.TaskMaster, Scenario.Zola, Scenario.RedSkull),
+    ...enumValuesToStrings(Modular, Modular.HydraAssault, Modular.WeaponMaster, Modular.HydraPatrol, Modular.ExperimentalWeapons)
   ],
   "Marvel Champions: The Card Game \u2013 Sinister Motives": [
-    ...enumValuesToStrings(Heroes, Heroes.GhostSpider, Heroes.MilesMorales),
-    ...enumValuesToStrings(Scenarios, Scenarios.Venom)
+    ...enumValuesToStrings(Hero, Hero.GhostSpider, Hero.MilesMorales),
+    ...enumValuesToStrings(Scenario, Scenario.Venom)
     //TODO: remaining
   ]
 }
 
 export interface MarvelChampionsPlayer extends BaseGamePlayer {
-  Hero: Heroes;
-  Aspect: Aspects; //TODO: support multiple aspects?
+  Hero: Hero;
+  Aspects: Aspect[];
 }
 
 export interface MarvelChampionsPlay extends BaseGamePlay {
   Players: MarvelChampionsPlayer[];
-  Scenario: Scenarios;
-  Modular: Modulars; //TODO: support multiple modulars
+  Scenario: Scenario;
+  Modulars: Modular[];
   Difficulty: Difficulty;
 }
 

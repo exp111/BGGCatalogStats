@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../../../model/bgg-catalog";
 import {
-  Aspects,
+  Aspect,
   Difficulty,
-  Heroes,
+  Hero,
   MarvelChampionsPlay,
   MarvelChampionsPlayer,
   MarvelChampionsStats,
   MC_GAME_NAME,
-  Modulars,
-  Scenarios
+  Modular,
+  Scenario
 } from "../../../model/marvel-champions";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
 
@@ -18,8 +18,8 @@ import {BaseBackupReaderService} from "../base-backup-reader.service";
 })
 export class MCBackupReaderService extends BaseBackupReaderService {
   protected override enumNormalizers = {
-    [Aspects.END]: this.normalizeAspectName,
-    [Modulars.END]: this.normalizeModularName
+    [Aspect.END]: this.normalizeAspectName,
+    [Modular.END]: this.normalizeModularName
   }
 
   private normalizeAspectName(str: string) {
@@ -43,7 +43,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     }[str] ?? str;
   }
 
-  private parsePlayer(entry: PlayerPlayEntry, backup: BGGCatalogBackup, heroField: CustomFieldEntry, aspectField: CustomFieldEntry) {
+  private parsePlayer(entry: PlayerPlayEntry, backup: BGGCatalogBackup, heroField: CustomFieldEntry, aspectField: CustomFieldEntry, aspectsField: CustomFieldEntry) {
     let ret = {} as MarvelChampionsPlayer;
     // get player
     let player = backup.players.find(p => p.id == entry.playerId);
@@ -55,9 +55,9 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     ret.Name = player.name;
     ret.IsMe = player.me == 1;
     // find hero
-    ret.Hero = this.parseCustomFieldValuePlayer(backup, entry, heroField, Heroes);
+    ret.Hero = this.parseCustomFieldValuePlayer(backup, entry, Hero, heroField);
     // find aspect
-    ret.Aspect = this.parseCustomFieldValuePlayer(backup, entry, aspectField, Aspects);
+    ret.Aspects = this.parseCustomFieldValuePlayer(backup, entry, Aspect, aspectField, aspectsField);
     return ret;
   }
 
@@ -79,11 +79,13 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     let gameId = game.id;
     // get custom data fields
     let aspectField = this.findCustomField(backup, gameId, "Aspect");
+    let aspectsField = this.findCustomField(backup, gameId, "Aspects");
     let heroField = this.findCustomField(backup, gameId, "Hero");
     let scenarioField = this.findCustomField(backup, gameId, "Scenario");
     let modularField = this.findCustomField(backup, gameId, "Modular");
+    let modularsField = this.findCustomField(backup, gameId, "Modulars");
     let difficultyField = this.findCustomField(backup, gameId, "Difficulty");
-    if (!aspectField || !heroField || !scenarioField || !modularField || !difficultyField) {
+    if ([aspectField, aspectsField, heroField, scenarioField, modularField, modularsField, difficultyField].some(f => !f)) {
       console.error("Can't find custom fields");
       return ret;
     }
@@ -100,14 +102,14 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       // players
       let players = backup.playersPlays.filter(p => p.playId == play.id);
       for (let player of players) {
-        obj.Players.push(this.parsePlayer(player, backup, heroField, aspectField));
+        obj.Players.push(this.parsePlayer(player, backup, heroField!, aspectField!, aspectsField!));
       }
       // scenario
-      obj.Scenario = this.parseCustomFieldValuePlay(backup, play, scenarioField, Scenarios);
+      obj.Scenario = this.parseCustomFieldValuePlay(backup, play, Scenario, scenarioField!);
       // modular
-      obj.Modular = this.parseCustomFieldValuePlay(backup, play, modularField, Modulars);
+      obj.Modulars = this.parseCustomFieldValuePlay(backup, play, Modular, modularField!, modularsField);
       // difficulty
-      obj.Difficulty = this.parseCustomFieldValuePlay(backup, play, difficultyField, Difficulty);
+      obj.Difficulty = this.parseCustomFieldValuePlay(backup, play, Difficulty, difficultyField!);
       obj.Won = players.some(p => p.winner == 1)
       plays.push(obj);
     }

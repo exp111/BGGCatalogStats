@@ -4,12 +4,12 @@ import {formatToEnumString} from "../../enum-utils";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
 import {
   Difficulty,
-  Gearlocs,
+  Gearloc,
   TMB_GAME_NAME,
   TooManyBonesPlay,
   TooManyBonesPlayer,
   TooManyBonesStats,
-  Tyrants
+  Tyrant
 } from "../../../model/too-many-bones";
 
 @Injectable({
@@ -17,7 +17,7 @@ import {
 })
 export class TMBBackupReaderService extends BaseBackupReaderService {
   protected override enumNormalizers = {
-    [Tyrants.END]: this.normalizeTyrantName
+    [Tyrant.END]: this.normalizeTyrantName
   }
 
   private normalizeTyrantName(str: string) {
@@ -38,7 +38,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
     ret.Name = player.name;
     ret.IsMe = player.me == 1;
     // find hero
-    ret.Gearloc = this.parseCustomFieldValuePlayer(backup, entry, gearlocField, Gearlocs);
+    ret.Gearloc = this.parseCustomFieldValuePlayer(backup, entry, Gearloc, gearlocField);
     return ret;
   }
 
@@ -81,9 +81,9 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
         obj.Players.push(this.parsePlayer(player, backup, gearlocField));
       }
       // tyrant
-      obj.Tyrant = this.parseCustomFieldValuePlay(backup, play, tyrantField, Tyrants);
+      obj.Tyrant = this.parseCustomFieldValuePlay(backup, play, Tyrant, tyrantField);
       // difficulty
-      obj.Difficulty = this.parseCustomFieldValuePlay(backup, play, difficultyField, Difficulty);
+      obj.Difficulty = this.parseCustomFieldValuePlay(backup, play, Difficulty, difficultyField);
       obj.Won = players.some(p => p.winner == 1)
       plays.push(obj);
     }

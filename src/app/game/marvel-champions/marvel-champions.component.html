@@ -27,106 +27,106 @@
   <h4>Hero Playrate</h4>
   <app-table
     [XAxis]="['Playrate']"
-    [YAxis]="enumToArray(Heroes)"
+    [YAxis]="enumToArray(Hero)"
     [YFormatter]="this.formatter"
     [getter]="this.heroPlayrateGetter.bind(this)"></app-table>
   <h4>Aspect Playrate</h4>
   <app-table
     [XAxis]="['Playrate']"
-    [YAxis]="enumToArray(Aspects)"
+    [YAxis]="enumToArray(Aspect)"
     [getter]="this.aspectPlayrateGetter.bind(this)"></app-table>
   <h4>Scenario Playrate</h4>
   <app-table
     [XAxis]="['Playrate']"
-    [YAxis]="enumToArray(Scenarios)"
+    [YAxis]="enumToArray(Scenario)"
     [YFormatter]="this.formatter"
     [getter]="this.scenarioPlayrateGetter.bind(this)"></app-table>
   <h4>Hero Winrate</h4>
   <app-table
     [XAxis]="['Winrate']"
-    [YAxis]="enumToArray(Heroes)"
+    [YAxis]="enumToArray(Hero)"
     [YFormatter]="this.formatter"
     [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
     [getter]="this.heroWinrateGetter.bind(this)"></app-table>
   <h4>Aspect Winrate</h4>
   <app-table
     [XAxis]="['Winrate']"
-    [YAxis]="enumToArray(Aspects)"
+    [YAxis]="enumToArray(Aspect)"
     [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
     [getter]="this.aspectWinrateGetter.bind(this)"></app-table>
   <h4>Scenario Winrate</h4>
   <app-table
     [XAxis]="['Winrate']"
-    [YAxis]="enumToArray(Scenarios)"
+    [YAxis]="enumToArray(Scenario)"
     [YFormatter]="this.formatter"
     [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
     [getter]="this.scenarioWinrateGetter.bind(this)"></app-table>
   <h4>Hero - Aspect</h4>
   <app-checklist
-    [XAxis]="enumToArray(Heroes)"
+    [XAxis]="enumToArray(Hero)"
     [XFormatter]="this.formatter"
-    [YAxis]="enumToArray(Aspects)"
+    [YAxis]="enumToArray(Aspect)"
     [getter]="this.heroAspectWonGetter.bind(this)"></app-checklist>
   <h4>Scenario - Hero</h4>
   <app-checklist
-    [XAxis]="enumToArray(Scenarios)"
+    [XAxis]="enumToArray(Scenario)"
     [XFormatter]="this.formatter"
-    [YAxis]="enumToArray(Heroes)"
+    [YAxis]="enumToArray(Hero)"
     [YFormatter]="this.formatter"
     [getter]="this.scenarioHeroWonGetter.bind(this)"></app-checklist>
   <h4>Scenario - Aspect</h4>
   <app-checklist
-    [XAxis]="enumToArray(Scenarios)"
+    [XAxis]="enumToArray(Scenario)"
     [XFormatter]="this.formatter"
-    [YAxis]="enumToArray(Aspects)"
+    [YAxis]="enumToArray(Aspect)"
     [getter]="this.scenarioAspectWonGetter.bind(this)"></app-checklist>
   <h4>Scenario - Modular</h4>
   <app-checklist
-    [XAxis]="enumToArray(Scenarios)"
+    [XAxis]="enumToArray(Scenario)"
     [XFormatter]="this.formatter"
-    [YAxis]="enumToArray(Modulars)"
+    [YAxis]="enumToArray(Modular)"
     [YFormatter]="this.formatter"
     [getter]="this.scenarioModuleWonGetter.bind(this)"></app-checklist>
   <h4>Scenario - Difficulty</h4>
   <app-checklist
-    [XAxis]="enumToArray(Scenarios)"
+    [XAxis]="enumToArray(Scenario)"
     [XFormatter]="this.formatter"
     [YAxis]="enumToArray(Difficulty)"
     [YFormatter]="this.formatter"
     [getter]="this.scenarioDifficultyWonGetter.bind(this)"></app-checklist>
   <h4>Scenario - Hero - (Winrate)</h4>
   <app-table
-    [XAxis]="enumToArray(Scenarios)"
+    [XAxis]="enumToArray(Scenario)"
     [XFormatter]="this.formatter"
-    [YAxis]="enumToArray(Heroes)"
+    [YAxis]="enumToArray(Hero)"
     [YFormatter]="this.formatter"
     [cellClassGetter]="this.winrateCellClassGetter"
     [getter]="this.scenarioHeroWinrateGetter.bind(this)"></app-table>
   <h4>Hero - Aspect (Winrate)</h4>
   <app-table
-    [XAxis]="enumToArray(Heroes)"
+    [XAxis]="enumToArray(Hero)"
     [XFormatter]="this.formatter"
-    [YAxis]="enumToArray(Aspects)"
+    [YAxis]="enumToArray(Aspect)"
     [cellClassGetter]="this.winrateCellClassGetter"
     [getter]="this.heroAspectWinrateGetter.bind(this)"></app-table>
   <h4>Scenario - Aspect (Winrate)</h4>
   <app-table
-    [XAxis]="enumToArray(Scenarios)"
+    [XAxis]="enumToArray(Scenario)"
     [XFormatter]="this.formatter"
-    [YAxis]="enumToArray(Aspects)"
+    [YAxis]="enumToArray(Aspect)"
     [cellClassGetter]="this.winrateCellClassGetter"
     [getter]="this.scenarioAspectWinrateGetter.bind(this)"></app-table>
   <h4>Plays</h4>
   @for (play of this.getPlays(this.stats); track play.Id) {
     <div class="card card-body">
       <p>Id: {{ play.Id }}</p>
-      <p>Scenario: {{ this.formatter(Scenarios[play.Scenario]) }}</p>
-      <p>Modular: {{ this.formatter(Modulars[play.Modular]) }}</p>
+      <p>Scenario: {{ this.formatter(Scenario[play.Scenario]) }}</p>
+      <p>Modular: {{ this.formatEnumList(Modular, play.Modulars) }}</p>
       <p>Difficulty: {{ this.formatter(Difficulty[play.Difficulty]) }}</p>
       <p>Players: {{ play.Players.length }}</p>
       <ul>
         @for (player of play.Players; track player.Name) {
-          <li>{{ player.Name }}: {{ this.formatter(Heroes[player.Hero]) }} ({{ this.formatter(Aspects[player.Aspect]) }})
+          <li>{{ player.Name }}: {{ this.formatter(Hero[player.Hero]) }} ({{ this.formatEnumList(Aspect, player.Aspects) }})
           </li>
         }
       </ul>

@@ -47,7 +47,7 @@ export abstract class BaseGameComponent {
 
   protected abstract ownedCheck(v: any): boolean;
 
-  public formatter(val: string) {
+  public formatter(val?: string) {
     if (!val) {
       return "unknown";
     }

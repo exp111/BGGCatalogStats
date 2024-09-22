@@ -3,7 +3,7 @@ import {enumValuesToStrings} from "../app/enum-utils";
 
 export const TMB_GAME_NAME = "Too Many Bones";
 
-export enum Gearlocs {
+export enum Gearloc {
   Patches,
   Boomer,
   Tantrum,
@@ -11,8 +11,8 @@ export enum Gearlocs {
   END
 }
 
-export enum Tyrants {
-  Mulmesh = Gearlocs.END,
+export enum Tyrant {
+  Mulmesh = Gearloc.END,
   Nom,
   Drellen,
   Marrow,
@@ -23,7 +23,7 @@ export enum Tyrants {
 }
 
 export enum Difficulty {
-  Adventurer = Tyrants.END,
+  Adventurer = Tyrant.END,
   Heroic,
   Legendary,
   END
@@ -31,20 +31,20 @@ export enum Difficulty {
 
 export const BoxContent: ({ [key: string]: any[] }) = {
   "Too Many Bones": [
-    ...enumValuesToStrings(Gearlocs, Gearlocs.Patches, Gearlocs.Boomer, Gearlocs.Tantrum, Gearlocs.Picket),
-    ...enumValuesToStrings(Tyrants, Tyrants.Mulmesh, Tyrants.Nom, Tyrants.Drellen, Tyrants.Marrow, Tyrants.GoblinKing, Tyrants.Gendricks, Tyrants.Duster),
+    ...enumValuesToStrings(Gearloc, Gearloc.Patches, Gearloc.Boomer, Gearloc.Tantrum, Gearloc.Picket),
+    ...enumValuesToStrings(Tyrant, Tyrant.Mulmesh, Tyrant.Nom, Tyrant.Drellen, Tyrant.Marrow, Tyrant.GoblinKing, Tyrant.Gendricks, Tyrant.Duster),
     ...enumValuesToStrings(Difficulty, Difficulty.Adventurer, Difficulty.Heroic, Difficulty.Legendary)
   ],
   //TODO: expansions
 }
 
 export interface TooManyBonesPlayer extends BaseGamePlayer {
-  Gearloc: Gearlocs;
+  Gearloc: Gearloc;
 }
 
 export interface TooManyBonesPlay extends BaseGamePlay {
   Players: TooManyBonesPlayer[];
-  Tyrant: Tyrants;
+  Tyrant: Tyrant;
   Difficulty: Difficulty;
 }
 

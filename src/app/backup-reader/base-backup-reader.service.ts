@@ -24,24 +24,51 @@ export abstract class BaseBackupReaderService {
     return getEnumValue(enums, normalizer(formatToEnumString(str)))
   }
 
+  //TODO: merge those
   /* Parses the value of a custom play field */
-  protected parseCustomFieldValuePlay(backup: BGGCatalogBackup, play: PlayEntry, field: CustomFieldEntry, enums: any) {
+  protected parseCustomFieldValuePlay(backup: BGGCatalogBackup, play: PlayEntry, enums: any, field: CustomFieldEntry, multiField?: CustomFieldEntry) {
     let entry = this.getFieldValue(backup, field.id, play.id);
-    if (!entry) {
-      console.error(`Custom field with id ${field.id} not found`);
-      return undefined;
+    let multiEntry = multiField ? this.getFieldValue(backup, multiField.id, play.id) : undefined;
+    if (!entry && !multiEntry) {
+      console.error(`Custom field ${field.name} (${field.id}) not found`);
+      return multiField ? [] : undefined;
     }
-    return this.parseCustomFieldValue(entry, enums);
+    // if the multi field has an entry, prioritize that over the single entry
+    if (multiField) {
+      return multiEntry ? this.parseCustomFieldValues(multiEntry, enums) : [this.parseCustomFieldValue(entry!, enums)];
+    } else {
+      return this.parseCustomFieldValue(entry!, enums);
+    }
   }
 
   /* Parses the value of a custom player field */
-  protected parseCustomFieldValuePlayer(backup: BGGCatalogBackup, play: PlayerPlayEntry, field: CustomFieldEntry, enums: any) {
+  protected parseCustomFieldValuePlayer(backup: BGGCatalogBackup, play: PlayerPlayEntry, enums: any, field: CustomFieldEntry, multiField?: CustomFieldEntry) {
     let entry = this.getFieldValue(backup, field.id, play.playId, play.id);
-    if (!entry) {
-      console.error(`Custom field with id ${field.id} not found`);
-      return undefined;
+    let multiEntry = multiField ? this.getFieldValue(backup, multiField.id, play.playId, play.id) : undefined;
+    if (!entry && !multiEntry) {
+      console.error(`Custom field ${field.name} (${field.id}) not found`);
+      return multiField ? [] : undefined;
     }
-    return this.parseCustomFieldValue(entry, enums);
+    // if the multi field has an entry, prioritize that over the single entry
+    if (multiField) {
+      return multiEntry ? this.parseCustomFieldValues(multiEntry, enums) : [this.parseCustomFieldValue(entry!, enums)];
+    } else {
+      return this.parseCustomFieldValue(entry!, enums);
+    }
+  }
+
+  protected parseCustomFieldValues(entry: CustomDataEntry, enums: any) {
+    let values = entry.value.split(",");
+    let ret = [];
+    for (let value of values) {
+      let val = this.parseEnumValue(enums, value);
+      if (val == undefined) {
+        console.error(`Custom Field Value ${formatToEnumString(value)} can not be parsed`);
+        return ret;
+      }
+      ret.push(val);
+    }
+    return ret;
   }
 
   /* Parses the value of a custom field entry to the enum value */

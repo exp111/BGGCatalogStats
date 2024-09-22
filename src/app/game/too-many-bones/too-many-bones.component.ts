@@ -6,10 +6,10 @@ import {BaseGameComponent} from "../base-game.component";
 import {
   BoxContent,
   Difficulty,
-  Gearlocs,
+  Gearloc,
   TooManyBonesPlay,
   TooManyBonesStats,
-  Tyrants
+  Tyrant
 } from "../../../model/too-many-bones";
 import {TMBBackupReaderService} from "../../backup-reader/too-many-bones/tmb-backup-reader.service";
 import {getEnumValue} from "../../enum-utils";
@@ -35,7 +35,7 @@ export class TooManyBonesComponent extends BaseGameComponent {
     super(backupService);
   }
 
-  playHasGearloc(play: TooManyBonesPlay, gearloc?: Gearlocs) {
+  playHasGearloc(play: TooManyBonesPlay, gearloc?: Gearloc) {
     return play.Players.some(p => (gearloc == undefined || p.Gearloc == gearloc)
       && (!this.onlyMe || p.IsMe));
   }
@@ -61,7 +61,7 @@ export class TooManyBonesComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let gearloc = getEnumValue(Gearlocs, y);
+    let gearloc = getEnumValue(Gearloc, y);
     let gearlocPlays = plays.filter(p => this.playHasGearloc(p, gearloc));
     return this.getRate(plays.length, gearlocPlays.length);
   }
@@ -71,7 +71,7 @@ export class TooManyBonesComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrants, y);
+    let tyrant = getEnumValue(Tyrant, y);
     let tyrantPlays = plays.filter(p => p.Tyrant == tyrant);
     return this.getRate(plays.length, tyrantPlays.length);
   }
@@ -81,7 +81,7 @@ export class TooManyBonesComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let gearloc = getEnumValue(Gearlocs, y);
+    let gearloc = getEnumValue(Gearloc, y);
     let gearlocPlays = plays.filter(p => this.playHasGearloc(p, gearloc));
     let wins = this.getWins(gearlocPlays);
     return this.getRate(gearlocPlays.length, wins);
@@ -92,7 +92,7 @@ export class TooManyBonesComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrants, y);
+    let tyrant = getEnumValue(Tyrant, y);
     let tyrantPlays = plays.filter(p => p.Tyrant == tyrant);
     let wins = this.getWins(tyrantPlays);
     return this.getRate(tyrantPlays.length, wins);
@@ -103,8 +103,8 @@ export class TooManyBonesComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrants, x);
-    let gearloc = getEnumValue(Gearlocs, y);
+    let tyrant = getEnumValue(Tyrant, x);
+    let gearloc = getEnumValue(Gearloc, y);
     let tyrantPlays = plays.filter(p => p.Tyrant == tyrant && this.playHasGearloc(p, gearloc));
     let wins = this.getWins(tyrantPlays);
     return this.getRate(tyrantPlays.length, wins);
@@ -115,8 +115,8 @@ export class TooManyBonesComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrants, x);
-    let gearloc = getEnumValue(Gearlocs, y);
+    let tyrant = getEnumValue(Tyrant, x);
+    let gearloc = getEnumValue(Gearloc, y);
     return plays.some(p => p.Won && p.Tyrant == tyrant && this.playHasGearloc(p, gearloc));
   }
 
@@ -125,7 +125,7 @@ export class TooManyBonesComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrants, x);
+    let tyrant = getEnumValue(Tyrant, x);
     let difficulty = getEnumValue(Difficulty, y);
     return plays.some(p => p.Won && p.Tyrant == tyrant && p.Difficulty == difficulty);
   }
@@ -134,7 +134,7 @@ export class TooManyBonesComponent extends BaseGameComponent {
     return this.stats?.OwnedExpansions.some(p => BoxContent[p] ? BoxContent[p].includes(e) : false) ?? false;
   }
 
-  protected readonly Gearlocs = Gearlocs;
+  protected readonly Gearloc = Gearloc;
   protected readonly Difficulty = Difficulty;
-  protected readonly Tyrants = Tyrants;
+  protected readonly Tyrant = Tyrant;
 }
