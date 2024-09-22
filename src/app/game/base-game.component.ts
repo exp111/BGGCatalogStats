@@ -45,7 +45,9 @@ export abstract class BaseGameComponent {
       ) as string[];
   }
 
-  protected abstract ownedCheck(v: any): boolean;
+  protected ownedCheck(val: any) {
+    return this.stats?.OwnedContent.some(p => this.backupReader.GameContent[p].includes(val)) ?? false;
+  }
 
   public formatter(val?: string) {
     if (!val) {

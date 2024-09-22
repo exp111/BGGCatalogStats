@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../../../model/bgg-catalog";
-import {formatToEnumString} from "../../enum-utils";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
 import {
+  BoxContent,
   Difficulty,
   Gearloc,
   TMB_GAME_NAME,
@@ -16,6 +16,9 @@ import {
   providedIn: 'root'
 })
 export class TMBBackupReaderService extends BaseBackupReaderService {
+  protected override BaseGameName = TMB_GAME_NAME;
+  public override GameContent = BoxContent;
+
   protected override enumNormalizers = {
     [Tyrant.END]: this.normalizeTyrantName
   }
@@ -45,17 +48,15 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
   public override parse(backup: BGGCatalogBackup) {
     let ret = {
       Plays: [],
-      OwnedExpansions: []
+      OwnedContent: []
     } as TooManyBonesStats;
     let plays = [];
     // get game id
-    let game = backup.games.find(g => g.name == TMB_GAME_NAME);
+    let game = this.findBaseGame(backup);
     if (!game) {
-      console.error("Game not found");
       return ret;
     }
-    let owned = backup.games.filter(g => g.name.startsWith(TMB_GAME_NAME));
-    ret.OwnedExpansions = owned.map(g => g.name);
+    ret.OwnedContent = this.getOwnedContent(backup);
     let gameId = game.id;
     // get custom data fields
     let gearlocField = this.findCustomField(backup, gameId, "Gearloc");

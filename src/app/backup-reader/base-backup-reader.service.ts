@@ -7,14 +7,40 @@ import {formatToEnumString, getEnumValue} from "../enum-utils";
   providedIn: 'root'
 })
 export abstract class BaseBackupReaderService {
-  constructor() {
-    (window as any).backupReader = this;
-  }
+  private playFieldValueGetter = (backup: BGGCatalogBackup, field: CustomFieldEntry, play: PlayEntry) => this.getFieldValue(backup, field.id, play.id);
+  private playerFieldValueGetter = (backup: BGGCatalogBackup, field: CustomFieldEntry, play: PlayerPlayEntry) => this.getFieldValue(backup, field.id, play.playId, play.id);
 
   /** Can contain enum normalizers that transform string names to their normalized enum value names.
    *  Allows support for localized or alternative enum value names.
    **/
   protected abstract enumNormalizers: { [end: number]: (e: string) => string };
+
+  protected abstract BaseGameName: string;
+  public abstract GameContent: {[name: string]: any[]}
+
+  constructor() {
+    (window as any).backupReader = this;
+  }
+
+  protected findBaseGame(backup: BGGCatalogBackup) {
+    let game = backup.games.find(g => g.name == this.BaseGameName);
+    if (!game) {
+      console.error("Game not found");
+      return undefined;
+    }
+    return game;
+  }
+
+  protected getOwnedContent(backup: BGGCatalogBackup) {
+    let keys = Object.keys(this.GameContent);
+    let ret = [];
+    for (let key of keys) {
+      if (backup.games.find(g => g.name.toLowerCase() == key.toLowerCase())) {
+        ret.push(key);
+      }
+    }
+    return ret;
+  }
 
   /* Parses a string to an enum value of the given enum. Normalizes the name if a normalizer is in {@link enumNormalizers} */
   protected parseEnumValue(enums: any, str: string) {
@@ -26,9 +52,6 @@ export abstract class BaseBackupReaderService {
     let normalizer = this.enumNormalizers[endVal] ?? ((e: string) => e);
     return getEnumValue(enums, normalizer(formatToEnumString(str)))
   }
-
-  private playFieldValueGetter = (backup: BGGCatalogBackup, field: CustomFieldEntry, play: PlayEntry) => this.getFieldValue(backup, field.id, play.id);
-  private playerFieldValueGetter = (backup: BGGCatalogBackup, field: CustomFieldEntry, play: PlayerPlayEntry) => this.getFieldValue(backup, field.id, play.playId, play.id);
 
   /* Parses the value of a custom play field */
   protected parseCustomFieldValuePlay(backup: BGGCatalogBackup, play: PlayEntry, enums: any, field: CustomFieldEntry, multiField?: CustomFieldEntry) {

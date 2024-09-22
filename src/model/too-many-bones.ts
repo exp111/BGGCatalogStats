@@ -50,5 +50,4 @@ export interface TooManyBonesPlay extends BaseGamePlay {
 
 export interface TooManyBonesStats extends BaseGameStats {
   Plays: TooManyBonesPlay[];
-  OwnedExpansions: string[];
 }

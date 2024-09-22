@@ -100,5 +100,4 @@ export interface MarvelChampionsPlay extends BaseGamePlay {
 
 export interface MarvelChampionsStats extends BaseGameStats {
   Plays: MarvelChampionsPlay[];
-  OwnedPacks: string[];
 }

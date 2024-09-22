@@ -12,4 +12,5 @@ export interface BaseGamePlay {
 
 export interface BaseGameStats {
   Plays: BaseGamePlay[];
+  OwnedContent: string[];
 }

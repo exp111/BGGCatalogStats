@@ -9,6 +9,7 @@ import {
   MarvelChampionsStats,
   MC_GAME_NAME,
   Modular,
+  PackContent,
   Scenario
 } from "../../../model/marvel-champions";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
@@ -17,6 +18,9 @@ import {BaseBackupReaderService} from "../base-backup-reader.service";
   providedIn: 'root'
 })
 export class MCBackupReaderService extends BaseBackupReaderService {
+  protected override BaseGameName = MC_GAME_NAME;
+  public override GameContent = PackContent;
+
   protected override enumNormalizers = {
     [Aspect.END]: this.normalizeAspectName,
     [Modular.END]: this.normalizeModularName
@@ -64,18 +68,15 @@ export class MCBackupReaderService extends BaseBackupReaderService {
   public override parse(backup: BGGCatalogBackup) {
     let ret = {
       Plays: [],
-      OwnedPacks: []
+      OwnedContent: []
     } as MarvelChampionsStats;
     let plays = [];
     // get game id
-    //TODO: outsource this to base class. instead iterate over PackContent entries to check names
-    let game = backup.games.find(g => g.name == MC_GAME_NAME);
+    let game = this.findBaseGame(backup);
     if (!game) {
-      console.error("Game not found");
       return ret;
     }
-    let owned = backup.games.filter(g => g.name.startsWith(MC_GAME_NAME));
-    ret.OwnedPacks = owned.map(g => g.name);
+    ret.OwnedContent = this.getOwnedContent(backup);
     let gameId = game.id;
     // get custom data fields
     let aspectField = this.findCustomField(backup, gameId, "Aspect");

@@ -212,10 +212,6 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return entries ? entries.map(a => this.formatter(enums[a])).join(", ") : this.formatter();
   }
 
-  protected override ownedCheck(e: any) {
-    return this.stats?.OwnedPacks.some(p => PackContent[p] ? PackContent[p].includes(e) : false) ?? false;
-  }
-
   protected readonly Hero = Hero;
   protected readonly Aspect = Aspect;
   protected readonly Scenario = Scenario;

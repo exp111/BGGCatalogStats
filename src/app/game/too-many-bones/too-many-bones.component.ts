@@ -130,10 +130,6 @@ export class TooManyBonesComponent extends BaseGameComponent {
     return plays.some(p => p.Won && p.Tyrant == tyrant && p.Difficulty == difficulty);
   }
 
-  protected override ownedCheck(e: any) {
-    return this.stats?.OwnedExpansions.some(p => BoxContent[p] ? BoxContent[p].includes(e) : false) ?? false;
-  }
-
   protected readonly Gearloc = Gearloc;
   protected readonly Difficulty = Difficulty;
   protected readonly Tyrant = Tyrant;
