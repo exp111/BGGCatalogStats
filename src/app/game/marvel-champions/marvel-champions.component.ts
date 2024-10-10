@@ -45,6 +45,17 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     super(backupService);
   }
 
+  protected override playedCheck(val: number) {
+    if (!this.stats) {
+      return true;
+    }
+    return this.stats.Plays.some(p => p.Scenario == val
+      || p.Difficulty == val
+      || p.Modulars.includes(val)
+      || this.playHasHero(p, val)
+      || this.playHasHero(p, undefined, val));
+  }
+
   playHasHero(play: MarvelChampionsPlay, hero?: Hero, aspect?: Aspect) {
     return play.Players.some(p => (hero == undefined || p.Hero == hero)
       && (!this.onlyMe || p.IsMe)

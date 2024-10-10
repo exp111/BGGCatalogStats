@@ -31,11 +31,19 @@ export class TooManyBonesComponent extends BaseGameComponent {
   declare stats?: TooManyBonesStats;
   override exampleFileName = "tmb-example";
 
-  protected override enumBeautifiers = {
-  }
+  protected override enumBeautifiers = {}
 
   constructor(protected backupService: TMBBackupReaderService) {
     super(backupService);
+  }
+
+  protected override playedCheck(val: number): boolean {
+    if (!this.stats) {
+      return true;
+    }
+    return this.stats.Plays.some(p => p.Difficulty == val
+      || p.Tyrant == val
+      || this.playHasGearloc(p, val));
   }
 
   playHasGearloc(play: TooManyBonesPlay, gearloc?: Gearloc) {

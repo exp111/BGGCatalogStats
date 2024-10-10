@@ -22,6 +22,10 @@
       <input id="onlyOwnedCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyOwned"/>
       <label for="onlyOwnedCheckbox" class="form-check-label">Only owned?</label>
     </div>
+    <div class="form-check">
+      <input id="onlyPlayedCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyPlayed"/>
+      <label for="onlyPlayedCheckbox" class="form-check-label">Only played?</label>
+    </div>
   </div>
   <h4>Total Plays: {{ this.getPlays(this.stats).length }}/ Total Won: {{ this.getWins(this.getPlays(this.stats)) }}</h4>
   <h4>Hero Playrate</h4>
@@ -121,7 +125,7 @@
     [YAxis]="enumToNumberArray(Aspect)"
     [YFormatter]="beautifyEnum.bind(this, Aspect)"
     [cellClassGetter]="this.winrateCellClassGetter"
-    [getter]="scenarioAspectWinrateGetter.bind(this)"></app-table>-->
+    [getter]="scenarioAspectWinrateGetter.bind(this)"></app-table>
   <h4>Plays</h4>
   @for (play of this.getPlays(this.stats); track play.Id) {
     <div class="card card-body">

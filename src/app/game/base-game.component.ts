@@ -9,6 +9,7 @@ export abstract class BaseGameComponent {
   stats?: BaseGameStats;
   onlyMe: boolean = false;
   onlyOwned: boolean = true;
+  onlyPlayed: boolean = true;
   abstract exampleFileName: string;
   /**
    * Can contain enum beatifiers that transform enum values to their beautified string value.
@@ -45,12 +46,16 @@ export abstract class BaseGameComponent {
     // filter out the values
     return enumToNumberArray(e)
       .filter(v => v != endMarker) // ignore end marker
-      .filter(v => !this.onlyOwned || this.ownedCheck(v) // only show owned
-      ) as number[];
+      .filter(v => !this.onlyOwned || this.ownedCheck(v)) // only show owned
+      .filter(v => !this.onlyPlayed || this.playedCheck(v)) as number[];
   }
 
   protected ownedCheck(val: number) {
     return this.stats?.OwnedContent.some(p => this.backupReader.GameContent[p].includes(val)) ?? false;
+  }
+
+  protected playedCheck(val: number) {
+    return true;
   }
 
   protected beautifyEnum(enums: any, val: number | null) {
