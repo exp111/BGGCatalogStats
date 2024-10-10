@@ -9,36 +9,42 @@ import {Component, Input} from '@angular/core';
 })
 export class TableComponent {
   //TODO: cache + listen to ngonchanges
-  @Input() XAxis!: string[];
-  @Input() XFormatter?: (x: string) => string;
-  @Input() YAxis!: string[];
-  @Input() YFormatter?: (y: string) => string;
-  @Input() getter!: (x: string, y: string) => any;
-  @Input() columnClassGetter?: (x: string) => string;
-  @Input() rowClassGetter?: (y: string) => string;
+
+  // items on the x axis
+  @Input() XAxis!: any[];
+  // formatter for the x axis headers
+  @Input() XFormatter?: (x: any) => string;
+  // items on the y axis
+  @Input() YAxis!: any[];
+  // formatter for the y axis headers
+  @Input() YFormatter?: (y: any) => string;
+  // gets the value of the cells at (x,y)
+  @Input() getter!: (x: any, y: any) => any;
+  @Input() columnClassGetter?: (x: any) => string;
+  @Input() rowClassGetter?: (y: any) => string;
   @Input() cellClassGetter?: (value: any) => string;
 
-  protected getValue(x: string, y: string) {
+  protected getValue(x: number, y: number) {
     return this.getter(x, y);
   }
 
-  protected getXHeader(x: string) {
+  protected getXHeader(x: number) {
     return this.XFormatter ? this.XFormatter(x) : x;
   }
 
-  protected getYHeader(y: string) {
+  protected getYHeader(y: number) {
     return this.YFormatter ? this.YFormatter(y) : y;
   }
 
-  protected getColumnClass(x: string) {
+  protected getColumnClass(x: number) {
     return this.columnClassGetter ? this.columnClassGetter(x) : "";
   }
 
-  protected getRowClass(y: string) {
+  protected getRowClass(y: number) {
     return this.rowClassGetter ? this.rowClassGetter(y) : "";
   }
 
-  protected getCellClass(x: string, y: string) {
+  protected getCellClass(x: number, y: number) {
     return this.cellClassGetter ? this.cellClassGetter(this.getValue(x, y)) : "";
   }
 }

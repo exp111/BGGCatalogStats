@@ -1,5 +1,4 @@
 import {BaseGamePlay, BaseGamePlayer, BaseGameStats} from "./base-game-stats";
-import {enumValuesToStrings} from "../app/enum-utils";
 
 export const TMB_GAME_NAME = "Too Many Bones";
 
@@ -8,6 +7,10 @@ export enum Gearloc {
   Boomer,
   Tantrum,
   Picket,
+  Ghillie,
+  Gasket,
+  Nugget,
+  Tink,
   END
 }
 
@@ -31,9 +34,21 @@ export enum Difficulty {
 
 export const BoxContent: ({ [key: string]: any[] }) = {
   "Too Many Bones": [
-    ...enumValuesToStrings(Gearloc, Gearloc.Patches, Gearloc.Boomer, Gearloc.Tantrum, Gearloc.Picket),
-    ...enumValuesToStrings(Tyrant, Tyrant.Mulmesh, Tyrant.Nom, Tyrant.Drellen, Tyrant.Marrow, Tyrant.GoblinKing, Tyrant.Gendricks, Tyrant.Duster),
-    ...enumValuesToStrings(Difficulty, Difficulty.Adventurer, Difficulty.Heroic, Difficulty.Legendary)
+    Gearloc.Patches, Gearloc.Boomer, Gearloc.Tantrum, Gearloc.Picket,
+    Tyrant.Mulmesh, Tyrant.Nom, Tyrant.Drellen, Tyrant.Marrow, Tyrant.GoblinKing, Tyrant.Gendricks, Tyrant.Duster,
+    Difficulty.Adventurer, Difficulty.Heroic, Difficulty.Legendary
+  ],
+  "Too Many Bones: Ghillie": [
+    Gearloc.Ghillie
+  ],
+  "Too Many Bones: Gasket": [
+    Gearloc.Gasket
+  ],
+  "Too Many Bones: Nugget": [
+    Gearloc.Nugget
+  ],
+  "Too Many Bones: Tink": [
+    Gearloc.Tink
   ],
   //TODO: expansions
 }

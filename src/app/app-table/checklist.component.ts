@@ -9,11 +9,11 @@ import {TableComponent} from "./table.component";
   styleUrl: './checklist.component.css'
 })
 export class ChecklistComponent extends TableComponent {
-  protected override getValue(x: string, y: string) {
+  protected override getValue(x: any, y: any) {
     return this.getter(x, y) ? "X" : "";
   }
 
-  override getColumnClass(x: string) {
+  override getColumnClass(x: any) {
     let empty = true;
     let full = true;
     for (let y of this.YAxis) {
@@ -26,7 +26,7 @@ export class ChecklistComponent extends TableComponent {
     return full ? "full" : empty ? "empty" : "incomplete";
   }
 
-  override getRowClass(y: string) {
+  override getRowClass(y: any) {
     let empty = true;
     let full = true;
     for (let x of this.XAxis) {
@@ -39,7 +39,7 @@ export class ChecklistComponent extends TableComponent {
     return full ? "full" : empty ? "empty" : "incomplete";
   }
 
-  override getCellClass(x: string, y: string) {
+  override getCellClass(x: any, y: any) {
     return this.getter(x, y) ? "true" : "false";
   }
 }

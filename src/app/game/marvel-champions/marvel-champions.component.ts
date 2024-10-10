@@ -9,10 +9,8 @@ import {
   MarvelChampionsPlay,
   MarvelChampionsStats,
   Modular,
-  PackContent,
   Scenario
 } from "../../../model/marvel-champions";
-import {getEnumValue} from "../../enum-utils";
 import {BaseGameComponent} from "../base-game.component";
 import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-backup-reader.service";
 
@@ -32,6 +30,16 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   static override Title = 'Marvel Champions Stats';
   declare stats?: MarvelChampionsStats;
   override exampleFileName = "mc-example";
+
+  protected override enumBeautifiers = {
+    [Hero.END]: this.beautifyHeroName
+  }
+
+  private beautifyHeroName(e: number) {
+    return {
+      [Hero.SPdr]: "SP//dr"
+    }[e] ?? null;
+  }
 
   constructor(protected backupService: MCBackupReaderService) {
     super(backupService);
@@ -59,157 +67,135 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return plays.reduce((a, b) => a + Number(b.Won), 0);
   }
 
-  heroPlayrateGetter(_: string, y: string) {
+  heroPlayrateGetter(_: string, hero: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let hero = getEnumValue(Hero, y);
     let heroPlays = plays.filter(p => this.playHasHero(p, hero));
     return this.getRate(plays.length, heroPlays.length);
   }
 
-  aspectPlayrateGetter(_: string, y: string) {
+  aspectPlayrateGetter(_: string, aspect: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let aspect = getEnumValue(Aspect, y);
     let aspectPlays = plays.filter(p => this.playHasHero(p, undefined, aspect));
     return this.getRate(plays.length, aspectPlays.length);
   }
 
-  scenarioPlayrateGetter(_: string, y: string) {
+  scenarioPlayrateGetter(_: string, scenario: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let scenario = getEnumValue(Scenario, y);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario);
     return this.getRate(plays.length, scenarioPlays.length);
   }
 
-  heroWinrateGetter(_: string, y: string) {
+  heroWinrateGetter(_: string, hero: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let hero = getEnumValue(Hero, y);
     let heroPlays = plays.filter(p => this.playHasHero(p, hero));
     let wins = this.getWins(heroPlays);
     return this.getRate(heroPlays.length, wins);
   }
 
-  aspectWinrateGetter(_: string, y: string) {
+  aspectWinrateGetter(_: string, aspect: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let aspect = getEnumValue(Aspect, y);
     let aspectPlays = plays.filter(p => this.playHasHero(p, undefined, aspect));
     let wins = this.getWins(aspectPlays);
     return this.getRate(aspectPlays.length, wins);
   }
 
-  scenarioWinrateGetter(_: string, y: string) {
+  scenarioWinrateGetter(_: string, scenario: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let scenario = getEnumValue(Scenario, y);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario);
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
   }
 
-  scenarioHeroWinrateGetter(x: string, y: string) {
+  scenarioHeroWinrateGetter(scenario: number, hero: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let scenario = getEnumValue(Scenario, x);
-    let hero = getEnumValue(Hero, y);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p, hero));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
   }
 
-  heroAspectWinrateGetter(x: string, y: string) {
+  heroAspectWinrateGetter(hero: number, aspect: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let hero = getEnumValue(Hero, x);
-    let aspect = getEnumValue(Aspect, y);
     let scenarioPlays = plays.filter(p => this.playHasHero(p, hero, aspect));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
   }
 
-  scenarioAspectWinrateGetter(x: string, y: string) {
+  scenarioAspectWinrateGetter(scenario: number, aspect: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let scenario = getEnumValue(Scenario, x);
-    let aspect = getEnumValue(Aspect, y);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
   }
 
-  heroAspectWonGetter(x: string, y: string) {
+  heroAspectWonGetter(hero: number, aspect: number) {
     if (!this.stats) {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let hero = getEnumValue(Hero, x);
-    let aspect = getEnumValue(Aspect, y);
     return plays.some(p => p.Won && this.playHasHero(p, hero, aspect));
   }
 
-  scenarioHeroWonGetter(x: string, y: string) {
+  scenarioHeroWonGetter(scenario: number, hero: number) {
     if (!this.stats) {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let scenario = getEnumValue(Scenario, x);
-    let hero = getEnumValue(Hero, y);
     return plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, hero));
   }
 
-  scenarioAspectWonGetter(x: string, y: string) {
+  scenarioAspectWonGetter(scenario: number, aspect: number) {
     if (!this.stats) {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let scenario = getEnumValue(Scenario, x);
-    let aspect = getEnumValue(Aspect, y);
     return plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
   }
 
-  scenarioModuleWonGetter(x: string, y: string) {
+  scenarioModularWonGetter(scenario: number, modular: number) {
     if (!this.stats) {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let scenario = getEnumValue(Scenario, x);
-    let module = getEnumValue(Modular, y);
-    return plays.some(p => p.Won && p.Scenario == scenario && p.Modulars.includes(module));
+    return plays.some(p => p.Won && p.Scenario == scenario && p.Modulars.includes(modular));
   }
 
-  scenarioDifficultyWonGetter(x: string, y: string) {
+  scenarioDifficultyWonGetter(scenario: number, difficulty: number) {
     if (!this.stats) {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let scenario = getEnumValue(Scenario, x);
-    let difficulty = getEnumValue(Difficulty, y);
     return plays.some(p => p.Won && p.Scenario == scenario && p.Difficulty == difficulty);
   }
 
   formatEnumList(enums: any, entries: any[]) {
-    return entries ? entries.map(a => this.formatter(enums[a])).join(", ") : this.formatter();
+    return entries ? entries.map(a => this.beautifyEnum(enums, a)).join(", ") : this.beautifyEnum(null, null); // else just return the default value
   }
 
   protected readonly Hero = Hero;

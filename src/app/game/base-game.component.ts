@@ -1,7 +1,7 @@
 import {BaseBackupReaderService} from "../backup-reader/base-backup-reader.service";
 import {Directive} from "@angular/core";
 import {BaseGameStats} from "../../model/base-game-stats";
-import {enumToArray, formatFromEnumString} from "../enum-utils";
+import {enumToNumberArray, formatFromEnumString} from "../enum-utils";
 
 @Directive()
 export abstract class BaseGameComponent {
@@ -10,6 +10,10 @@ export abstract class BaseGameComponent {
   onlyMe: boolean = false;
   onlyOwned: boolean = true;
   abstract exampleFileName: string;
+  /**
+   * Can contain enum beatifiers that transform enum values to their beautified string value.
+   **/
+  protected abstract enumBeautifiers: { [end: number]: (e: number) => string | null };
 
   constructor(protected backupReader: BaseBackupReaderService) {
     (window as any).app = this;
@@ -36,23 +40,33 @@ export abstract class BaseGameComponent {
     return value.startsWith("0.0%") ? "table-danger" : value.startsWith("100.0%") ? "table-success" : "";
   }
 
-  //TODO: can we instead get the enum values instead of strings?
-  protected enumToArray(e: any) {
+  protected enumToNumberArray(e: any) {
+    let endMarker = e["END"];
     // filter out the values
-    return enumToArray(e)
-      .filter(v => v != "END") // ignore end marker
+    return enumToNumberArray(e)
+      .filter(v => v != endMarker) // ignore end marker
       .filter(v => !this.onlyOwned || this.ownedCheck(v) // only show owned
-      ) as string[];
+      ) as number[];
   }
 
-  protected ownedCheck(val: any) {
+  protected ownedCheck(val: number) {
     return this.stats?.OwnedContent.some(p => this.backupReader.GameContent[p].includes(val)) ?? false;
   }
 
-  public formatter(val?: string) {
-    if (!val) {
+  protected beautifyEnum(enums: any, val: number | null) {
+    if (val == null || !enums) {
       return "unknown";
     }
-    return formatFromEnumString(val);
+    let endVal = enums["END"];
+    if (!endVal) {
+      console.error(`Can't find 'END' value for ${enums}, value: ${val}`);
+      endVal = -1;
+    }
+    let fallback = ((e: any) => formatFromEnumString(enums[e]));
+    if (this.enumBeautifiers[endVal]) {
+      let ret = this.enumBeautifiers[endVal](val);
+      return ret ?? fallback(val);
+    }
+    return fallback(val);
   }
 }

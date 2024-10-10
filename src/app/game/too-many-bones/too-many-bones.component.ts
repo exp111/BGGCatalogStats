@@ -31,6 +31,9 @@ export class TooManyBonesComponent extends BaseGameComponent {
   declare stats?: TooManyBonesStats;
   override exampleFileName = "tmb-example";
 
+  protected override enumBeautifiers = {
+  }
+
   constructor(protected backupService: TMBBackupReaderService) {
     super(backupService);
   }
@@ -56,77 +59,67 @@ export class TooManyBonesComponent extends BaseGameComponent {
     return plays.reduce((a, b) => a + Number(b.Won), 0);
   }
 
-  gearlocPlayrateGetter(_: string, y: string) {
+  gearlocPlayrateGetter(_: string, gearloc: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let gearloc = getEnumValue(Gearloc, y);
     let gearlocPlays = plays.filter(p => this.playHasGearloc(p, gearloc));
     return this.getRate(plays.length, gearlocPlays.length);
   }
 
-  tyrantPlayrateGetter(_: string, y: string) {
+  tyrantPlayrateGetter(_: string, tyrant: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrant, y);
     let tyrantPlays = plays.filter(p => p.Tyrant == tyrant);
     return this.getRate(plays.length, tyrantPlays.length);
   }
 
-  gearlocWinrateGetter(_: string, y: string) {
+  gearlocWinrateGetter(_: string, gearloc: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let gearloc = getEnumValue(Gearloc, y);
     let gearlocPlays = plays.filter(p => this.playHasGearloc(p, gearloc));
     let wins = this.getWins(gearlocPlays);
     return this.getRate(gearlocPlays.length, wins);
   }
 
-  tyrantWinrateGetter(_: string, y: string) {
+  tyrantWinrateGetter(_: string, tyrant: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrant, y);
     let tyrantPlays = plays.filter(p => p.Tyrant == tyrant);
     let wins = this.getWins(tyrantPlays);
     return this.getRate(tyrantPlays.length, wins);
   }
 
-  tyrantGearlocWinrateGetter(x: string, y: string) {
+  tyrantGearlocWinrateGetter(tyrant: number, gearloc: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrant, x);
-    let gearloc = getEnumValue(Gearloc, y);
     let tyrantPlays = plays.filter(p => p.Tyrant == tyrant && this.playHasGearloc(p, gearloc));
     let wins = this.getWins(tyrantPlays);
     return this.getRate(tyrantPlays.length, wins);
   }
 
-  tyrantGearlocWonGetter(x: string, y: string) {
+  tyrantGearlocWonGetter(tyrant: number, gearloc: number) {
     if (!this.stats) {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrant, x);
-    let gearloc = getEnumValue(Gearloc, y);
     return plays.some(p => p.Won && p.Tyrant == tyrant && this.playHasGearloc(p, gearloc));
   }
 
-  tyrantDifficultyWonGetter(x: string, y: string) {
+  tyrantDifficultyWonGetter(tyrant: number, difficulty: number) {
     if (!this.stats) {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    let tyrant = getEnumValue(Tyrant, x);
-    let difficulty = getEnumValue(Difficulty, y);
     return plays.some(p => p.Won && p.Tyrant == tyrant && p.Difficulty == difficulty);
   }
 
