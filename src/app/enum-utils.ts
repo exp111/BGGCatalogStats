@@ -5,6 +5,7 @@ export function formatToEnumString(str: string) {
   return str
     .replaceAll(".", "")
     .replaceAll("-", " ")
+    .replaceAll("/", "")
     .replaceAll(/\s(\w)/g, (c) => c[1].toUpperCase()) // convert to camel case
     .trim();
 }

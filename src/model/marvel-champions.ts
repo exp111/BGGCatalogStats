@@ -15,6 +15,50 @@ export enum Hero {
   SpiderWoman,
   GhostSpider,
   MilesMorales,
+  Wolverine,
+  Thor,
+  CaptainAmerica,
+  BlackWidow,
+  MsMarvel,
+  Hulk,
+  AntMan,
+  ScarletWitch,
+  Venom,
+  Quicksilver,
+  Wasp,
+  StarLord,
+  Iceman,
+  Gamora,
+  Drax,
+  Nebula,
+  Vision,
+  WarMachine,
+  SPdr,
+  SpiderHam,
+  Gambit,
+  IronHeart,
+  Valkyrie,
+  Cyclops,
+  Nova,
+  Phoenix,
+  Storm,
+  Rogue,
+  Psylocke,
+  X23,
+  Angel,
+  Jubilee,
+  Magneto,
+  Nightcrawler,
+  Cable,
+  Domino,
+  Colossus,
+  Shadowcat,
+  Warlock,
+  Spectrum,
+  Bishop,
+  Magik,
+  RocketRaccoon,
+  Groot,
   END
 }
 
@@ -36,7 +80,10 @@ export enum Scenario {
   TaskMaster,
   Zola,
   RedSkull,
+  Sandman,
+  DoctorOctopus,
   Venom,
+  Mysterio,
   END
 }
 
@@ -74,6 +121,10 @@ export const PackContent: ({ [key: string]: any[] }) = {
     ...enumValuesToStrings(Hero, Hero.DoctorStrange),
     //TODO: modular?
   ],
+  "Marvel Champions: The Card Game \u2013  Wolverine Hero Pack": [
+    ...enumValuesToStrings(Hero, Hero.Wolverine),
+    //TODO: modular?
+  ],
   "Marvel Champions: The Card Game \u2013 The Rise of Red Skull": [
     ...enumValuesToStrings(Hero, Hero.Hawkeye, Hero.SpiderWoman),
     ...enumValuesToStrings(Scenario, Scenario.Crossbones, Scenario.AbsorbingMan, Scenario.TaskMaster, Scenario.Zola, Scenario.RedSkull),
@@ -81,7 +132,7 @@ export const PackContent: ({ [key: string]: any[] }) = {
   ],
   "Marvel Champions: The Card Game \u2013 Sinister Motives": [
     ...enumValuesToStrings(Hero, Hero.GhostSpider, Hero.MilesMorales),
-    ...enumValuesToStrings(Scenario, Scenario.Venom)
+    ...enumValuesToStrings(Scenario, Scenario.Sandman, Scenario.DoctorOctopus, Scenario.Venom, Scenario.Mysterio)
     //TODO: remaining
   ]
 }
