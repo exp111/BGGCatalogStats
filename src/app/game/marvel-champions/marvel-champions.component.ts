@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ChecklistComponent} from "../../app-table/checklist.component";
+import {ChecklistComponent, ChecklistState} from "../../app-table/checklist.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TableComponent} from "../../app-table/table.component";
 import {
@@ -170,7 +170,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    return plays.some(p => p.Won && this.playHasHero(p, hero, aspect));
+    return this.playsToChecklist(plays.filter(p => this.playHasHero(p, hero, aspect)));
   }
 
   scenarioHeroWonGetter(scenario: number, hero: number) {
@@ -178,7 +178,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    return plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, hero));
+    return this.playsToChecklist(plays.filter(p => p.Scenario == scenario && this.playHasHero(p, hero)));
   }
 
   scenarioAspectWonGetter(scenario: number, aspect: number) {
@@ -186,7 +186,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    return plays.some(p => p.Won && p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
+    return this.playsToChecklist(plays.filter(p => p.Scenario == scenario && this.playHasHero(p, undefined, aspect)));
   }
 
   scenarioModularWonGetter(scenario: number, modular: number) {
@@ -194,15 +194,15 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    return plays.some(p => p.Won && p.Scenario == scenario && p.Modulars.includes(modular));
+    return this.playsToChecklist(plays.filter(p => p.Scenario == scenario && p.Modulars.includes(modular)));
   }
 
   scenarioDifficultyWonGetter(scenario: number, difficulty: number) {
     if (!this.stats) {
-      return false;
+      return ChecklistState.Empty;
     }
     let plays = this.getPlays(this.stats);
-    return plays.some(p => p.Won && p.Scenario == scenario && p.Difficulty == difficulty);
+    return this.playsToChecklist(plays.filter(p => p.Scenario == scenario && p.Difficulty == difficulty));
   }
 
   formatEnumList(enums: any, entries: any[]) {

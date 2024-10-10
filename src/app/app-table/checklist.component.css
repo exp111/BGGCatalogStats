@@ -1,8 +1,11 @@
 td {
-  &.true {
+  &.check {
     background: var(--bs-success-bg-subtle);
   }
-  &.false {
+  &.incomplete {
+    background: var(--bs-warning-bg-subtle);
+  }
+  &.empty {
     background: var(--bs-danger-bg-subtle);
   }
 }

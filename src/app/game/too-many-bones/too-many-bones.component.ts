@@ -1,18 +1,10 @@
 import {Component} from '@angular/core';
-import {ChecklistComponent} from "../../app-table/checklist.component";
+import {ChecklistComponent, ChecklistState} from "../../app-table/checklist.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TableComponent} from "../../app-table/table.component";
 import {BaseGameComponent} from "../base-game.component";
-import {
-  BoxContent,
-  Difficulty,
-  Gearloc,
-  TooManyBonesPlay,
-  TooManyBonesStats,
-  Tyrant
-} from "../../../model/too-many-bones";
+import {Difficulty, Gearloc, TooManyBonesPlay, TooManyBonesStats, Tyrant} from "../../../model/too-many-bones";
 import {TMBBackupReaderService} from "../../backup-reader/too-many-bones/tmb-backup-reader.service";
-import {getEnumValue} from "../../enum-utils";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -120,15 +112,15 @@ export class TooManyBonesComponent extends BaseGameComponent {
       return false;
     }
     let plays = this.getPlays(this.stats);
-    return plays.some(p => p.Won && p.Tyrant == tyrant && this.playHasGearloc(p, gearloc));
+    return this.playsToChecklist(plays.filter(p => p.Tyrant == tyrant && this.playHasGearloc(p, gearloc)));
   }
 
   tyrantDifficultyWonGetter(tyrant: number, difficulty: number) {
     if (!this.stats) {
-      return false;
+      return ChecklistState.Empty;
     }
     let plays = this.getPlays(this.stats);
-    return plays.some(p => p.Won && p.Tyrant == tyrant && p.Difficulty == difficulty);
+    return this.playsToChecklist(plays.filter(p => p.Tyrant == tyrant && p.Difficulty == difficulty))
   }
 
   protected readonly Gearloc = Gearloc;

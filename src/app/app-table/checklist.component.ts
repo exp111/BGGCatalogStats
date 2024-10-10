@@ -1,6 +1,12 @@
 import {Component} from '@angular/core';
 import {TableComponent} from "./table.component";
 
+export enum ChecklistState {
+  Empty,
+  Incomplete,
+  Check,
+}
+
 @Component({
   selector: 'app-checklist',
   standalone: true,
@@ -10,17 +16,28 @@ import {TableComponent} from "./table.component";
 })
 export class ChecklistComponent extends TableComponent {
   protected override getValue(x: any, y: any) {
-    return this.getter(x, y) ? "X" : "";
+    switch (this.getter(x, y)) {
+      default:
+      case ChecklistState.Empty:
+        return "";
+      case ChecklistState.Incomplete:
+        return "\u2717";
+      case ChecklistState.Check:
+        return "\u2713";
+    }
   }
 
   override getColumnClass(x: any) {
     let empty = true;
     let full = true;
     for (let y of this.YAxis) {
-      if (!this.getter(x, y)) {
+      let val = this.getter(x, y);
+      if (val != ChecklistState.Check) {
         full = false;
       } else {
-        empty = false;
+        if (val != ChecklistState.Empty) {
+          empty = false;
+        }
       }
     }
     return full ? "full" : empty ? "empty" : "incomplete";
@@ -30,16 +47,28 @@ export class ChecklistComponent extends TableComponent {
     let empty = true;
     let full = true;
     for (let x of this.XAxis) {
-      if (!this.getter(x, y)) {
+      let val = this.getter(x, y);
+      if (val != ChecklistState.Check) {
         full = false;
       } else {
-        empty = false;
+        if (val != ChecklistState.Empty) {
+          empty = false;
+        }
       }
     }
     return full ? "full" : empty ? "empty" : "incomplete";
   }
 
   override getCellClass(x: any, y: any) {
-    return this.getter(x, y) ? "true" : "false";
+    switch (this.getter(x, y)) {
+      case ChecklistState.Check:
+        return "check";
+      case ChecklistState.Incomplete:
+        return "incomplete";
+      case ChecklistState.Empty:
+        return "empty";
+      default:
+        return "";
+    }
   }
 }

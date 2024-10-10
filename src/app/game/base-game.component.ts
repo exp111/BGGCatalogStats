@@ -1,7 +1,8 @@
 import {BaseBackupReaderService} from "../backup-reader/base-backup-reader.service";
 import {Directive} from "@angular/core";
-import {BaseGameStats} from "../../model/base-game-stats";
+import {BaseGamePlay, BaseGameStats} from "../../model/base-game-stats";
 import {enumToNumberArray, formatFromEnumString} from "../enum-utils";
+import {ChecklistState} from "../app-table/checklist.component";
 
 @Directive()
 export abstract class BaseGameComponent {
@@ -73,5 +74,12 @@ export abstract class BaseGameComponent {
       return ret ?? fallback(val);
     }
     return fallback(val);
+  }
+
+  protected playsToChecklist(plays: BaseGamePlay[]): ChecklistState {
+    if (plays.length == 0) {
+      return ChecklistState.Empty;
+    }
+    return plays.some(p => p.Won) ? ChecklistState.Check : ChecklistState.Incomplete;
   }
 }
