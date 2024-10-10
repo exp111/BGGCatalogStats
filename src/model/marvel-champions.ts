@@ -121,8 +121,8 @@ export const PackContent: ({ [key: string]: any[] }) = {
     ...enumValuesToStrings(Hero, Hero.DoctorStrange),
     //TODO: modular?
   ],
-  "Marvel Champions: The Card Game \u2013  Wolverine Hero Pack": [
-    ...enumValuesToStrings(Hero, Hero.Wolverine),
+  "Marvel Champions: The Card Game \u2013 Wolverine Hero Pack": [
+    Hero.Wolverine,
     //TODO: modular?
   ],
   "Marvel Champions: The Card Game \u2013 The Rise of Red Skull": [
