@@ -1,6 +1,9 @@
 import {BaseGamePlay, BaseGamePlayer, BaseGameStats} from "./base-game-stats";
 
 export const MC_GAME_NAME = "Marvel Champions: The Card Game";
+const EXPANSION_PREFIX = `${MC_GAME_NAME} \u2013`
+const expansionName = (str: string) => `${EXPANSION_PREFIX} ${str}`;
+const heroExpansionName = (str: string) => `${expansionName(str)} Hero Pack`;
 
 export enum Hero {
   SpiderMan,
@@ -96,6 +99,7 @@ export enum Modular {
   WeaponMaster,
   HydraPatrol,
   ExperimentalWeapons,
+  Deathstrike,
   END
 }
 
@@ -106,30 +110,30 @@ export enum Difficulty {
 }
 
 export const PackContent: ({ [key: string]: number[] }) = {
-  "Marvel Champions: The Card Game": [
+  [MC_GAME_NAME]: [
     Aspect.Aggression, Aspect.Justice, Aspect.Leadership, Aspect.Protection,
     Hero.SpiderMan, Hero.SheHulk, Hero.BlackPanther, Hero.IronMan, Hero.CaptainMarvel,
     Scenario.Rhino, Scenario.Klaw, Scenario.Ultron,
     Modular.BombThreat, Modular.MastersOfEvil, Modular.UnderAttack, Modular.DoomsdayChair, Modular.LegionsOfHydra,
     Difficulty.Standard, Difficulty.Expert
   ],
-  "Marvel Champions: The Card Game \u2013 Deadpool Hero Pack": [
+  [heroExpansionName("Deadpool")]: [
     Aspect.Deadpool, Hero.Deadpool
   ],
-  "Marvel Champions: The Card Game \u2013 Doctor Strange Hero Pack": [
+  [heroExpansionName("Doctor Strange")]: [
     Hero.DoctorStrange,
     //TODO: modular?
   ],
-  "Marvel Champions: The Card Game \u2013 Wolverine Hero Pack": [
+  [heroExpansionName("Wolverine")]: [
     Hero.Wolverine,
-    //TODO: modular?
+    Modular.Deathstrike
   ],
-  "Marvel Champions: The Card Game \u2013 The Rise of Red Skull": [
+  [expansionName("The Rise of Red Skull")]: [
     Hero.Hawkeye, Hero.SpiderWoman,
     Scenario.Crossbones, Scenario.AbsorbingMan, Scenario.TaskMaster, Scenario.Zola, Scenario.RedSkull,
     Modular.HydraAssault, Modular.WeaponMaster, Modular.HydraPatrol, Modular.ExperimentalWeapons
   ],
-  "Marvel Champions: The Card Game \u2013 Sinister Motives": [
+  [expansionName("Sinister Motives")]: [
     Hero.GhostSpider, Hero.MilesMorales,
     Scenario.Sandman, Scenario.DoctorOctopus, Scenario.Venom, Scenario.Mysterio
     //TODO: remaining
