@@ -43,7 +43,15 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       "HydraAngriff": "HydraAssault",
       "Waffenmeister": "WeaponMaster",
       "HydraPatrouille": "HydraPatrol",
-      "ExperimentelleWaffen": "ExperimentalWeapons"
+      "ExperimentelleWaffen": "ExperimentalWeapons",
+      "StadtImChaos": "CityInChaos",
+      "Bodenst\xe4ndig": "DownToEarth",
+      "GoblinAusr\xfcstung": "GoblinGear",
+      "Guerillataktik": "GuerrillaTactics",
+      "Pers\xf6nlicherAlbtraum": "PersonalNightmare",
+      "SinistrerAngriff": "SinisterAssault",
+      "SymbiotischeSt\xe4rke": "SymbioticStrength",
+      "Fl\xfcsterndeParanoia": "WhispersOfParanoia",
     }[str] ?? str;
   }
 

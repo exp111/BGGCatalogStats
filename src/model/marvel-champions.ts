@@ -83,9 +83,10 @@ export enum Scenario {
   Zola,
   RedSkull,
   Sandman,
-  DoctorOctopus,
   Venom,
   Mysterio,
+  SinisterSix,
+  VenomGoblin,
   END
 }
 
@@ -100,6 +101,15 @@ export enum Modular {
   HydraPatrol,
   ExperimentalWeapons,
   Deathstrike,
+  CityInChaos,
+  DownToEarth,
+  GoblinGear,
+  GuerrillaTactics,
+  OsbornTech,
+  PersonalNightmare,
+  SinisterAssault,
+  SymbioticStrength,
+  WhispersOfParanoia,
   END
 }
 
@@ -135,8 +145,9 @@ export const PackContent: ({ [key: string]: number[] }) = {
   ],
   [expansionName("Sinister Motives")]: [
     Hero.GhostSpider, Hero.MilesMorales,
-    Scenario.Sandman, Scenario.DoctorOctopus, Scenario.Venom, Scenario.Mysterio
-    //TODO: remaining
+    Scenario.Sandman, Scenario.Venom, Scenario.Mysterio, Scenario.SinisterSix, Scenario.VenomGoblin,
+    Modular.CityInChaos, Modular.DownToEarth, Modular.GoblinGear, Modular.GuerrillaTactics, Modular.OsbornTech,
+    Modular.PersonalNightmare, Modular.SinisterAssault, Modular.SymbioticStrength, Modular.WhispersOfParanoia,
   ]
 }
 
