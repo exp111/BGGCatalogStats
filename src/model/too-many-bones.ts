@@ -1,8 +1,6 @@
 import {BaseGamePlay, BaseGamePlayer, BaseGameStats} from "./base-game-stats";
 
-export const TMB_GAME_NAME = "Too Many Bones";
-const EXPANSION_PREFIX = `${TMB_GAME_NAME}:`;
-const expansionName = (str: string) => `${EXPANSION_PREFIX} ${str}`;
+export const TMB_GAME_ID = 192135;
 
 export enum Gearloc {
   Patches,
@@ -35,21 +33,21 @@ export enum Difficulty {
 }
 
 export const BoxContent: ({ [key: string]: any[] }) = {
-  [TMB_GAME_NAME]: [
+  [TMB_GAME_ID]: [
     Gearloc.Patches, Gearloc.Boomer, Gearloc.Tantrum, Gearloc.Picket,
     Tyrant.Mulmesh, Tyrant.Nom, Tyrant.Drellen, Tyrant.Marrow, Tyrant.GoblinKing, Tyrant.Gendricks, Tyrant.Duster,
     Difficulty.Adventurer, Difficulty.Heroic, Difficulty.Legendary
   ],
-  [expansionName("Ghillie")]: [
+  [224899]: [
     Gearloc.Ghillie
   ],
-  [expansionName("Gasket")]: [
+  [239290]: [
     Gearloc.Gasket
   ],
-  [expansionName("Nugget")]: [
+  [224897]: [
     Gearloc.Nugget
   ],
-  [expansionName("Tink")]: [
+  [224898]: [
     Gearloc.Tink
   ],
   //TODO: expansions

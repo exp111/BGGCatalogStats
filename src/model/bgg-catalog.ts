@@ -1,5 +1,6 @@
 export interface GameEntry {
   id: number;
+  bggId: number;
   name: string;
   minPlayTime: number;
   maxPlayTime: number;

@@ -1,9 +1,6 @@
 import {BaseGamePlay, BaseGamePlayer, BaseGameStats} from "./base-game-stats";
 
-export const MC_GAME_NAME = "Marvel Champions: The Card Game";
-const EXPANSION_PREFIX = `${MC_GAME_NAME} \u2013`
-const expansionName = (str: string) => `${EXPANSION_PREFIX} ${str}`;
-const heroExpansionName = (str: string) => `${expansionName(str)} Hero Pack`;
+export const MC_GAME_ID = 285774;
 
 export enum Hero {
   SpiderMan,
@@ -119,31 +116,31 @@ export enum Difficulty {
   END
 }
 
-export const PackContent: ({ [key: string]: number[] }) = {
-  [MC_GAME_NAME]: [
+export const PackContent: Record<number, number[]> = {
+  [MC_GAME_ID]: [
     Aspect.Aggression, Aspect.Justice, Aspect.Leadership, Aspect.Protection,
     Hero.SpiderMan, Hero.SheHulk, Hero.BlackPanther, Hero.IronMan, Hero.CaptainMarvel,
     Scenario.Rhino, Scenario.Klaw, Scenario.Ultron,
     Modular.BombThreat, Modular.MastersOfEvil, Modular.UnderAttack, Modular.DoomsdayChair, Modular.LegionsOfHydra,
     Difficulty.Standard, Difficulty.Expert
   ],
-  [heroExpansionName("Deadpool")]: [
+  [398039]: [
     Aspect.Deadpool, Hero.Deadpool
   ],
-  [heroExpansionName("Doctor Strange")]: [
+  [300878]: [
     Hero.DoctorStrange,
     //TODO: modular?
   ],
-  [heroExpansionName("Wolverine")]: [
+  [369039]: [
     Hero.Wolverine,
     Modular.Deathstrike
   ],
-  [expansionName("The Rise of Red Skull")]: [
+  [306430]: [
     Hero.Hawkeye, Hero.SpiderWoman,
     Scenario.Crossbones, Scenario.AbsorbingMan, Scenario.TaskMaster, Scenario.Zola, Scenario.RedSkull,
     Modular.HydraAssault, Modular.WeaponMaster, Modular.HydraPatrol, Modular.ExperimentalWeapons
   ],
-  [expansionName("Sinister Motives")]: [
+  [347813]: [
     Hero.GhostSpider, Hero.MilesMorales,
     Scenario.Sandman, Scenario.Venom, Scenario.Mysterio, Scenario.SinisterSix, Scenario.VenomGoblin,
     Modular.CityInChaos, Modular.DownToEarth, Modular.GoblinGear, Modular.GuerrillaTactics, Modular.OsbornTech,

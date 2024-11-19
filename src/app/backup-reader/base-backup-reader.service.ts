@@ -15,7 +15,7 @@ export abstract class BaseBackupReaderService {
    **/
   protected abstract enumNormalizers: { [end: number]: (e: string) => string };
 
-  protected abstract BaseGameName: string;
+  protected abstract BaseGameBGGID: number;
   public abstract GameContent: {[name: string]: any[]}
 
   constructor() {
@@ -23,7 +23,7 @@ export abstract class BaseBackupReaderService {
   }
 
   protected findBaseGame(backup: BGGCatalogBackup) {
-    let game = backup.games.find(g => g.name == this.BaseGameName);
+    let game = backup.games.find(g => g.bggId == this.BaseGameBGGID);
     if (!game) {
       console.error("Game not found");
       return undefined;
@@ -35,7 +35,7 @@ export abstract class BaseBackupReaderService {
     let keys = Object.keys(this.GameContent);
     let ret = [];
     for (let key of keys) {
-      if (backup.games.find(g => g.name.toLowerCase() == key.toLowerCase())) {
+      if (backup.games.find(g => String(g.bggId) == key)) {
         ret.push(key);
       }
     }

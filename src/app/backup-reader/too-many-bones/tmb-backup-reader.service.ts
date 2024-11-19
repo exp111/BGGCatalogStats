@@ -5,7 +5,7 @@ import {
   BoxContent,
   Difficulty,
   Gearloc,
-  TMB_GAME_NAME,
+  TMB_GAME_ID,
   TooManyBonesPlay,
   TooManyBonesPlayer,
   TooManyBonesStats,
@@ -16,7 +16,7 @@ import {
   providedIn: 'root'
 })
 export class TMBBackupReaderService extends BaseBackupReaderService {
-  protected override BaseGameName = TMB_GAME_NAME;
+  protected override BaseGameBGGID = TMB_GAME_ID;
   public override GameContent = BoxContent;
 
   protected override enumNormalizers = {

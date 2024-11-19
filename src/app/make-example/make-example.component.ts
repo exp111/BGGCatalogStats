@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {MC_GAME_NAME} from "../../model/marvel-champions";
-import {TMB_GAME_NAME} from "../../model/too-many-bones";
+import {MC_GAME_ID, PackContent} from "../../model/marvel-champions";
+import {BoxContent, TMB_GAME_ID} from "../../model/too-many-bones";
 import {BGGCatalogBackup} from "../../model/bgg-catalog";
 
 @Component({
@@ -16,18 +16,21 @@ export class MakeExampleComponent {
   do() {
     let dummyDate = "1970-01-01 00:00:00";
     let radio = document.querySelector('input[name="game"]:checked') as HTMLInputElement;
-    let baseGameName = "";
+    let baseGameBGGID = -1;
+    let content: Record<number, number[]>;
     switch (radio.value) {
       case "MC": {
-        baseGameName = MC_GAME_NAME;
+        baseGameBGGID = MC_GAME_ID;
+        content = PackContent;
         break;
       }
       case "TMB": {
-        baseGameName = TMB_GAME_NAME;
+        baseGameBGGID = TMB_GAME_ID;
+        content = BoxContent;
         break;
       }
     }
-    console.log(baseGameName);
+    console.log(baseGameBGGID);
     let fileEl = document.getElementById("file") as HTMLInputElement;
     let file = fileEl.files![0];
     console.log(file);
@@ -36,11 +39,11 @@ export class MakeExampleComponent {
       let json = JSON.parse(t) as BGGCatalogBackup;
       console.log(json);
       // games
-      example.games = json.games.filter(g => g.name.startsWith(baseGameName)).map(g => {
+      example.games = json.games.filter(g => Object.keys(content).includes(String(g.bggId))).map(g => {
         g.addedDate = dummyDate;
         return g;
       });
-      let gameId = example.games.find(g => g.name == baseGameName)!.id;
+      let gameId = example.games.find(g => g.bggId == baseGameBGGID)!.id;
       // plays
       example.plays = json.plays.filter(p => p.gameId == gameId).map(p => {
         p.playDate = dummyDate;

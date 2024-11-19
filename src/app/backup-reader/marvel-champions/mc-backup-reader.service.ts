@@ -7,7 +7,7 @@ import {
   MarvelChampionsPlay,
   MarvelChampionsPlayer,
   MarvelChampionsStats,
-  MC_GAME_NAME,
+  MC_GAME_ID,
   Modular,
   PackContent,
   Scenario
@@ -18,7 +18,7 @@ import {BaseBackupReaderService} from "../base-backup-reader.service";
   providedIn: 'root'
 })
 export class MCBackupReaderService extends BaseBackupReaderService {
-  protected override BaseGameName = MC_GAME_NAME;
+  protected override BaseGameBGGID = MC_GAME_ID;
   public override GameContent = PackContent;
 
   protected override enumNormalizers = {
