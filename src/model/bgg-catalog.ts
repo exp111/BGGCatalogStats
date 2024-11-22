@@ -22,11 +22,11 @@ export interface LocationEntry {
 }
 
 export interface PlayEntry {
-  id: number;
-  playDate: string;
-  gameId: number;
-  locationId: number;
-  length: number;
+  id: number; // id of the play
+  playDate: string; // date of the play
+  gameId: number; // id of the game
+  locationId: number; // id of the location of the play
+  length: number; // play time in minutes
   notes: string;
 }
 

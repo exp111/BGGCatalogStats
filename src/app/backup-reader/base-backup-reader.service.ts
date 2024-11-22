@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BGGCatalogBackup, CustomDataEntry, CustomFieldEntry, PlayEntry, PlayerPlayEntry} from "../../model/bgg-catalog";
 import {BaseGameStats} from "../../model/base-game-stats";
-import {formatToEnumString, getEnumValue} from "../enum-utils";
+import {formatToEnumString, getEnumValue} from "../util/enum-utils";
 
 @Injectable({
   providedIn: 'root'

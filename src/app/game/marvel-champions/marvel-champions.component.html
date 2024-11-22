@@ -28,6 +28,11 @@
     </div>
   </div>
   <h4>Total Plays: {{ this.getPlays(this.stats).length }}/ Total Won: {{ this.getWins(this.getPlays(this.stats)) }}</h4>
+  <h5>Total Playtime: {{ formatDurationMinutes(this.getPlaytime(this.getPlays(this.stats))) }}/
+    Average Playtime: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), null)) }}<br>
+    Average Playtime per Win: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), true)) }}/
+    Average Playtime per Loss: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), false)) }}
+  </h5>
   <h4>Hero Playrate</h4>
   <app-table
     [XAxis]="['Playrate']"
@@ -136,7 +141,8 @@
       <p>Players: {{ play.Players.length }}</p>
       <ul>
         @for (player of play.Players; track player.Name) {
-          <li>{{ player.Name }}: {{ this.beautifyEnum(Hero, player.Hero) }} ({{ this.formatEnumList(Aspect, player.Aspects) }})
+          <li>{{ player.Name }}: {{ this.beautifyEnum(Hero, player.Hero) }}
+            ({{ this.formatEnumList(Aspect, player.Aspects) }})
           </li>
         }
       </ul>

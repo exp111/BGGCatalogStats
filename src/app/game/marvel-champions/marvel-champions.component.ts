@@ -13,6 +13,7 @@ import {
 } from "../../../model/marvel-champions";
 import {BaseGameComponent} from "../base-game.component";
 import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-backup-reader.service";
+import {formatDurationMinutes} from "../../util/helper";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -76,6 +77,23 @@ export class MarvelChampionsComponent extends BaseGameComponent {
 
   getWins(plays: MarvelChampionsPlay[]) {
     return plays.reduce((a, b) => a + Number(b.Won), 0);
+  }
+
+  getPlaytime(plays: MarvelChampionsPlay[]) {
+    return plays.reduce((a, b) => a + b.Time, 0);
+  }
+
+  getAveragePlaytime(plays: MarvelChampionsPlay[], onlyWon: boolean | null) {
+    let filtered = plays;
+    switch (onlyWon) {
+      case false:
+        filtered = plays.filter(p => !p.Won);
+        break;
+      case true:
+        filtered = plays.filter(p => p.Won);
+        break;
+    }
+    return this.getPlaytime(filtered) / filtered.length;
   }
 
   heroPlayrateGetter(_: string, hero: number) {
@@ -214,4 +232,5 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   protected readonly Scenario = Scenario;
   protected readonly Modular = Modular;
   protected readonly Difficulty = Difficulty;
+  protected readonly formatDurationMinutes = formatDurationMinutes;
 }

@@ -106,6 +106,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       }
       let obj = {
         Id: play.id,
+        Time: play.length,
         Players: [] as MarvelChampionsPlayer[],
       } as MarvelChampionsPlay;
       // players

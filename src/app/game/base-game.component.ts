@@ -1,7 +1,7 @@
 import {BaseBackupReaderService} from "../backup-reader/base-backup-reader.service";
 import {Directive} from "@angular/core";
 import {BaseGamePlay, BaseGameStats} from "../../model/base-game-stats";
-import {enumToNumberArray, formatFromEnumString} from "../enum-utils";
+import {enumToNumberArray, formatFromEnumString} from "../util/enum-utils";
 import {ChecklistState} from "../app-table/checklist.component";
 
 @Directive()
