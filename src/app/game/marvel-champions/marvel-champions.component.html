@@ -29,123 +29,251 @@
   </div>
   <h4>Total Plays: {{ this.getPlays(this.stats).length }}/ Total Won: {{ this.getWins(this.getPlays(this.stats)) }}</h4>
   <h5>Total Playtime: {{ formatDurationMinutes(this.getPlaytime(this.getPlays(this.stats))) }}/
-    Average Playtime: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), null)) }}<br>
+    Average Playtime: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats))) }}<br>
     Average Playtime per Win: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), true)) }}/
     Average Playtime per Loss: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), false)) }}
   </h5>
-  <h4>Hero Playrate</h4>
-  <app-table
-    [XAxis]="['Playrate']"
-    [YAxis]="enumToNumberArray(Hero)"
-    [YFormatter]="beautifyEnum.bind(this, Hero)"
-    [getter]="heroPlayrateGetter.bind(this)"></app-table>
-  <h4>Aspect Playrate</h4>
-  <app-table
-    [XAxis]="['Playrate']"
-    [YAxis]="enumToNumberArray(Aspect)"
-    [YFormatter]="beautifyEnum.bind(this, Aspect)"
-    [getter]="aspectPlayrateGetter.bind(this)"></app-table>
-  <h4>Scenario Playrate</h4>
-  <app-table
-    [XAxis]="['Playrate']"
-    [YAxis]="enumToNumberArray(Scenario)"
-    [YFormatter]="beautifyEnum.bind(this, Scenario)"
-    [getter]="scenarioPlayrateGetter.bind(this)"></app-table>
-  <h4>Hero Winrate</h4>
-  <app-table
-    [XAxis]="['Winrate']"
-    [YAxis]="enumToNumberArray(Hero)"
-    [YFormatter]="beautifyEnum.bind(this, Hero)"
-    [cellClassGetter]="winrateCellClassGetter.bind(this)"
-    [getter]="heroWinrateGetter.bind(this)"></app-table>
-  <h4>Aspect Winrate</h4>
-  <app-table
-    [XAxis]="['Winrate']"
-    [YAxis]="enumToNumberArray(Aspect)"
-    [YFormatter]="beautifyEnum.bind(this, Aspect)"
-    [cellClassGetter]="winrateCellClassGetter.bind(this)"
-    [getter]="aspectWinrateGetter.bind(this)"></app-table>
-  <h4>Scenario Winrate</h4>
-  <app-table
-    [XAxis]="['Winrate']"
-    [YAxis]="enumToNumberArray(Scenario)"
-    [YFormatter]="beautifyEnum.bind(this, Scenario)"
-    [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
-    [getter]="scenarioWinrateGetter.bind(this)"></app-table>
-  <h4>Hero - Aspect</h4>
-  <app-checklist
-    [XAxis]="enumToNumberArray(Hero)"
-    [XFormatter]="beautifyEnum.bind(this, Hero)"
-    [YAxis]="enumToNumberArray(Aspect)"
-    [YFormatter]="beautifyEnum.bind(this, Aspect)"
-    [getter]="heroAspectWonGetter.bind(this)"></app-checklist>
-  <h4>Scenario - Hero</h4>
-  <app-checklist
-    [XAxis]="enumToNumberArray(Scenario)"
-    [XFormatter]="beautifyEnum.bind(this, Scenario)"
-    [YAxis]="enumToNumberArray(Hero)"
-    [YFormatter]="beautifyEnum.bind(this, Hero)"
-    [getter]="scenarioHeroWonGetter.bind(this)"></app-checklist>
-  <h4>Scenario - Aspect</h4>
-  <app-checklist
-    [XAxis]="enumToNumberArray(Scenario)"
-    [XFormatter]="beautifyEnum.bind(this, Scenario)"
-    [YAxis]="enumToNumberArray(Aspect)"
-    [YFormatter]="beautifyEnum.bind(this, Aspect)"
-    [getter]="scenarioAspectWonGetter.bind(this)"></app-checklist>
-  <h4>Scenario - Modular</h4>
-  <app-checklist
-    [XAxis]="enumToNumberArray(Scenario)"
-    [XFormatter]="beautifyEnum.bind(this, Scenario)"
-    [YAxis]="enumToNumberArray(Modular)"
-    [YFormatter]="beautifyEnum.bind(this, Modular)"
-    [getter]="scenarioModularWonGetter.bind(this)"></app-checklist>
-  <h4>Scenario - Difficulty</h4>
-  <app-checklist
-    [XAxis]="enumToNumberArray(Scenario)"
-    [XFormatter]="beautifyEnum.bind(this, Scenario)"
-    [YAxis]="enumToNumberArray(Difficulty)"
-    [YFormatter]="beautifyEnum.bind(this, Difficulty)"
-    [getter]="scenarioDifficultyWonGetter.bind(this)"></app-checklist>
-  <h4>Scenario - Hero - (Winrate)</h4>
-  <app-table
-    [XAxis]="enumToNumberArray(Scenario)"
-    [XFormatter]="beautifyEnum.bind(this, Scenario)"
-    [YAxis]="enumToNumberArray(Hero)"
-    [YFormatter]="beautifyEnum.bind(this, Hero)"
-    [cellClassGetter]="this.winrateCellClassGetter"
-    [getter]="scenarioHeroWinrateGetter.bind(this)"></app-table>
-  <h4>Hero - Aspect (Winrate)</h4>
-  <app-table
-    [XAxis]="enumToNumberArray(Hero)"
-    [XFormatter]="beautifyEnum.bind(this, Hero)"
-    [YAxis]="enumToNumberArray(Aspect)"
-    [YFormatter]="beautifyEnum.bind(this, Aspect)"
-    [cellClassGetter]="this.winrateCellClassGetter"
-    [getter]="heroAspectWinrateGetter.bind(this)"></app-table>
-  <h4>Scenario - Aspect (Winrate)</h4>
-  <app-table
-    [XAxis]="enumToNumberArray(Scenario)"
-    [XFormatter]="beautifyEnum.bind(this, Scenario)"
-    [YAxis]="enumToNumberArray(Aspect)"
-    [YFormatter]="beautifyEnum.bind(this, Aspect)"
-    [cellClassGetter]="this.winrateCellClassGetter"
-    [getter]="scenarioAspectWinrateGetter.bind(this)"></app-table>
-  <h4>Plays</h4>
-  @for (play of this.getPlays(this.stats); track play.Id) {
-    <div class="card card-body">
-      <p>Id: {{ play.Id }}</p>
-      <p>Scenario: {{ this.beautifyEnum(Scenario, play.Scenario) }}</p>
-      <p>Modular: {{ this.formatEnumList(Modular, play.Modulars) }}</p>
-      <p>Difficulty: {{ this.beautifyEnum(Difficulty, play.Difficulty) }}</p>
-      <p>Players: {{ play.Players.length }}</p>
-      <ul>
-        @for (player of play.Players; track player.Name) {
-          <li>{{ player.Name }}: {{ this.beautifyEnum(Hero, player.Hero) }}
-            ({{ this.formatEnumList(Aspect, player.Aspects) }})
-          </li>
-        }
-      </ul>
+  <div class="accordion" id="accordion">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#playrateCollapse">Playrate
+        </button>
+      </h4>
+      <div id="playrateCollapse" class="accordion-collapse collapse" data-bs-parent="#accordion">
+        <div class="accordion-body">
+          <h4>Hero Playrate</h4>
+          <app-table
+            [XAxis]="['Playrate']"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [getter]="heroPlayrateGetter.bind(this)"></app-table>
+          <h4>Aspect Playrate</h4>
+          <app-table
+            [XAxis]="['Playrate']"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="aspectPlayrateGetter.bind(this)"></app-table>
+          <h4>Scenario Playrate</h4>
+          <app-table
+            [XAxis]="['Playrate']"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="scenarioPlayrateGetter.bind(this)"></app-table>
+        </div>
+      </div>
     </div>
-  }
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#winrateCollapse">Winrate
+        </button>
+      </h4>
+      <div id="winrateCollapse" class="accordion-collapse collapse" data-bs-parent="#accordion">
+        <div class="accordion-body">
+          <h4>Hero Winrate</h4>
+          <app-table
+            [XAxis]="['Winrate']"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [cellClassGetter]="winrateCellClassGetter.bind(this)"
+            [getter]="heroWinrateGetter.bind(this)"></app-table>
+          <h4>Aspect Winrate</h4>
+          <app-table
+            [XAxis]="['Winrate']"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [cellClassGetter]="winrateCellClassGetter.bind(this)"
+            [getter]="aspectWinrateGetter.bind(this)"></app-table>
+          <h4>Scenario Winrate</h4>
+          <app-table
+            [XAxis]="['Winrate']"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
+            [getter]="scenarioWinrateGetter.bind(this)"></app-table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#playtimeCollapse">Playtime
+        </button>
+      </h4>
+      <div id="playtimeCollapse" class="accordion-collapse collapse" data-bs-parent="#accordion">
+        <div class="accordion-body">
+          <h4>Hero Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [getter]="heroPlaytimeGetter.bind(this)"></app-table>
+          <h4>Aspect Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="aspectPlaytimeGetter.bind(this)"></app-table>
+          <h4>Scenario Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="scenarioPlaytimeGetter.bind(this)"></app-table>
+          <h4>Playercount Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="[1,2,3,4]"
+            [getter]="playerCountPlaytimeGetter.bind(this)"></app-table>
+          <h4>Hero - Scenario Playtime</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Hero)"
+            [XFormatter]="beautifyEnum.bind(this, Hero)"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="heroScenarioPlaytimeGetter.bind(this)"></app-table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#avgPlaytimeCollapse">Average Playtime
+        </button>
+      </h4>
+      <div id="avgPlaytimeCollapse" class="accordion-collapse collapse" data-bs-parent="#accordion">
+        <div class="accordion-body">
+          <h4>Average Hero Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [getter]="avgHeroPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Aspect Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="aspectPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Scenario Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="avgScenarioPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Playercount Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="[1,2,3,4]"
+            [getter]="avgPlayerCountPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Hero - Scenario Playtime</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Hero)"
+            [XFormatter]="beautifyEnum.bind(this, Hero)"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="avgHeroScenarioPlaytimeGetter.bind(this)"></app-table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#checklistCollapse">Checklists
+        </button>
+      </h4>
+      <div id="checklistCollapse" class="accordion-collapse collapse" data-bs-parent="#accordion">
+        <div class="accordion-body">
+          <h4>Hero - Aspect</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Hero)"
+            [XFormatter]="beautifyEnum.bind(this, Hero)"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="heroAspectWonGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Hero</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [getter]="scenarioHeroWonGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Aspect</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="scenarioAspectWonGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Modular</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Modular)"
+            [YFormatter]="beautifyEnum.bind(this, Modular)"
+            [getter]="scenarioModularWonGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Difficulty</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Difficulty)"
+            [YFormatter]="beautifyEnum.bind(this, Difficulty)"
+            [getter]="scenarioDifficultyWonGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Hero - (Winrate)</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [cellClassGetter]="this.winrateCellClassGetter"
+            [getter]="scenarioHeroWinrateGetter.bind(this)"></app-table>
+          <h4>Hero - Aspect (Winrate)</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Hero)"
+            [XFormatter]="beautifyEnum.bind(this, Hero)"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [cellClassGetter]="this.winrateCellClassGetter"
+            [getter]="heroAspectWinrateGetter.bind(this)"></app-table>
+          <h4>Scenario - Aspect (Winrate)</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [cellClassGetter]="this.winrateCellClassGetter"
+            [getter]="scenarioAspectWinrateGetter.bind(this)"></app-table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#playsCollapse">Plays
+        </button>
+      </h4>
+      <div id="playsCollapse" class="accordion-collapse collapse" data-bs-parent="#accordion">
+        <div class="accordion-body">
+          <h4>Plays</h4>
+          @for (play of this.getPlays(this.stats); track play.Id) {
+            <div class="card card-body">
+              <p>Id: {{ play.Id }}</p>
+              <p>Scenario: {{ this.beautifyEnum(Scenario, play.Scenario) }}</p>
+              <p>Modular: {{ this.formatEnumList(Modular, play.Modulars) }}</p>
+              <p>Difficulty: {{ this.beautifyEnum(Difficulty, play.Difficulty) }}</p>
+              <p>Players: {{ play.Players.length }}</p>
+              <ul>
+                @for (player of play.Players; track player.Name) {
+                  <li>{{ player.Name }}: {{ this.beautifyEnum(Hero, player.Hero) }}
+                    ({{ this.formatEnumList(Aspect, player.Aspects) }})
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
 }

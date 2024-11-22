@@ -80,10 +80,10 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   }
 
   getPlaytime(plays: MarvelChampionsPlay[]) {
-    return plays.reduce((a, b) => a + b.Time, 0);
+    return plays.reduce((a, b) => a + (b.Time ?? 0), 0);
   }
 
-  getAveragePlaytime(plays: MarvelChampionsPlay[], onlyWon: boolean | null) {
+  getAveragePlaytime(plays: MarvelChampionsPlay[], onlyWon: boolean | null = null) {
     let filtered = plays;
     switch (onlyWon) {
       case false:
@@ -93,7 +93,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
         filtered = plays.filter(p => p.Won);
         break;
     }
-    return this.getPlaytime(filtered) / filtered.length;
+    let count = filtered.length;
+    return count > 0 ? this.getPlaytime(filtered) / count : 0;
   }
 
   heroPlayrateGetter(_: string, hero: number) {
@@ -181,6 +182,96 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     let scenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p, undefined, aspect));
     let wins = this.getWins(scenarioPlays);
     return this.getRate(scenarioPlays.length, wins);
+  }
+
+  heroPlaytimeGetter(_: string, hero: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let heroPlays = plays.filter(p => this.playHasHero(p, hero));
+    return formatDurationMinutes(this.getPlaytime(heroPlays));
+  }
+
+  aspectPlaytimeGetter(_: string, aspect: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let aspectPlays = plays.filter(p => this.playHasHero(p, undefined, aspect));
+    return formatDurationMinutes(this.getPlaytime(aspectPlays));
+  }
+
+  scenarioPlaytimeGetter(_: string, scenario: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let scenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p));
+    return formatDurationMinutes(this.getPlaytime(scenarioPlays));
+  }
+
+  playerCountPlaytimeGetter(_: string, count: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let countPlays = plays.filter(p => p.Players.length == count);
+    return formatDurationMinutes(this.getPlaytime(countPlays));
+  }
+
+  heroScenarioPlaytimeGetter(hero: number, scenario: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let heroScenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p, hero));
+    return formatDurationMinutes(this.getPlaytime(heroScenarioPlays));
+  }
+
+  avgHeroPlaytimeGetter(_: string, hero: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let heroPlays = plays.filter(p => this.playHasHero(p, hero));
+    return formatDurationMinutes(this.getAveragePlaytime(heroPlays));
+  }
+
+  avgAspectPlaytimeGetter(_: string, aspect: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let aspectPlays = plays.filter(p => this.playHasHero(p, undefined, aspect));
+    return formatDurationMinutes(this.getAveragePlaytime(aspectPlays));
+  }
+
+  avgScenarioPlaytimeGetter(_: string, scenario: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let scenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p));
+    return formatDurationMinutes(this.getAveragePlaytime(scenarioPlays));
+  }
+
+  avgPlayerCountPlaytimeGetter(_: string, count: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let countPlays = plays.filter(p => p.Players.length == count && this.playHasHero(p));
+    return formatDurationMinutes(this.getAveragePlaytime(countPlays));
+  }
+
+  avgHeroScenarioPlaytimeGetter(hero: number, scenario: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let heroScenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p, hero));
+    return formatDurationMinutes(this.getAveragePlaytime(heroScenarioPlays));
   }
 
   heroAspectWonGetter(hero: number, aspect: number) {
