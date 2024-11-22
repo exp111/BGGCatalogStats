@@ -155,7 +155,7 @@
             [XAxis]="['Average Playtime']"
             [YAxis]="enumToNumberArray(Aspect)"
             [YFormatter]="beautifyEnum.bind(this, Aspect)"
-            [getter]="aspectPlaytimeGetter.bind(this)"></app-table>
+            [getter]="avgAspectPlaytimeGetter.bind(this)"></app-table>
           <h4>Average Scenario Playtime</h4>
           <app-table
             [XAxis]="['Average Playtime']"
