@@ -270,6 +270,11 @@
                   </li>
                 }
               </ul>
+              <p>Won: {{ play.Won }}</p>
+              <p>Time: {{ formatDurationMinutes(play.Time) }}</p>
+              @if (play.Notes) {
+                <p>Comments: {{ play.Notes }}</p>
+              }
             </div>
           }
         </div>

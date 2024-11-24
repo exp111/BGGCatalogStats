@@ -5,6 +5,7 @@ import {TableComponent} from "../../app-table/table.component";
 import {BaseGameComponent} from "../base-game.component";
 import {Difficulty, Gearloc, TooManyBonesPlay, TooManyBonesStats, Tyrant} from "../../../model/too-many-bones";
 import {TMBBackupReaderService} from "../../backup-reader/too-many-bones/tmb-backup-reader.service";
+import {formatDurationMinutes} from "../../util/helper";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -126,4 +127,5 @@ export class TooManyBonesComponent extends BaseGameComponent {
   protected readonly Gearloc = Gearloc;
   protected readonly Difficulty = Difficulty;
   protected readonly Tyrant = Tyrant;
+  protected readonly formatDurationMinutes = formatDurationMinutes;
 }

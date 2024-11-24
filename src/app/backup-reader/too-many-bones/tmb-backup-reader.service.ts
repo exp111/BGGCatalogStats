@@ -75,6 +75,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
       let obj = {
         Id: play.id,
         Time: play.length,
+        Notes: play.notes,
         Players: [] as TooManyBonesPlayer[],
       } as TooManyBonesPlay;
       // players
