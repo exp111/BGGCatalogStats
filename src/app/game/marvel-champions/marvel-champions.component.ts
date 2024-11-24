@@ -14,6 +14,8 @@ import {
 import {BaseGameComponent} from "../base-game.component";
 import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-backup-reader.service";
 import {formatDurationMinutes} from "../../util/helper";
+import {MCFilterParams, MCFilterPipe} from "./mc-filter.pipe";
+import {enumToStringArray} from "../../util/enum-utils";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -23,6 +25,7 @@ import {formatDurationMinutes} from "../../util/helper";
     ReactiveFormsModule,
     TableComponent,
     FormsModule,
+    MCFilterPipe,
   ],
   templateUrl: './marvel-champions.component.html',
   styleUrl: './marvel-champions.component.css'
@@ -31,6 +34,15 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   static override Title = 'Marvel Champions Stats';
   declare stats?: MarvelChampionsStats;
   override exampleFileName = "mc-example";
+
+  filterParams: MCFilterParams = {
+    onlyWon: false,
+    hero: null,
+    aspect: null,
+    scenario: null,
+    modular: null,
+    difficulty: null
+  };
 
   protected override enumBeautifiers = {
     [Hero.END]: this.beautifyHeroName
