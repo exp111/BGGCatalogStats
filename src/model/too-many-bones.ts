@@ -11,6 +11,16 @@ export enum Gearloc {
   Gasket,
   Nugget,
   Tink,
+  Stanza,
+  Duster,
+  LabRats,
+  Dart,
+  Gale,
+  Figment,
+  Carcass,
+  Static,
+  Polaris,
+  Riffle,
   END
 }
 
@@ -22,6 +32,22 @@ export enum Tyrant {
   GoblinKing,
   Gendricks,
   Duster,
+  Nobulous,
+  Barnacle,
+  VolKesh,
+  GoblinQueen,
+  Kollossum,
+  Domina,
+  RokRol,
+  Gavenkog,
+  Nexus,
+  Cinder,
+  Amanight,
+  Blobulous,
+  Leech,
+  Oxide,
+  Locgear,
+  AutomatonOfShale,
   END
 }
 
@@ -38,19 +64,32 @@ export const BoxContent: ({ [key: string]: any[] }) = {
     Tyrant.Mulmesh, Tyrant.Nom, Tyrant.Drellen, Tyrant.Marrow, Tyrant.GoblinKing, Tyrant.Gendricks, Tyrant.Duster,
     Difficulty.Adventurer, Difficulty.Heroic, Difficulty.Legendary
   ],
-  [224899]: [
-    Gearloc.Ghillie
+  [235802]: [ // Undertow
+    Gearloc.Stanza, Gearloc.Duster,
+    Tyrant.Nobulous, Tyrant.Barnacle, Tyrant.VolKesh, Tyrant.GoblinQueen, Tyrant.Kollossum,
+    Difficulty.Adventurer, Difficulty.Heroic, Difficulty.Legendary
   ],
-  [239290]: [
-    Gearloc.Gasket
+  [347811]: [ // Unbreakable
+    Gearloc.Gale, Gearloc.Figment,
+    Tyrant.Domina, Tyrant.RokRol, Tyrant.Gavenkog, Tyrant.Nexus, Tyrant.Cinder,
+    Difficulty.Adventurer, Difficulty.Heroic, Difficulty.Legendary
   ],
-  [224897]: [
-    Gearloc.Nugget
+  [281285]: [ // Splice and Dice
+    Tyrant.Amanight, Tyrant.Blobulous, Tyrant.Leech, Tyrant.Oxide, Tyrant.Locgear
   ],
-  [224898]: [
-    Gearloc.Tink
-  ],
-  //TODO: expansions
+  // Gearlocs
+  [224897]: [Gearloc.Nugget],
+  [224899]: [Gearloc.Ghillie],
+  [239290]: [Gearloc.Gasket],
+  [224898]: [Gearloc.Tink],
+  [283861]: [Gearloc.Dart],
+  [283862]: [Gearloc.LabRats],
+  [349579]: [Gearloc.Polaris],
+  [349580]: [Gearloc.Static],
+  [349581]: [Gearloc.Carcass],
+  [370264]: [Gearloc.Riffle],
+  // Automaton
+  [349916]: [Tyrant.AutomatonOfShale]
 }
 
 export interface TooManyBonesPlayer extends BaseGamePlayer {
