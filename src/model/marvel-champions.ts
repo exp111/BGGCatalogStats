@@ -124,17 +124,9 @@ export const PackContent: Record<number, number[]> = {
     Modular.BombThreat, Modular.MastersOfEvil, Modular.UnderAttack, Modular.DoomsdayChair, Modular.LegionsOfHydra,
     Difficulty.Standard, Difficulty.Expert
   ],
-  [398039]: [
-    Aspect.Deadpool, Hero.Deadpool
-  ],
-  [300878]: [
-    Hero.DoctorStrange,
-    //TODO: modular?
-  ],
-  [369039]: [
-    Hero.Wolverine,
-    Modular.Deathstrike
-  ],
+  [398039]: [Aspect.Deadpool, Hero.Deadpool],
+  [300878]: [Hero.DoctorStrange], //TODO: strange modular?
+  [369039]: [Hero.Wolverine, Modular.Deathstrike],
   [306430]: [
     Hero.Hawkeye, Hero.SpiderWoman,
     Scenario.Crossbones, Scenario.AbsorbingMan, Scenario.TaskMaster, Scenario.Zola, Scenario.RedSkull,
@@ -145,7 +137,10 @@ export const PackContent: Record<number, number[]> = {
     Scenario.Sandman, Scenario.Venom, Scenario.Mysterio, Scenario.SinisterSix, Scenario.VenomGoblin,
     Modular.CityInChaos, Modular.DownToEarth, Modular.GoblinGear, Modular.GuerrillaTactics, Modular.OsbornTech,
     Modular.PersonalNightmare, Modular.SinisterAssault, Modular.SymbioticStrength, Modular.WhispersOfParanoia,
-  ]
+  ],
+  [316695]: [Hero.ScarletWitch],
+  [289222]: [Hero.CaptainAmerica], //TODO: cap modular?
+  [299049]: [Hero.BlackWidow] //TODO: bw modular?
 }
 
 export interface MarvelChampionsPlayer extends BaseGamePlayer {
