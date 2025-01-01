@@ -77,7 +77,7 @@ export class ConverterComponent {
 
   makeCustomData(entries: BGGCatalogCustomDataEntry[]) {
     // flat map all entries. if the value contains a ",", then its a mult field, so split it
-    return entries.flatMap(d => d.value.includes(",") ? d.value.split(",") : d.value).join(" / ");
+    return entries.flatMap(d => d.value.includes(",") ? d.value.split(",") : d.value).join("\uff0f");
   }
 
   makePlays(backup: BGGCatalogBackup): BGStatsPlayEntry[] {
