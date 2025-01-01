@@ -125,7 +125,8 @@ export class ConverterComponent {
     // we export the plays as a bgsplay file, cause then we dont have to deal with the correct play/location/user formatting
     let output: BGStatsExport = {
       about: "", //TODO: needed?
-      games: backup.games.map(g => this.makeGame(g)),
+      // only add games which have plays
+      games: backup.games.filter(g => backup.plays.some(p => p.gameId == g.id)).map(g => this.makeGame(g)),
       locations: backup.locations.map(g => this.makeLocation(g)),
       players: backup.players.map(g => this.makePlayer(g)),
       plays: this.makePlays(backup),
