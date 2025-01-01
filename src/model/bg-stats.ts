@@ -45,21 +45,21 @@ export interface BGStatsPlayerScoreEntry {
 export interface BGStatsPlayEntry {
   gameRefId: number; // id of the game
   locationRefId: number; // id of the location
-  bggId: number; // 0?
-  board: string;
+  bggId?: number; // 0?
+  board?: string;
   durationMin: number;
   entryDate: Date;
   playDate: Date;
   playDateYmd: number; // play date as number YYYYMMDD
   expansionPlays: [];
   ignored: boolean;
-  importPlayId: number; // 0?
-  nemestatsId: number; // 0?
+  importPlayId?: number; // 0?
+  nemestatsId?: number; // 0?
   manualWinner: boolean;
   modificationDate: Date;
   playerScores: BGStatsPlayerScoreEntry[];
-  playImages: string; // "[]"?
-  rating: number; // 0?
+  playImages?: string; // "[]"?
+  rating?: number; // 0?
   rounds: number; // 0?
   scoringSetting: number; //TODO:?
   usesTeams: boolean;

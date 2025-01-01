@@ -1,5 +1,11 @@
 import {Component} from '@angular/core';
-import {BGStatsExport, BGStatsGameEntry, BGStatsLocationEntry, BGStatsPlayerEntry} from "../../model/bg-stats";
+import {
+  BGStatsExport,
+  BGStatsGameEntry,
+  BGStatsLocationEntry,
+  BGStatsPlayEntry,
+  BGStatsPlayerEntry, BGStatsPlayerScoreEntry
+} from "../../model/bg-stats";
 import {
   BGGCatalogBackup,
   BGGCatalogGameEntry,
@@ -68,8 +74,42 @@ export class ConverterComponent {
     }
   }
 
-  makePlays(backup: BGGCatalogBackup) {
-
+  makePlays(backup: BGGCatalogBackup): BGStatsPlayEntry[] {
+    return backup.plays.map(p => {
+      //TODO: custom tags => board/player scores
+      let playerPlays = backup.playersPlays.filter(ppl => ppl.playId == p.id);
+      let date = new Date(p.playDate);
+      return {
+        gameRefId: p.gameId,
+        ignored: p.noInStats == 1,
+        expansionPlays: [],
+        uuid: this.makeUUID(`play${p.id}`),
+        durationMin: p.length,
+        locationRefId: p.locationId,
+        playDate: p.playDate,
+        playDateYmd: Number(`${date.getFullYear()}${date.getMonth()}${date.getDate()}`),
+        entryDate: p.playDate,
+        modificationDate: p.playDate, // set to play date
+        usesTeams: playerPlays.some(ppl => ppl.team != null),
+        manualWinner: false, //?
+        scoringSetting: 0, //?
+        rounds: 0,
+        playerScores: playerPlays.map(ppl => {
+          let obj: BGStatsPlayerScoreEntry = {
+            newPlayer: false, //TODO: newPlayer
+            playerRefId: ppl.playerId,
+            rank: 0,
+            role: "",
+            score: `${ppl.score}`,
+            seatOrder: ppl.seatOrder ?? 0,
+            startPlayer: ppl.startPlayer == 1,
+            winner: ppl.winner == 1,
+            team: `${ppl.team}`
+          };
+          return obj;
+        })
+      }
+    })
   }
 
   public readFile(text: string) {

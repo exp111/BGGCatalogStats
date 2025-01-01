@@ -29,6 +29,7 @@ export interface BGGCatalogPlayEntry {
   locationId: number; // id of the location of the play
   length: number; // play time in minutes
   notes: string;
+  noInStats: number; // if the play shouldnt be shown in stats
 }
 
 export interface BGGCatalogPlayerPlayEntry {
@@ -37,6 +38,9 @@ export interface BGGCatalogPlayerPlayEntry {
   playerId: number; // the id of the player
   score: number;
   winner: number;
+  team: number;
+  startPlayer: number;
+  seatOrder: number;
 }
 
 export enum CustomFieldTypes {
