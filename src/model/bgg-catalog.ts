@@ -2,6 +2,7 @@ export interface BGGCatalogGameEntry {
   id: number;
   bggId: number;
   name: string;
+  yearPublished: number;
   minPlayTime: number;
   maxPlayTime: number;
   addedDate: string;

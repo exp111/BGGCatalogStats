@@ -13,16 +13,16 @@ export interface BGStatsGameEntry {
   bggId: number;
   bggName: string;
   bggYear: number;
-  cooperative: boolean;
-  copies: [];
-  designers: string;
-  highestWins: boolean;
+  cooperative?: boolean;
+  copies?: [];
+  designers?: string;
+  highestWins?: boolean;
   uuid: UUID;
 }
 
 export interface BGStatsPlayerEntry {
   id: number;
-  bggUsername: string;
+  bggUsername: string; // default ""
   isAnonymous: boolean;
   metaData: string;
   modificationDate: Date;
