@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BGGCatalogBackup, CustomDataEntry, CustomFieldEntry, PlayEntry, PlayerPlayEntry} from "../../model/bgg-catalog";
+import {BGGCatalogBackup, BGGCatalogCustomDataEntry, BGGCatalogCustomFieldEntry, BGGCatalogPlayEntry, BGGCatalogPlayerPlayEntry} from "../../model/bgg-catalog";
 import {BaseGameStats} from "../../model/base-game-stats";
 import {formatToEnumString, getEnumValue} from "../util/enum-utils";
 
@@ -7,8 +7,8 @@ import {formatToEnumString, getEnumValue} from "../util/enum-utils";
   providedIn: 'root'
 })
 export abstract class BaseBackupReaderService {
-  private playFieldValueGetter = (backup: BGGCatalogBackup, field: CustomFieldEntry, play: PlayEntry) => this.getFieldValue(backup, field.id, play.id);
-  private playerFieldValueGetter = (backup: BGGCatalogBackup, field: CustomFieldEntry, play: PlayerPlayEntry) => this.getFieldValue(backup, field.id, play.playId, play.id);
+  private playFieldValueGetter = (backup: BGGCatalogBackup, field: BGGCatalogCustomFieldEntry, play: BGGCatalogPlayEntry) => this.getFieldValue(backup, field.id, play.id);
+  private playerFieldValueGetter = (backup: BGGCatalogBackup, field: BGGCatalogCustomFieldEntry, play: BGGCatalogPlayerPlayEntry) => this.getFieldValue(backup, field.id, play.playId, play.id);
 
   /** Can contain enum normalizers that transform string names to their normalized enum value names.
    *  Allows support for localized or alternative enum value names.
@@ -54,17 +54,17 @@ export abstract class BaseBackupReaderService {
   }
 
   /* Parses the value of a custom play field */
-  protected parseCustomFieldValuePlay(backup: BGGCatalogBackup, play: PlayEntry, enums: any, field: CustomFieldEntry, multiField?: CustomFieldEntry) {
+  protected parseCustomFieldValuePlay(backup: BGGCatalogBackup, play: BGGCatalogPlayEntry, enums: any, field: BGGCatalogCustomFieldEntry, multiField?: BGGCatalogCustomFieldEntry) {
     return this.parseCustomFieldValueGeneric(this.playFieldValueGetter, backup, play, enums, field, multiField);
   }
 
   /* Parses the value of a custom player field */
-  protected parseCustomFieldValuePlayer(backup: BGGCatalogBackup, play: PlayerPlayEntry, enums: any, field: CustomFieldEntry, multiField?: CustomFieldEntry) {
+  protected parseCustomFieldValuePlayer(backup: BGGCatalogBackup, play: BGGCatalogPlayerPlayEntry, enums: any, field: BGGCatalogCustomFieldEntry, multiField?: BGGCatalogCustomFieldEntry) {
     return this.parseCustomFieldValueGeneric(this.playerFieldValueGetter, backup, play, enums, field, multiField);
   }
 
-  private parseCustomFieldValueGeneric(getter: (_1: BGGCatalogBackup, _2: CustomFieldEntry, _3: any) => CustomDataEntry | undefined,
-                                       backup: BGGCatalogBackup, play: PlayEntry | PlayerPlayEntry, enums: any, field: CustomFieldEntry, multiField?: CustomFieldEntry) {
+  private parseCustomFieldValueGeneric(getter: (_1: BGGCatalogBackup, _2: BGGCatalogCustomFieldEntry, _3: any) => BGGCatalogCustomDataEntry | undefined,
+                                       backup: BGGCatalogBackup, play: BGGCatalogPlayEntry | BGGCatalogPlayerPlayEntry, enums: any, field: BGGCatalogCustomFieldEntry, multiField?: BGGCatalogCustomFieldEntry) {
     let entry = getter(backup, field, play);
     let multiEntry = multiField ? getter(backup, multiField, play) : undefined;
     if (!entry && !multiEntry) {
@@ -80,7 +80,7 @@ export abstract class BaseBackupReaderService {
     }
   }
 
-  protected parseCustomFieldValues(entry: CustomDataEntry, enums: any) {
+  protected parseCustomFieldValues(entry: BGGCatalogCustomDataEntry, enums: any) {
     let values = entry.value.split(",");
     let ret = [];
     for (let value of values) {
@@ -95,7 +95,7 @@ export abstract class BaseBackupReaderService {
   }
 
   /* Parses the value of a custom field entry to the enum value */
-  protected parseCustomFieldValue(entry: CustomDataEntry, enums: any) {
+  protected parseCustomFieldValue(entry: BGGCatalogCustomDataEntry, enums: any) {
     let val = this.parseEnumValue(enums, entry.value);
     if (val == undefined) {
       console.error(`Custom Field Value ${formatToEnumString(entry.value)} can not be parsed`);

@@ -1,14 +1,14 @@
 type Date = string; // ISO 8601 string "YYYY-MM-DD hh:mm:ss"
 type UUID = string;
 
-export interface LocationEntry {
+export interface BGStatsLocationEntry {
   id: number;
   modificationDate: Date;
   name: string;
   uuid: string;
 }
 
-export interface GameEntry {
+export interface BGStatsGameEntry {
   id: number;
   bggId: number;
   bggName: string;
@@ -20,7 +20,7 @@ export interface GameEntry {
   uuid: UUID;
 }
 
-export interface PlayerEntry {
+export interface BGStatsPlayerEntry {
   id: number;
   bggUsername: string;
   isAnonymous: boolean;
@@ -30,7 +30,7 @@ export interface PlayerEntry {
   uuid: UUID;
 }
 
-export interface PlayerScoreEntry {
+export interface BGStatsPlayerScoreEntry {
   newPlayer: boolean; // is it the first play for the player
   playerRefId: number; // id of the player
   rank: number; // 0?
@@ -42,7 +42,7 @@ export interface PlayerScoreEntry {
   winner: boolean; // has the player won
 }
 
-export interface PlayEntry {
+export interface BGStatsPlayEntry {
   gameRefId: number; // id of the game
   locationRefId: number; // id of the location
   bggId: number; // 0?
@@ -57,7 +57,7 @@ export interface PlayEntry {
   nemestatsId: number; // 0?
   manualWinner: boolean;
   modificationDate: Date;
-  playerScores: PlayerScoreEntry[];
+  playerScores: BGStatsPlayerScoreEntry[];
   playImages: string; // "[]"?
   rating: number; // 0?
   rounds: number; // 0?
@@ -66,27 +66,27 @@ export interface PlayEntry {
   uuid: UUID;
 }
 
-export interface UserInfo {
+export interface BGStatsUserInfo {
   meRefId: number; // id of the user thats "me"
 }
 
 export interface BGStatsBackup {
   challenges: [];
   deletedObjects: [];
-  games: GameEntry[];
+  games: BGStatsGameEntry[];
   groups: [];
-  locations: LocationEntry[];
-  players: PlayerEntry[];
-  plays: PlayEntry[];
+  locations: BGStatsLocationEntry[];
+  players: BGStatsPlayerEntry[];
+  plays: BGStatsPlayEntry[];
   tags: [];
-  userInfo: UserInfo;
+  userInfo: BGStatsUserInfo;
 }
 
 export interface BGStatsExport {
   about: string;
-  games: GameEntry[];
-  locations: LocationEntry[];
-  players: PlayerEntry[];
-  plays: PlayEntry[];
-  userInfo: UserInfo;
+  games: BGStatsGameEntry[];
+  locations: BGStatsLocationEntry[];
+  players: BGStatsPlayerEntry[];
+  plays: BGStatsPlayEntry[];
+  userInfo: BGStatsUserInfo;
 }

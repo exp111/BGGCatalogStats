@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../../../model/bgg-catalog";
+import {BGGCatalogBackup, BGGCatalogCustomFieldEntry, BGGCatalogPlayerPlayEntry} from "../../../model/bgg-catalog";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
 import {
   BoxContent,
@@ -29,7 +29,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
     }[str] ?? str;
   }
 
-  private parsePlayer(entry: PlayerPlayEntry, backup: BGGCatalogBackup, gearlocField: CustomFieldEntry) {
+  private parsePlayer(entry: BGGCatalogPlayerPlayEntry, backup: BGGCatalogBackup, gearlocField: BGGCatalogCustomFieldEntry) {
     let ret = {} as TooManyBonesPlayer;
     // get player
     let player = backup.players.find(p => p.id == entry.playerId);

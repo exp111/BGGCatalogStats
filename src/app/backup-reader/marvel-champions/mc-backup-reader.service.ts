@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BGGCatalogBackup, CustomFieldEntry, PlayerPlayEntry} from "../../../model/bgg-catalog";
+import {BGGCatalogBackup, BGGCatalogCustomFieldEntry, BGGCatalogPlayerPlayEntry} from "../../../model/bgg-catalog";
 import {
   Aspect,
   Difficulty,
@@ -55,7 +55,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     }[str] ?? str;
   }
 
-  private parsePlayer(entry: PlayerPlayEntry, backup: BGGCatalogBackup, heroField: CustomFieldEntry, aspectField: CustomFieldEntry, aspectsField: CustomFieldEntry) {
+  private parsePlayer(entry: BGGCatalogPlayerPlayEntry, backup: BGGCatalogBackup, heroField: BGGCatalogCustomFieldEntry, aspectField: BGGCatalogCustomFieldEntry, aspectsField: BGGCatalogCustomFieldEntry) {
     let ret = {} as MarvelChampionsPlayer;
     // get player
     let player = backup.players.find(p => p.id == entry.playerId);

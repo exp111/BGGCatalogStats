@@ -1,4 +1,4 @@
-export interface GameEntry {
+export interface BGGCatalogGameEntry {
   id: number;
   bggId: number;
   name: string;
@@ -7,7 +7,7 @@ export interface GameEntry {
   addedDate: string;
 }
 
-export interface PlayerEntry {
+export interface BGGCatalogPlayerEntry {
   id: number;
   name: string;
   me: number;
@@ -16,12 +16,12 @@ export interface PlayerEntry {
   bggUsername: string;
 }
 
-export interface LocationEntry {
+export interface BGGCatalogLocationEntry {
   id: number;
   name: string;
 }
 
-export interface PlayEntry {
+export interface BGGCatalogPlayEntry {
   id: number; // id of the play
   playDate: string; // date of the play
   gameId: number; // id of the game
@@ -30,7 +30,7 @@ export interface PlayEntry {
   notes: string;
 }
 
-export interface PlayerPlayEntry {
+export interface BGGCatalogPlayerPlayEntry {
   id: number;
   playId: number; // the id of the play
   playerId: number; // the id of the player
@@ -48,7 +48,7 @@ export enum CustomFieldEntity {
   PLAYER = 2
 }
 
-export interface CustomFieldEntry {
+export interface BGGCatalogCustomFieldEntry {
   id: number;
   name: string;
   fieldType: CustomFieldTypes;
@@ -56,7 +56,7 @@ export interface CustomFieldEntry {
   selectedGames: string; // list of game ids, seperated by commas
 }
 
-export interface CustomDataEntry {
+export interface BGGCatalogCustomDataEntry {
   id: number;
   fieldId: number;
   value: string;
@@ -65,11 +65,11 @@ export interface CustomDataEntry {
 }
 
 export interface BGGCatalogBackup {
-  games: GameEntry[];
-  players: PlayerEntry[];
-  locations: LocationEntry[];
-  plays: PlayEntry[];
-  playersPlays: PlayerPlayEntry[];
-  customFields: CustomFieldEntry[];
-  customData: CustomDataEntry[];
+  games: BGGCatalogGameEntry[];
+  players: BGGCatalogPlayerEntry[];
+  locations: BGGCatalogLocationEntry[];
+  plays: BGGCatalogPlayEntry[];
+  playersPlays: BGGCatalogPlayerPlayEntry[];
+  customFields: BGGCatalogCustomFieldEntry[];
+  customData: BGGCatalogCustomDataEntry[];
 }

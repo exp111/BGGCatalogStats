@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {BGStatsExport} from "../../model/bg-stats";
+import {BGStatsExport, BGStatsGameEntry} from "../../model/bg-stats";
+import {BGGCatalogGameEntry} from "../../model/bgg-catalog";
 
 @Component({
   selector: 'app-converter',
@@ -19,6 +20,10 @@ export class ConverterComponent {
       const file = files[0];
       file.text().then((f) => this.readFile(f));
     }
+  }
+
+  makeGame(game: BGGCatalogGameEntry) {
+
   }
 
   public readFile(text: string) {
