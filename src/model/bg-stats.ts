@@ -75,9 +75,18 @@ export interface BGStatsBackup {
   deletedObjects: [];
   games: GameEntry[];
   groups: [];
-  locations: LocationEntry;
+  locations: LocationEntry[];
   players: PlayerEntry[];
   plays: PlayEntry[];
   tags: [];
-  userInfo: [];
+  userInfo: UserInfo;
+}
+
+export interface BGStatsExport {
+  about: string;
+  games: GameEntry[];
+  locations: LocationEntry[];
+  players: PlayerEntry[];
+  plays: PlayEntry[];
+  userInfo: UserInfo;
 }
