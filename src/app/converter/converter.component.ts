@@ -7,7 +7,7 @@ import {
   BGStatsPlayerEntry, BGStatsPlayerScoreEntry
 } from "../../model/bg-stats";
 import {
-  BGGCatalogBackup,
+  BGGCatalogBackup, BGGCatalogCustomDataEntry,
   BGGCatalogGameEntry,
   BGGCatalogLocationEntry,
   BGGCatalogPlayerEntry
@@ -49,6 +49,7 @@ export class ConverterComponent {
       bggName: game.name,
       bggYear: game.yearPublished,
       id: game.id,
+      name: game.name,
       uuid: this.makeUUID(game.name)
     }
   }
@@ -74,12 +75,19 @@ export class ConverterComponent {
     }
   }
 
+  makeCustomData(entries: BGGCatalogCustomDataEntry[]) {
+    // flat map all entries. if the value contains a ",", then its a mult field, so split it
+    return entries.flatMap(d => d.value.includes(",") ? d.value.split(",") : d.value).join(" / ");
+  }
+
   makePlays(backup: BGGCatalogBackup): BGStatsPlayEntry[] {
     return backup.plays.map(p => {
       //TODO: custom tags => board/player scores
+      let customData = backup.customData.filter(d => d.entityId === p.id);
       let playerPlays = backup.playersPlays.filter(ppl => ppl.playId == p.id);
       let date = new Date(p.playDate);
       return {
+        board: this.makeCustomData(customData.filter(d => d.playerId == null)),
         gameRefId: p.gameId,
         ignored: p.noInStats == 1,
         expansionPlays: [],
@@ -99,12 +107,12 @@ export class ConverterComponent {
             newPlayer: false, //TODO: newPlayer
             playerRefId: ppl.playerId,
             rank: 0,
-            role: "",
-            score: `${ppl.score}`,
+            role: this.makeCustomData(customData.filter(d => d.playerId == ppl.id)),
+            score: `${ppl.score ?? ""}`,
             seatOrder: ppl.seatOrder ?? 0,
             startPlayer: ppl.startPlayer == 1,
             winner: ppl.winner == 1,
-            team: `${ppl.team}`
+            team: `${ppl.team ?? ""}`
           };
           return obj;
         })

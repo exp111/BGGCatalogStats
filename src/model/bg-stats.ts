@@ -17,6 +17,7 @@ export interface BGStatsGameEntry {
   copies?: [];
   designers?: string;
   highestWins?: boolean;
+  name: string;
   uuid: UUID;
 }
 
