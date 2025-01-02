@@ -76,13 +76,17 @@ export class ConverterComponent {
   }
 
   makeCustomData(entries: BGGCatalogCustomDataEntry[]) {
-    // flat map all entries. if the value contains a ",", then its a mult field, so split it
-    return entries.flatMap(d => d.value.includes(",") ? d.value.split(",") : d.value).join("\uff0f");
+    return entries
+      // flat map all entries. if the value contains a ",", then its a mult field, so split it
+      .flatMap(d => d.value.includes(",") ? d.value.split(",") : d.value)
+      // trim any whitespace
+      .map(v => v.trim())
+      // seperate with bgstats seperator (weird unicode /)
+      .join("\uff0f");
   }
 
   makePlays(backup: BGGCatalogBackup): BGStatsPlayEntry[] {
     return backup.plays.map(p => {
-      //TODO: custom tags => board/player scores
       let customData = backup.customData.filter(d => d.entityId === p.id);
       let playerPlays = backup.playersPlays.filter(ppl => ppl.playId == p.id);
       let date = new Date(p.playDate);
