@@ -92,7 +92,11 @@ export class ConverterComponent {
 
   makePlays(backup: BGGCatalogBackup): BGStatsPlayEntry[] {
     return backup.plays.map(p => {
-      let customData = backup.customData.filter(d => d.entityId === p.id);
+      let customData = backup.customData.filter(d =>
+        // the data is for this play
+        d.entityId === p.id &&
+        // check if the field is still assigned to the game. bgg catalog keeps data for some reason
+        backup.customFields.find(f => f.id == d.fieldId)!.selectedGames.split(",").some(f => Number(f) == p.gameId));
       let playerPlays = backup.playersPlays.filter(ppl => ppl.playId == p.id);
       let date = new Date(p.playDate);
       let obj: BGStatsPlayEntry = {
@@ -127,7 +131,7 @@ export class ConverterComponent {
         })
       };
       return obj;
-    }).sort((a,b) => a.playDate.localeCompare(b.playDate));
+    }).sort((a, b) => a.playDate.localeCompare(b.playDate));
   }
 
   public readFile(text: string) {
