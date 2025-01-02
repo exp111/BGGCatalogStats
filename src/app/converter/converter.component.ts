@@ -90,7 +90,7 @@ export class ConverterComponent {
       let customData = backup.customData.filter(d => d.entityId === p.id);
       let playerPlays = backup.playersPlays.filter(ppl => ppl.playId == p.id);
       let date = new Date(p.playDate);
-      return {
+      let obj: BGStatsPlayEntry = {
         board: this.makeCustomData(customData.filter(d => d.playerId == null)),
         gameRefId: p.gameId,
         ignored: p.noInStats == 1,
@@ -108,7 +108,7 @@ export class ConverterComponent {
         rounds: 0,
         playerScores: playerPlays.map(ppl => {
           let obj: BGStatsPlayerScoreEntry = {
-            newPlayer: false, //TODO: newPlayer
+            newPlayer: false, //newPlayer handled by import
             playerRefId: ppl.playerId,
             rank: 0,
             role: this.makeCustomData(customData.filter(d => d.playerId == ppl.id)),
@@ -120,8 +120,9 @@ export class ConverterComponent {
           };
           return obj;
         })
-      }
-    })
+      };
+      return obj;
+    }).sort((a,b) => a.playDate.localeCompare(b.playDate));
   }
 
   public readFile(text: string) {
