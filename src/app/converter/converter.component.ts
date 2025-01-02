@@ -99,7 +99,7 @@ export class ConverterComponent {
         durationMin: p.length,
         locationRefId: p.locationId,
         playDate: p.playDate,
-        playDateYmd: Number(`${date.getFullYear()}${date.getMonth()}${date.getDate()}`),
+        playDateYmd: Number(`${date.getFullYear()}${(date.getMonth() + 1)}${date.getDate()}`),
         entryDate: p.playDate,
         modificationDate: p.playDate, // set to play date
         usesTeams: playerPlays.some(ppl => ppl.team != null),
