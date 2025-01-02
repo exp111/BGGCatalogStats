@@ -30,7 +30,12 @@ export class ConverterComponent {
     const files = event.target.files;
     if (files?.length != null && files?.length > 0) {
       const file = files[0];
-      file.text().then((f) => this.readFile(f));
+      file.text()
+        .then((f) => this.readFile(f))
+        .then(() => {
+          // clear field
+          event.target.value = "";
+        });
     }
   }
 
