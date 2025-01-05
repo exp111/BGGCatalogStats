@@ -1,10 +1,5 @@
 import {Injectable} from '@angular/core';
-import {
-  BGGCatalogBackup,
-  BGGCatalogCustomDataEntry,
-  BGGCatalogCustomFieldEntry,
-  BGGCatalogPlayerPlayEntry
-} from "../../../model/bgg-catalog";
+import {BGGCatalogBackup, BGGCatalogCustomFieldEntry, BGGCatalogPlayerPlayEntry} from "../../../model/bgg-catalog";
 import {
   Aspect,
   Difficulty,
@@ -19,8 +14,6 @@ import {
 } from "../../../model/marvel-champions";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
 import {BGStatsBackup, BGStatsPlayerScoreEntry} from "../../../model/bg-stats";
-import {BaseGameStats} from "../../../model/base-game-stats";
-import {Enums, formatToEnumString} from "../../util/enum-utils";
 
 @Injectable({
   providedIn: 'root'
@@ -80,7 +73,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     return ret;
   }
 
-  parsePlayerBGStats(score: BGStatsPlayerScoreEntry, backup: BGStatsBackup) {
+  private parsePlayerBGStats(score: BGStatsPlayerScoreEntry, backup: BGStatsBackup) {
     let ret = {} as MarvelChampionsPlayer;
     // get player
     let player = backup.players.find(p => p.id == score.playerRefId);

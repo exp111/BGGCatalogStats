@@ -11,8 +11,7 @@ import {
   TooManyBonesStats,
   Tyrant
 } from "../../../model/too-many-bones";
-import {BGStatsBackup} from "../../../model/bg-stats";
-import {BaseGameStats} from "../../../model/base-game-stats";
+import {BGStatsBackup, BGStatsPlayerScoreEntry} from "../../../model/bg-stats";
 
 @Injectable({
   providedIn: 'root'
@@ -42,8 +41,25 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
     // name
     ret.Name = player.name;
     ret.IsMe = player.me == 1;
-    // find hero
+    // find gearloc
     ret.Gearloc = this.parseCustomFieldValuePlayer(backup, entry, Gearloc, gearlocField);
+    return ret;
+  }
+
+  private parsePlayerBGStats(score: BGStatsPlayerScoreEntry, backup: BGStatsBackup) {
+    let ret = {} as TooManyBonesPlayer;
+    // get player
+    let player = backup.players.find(p => p.id == score.playerRefId);
+    if (!player) {
+      console.error(`Player with id ${score.playerRefId} not found`);
+      return ret;
+    }
+    // name
+    ret.Name = player.name;
+    ret.IsMe = backup.userInfo.meRefId == player.id;
+    let role = this.getPlayerRoleBGStats(score);
+    // find gearloc
+    ret.Gearloc = this.parseFieldBGStats(role, Gearloc);
     return ret;
   }
 
@@ -96,7 +112,39 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
     return ret;
   }
 
-  public override parseBGStats(backup: BGStatsBackup): BaseGameStats {
-    return {} as TooManyBonesStats;
+  public override parseBGStats(backup: BGStatsBackup) {
+    let ret = {
+      Plays: [],
+      OwnedContent: []
+    } as TooManyBonesStats;
+    let plays = [];
+    // get game id
+    let game = this.findBaseGame(backup);
+    if (!game) {
+      return ret;
+    }
+    ret.OwnedContent = this.getOwnedContent(backup);
+    let gameId = game.id;
+    // plays
+    for (let play of backup.plays) {
+      // only check game plays
+      if (play.gameRefId != gameId) {
+        continue;
+      }
+      let obj = {
+        Id: play.uuid,
+        Time: play.durationMin,
+        Notes: "", //TODO: notes
+        Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
+      } as TooManyBonesPlay;
+      // scenario
+      obj.Tyrant = this.parseFieldBGStats(play.board, Tyrant);
+      // difficulty
+      obj.Difficulty = this.parseFieldBGStats(play.board, Difficulty);
+      obj.Won = play.playerScores.some(p => p.winner)
+      plays.push(obj);
+    }
+    ret.Plays = plays;
+    return ret;
   }
 }

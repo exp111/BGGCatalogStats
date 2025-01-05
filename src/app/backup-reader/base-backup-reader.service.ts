@@ -123,7 +123,7 @@ export abstract class BaseBackupReaderService {
     );
   }
 
-  getPlayerRoleBGStats(score: BGStatsPlayerScoreEntry) {
+  protected getPlayerRoleBGStats(score: BGStatsPlayerScoreEntry) {
     return score.role ?? score.teamRole ?? "";
   }
 
