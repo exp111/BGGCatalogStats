@@ -1,20 +1,10 @@
 @if (!this.stats) {
-  <div class="position-absolute top-50 w-100 d-flex justify-content-center">
-    <div class="w-75 p-5 card">
-      <div class="card-body">
-        <h5 class="card-title">Marvel Champions</h5>
-        <div class="input-group">
-          <button class="btn btn-outline-primary" (click)="loadExample()">Load Example</button>
-          <label class="input-group-text" for="fileInput">Upload BGG Catalog Export here</label>
-          <input id="fileInput"
-                 type="file"
-                 class="form-control"
-                 accept=".json"
-                 (change)="onFileLoad($any($event))">
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-base-upload-selection
+    title="Marvel Champions"
+    [(selectedTool)]="selectedTool"
+    (loadExample)="loadExample()"
+    (onFileLoad)="onFileLoad($event)"
+  ></app-base-upload-selection>
 } @else {
   <div class="sticky-top bg-white d-flex gap-3 pt-2 pb-2">
     <div class="form-check">

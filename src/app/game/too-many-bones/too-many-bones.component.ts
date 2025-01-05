@@ -6,6 +6,7 @@ import {BaseGameComponent} from "../base-game.component";
 import {Difficulty, Gearloc, TooManyBonesPlay, TooManyBonesStats, Tyrant} from "../../../model/too-many-bones";
 import {TMBBackupReaderService} from "../../backup-reader/too-many-bones/tmb-backup-reader.service";
 import {formatDurationMinutes} from "../../util/helper";
+import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -15,6 +16,7 @@ import {formatDurationMinutes} from "../../util/helper";
     ReactiveFormsModule,
     TableComponent,
     FormsModule,
+    BaseUploadSelectionComponent,
   ],
   templateUrl: './too-many-bones.component.html',
   styleUrl: './too-many-bones.component.css'

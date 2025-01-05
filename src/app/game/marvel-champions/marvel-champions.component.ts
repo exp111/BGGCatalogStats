@@ -16,6 +16,7 @@ import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-bac
 import {formatDurationMinutes} from "../../util/helper";
 import {MCFilterParams, MCFilterPipe} from "./mc-filter.pipe";
 import {enumToStringArray} from "../../util/enum-utils";
+import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -26,6 +27,7 @@ import {enumToStringArray} from "../../util/enum-utils";
     TableComponent,
     FormsModule,
     MCFilterPipe,
+    BaseUploadSelectionComponent,
   ],
   templateUrl: './marvel-champions.component.html',
   styleUrl: './marvel-champions.component.css'

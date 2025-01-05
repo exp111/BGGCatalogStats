@@ -7,6 +7,7 @@ import {ChecklistState} from "../app-table/checklist.component";
 @Directive()
 export abstract class BaseGameComponent {
   static Title: string;
+  selectedTool = "BGStats";
   stats?: BaseGameStats;
   onlyMe: boolean = false;
   onlyOwned: boolean = true;
