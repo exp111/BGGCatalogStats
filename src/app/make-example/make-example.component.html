@@ -1,12 +1,30 @@
 <div>
-<div>
-  Game:
-  <input type="radio" value="MC" name="game">MC
-  <input type="radio" value="TMB" name="game">TMB
-</div>
+  <div class="d-flex gap-1">
+    Tool:
+    <div>
+      <input type="radio" value="BGGCatalog" name="tool" id="bggcatalog">
+      <label for="bggcatalog">BGG Catalog</label>
+    </div>
+    <div>
+      <input type="radio" value="BGStats" name="tool" id="bgstats">
+      <label for="bgstats">BG Stats</label>
+    </div>
+  </div>
+  <div class="d-flex gap-1">
+    Game:
+    <div>
+      <input type="radio" value="MC" name="game" id="mc">
+      <label for="mc">MC</label>
+    </div>
+    <div>
+      <input type="radio" value="TMB" name="game" id="tmb">
+      <label for="tmb">TMB</label>
+    </div>
+  </div>
 
   <input type="file" id="file"><br>
-  <button class="btn btn-outline-primary" (click)="do()">Make Example</button><br>
+  <button class="btn btn-outline-primary" (click)="do()">Make Example</button>
+  <br>
   Output:
   <textarea id="output" readonly class="w-100"></textarea>
 </div>
