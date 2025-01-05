@@ -5,9 +5,9 @@
       <div class="d-flex flex-column gap-1">
         <div class="btn-group">
           <input type="radio" class="btn-check" name="tool" id="bggcatalog" value="bggcatalog" [ngModel]="selectedTool" (ngModelChange)="selectedToolChange.emit($event)">
-          <label class="btn btn-outline-secondary" for="bggcatalog">BGG Catalog</label>
+          <label class="btn btn-outline-primary" for="bggcatalog">BGG Catalog</label>
           <input type="radio" class="btn-check" name="tool" id="bgstats" value="bgstats" [ngModel]="selectedTool" (ngModelChange)="selectedToolChange.emit($event)">
-          <label class="btn btn-outline-secondary" for="bgstats">BG Stats</label>
+          <label class="btn btn-outline-primary" for="bgstats">BG Stats</label>
         </div>
         <div class="input-group">
           <button class="btn btn-outline-primary" (click)="loadExample.emit()">Load Example</button>
