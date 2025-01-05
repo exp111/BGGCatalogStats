@@ -63,7 +63,7 @@ export class MakeExampleComponent {
       let output = document.querySelector('textarea[id="output"]') as HTMLTextAreaElement;
       output.innerText = JSON.stringify(example!, null, 2);
       let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonStr);
-      this.downloadFile("bgg-catalog-example.json", dataStr);
+      this.downloadFile(`${toolRadio.value.toLowerCase()}-example.json`, dataStr);
     });
   }
 

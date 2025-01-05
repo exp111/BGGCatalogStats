@@ -39,7 +39,8 @@ export interface BGStatsPlayerScoreEntry {
   score: string; // score achieved, as string
   seatOrder: number; // 0?
   startPlayer: boolean; // has the player started? default false
-  team?: string; // same as role?
+  team?: string; // team name
+  teamRole?: string; // role in team if play has "usesTeams" true
   winner: boolean; // has the player won
 }
 

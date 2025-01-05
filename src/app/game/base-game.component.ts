@@ -36,7 +36,14 @@ export abstract class BaseGameComponent {
 
   public readFile(text: string) {
     let backup = JSON.parse(text);
-    this.stats = this.backupReader.parse(backup);
+    switch (this.selectedTool) {
+      case "bggcatalog":
+        this.stats = this.backupReader.parseBGGCatalog(backup);
+        break;
+      case "bgstats":
+        this.stats = this.backupReader.parseBGStats(backup);
+        break;
+    }
   }
 
   public winrateCellClassGetter(value: string) {

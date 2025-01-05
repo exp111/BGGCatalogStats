@@ -74,7 +74,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   playHasHero(play: MarvelChampionsPlay, hero?: Hero, aspect?: Aspect) {
     return play.Players.some(p => (hero == undefined || p.Hero == hero)
       && (!this.onlyMe || p.IsMe)
-      && (aspect == undefined || p.Aspects.includes(aspect)));
+      && (aspect == undefined || p.Aspects?.includes(aspect)));
   }
 
   getRate(totalPlays: number, plays: number) {

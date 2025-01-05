@@ -66,7 +66,7 @@ export enum Aspect {
   Justice,
   Leadership,
   Protection,
-  Deadpool,
+  Pool,
   END
 }
 
@@ -124,7 +124,7 @@ export const PackContent: Record<number, number[]> = {
     Modular.BombThreat, Modular.MastersOfEvil, Modular.UnderAttack, Modular.DoomsdayChair, Modular.LegionsOfHydra,
     Difficulty.Standard, Difficulty.Expert
   ],
-  [398039]: [Aspect.Deadpool, Hero.Deadpool],
+  [398039]: [Aspect.Pool, Hero.Deadpool],
   [300878]: [Hero.DoctorStrange], //TODO: strange modular?
   [369039]: [Hero.Wolverine, Modular.Deathstrike],
   [306430]: [

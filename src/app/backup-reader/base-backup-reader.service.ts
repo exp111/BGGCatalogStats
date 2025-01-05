@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BGGCatalogBackup, BGGCatalogCustomDataEntry, BGGCatalogCustomFieldEntry, BGGCatalogPlayEntry, BGGCatalogPlayerPlayEntry} from "../../model/bgg-catalog";
 import {BaseGameStats} from "../../model/base-game-stats";
 import {formatToEnumString, getEnumValue} from "../util/enum-utils";
+import {BGStatsBackup, BGStatsPlayerScoreEntry} from "../../model/bg-stats";
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export abstract class BaseBackupReaderService {
     (window as any).backupReader = this;
   }
 
-  protected findBaseGame(backup: BGGCatalogBackup) {
+  protected findBaseGame(backup: BGGCatalogBackup | BGStatsBackup) {
     let game = backup.games.find(g => g.bggId == this.BaseGameBGGID);
     if (!game) {
       console.error("Game not found");
@@ -31,7 +32,7 @@ export abstract class BaseBackupReaderService {
     return game;
   }
 
-  protected getOwnedContent(backup: BGGCatalogBackup) {
+  protected getOwnedContent(backup: BGGCatalogBackup | BGStatsBackup) {
     let keys = Object.keys(this.GameContent);
     let ret = [];
     for (let key of keys) {
@@ -122,6 +123,21 @@ export abstract class BaseBackupReaderService {
     );
   }
 
+  getPlayerRoleBGStats(score: BGStatsPlayerScoreEntry) {
+    return score.role ?? score.teamRole ?? "";
+  }
+
+  protected parseFieldBGStats(role: string | undefined, enums: any, multi: boolean = false) {
+    // try to find any entry in the roles that matches an entry in the enum
+    let val = role?.split("\uff0f").map(r => this.parseEnumValue(enums, r)).filter(r => r != null);
+    if (val == undefined || val.length == 0) {
+      console.error(`Custom Field Value ${role} can not be parsed`);
+      return multi ? [] : undefined;
+    }
+    return multi ? val : val[0];
+  }
+
   /* Parses the backup to a parser specific game stats model */
-  public abstract parse(backup: BGGCatalogBackup): BaseGameStats;
+  public abstract parseBGGCatalog(backup: BGGCatalogBackup): BaseGameStats;
+  public abstract parseBGStats(backup: BGStatsBackup): BaseGameStats;
 }

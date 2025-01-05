@@ -4,7 +4,7 @@ export interface BaseGamePlayer {
 }
 
 export interface BaseGamePlay {
-  Id: number;
+  Id: string;
   Players: BaseGamePlayer[];
   Time: number;
   Won: boolean;

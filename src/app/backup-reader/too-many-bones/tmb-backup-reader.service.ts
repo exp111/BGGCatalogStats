@@ -11,6 +11,8 @@ import {
   TooManyBonesStats,
   Tyrant
 } from "../../../model/too-many-bones";
+import {BGStatsBackup} from "../../../model/bg-stats";
+import {BaseGameStats} from "../../../model/base-game-stats";
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +47,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
     return ret;
   }
 
-  public override parse(backup: BGGCatalogBackup) {
+  public override parseBGGCatalog(backup: BGGCatalogBackup) {
     let ret = {
       Plays: [],
       OwnedContent: []
@@ -73,7 +75,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
         continue;
       }
       let obj = {
-        Id: play.id,
+        Id: String(play.id),
         Time: play.length,
         Notes: play.notes,
         Players: [] as TooManyBonesPlayer[],
@@ -92,5 +94,9 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
     }
     ret.Plays = plays;
     return ret;
+  }
+
+  public override parseBGStats(backup: BGStatsBackup): BaseGameStats {
+    return {} as TooManyBonesStats;
   }
 }

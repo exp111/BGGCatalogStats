@@ -1,5 +1,5 @@
 // type of enums as i dont know what to use else
-type Enums = any;
+export type Enums = any;
 
 export function formatToEnumString(str: string) {
   return str

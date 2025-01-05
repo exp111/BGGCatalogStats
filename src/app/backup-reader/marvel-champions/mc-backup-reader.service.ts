@@ -1,5 +1,10 @@
 import {Injectable} from '@angular/core';
-import {BGGCatalogBackup, BGGCatalogCustomFieldEntry, BGGCatalogPlayerPlayEntry} from "../../../model/bgg-catalog";
+import {
+  BGGCatalogBackup,
+  BGGCatalogCustomDataEntry,
+  BGGCatalogCustomFieldEntry,
+  BGGCatalogPlayerPlayEntry
+} from "../../../model/bgg-catalog";
 import {
   Aspect,
   Difficulty,
@@ -13,6 +18,9 @@ import {
   Scenario
 } from "../../../model/marvel-champions";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
+import {BGStatsBackup, BGStatsPlayerScoreEntry} from "../../../model/bg-stats";
+import {BaseGameStats} from "../../../model/base-game-stats";
+import {Enums, formatToEnumString} from "../../util/enum-utils";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +38,6 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     return {
       "Gerechtigkeit": "Justice",
       "F\xfchrung": "Leadership",
-      "Pool": "Deadpool",
       "Schutz": "Protection"
     }[str] ?? str;
   }
@@ -55,7 +62,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     }[str] ?? str;
   }
 
-  private parsePlayer(entry: BGGCatalogPlayerPlayEntry, backup: BGGCatalogBackup, heroField: BGGCatalogCustomFieldEntry, aspectField: BGGCatalogCustomFieldEntry, aspectsField: BGGCatalogCustomFieldEntry) {
+  private parsePlayerBGGCatalog(entry: BGGCatalogPlayerPlayEntry, backup: BGGCatalogBackup, heroField: BGGCatalogCustomFieldEntry, aspectField: BGGCatalogCustomFieldEntry, aspectsField: BGGCatalogCustomFieldEntry) {
     let ret = {} as MarvelChampionsPlayer;
     // get player
     let player = backup.players.find(p => p.id == entry.playerId);
@@ -73,7 +80,26 @@ export class MCBackupReaderService extends BaseBackupReaderService {
     return ret;
   }
 
-  public override parse(backup: BGGCatalogBackup) {
+  parsePlayerBGStats(score: BGStatsPlayerScoreEntry, backup: BGStatsBackup) {
+    let ret = {} as MarvelChampionsPlayer;
+    // get player
+    let player = backup.players.find(p => p.id == score.playerRefId);
+    if (!player) {
+      console.error(`Player with id ${score.playerRefId} not found`);
+      return ret;
+    }
+    // name
+    ret.Name = player.name;
+    ret.IsMe = backup.userInfo.meRefId == player.id;
+    let role = this.getPlayerRoleBGStats(score);
+    // find hero
+    ret.Hero = this.parseFieldBGStats(role, Hero);
+    // find aspect
+    ret.Aspects = this.parseFieldBGStats(role, Aspect, true);
+    return ret;
+  }
+
+  public override parseBGGCatalog(backup: BGGCatalogBackup) {
     let ret = {
       Plays: [],
       OwnedContent: []
@@ -105,7 +131,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         continue;
       }
       let obj = {
-        Id: play.id,
+        Id: String(play.id),
         Time: play.length,
         Notes: play.notes,
         Players: [] as MarvelChampionsPlayer[],
@@ -113,7 +139,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       // players
       let players = backup.playersPlays.filter(p => p.playId == play.id);
       for (let player of players) {
-        obj.Players.push(this.parsePlayer(player, backup, heroField!, aspectField!, aspectsField!));
+        obj.Players.push(this.parsePlayerBGGCatalog(player, backup, heroField!, aspectField!, aspectsField!));
       }
       // scenario
       obj.Scenario = this.parseCustomFieldValuePlay(backup, play, Scenario, scenarioField!);
@@ -122,6 +148,44 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       // difficulty
       obj.Difficulty = this.parseCustomFieldValuePlay(backup, play, Difficulty, difficultyField!);
       obj.Won = players.some(p => p.winner == 1)
+      plays.push(obj);
+    }
+    ret.Plays = plays;
+    return ret;
+  }
+
+  public override parseBGStats(backup: BGStatsBackup) {
+    let ret = {
+      Plays: [],
+      OwnedContent: []
+    } as MarvelChampionsStats;
+    let plays = [];
+    // get game id
+    let game = this.findBaseGame(backup);
+    if (!game) {
+      return ret;
+    }
+    ret.OwnedContent = this.getOwnedContent(backup);
+    let gameId = game.id;
+    // plays
+    for (let play of backup.plays) {
+      // only check game plays
+      if (play.gameRefId != gameId) {
+        continue;
+      }
+      let obj = {
+        Id: play.uuid,
+        Time: play.durationMin,
+        Notes: "", //TODO: notes
+        Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
+      } as MarvelChampionsPlay;
+      // scenario
+      obj.Scenario = this.parseFieldBGStats(play.board, Scenario);
+      // modular
+      obj.Modulars = this.parseFieldBGStats(play.board, Modular, true);
+      // difficulty
+      obj.Difficulty = this.parseFieldBGStats(play.board, Difficulty);
+      obj.Won = play.playerScores.some(p => p.winner)
       plays.push(obj);
     }
     ret.Plays = plays;
