@@ -29,14 +29,19 @@ export class MakeExampleComponent {
         content = BoxContent;
         break;
       }
-    }
+    });
+    console.log("Game ID:");
     console.log(baseGameBGGID);
+    console.log("Content:");
+    console.log(content);
     let fileEl = document.getElementById("file") as HTMLInputElement;
     let file = fileEl.files![0];
+    console.log("Raw File:");
     console.log(file);
     file.text().then(t => {
       let example = {} as BGGCatalogBackup;
       let json = JSON.parse(t) as BGGCatalogBackup;
+      console.log("Json:");
       console.log(json);
       // games
       example.games = json.games.filter(g => Object.keys(content).includes(String(g.bggId))).map(g => {
@@ -67,15 +72,24 @@ export class MakeExampleComponent {
       example.locations = [];
       example.customFields = json.customFields.filter(f => f.selectedGames.split(",").includes(String(gameId)));
       example.customData = json.customData.filter(d => example.customFields.some(f => f.id == d.fieldId));
-      console.log(JSON.stringify(example));
-      // dl
-      let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(example));
-      let dlAnchorElem = document.createElement("a");
-      dlAnchorElem.setAttribute("href",     dataStr     );
-      dlAnchorElem.setAttribute("download", `${radio.value.toLowerCase()}-example.json`);
-      document.body.appendChild(dlAnchorElem); // required for firefox
-      dlAnchorElem.click();
-      dlAnchorElem.remove();
-    })
+      // output
+      console.log("Example:");
+      console.log(example);
+      let jsonStr = JSON.stringify(example);
+      console.log(jsonStr);
+      let output = document.querySelector('textarea[id="output"]') as HTMLTextAreaElement;
+      output.innerText = JSON.stringify(example, null, 2);
+      let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonStr);
+      this.downloadFile("bgg-catalog-example.json", dataStr);
+    });
+  }
+
+  downloadFile(fileName: string, dataStr: string) {
+    let dlAnchorElem = document.createElement("a");
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", fileName);
+    document.body.appendChild(dlAnchorElem); // required for firefox
+    dlAnchorElem.click();
+    dlAnchorElem.remove();
   }
 }

@@ -11,6 +11,6 @@ export const routes: Routes = [
   {path: "toomanybones", component: TooManyBonesComponent, title: TooManyBonesComponent.Title},
   {path: "converter", component: ConverterComponent, title: "Converter"},
   {path: "help", component: HelpPageComponent, title: HelpPageComponent.Title},
-  {path: "example", component: MakeExampleComponent, title: MakeExampleComponent.Title},
+  {path: "make-example", component: MakeExampleComponent, title: MakeExampleComponent.Title},
   {path: "**", component: StartComponent, title: StartComponent.Title},
 ];
