@@ -7,7 +7,7 @@ import {ChecklistState} from "../app-table/checklist.component";
 @Directive()
 export abstract class BaseGameComponent {
   static Title: string;
-  selectedTool = "BGStats";
+  selectedTool = "bgstats";
   stats?: BaseGameStats;
   onlyMe: boolean = false;
   onlyOwned: boolean = true;
@@ -23,7 +23,7 @@ export abstract class BaseGameComponent {
   }
 
   public loadExample() {
-    fetch(`./example/${this.exampleFileName}.json`).then(r => r.text()).then(t => this.readFile(t));
+    fetch(`./example/${this.selectedTool}-${this.exampleFileName}.json`).then(r => r.text()).then(t => this.readFile(t));
   }
 
   public onFileLoad(event: Event & { target: HTMLInputElement }) {

@@ -1,0 +1,816 @@
+{
+  "about": "",
+  "games": [
+    {
+      "bggId": 192135,
+      "bggName": "Too Many Bones",
+      "bggYear": 2017,
+      "id": 49,
+      "name": "Too Many Bones",
+      "uuid": "CB191EFC-EF3F-56DC-A945-414EC223D750"
+    }
+  ],
+  "locations": [],
+  "players": [
+    {
+      "id": 5,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Player 1",
+      "uuid": "256EC006-69E8-580B-B302-5C1DA95827BC"
+    },
+    {
+      "id": 6,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Player 2",
+      "uuid": "C5EB5F9E-2CEE-5EF3-BE27-ADF7E9BB1514"
+    },
+    {
+      "id": 3,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Me",
+      "uuid": "94563EC3-83E2-5AA3-B43A-BD9B337B2E08"
+    },
+    {
+      "id": 7,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Player 3",
+      "uuid": "E3E91FFF-AAB2-52FF-AF48-953372007A23"
+    }
+  ],
+  "plays": [
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "49D1E595-6314-592D-B0AE-A9DC9E4362E0",
+      "durationMin": 41,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Heroic／Marrow",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "579AE2D6-09EC-5D3E-AD16-DBD8F4E54DB1",
+      "durationMin": 110,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Heroic",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "B4F44659-81D9-582E-AB95-8559060F81F1",
+      "durationMin": 50,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Heroic",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "F98ADDB3-5226-5738-98DD-CE9ABD8656B5",
+      "durationMin": 42,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Heroic",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "D2AE9066-F787-5F38-A9CD-E09E46CDAB24",
+      "durationMin": 22,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "8FBA6A6F-FEAD-5E9E-B2AA-8A719FF01C89",
+      "durationMin": 50,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Heroic",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "EA75FA42-A84A-515F-AFAD-BC22C196CBE2",
+      "durationMin": 72,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Legendary／Mulmesh",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "47C5C1DC-8965-5E1E-B9FE-0127328A7A7F",
+      "durationMin": 60,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Adventurer／Goblin König",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "C72AE2A1-5A39-5C8A-830E-677301DB456E",
+      "durationMin": 90,
+      "locationRefId": 1,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 6,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 3,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 7,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 4,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "994A25DC-B79F-5660-A7D6-B6524599A434",
+      "durationMin": 46,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "197E0D93-5B1F-5EB0-A0BB-9A7A13F361D4",
+      "durationMin": 10,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "52F8DAD0-7CB5-5B97-8EC5-7CDB92AF59C0",
+      "durationMin": 150,
+      "locationRefId": 1,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 6,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 3,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 7,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 4,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "246D09AD-766F-55FA-8A4A-E3A7AC63EF3F",
+      "durationMin": null,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "6498041E-18B0-5DFD-AE9D-5B1421185CA3",
+      "durationMin": null,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "2798C76B-24F6-59D6-8DEA-5BCA385BCF6A",
+      "durationMin": 180,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "2920FE03-F652-5067-9A7D-3467A7D6DF45",
+      "durationMin": 120,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "DF614F9D-B10F-5675-BB77-7158F274776F",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "22BA21E2-B0FF-5A15-9CAA-CEC5414F0517",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "2D1842A1-4D71-5C80-898B-D5A8F558F0E5",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "13790379-B88E-5CB4-A0DC-193A55914C72",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "B2EE3ADD-3D40-5982-A32A-BA1012F5E30C",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "AA607A82-1068-516B-8E27-8F7E938C5DA4",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    }
+  ],
+  "userInfo": {
+    "meRefId": 3
+  }
+}
