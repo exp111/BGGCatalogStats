@@ -15,7 +15,6 @@ import {BaseGameComponent} from "../base-game.component";
 import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-backup-reader.service";
 import {formatDurationMinutes} from "../../util/helper";
 import {MCFilterParams, MCFilterPipe} from "./mc-filter.pipe";
-import {enumToStringArray} from "../../util/enum-utils";
 import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 
 @Component({

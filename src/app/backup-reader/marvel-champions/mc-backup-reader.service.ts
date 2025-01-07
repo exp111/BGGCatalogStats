@@ -23,8 +23,16 @@ export class MCBackupReaderService extends BaseBackupReaderService {
   public override GameContent = PackContent;
 
   protected override enumNormalizers = {
+    [Scenario.END]: this.normalizeScenarioName,
     [Aspect.END]: this.normalizeAspectName,
     [Modular.END]: this.normalizeModularName
+  }
+
+  private normalizeScenarioName(str: string) {
+    return {
+      "RiskantesGesch\xe4ft": "RiskyBusiness",
+      "MutagenFormel": "MutagenFormula",
+    }[str] ?? str;
   }
 
   private normalizeAspectName(str: string) {
@@ -52,8 +60,6 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       "SinistrerAngriff": "SinisterAssault",
       "SymbiotischeSt\xe4rke": "SymbioticStrength",
       "Fl\xfcsterndeParanoia": "WhispersOfParanoia",
-      "RiskantesGesch\xe4ft": "RiskyBusiness",
-      "MutagenFormel": "MutagenFormula",
       "GoblinTricks": "GoblinGimmicks",
       "StechendesChaos": "AMessOfThings",
       "Energieentzug": "PowerDrain",
