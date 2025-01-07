@@ -299,6 +299,7 @@
           @for (play of this.getPlays(this.stats) | MCFilterPipe:filterParams; track play.Id) {
             <div class="card card-body">
               <p>Id: {{ play.Id }}</p>
+              <p>Timestamp: {{ play.Timestamp }}</p>
               <p>Scenario: {{ this.beautifyEnum(Scenario, play.Scenario) }}</p>
               <p>Modular: {{ this.formatEnumList(Modular, play.Modulars) }}</p>
               <p>Difficulty: {{ this.beautifyEnum(Difficulty, play.Difficulty) }}</p>

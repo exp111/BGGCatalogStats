@@ -73,6 +73,7 @@
   @for (play of this.getPlays(this.stats); track play.Id) {
     <div class="card card-body">
       <p>Id: {{ play.Id }}</p>
+      <p>Timestamp: {{ play.Timestamp }}</p>
       <p>Tyrant: {{ beautifyEnum(Tyrant, play.Tyrant) }}</p>
       <p>Difficulty: {{ beautifyEnum(Difficulty, play.Difficulty) }}</p>
       <p>Players: {{ play.Players.length }}</p>
