@@ -84,6 +84,8 @@ export enum Scenario {
   Mysterio,
   SinisterSix,
   VenomGoblin,
+  RiskyBusiness,
+  MutagenFormula,
   END
 }
 
@@ -107,6 +109,10 @@ export enum Modular {
   SinisterAssault,
   SymbioticStrength,
   WhispersOfParanoia,
+  GoblinGimmicks,
+  AMessOfThings,
+  PowerDrain,
+  RunningInterference,
   END
 }
 
@@ -125,7 +131,7 @@ export const PackContent: Record<number, number[]> = {
     Difficulty.Standard, Difficulty.Expert
   ],
   [398039]: [Aspect.Pool, Hero.Deadpool],
-  [300878]: [Hero.DoctorStrange], //TODO: strange modular?
+  [300878]: [Hero.DoctorStrange],
   [369039]: [Hero.Wolverine, Modular.Deathstrike],
   [306430]: [
     Hero.Hawkeye, Hero.SpiderWoman,
@@ -137,6 +143,11 @@ export const PackContent: Record<number, number[]> = {
     Scenario.Sandman, Scenario.Venom, Scenario.Mysterio, Scenario.SinisterSix, Scenario.VenomGoblin,
     Modular.CityInChaos, Modular.DownToEarth, Modular.GoblinGear, Modular.GuerrillaTactics, Modular.OsbornTech,
     Modular.PersonalNightmare, Modular.SinisterAssault, Modular.SymbioticStrength, Modular.WhispersOfParanoia,
+  ],
+  // Green Goblin
+  [288794]: [
+    Scenario.RiskyBusiness, Scenario.MutagenFormula,
+    Modular.GoblinGimmicks, Modular.AMessOfThings, Modular.PowerDrain, Modular.RunningInterference
   ],
   [316695]: [Hero.ScarletWitch],
   [289222]: [Hero.CaptainAmerica], //TODO: cap modular?

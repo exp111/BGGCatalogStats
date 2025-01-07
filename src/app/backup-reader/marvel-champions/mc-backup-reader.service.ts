@@ -52,6 +52,12 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       "SinistrerAngriff": "SinisterAssault",
       "SymbiotischeSt\xe4rke": "SymbioticStrength",
       "Fl\xfcsterndeParanoia": "WhispersOfParanoia",
+      "RiskantesGesch\xe4ft": "RiskyBusiness",
+      "MutagenFormel": "MutagenFormula",
+      "GoblinTricks": "GoblinGimmicks",
+      "StechendesChaos": "AMessOfThings",
+      "Energieentzug": "PowerDrain",
+      "Ablenkungsman\xf6ver": "RunningInterference"
     }[str] ?? str;
   }
 
