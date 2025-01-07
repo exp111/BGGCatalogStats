@@ -92,7 +92,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
       }
       let obj = {
         Id: String(play.id),
-        Time: play.length,
+        Duration: play.length,
         Notes: play.notes,
         Players: [] as TooManyBonesPlayer[],
       } as TooManyBonesPlay;
@@ -133,7 +133,7 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
       }
       let obj = {
         Id: play.uuid,
-        Time: play.durationMin,
+        Duration: play.durationMin,
         Notes: "", //TODO: notes
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
       } as TooManyBonesPlay;

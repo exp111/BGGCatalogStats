@@ -14,7 +14,7 @@ import {
 import {BaseGameComponent} from "../base-game.component";
 import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-backup-reader.service";
 import {formatDurationMinutes} from "../../util/helper";
-import {MCFilterParams, MCFilterPipe} from "./mc-filter.pipe";
+import {MCFilterParams, MCFilterPipe, SortOrder, SortType} from "./mc-filter.pipe";
 import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 
 @Component({
@@ -42,7 +42,9 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     aspect: null,
     scenario: null,
     modular: null,
-    difficulty: null
+    difficulty: null,
+    sortBy: null,
+    sortOrder: SortOrder.Ascending
   };
 
   protected override enumBeautifiers = {
@@ -93,7 +95,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   }
 
   getPlaytime(plays: MarvelChampionsPlay[]) {
-    return plays.reduce((a, b) => a + (b.Time ?? 0), 0);
+    return plays.reduce((a, b) => a + (b.Duration ?? 0), 0);
   }
 
   getAveragePlaytime(plays: MarvelChampionsPlay[], onlyWon: boolean | null = null) {
@@ -337,4 +339,6 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   protected readonly Modular = Modular;
   protected readonly Difficulty = Difficulty;
   protected readonly formatDurationMinutes = formatDurationMinutes;
+  protected readonly SortOrder = SortOrder;
+  protected readonly SortType = SortType;
 }

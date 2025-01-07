@@ -286,6 +286,15 @@
                 <option [ngValue]="difficulty">{{ beautifyEnum(Difficulty, difficulty) }}</option>
               }
             </select>
+            <select class="form-select" [(ngModel)]="filterParams.sortBy">
+              <option [ngValue]="null">Default</option>
+              <option [ngValue]="SortType.Timestamp">Timestamp</option>
+              <option [ngValue]="SortType.Duration">Duration</option>
+            </select>
+            <select class="form-select" [(ngModel)]="filterParams.sortOrder">
+              <option [ngValue]="SortOrder.Ascending">Asc</option>
+              <option [ngValue]="SortOrder.Descending">Desc</option>
+            </select>
           </div>
           @for (play of this.getPlays(this.stats) | MCFilterPipe:filterParams; track play.Id) {
             <div class="card card-body">
@@ -302,7 +311,7 @@
                 }
               </ul>
               <p>Won: {{ play.Won }}</p>
-              <p>Time: {{ formatDurationMinutes(play.Time) }}</p>
+              <p>Time: {{ formatDurationMinutes(play.Duration) }}</p>
               @if (play.Notes) {
                 <p>Comments: {{ play.Notes }}</p>
               }

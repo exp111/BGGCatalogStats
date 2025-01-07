@@ -6,9 +6,10 @@ export interface BaseGamePlayer {
 export interface BaseGamePlay {
   Id: string;
   Players: BaseGamePlayer[];
-  Time: number;
+  Duration: number;
   Won: boolean;
   Notes: string;
+  Timestamp: string;
 }
 
 export interface BaseGameStats {
