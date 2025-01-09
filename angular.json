@@ -21,7 +21,6 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "@angular/localize/init",
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
@@ -36,7 +35,12 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.js"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": ["mixed-decls", "color-functions", "global-builtin", "import"]
+              }
+            }
           },
           "configurations": {
             "production": {

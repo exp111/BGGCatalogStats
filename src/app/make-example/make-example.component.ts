@@ -4,11 +4,10 @@ import {BoxContent, TMB_GAME_ID} from "../../model/too-many-bones";
 import {BGGCatalogBackup} from "../../model/bgg-catalog";
 
 @Component({
-  selector: 'app-make-example',
-  standalone: true,
-  imports: [],
-  templateUrl: './make-example.component.html',
-  styleUrl: './make-example.component.scss'
+    selector: 'app-make-example',
+    imports: [],
+    templateUrl: './make-example.component.html',
+    styleUrl: './make-example.component.scss'
 })
 export class MakeExampleComponent {
   static Title = "Make Example";

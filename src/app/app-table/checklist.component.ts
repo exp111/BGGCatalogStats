@@ -8,11 +8,10 @@ export enum ChecklistState {
 }
 
 @Component({
-  selector: 'app-checklist',
-  standalone: true,
-  imports: [],
-  templateUrl: './table.component.html',
-  styleUrl: './checklist.component.scss'
+    selector: 'app-checklist',
+    imports: [],
+    templateUrl: './table.component.html',
+    styleUrl: './checklist.component.scss'
 })
 export class ChecklistComponent extends TableComponent {
   protected override getValue(x: any, y: any) {

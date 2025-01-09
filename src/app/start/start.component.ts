@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-start',
-  standalone: true,
+    selector: 'app-start',
     imports: [
         RouterLink
     ],
-  templateUrl: './start.component.html',
-  styleUrl: './start.component.scss'
+    templateUrl: './start.component.html',
+    styleUrl: './start.component.scss'
 })
 export class StartComponent {
   static Title = 'BGG Catalog Stats';

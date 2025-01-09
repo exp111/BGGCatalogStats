@@ -9,17 +9,16 @@ import {formatDurationMinutes} from "../../util/helper";
 import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 
 @Component({
-  selector: 'app-marvel-champions',
-  standalone: true,
-  imports: [
-    ChecklistComponent,
-    ReactiveFormsModule,
-    TableComponent,
-    FormsModule,
-    BaseUploadSelectionComponent,
-  ],
-  templateUrl: './too-many-bones.component.html',
-  styleUrl: './too-many-bones.component.scss'
+    selector: 'app-marvel-champions',
+    imports: [
+        ChecklistComponent,
+        ReactiveFormsModule,
+        TableComponent,
+        FormsModule,
+        BaseUploadSelectionComponent,
+    ],
+    templateUrl: './too-many-bones.component.html',
+    styleUrl: './too-many-bones.component.scss'
 })
 export class TooManyBonesComponent extends BaseGameComponent {
   static override Title = 'Too Many Bones Stats';

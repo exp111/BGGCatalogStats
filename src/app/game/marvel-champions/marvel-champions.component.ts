@@ -18,18 +18,17 @@ import {MCFilterParams, MCFilterPipe, SortOrder, SortType} from "./mc-filter.pip
 import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 
 @Component({
-  selector: 'app-marvel-champions',
-  standalone: true,
-  imports: [
-    ChecklistComponent,
-    ReactiveFormsModule,
-    TableComponent,
-    FormsModule,
-    MCFilterPipe,
-    BaseUploadSelectionComponent,
-  ],
-  templateUrl: './marvel-champions.component.html',
-  styleUrl: './marvel-champions.component.scss'
+    selector: 'app-marvel-champions',
+    imports: [
+        ChecklistComponent,
+        ReactiveFormsModule,
+        TableComponent,
+        FormsModule,
+        MCFilterPipe,
+        BaseUploadSelectionComponent,
+    ],
+    templateUrl: './marvel-champions.component.html',
+    styleUrl: './marvel-champions.component.scss'
 })
 export class MarvelChampionsComponent extends BaseGameComponent {
   static override Title = 'Marvel Champions Stats';

@@ -15,11 +15,10 @@ import {
 import getUuidByString from "uuid-by-string";
 
 @Component({
-  selector: 'app-converter',
-  standalone: true,
-  imports: [],
-  templateUrl: './converter.component.html',
-  styleUrl: './converter.component.scss'
+    selector: 'app-converter',
+    imports: [],
+    templateUrl: './converter.component.html',
+    styleUrl: './converter.component.scss'
 })
 export class ConverterComponent {
   loadExample() {
