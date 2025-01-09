@@ -6,7 +6,7 @@ import {AppComponent} from "../app.component";
   standalone: true,
   imports: [],
   templateUrl: './help-page.component.html',
-  styleUrl: './help-page.component.css'
+  styleUrl: './help-page.component.scss'
 })
 export class HelpPageComponent {
   static Title = 'Help';

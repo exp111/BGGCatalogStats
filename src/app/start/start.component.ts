@@ -8,7 +8,7 @@ import {RouterLink} from "@angular/router";
         RouterLink
     ],
   templateUrl: './start.component.html',
-  styleUrl: './start.component.css'
+  styleUrl: './start.component.scss'
 })
 export class StartComponent {
   static Title = 'BGG Catalog Stats';

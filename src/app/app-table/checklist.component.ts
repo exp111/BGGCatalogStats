@@ -12,7 +12,7 @@ export enum ChecklistState {
   standalone: true,
   imports: [],
   templateUrl: './table.component.html',
-  styleUrl: './checklist.component.css'
+  styleUrl: './checklist.component.scss'
 })
 export class ChecklistComponent extends TableComponent {
   protected override getValue(x: any, y: any) {

@@ -8,7 +8,7 @@ import {BGGCatalogBackup} from "../../model/bgg-catalog";
   standalone: true,
   imports: [],
   templateUrl: './make-example.component.html',
-  styleUrl: './make-example.component.css'
+  styleUrl: './make-example.component.scss'
 })
 export class MakeExampleComponent {
   static Title = "Make Example";

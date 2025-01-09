@@ -8,7 +8,7 @@ import {FormsModule} from "@angular/forms";
     FormsModule
   ],
   templateUrl: './base-upload-selection.component.html',
-  styleUrl: './base-upload-selection.component.css'
+  styleUrl: './base-upload-selection.component.scss'
 })
 export class BaseUploadSelectionComponent {
   @Input()

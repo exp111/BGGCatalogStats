@@ -10,7 +10,7 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
     RouterLinkActive
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   static GithubLink = "https://www.github.com/exp111/BGGCatalogStats";

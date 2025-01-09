@@ -19,7 +19,7 @@ import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upl
     BaseUploadSelectionComponent,
   ],
   templateUrl: './too-many-bones.component.html',
-  styleUrl: './too-many-bones.component.css'
+  styleUrl: './too-many-bones.component.scss'
 })
 export class TooManyBonesComponent extends BaseGameComponent {
   static override Title = 'Too Many Bones Stats';

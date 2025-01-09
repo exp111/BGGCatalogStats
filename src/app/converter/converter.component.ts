@@ -19,7 +19,7 @@ import getUuidByString from "uuid-by-string";
   standalone: true,
   imports: [],
   templateUrl: './converter.component.html',
-  styleUrl: './converter.component.css'
+  styleUrl: './converter.component.scss'
 })
 export class ConverterComponent {
   loadExample() {

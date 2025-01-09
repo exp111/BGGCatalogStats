@@ -29,7 +29,7 @@ import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upl
     BaseUploadSelectionComponent,
   ],
   templateUrl: './marvel-champions.component.html',
-  styleUrl: './marvel-champions.component.css'
+  styleUrl: './marvel-champions.component.scss'
 })
 export class MarvelChampionsComponent extends BaseGameComponent {
   static override Title = 'Marvel Champions Stats';

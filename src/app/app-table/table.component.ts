@@ -5,7 +5,7 @@ import {Component, Input} from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.css'
+  styleUrl: './table.component.scss'
 })
 export class TableComponent {
   //TODO: cache + listen to ngonchanges
