@@ -63,7 +63,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     super(backupService);
   }
 
-  hasPlayExpansionContent(play: MarvelChampionsPlay, expansion: number) {
+  playHasExpansionContent(play: MarvelChampionsPlay, expansion: number) {
     let content = PackContent[expansion];
     // this ignores aspects + difficulty as they would always include core
     return (content.includes(play.Scenario)
@@ -78,7 +78,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return enumToNumberArray(e)
       .filter(v => v != endMarker) // ignore end marker
       .filter(v => !this.onlyOwned || (this.stats?.OwnedContent.includes(String(v)) ?? false)) // only show owned
-      .filter(v => !this.onlyPlayed || (this.stats?.Plays.some(p => this.hasPlayExpansionContent(p, v)) ?? false)) as number[];
+      .filter(v => !this.onlyPlayed || (this.stats?.Plays.some(p => this.playHasExpansionContent(p, v)) ?? false)) as number[];
   }
 
   protected override playedCheck(val: number) {
@@ -157,6 +157,15 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     let plays = this.getPlays(this.stats);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario);
     return this.getRate(plays.length, scenarioPlays.length);
+  }
+
+  expansionPlayrateGetter(_: string, expansion: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let expansionPlays = plays.filter(p => this.playHasExpansionContent(p, expansion));
+    return this.getRate(plays.length, expansionPlays.length);
   }
 
   heroWinrateGetter(_: string, hero: number) {
@@ -269,7 +278,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let expansionPlays = plays.filter(p => this.hasPlayExpansionContent(p, expansion));
+    let expansionPlays = plays.filter(p => this.playHasExpansionContent(p, expansion));
     return formatDurationMinutes(this.getPlaytime(expansionPlays));
   }
 

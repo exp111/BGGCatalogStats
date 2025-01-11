@@ -9,3 +9,4 @@ See the help page for documentation on how to use the website.
 - Move playtime getter to base game comp
 - Features for tmb (better view, plays filter, (avg) play time)
 - Tests: Parsing
+- "Top" entry for tables: Most played, shortest/longest (avg) playtime

@@ -53,6 +53,12 @@
             [YAxis]="enumToNumberArray(Scenario)"
             [YFormatter]="beautifyEnum.bind(this, Scenario)"
             [getter]="scenarioPlayrateGetter.bind(this)"></app-table>
+          <h4>Expansion Playrate</h4>
+          <app-table
+            [XAxis]="['Playrate']"
+            [YAxis]="packsEnumToNumberArray(Packs)"
+            [YFormatter]="beautifyEnum.bind(this, Packs)"
+            [getter]="expansionPlayrateGetter.bind(this)"></app-table>
         </div>
       </div>
     </div>
