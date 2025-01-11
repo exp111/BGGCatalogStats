@@ -53,12 +53,12 @@
             [YAxis]="enumToNumberArray(Scenario)"
             [YFormatter]="beautifyEnum.bind(this, Scenario)"
             [getter]="scenarioPlayrateGetter.bind(this)"></app-table>
-          <h4>Expansion Playrate</h4>
+          <h4>Pack Playrate</h4>
           <app-table
             [XAxis]="['Playrate']"
             [YAxis]="packsEnumToNumberArray(Packs)"
             [YFormatter]="beautifyEnum.bind(this, Packs)"
-            [getter]="expansionPlayrateGetter.bind(this)"></app-table>
+            [getter]="packPlayrateGetter.bind(this)"></app-table>
         </div>
       </div>
     </div>
@@ -131,12 +131,12 @@
             [XAxis]="['Playtime']"
             [YAxis]="[1,2,3,4]"
             [getter]="playerCountPlaytimeGetter.bind(this)"></app-table>
-          <h4>Expansion</h4>
+          <h4>Pack Playtime</h4>
           <app-table
             [XAxis]="['Playtime']"
             [YAxis]="packsEnumToNumberArray(Packs)"
             [YFormatter]="beautifyEnum.bind(this, Packs)"
-            [getter]="expansionPlaytimeGetter.bind(this)"></app-table>
+            [getter]="packPlaytimeGetter.bind(this)"></app-table>
           <h4>Hero - Scenario Playtime</h4>
           <app-table
             [XAxis]="enumToNumberArray(Hero)"

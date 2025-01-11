@@ -63,8 +63,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     super(backupService);
   }
 
-  playHasExpansionContent(play: MarvelChampionsPlay, expansion: number) {
-    let content = PackContent[expansion];
+  playHasPackContent(play: MarvelChampionsPlay, pack: number) {
+    let content = PackContent[pack];
     // this ignores aspects + difficulty as they would always include core
     return (content.includes(play.Scenario)
       || play.Modulars.some(m => content.includes(m))
@@ -78,7 +78,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return enumToNumberArray(e)
       .filter(v => v != endMarker) // ignore end marker
       .filter(v => !this.onlyOwned || (this.stats?.OwnedContent.includes(String(v)) ?? false)) // only show owned
-      .filter(v => !this.onlyPlayed || (this.stats?.Plays.some(p => this.playHasExpansionContent(p, v)) ?? false)) as number[];
+      .filter(v => !this.onlyPlayed || (this.stats?.Plays.some(p => this.playHasPackContent(p, v)) ?? false)) as number[];
   }
 
   protected override playedCheck(val: number) {
@@ -159,13 +159,13 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return this.getRate(plays.length, scenarioPlays.length);
   }
 
-  expansionPlayrateGetter(_: string, expansion: number) {
+  packPlayrateGetter(_: string, pack: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let expansionPlays = plays.filter(p => this.playHasExpansionContent(p, expansion));
-    return this.getRate(plays.length, expansionPlays.length);
+    let packPlays = plays.filter(p => this.playHasPackContent(p, pack));
+    return this.getRate(plays.length, packPlays.length);
   }
 
   heroWinrateGetter(_: string, hero: number) {
@@ -273,13 +273,13 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return formatDurationMinutes(this.getPlaytime(countPlays));
   }
 
-  expansionPlaytimeGetter(_: string, expansion: number) {
+  packPlaytimeGetter(_: string, pack: number) {
     if (!this.stats) {
       return "";
     }
     let plays = this.getPlays(this.stats);
-    let expansionPlays = plays.filter(p => this.playHasExpansionContent(p, expansion));
-    return formatDurationMinutes(this.getPlaytime(expansionPlays));
+    let packPlays = plays.filter(p => this.playHasPackContent(p, pack));
+    return formatDurationMinutes(this.getPlaytime(packPlays));
   }
 
   heroScenarioPlaytimeGetter(hero: number, scenario: number) {
