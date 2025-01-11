@@ -225,6 +225,15 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return formatDurationMinutes(this.getPlaytime(scenarioPlays));
   }
 
+  modularPlaytimeGetter(_: string, modular: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let modularPlays = plays.filter(p => p.Modulars.includes(modular) && this.playHasHero(p));
+    return formatDurationMinutes(this.getPlaytime(modularPlays));
+  }
+
   playerCountPlaytimeGetter(_: string, count: number) {
     if (!this.stats) {
       return "";
@@ -268,6 +277,15 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     let plays = this.getPlays(this.stats);
     let scenarioPlays = plays.filter(p => p.Scenario == scenario && this.playHasHero(p));
     return formatDurationMinutes(this.getAveragePlaytime(scenarioPlays));
+  }
+
+  avgModularPlaytimeGetter(_: string, modular: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let modularPlays = plays.filter(p => p.Modulars.includes(modular) && this.playHasHero(p));
+    return formatDurationMinutes(this.getAveragePlaytime(modularPlays));
   }
 
   avgPlayerCountPlaytimeGetter(_: string, count: number) {

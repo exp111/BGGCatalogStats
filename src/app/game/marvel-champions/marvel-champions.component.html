@@ -114,11 +114,18 @@
             [YAxis]="enumToNumberArray(Scenario)"
             [YFormatter]="beautifyEnum.bind(this, Scenario)"
             [getter]="scenarioPlaytimeGetter.bind(this)"></app-table>
+          <h4>Modular Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="enumToNumberArray(Modular)"
+            [YFormatter]="beautifyEnum.bind(this, Modular)"
+            [getter]="modularPlaytimeGetter.bind(this)"></app-table>
           <h4>Playercount Playtime</h4>
           <app-table
             [XAxis]="['Playtime']"
             [YAxis]="[1,2,3,4]"
             [getter]="playerCountPlaytimeGetter.bind(this)"></app-table>
+          <h4></h4>
           <h4>Hero - Scenario Playtime</h4>
           <app-table
             [XAxis]="enumToNumberArray(Hero)"
@@ -155,6 +162,12 @@
             [YAxis]="enumToNumberArray(Scenario)"
             [YFormatter]="beautifyEnum.bind(this, Scenario)"
             [getter]="avgScenarioPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Modular Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="enumToNumberArray(Modular)"
+            [YFormatter]="beautifyEnum.bind(this, Modular)"
+            [getter]="avgModularPlaytimeGetter.bind(this)"></app-table>
           <h4>Average Playercount Playtime</h4>
           <app-table
             [XAxis]="['Average Playtime']"
