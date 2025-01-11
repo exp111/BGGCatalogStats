@@ -23,9 +23,17 @@ export class MCBackupReaderService extends BaseBackupReaderService {
   public override GameContent = PackContent;
 
   protected override enumNormalizers = {
+    [Difficulty.END]: this.normalizeDifficultyName,
     [Scenario.END]: this.normalizeScenarioName,
     [Aspect.END]: this.normalizeAspectName,
     [Modular.END]: this.normalizeModularName
+  }
+
+  private normalizeDifficultyName(str: string) {
+    return {
+      "Standart": "Standard", // set is called "Standard" in german too, but to accept typos
+      "Experte": "Expert",
+    }[str] ?? str;
   }
 
   private normalizeScenarioName(str: string) {
