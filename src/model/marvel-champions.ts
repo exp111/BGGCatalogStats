@@ -132,7 +132,8 @@ export enum Packs {
   GreenGoblin = 288794,
   ScarletWitch = 316695,
   CaptainAmerica = 289222,
-  BlackWidow = 299049
+  BlackWidow = 299049,
+  END
 }
 
 export const PackContent: Record<number, number[]> = {

@@ -128,7 +128,8 @@
           <h4>Expansion</h4>
           <app-table
             [XAxis]="['Playtime']"
-            [YAxis]="[packsEnumToNumberArray(Packs)]"
+            [YAxis]="packsEnumToNumberArray(Packs)"
+            [YFormatter]="beautifyEnum.bind(this, Packs)"
             [getter]="expansionPlaytimeGetter.bind(this)"></app-table>
           <h4>Hero - Scenario Playtime</h4>
           <app-table

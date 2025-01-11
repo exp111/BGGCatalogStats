@@ -79,8 +79,10 @@ export abstract class BaseGameComponent {
     let fallback = ((e: any) => formatFromEnumString(enums[e]));
     if (this.enumBeautifiers[endVal]) {
       let ret = this.enumBeautifiers[endVal](val);
+      // if the beautifier didnt have a entry, use the fallback
       return ret ?? fallback(val);
     }
+    // no beautifier, so just use fallback
     return fallback(val);
   }
 

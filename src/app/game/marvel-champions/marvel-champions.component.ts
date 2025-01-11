@@ -73,8 +73,10 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   }
 
   packsEnumToNumberArray(e: any) {
+    let endMarker = e["END"];
     // filter out the values
     return enumToNumberArray(e)
+      .filter(v => v != endMarker) // ignore end marker
       .filter(v => !this.onlyOwned || (this.stats?.OwnedContent.includes(String(v)) ?? false)) // only show owned
       .filter(v => !this.onlyPlayed || (this.stats?.Plays.some(p => this.hasPlayExpansionContent(p, v)) ?? false)) as number[];
   }
