@@ -9,6 +9,8 @@ import {
   MarvelChampionsPlay,
   MarvelChampionsStats,
   Modular,
+  PackContent,
+  Packs,
   Scenario
 } from "../../../model/marvel-champions";
 import {BaseGameComponent} from "../base-game.component";
@@ -16,19 +18,20 @@ import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-bac
 import {formatDurationMinutes} from "../../util/helper";
 import {MCFilterParams, MCFilterPipe, SortOrder, SortType} from "./mc-filter.pipe";
 import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
+import {enumToNumberArray} from "../../util/enum-utils";
 
 @Component({
-    selector: 'app-marvel-champions',
-    imports: [
-        ChecklistComponent,
-        ReactiveFormsModule,
-        TableComponent,
-        FormsModule,
-        MCFilterPipe,
-        BaseUploadSelectionComponent,
-    ],
-    templateUrl: './marvel-champions.component.html',
-    styleUrl: './marvel-champions.component.scss'
+  selector: 'app-marvel-champions',
+  imports: [
+    ChecklistComponent,
+    ReactiveFormsModule,
+    TableComponent,
+    FormsModule,
+    MCFilterPipe,
+    BaseUploadSelectionComponent,
+  ],
+  templateUrl: './marvel-champions.component.html',
+  styleUrl: './marvel-champions.component.scss'
 })
 export class MarvelChampionsComponent extends BaseGameComponent {
   static override Title = 'Marvel Champions Stats';
@@ -58,6 +61,22 @@ export class MarvelChampionsComponent extends BaseGameComponent {
 
   constructor(protected backupService: MCBackupReaderService) {
     super(backupService);
+  }
+
+  hasPlayExpansionContent(play: MarvelChampionsPlay, expansion: number) {
+    let content = PackContent[expansion];
+    // this ignores aspects + difficulty as they would always include core
+    return (content.includes(play.Scenario)
+      || play.Modulars.some(m => content.includes(m))
+      || play.Players.some(p => content.includes(p.Hero))
+    ) && this.playHasHero(play); // check for "only me"
+  }
+
+  packsEnumToNumberArray(e: any) {
+    // filter out the values
+    return enumToNumberArray(e)
+      .filter(v => !this.onlyOwned || (this.stats?.OwnedContent.includes(String(v)) ?? false)) // only show owned
+      .filter(v => !this.onlyPlayed || (this.stats?.Plays.some(p => this.hasPlayExpansionContent(p, v)) ?? false)) as number[];
   }
 
   protected override playedCheck(val: number) {
@@ -243,6 +262,15 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return formatDurationMinutes(this.getPlaytime(countPlays));
   }
 
+  expansionPlaytimeGetter(_: string, expansion: number) {
+    if (!this.stats) {
+      return "";
+    }
+    let plays = this.getPlays(this.stats);
+    let expansionPlays = plays.filter(p => this.hasPlayExpansionContent(p, expansion));
+    return formatDurationMinutes(this.getPlaytime(expansionPlays));
+  }
+
   heroScenarioPlaytimeGetter(hero: number, scenario: number) {
     if (!this.stats) {
       return "";
@@ -358,4 +386,5 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   protected readonly formatDurationMinutes = formatDurationMinutes;
   protected readonly SortOrder = SortOrder;
   protected readonly SortType = SortType;
+  protected readonly Packs = Packs;
 }
