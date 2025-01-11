@@ -122,36 +122,49 @@ export enum Difficulty {
   END
 }
 
+export enum Packs {
+  Core = MC_GAME_ID,
+  Deadpool = 398039,
+  DoctorStrange = 300878,
+  Wolverine = 369039,
+  RiseOfTheRedSkull = 306430,
+  SinisterMotives = 347813,
+  GreenGoblin = 288794,
+  ScarletWitch = 316695,
+  CaptainAmerica = 289222,
+  BlackWidow = 299049
+}
+
 export const PackContent: Record<number, number[]> = {
-  [MC_GAME_ID]: [
+  [Packs.Core]: [
     Aspect.Aggression, Aspect.Justice, Aspect.Leadership, Aspect.Protection,
     Hero.SpiderMan, Hero.SheHulk, Hero.BlackPanther, Hero.IronMan, Hero.CaptainMarvel,
     Scenario.Rhino, Scenario.Klaw, Scenario.Ultron,
     Modular.BombThreat, Modular.MastersOfEvil, Modular.UnderAttack, Modular.DoomsdayChair, Modular.LegionsOfHydra,
     Difficulty.Standard, Difficulty.Expert
   ],
-  [398039]: [Aspect.Pool, Hero.Deadpool],
-  [300878]: [Hero.DoctorStrange],
-  [369039]: [Hero.Wolverine, Modular.Deathstrike],
-  [306430]: [
+  [Packs.Deadpool]: [Aspect.Pool, Hero.Deadpool],
+  [Packs.DoctorStrange]: [Hero.DoctorStrange],
+  [Packs.Wolverine]: [Hero.Wolverine, Modular.Deathstrike],
+  [Packs.RiseOfTheRedSkull]: [
     Hero.Hawkeye, Hero.SpiderWoman,
     Scenario.Crossbones, Scenario.AbsorbingMan, Scenario.TaskMaster, Scenario.Zola, Scenario.RedSkull,
     Modular.HydraAssault, Modular.WeaponMaster, Modular.HydraPatrol, Modular.ExperimentalWeapons
   ],
-  [347813]: [
+  [Packs.SinisterMotives]: [
     Hero.GhostSpider, Hero.MilesMorales,
     Scenario.Sandman, Scenario.Venom, Scenario.Mysterio, Scenario.SinisterSix, Scenario.VenomGoblin,
     Modular.CityInChaos, Modular.DownToEarth, Modular.GoblinGear, Modular.GuerrillaTactics, Modular.OsbornTech,
     Modular.PersonalNightmare, Modular.SinisterAssault, Modular.SymbioticStrength, Modular.WhispersOfParanoia,
   ],
   // Green Goblin
-  [288794]: [
+  [Packs.GreenGoblin]: [
     Scenario.RiskyBusiness, Scenario.MutagenFormula,
     Modular.GoblinGimmicks, Modular.AMessOfThings, Modular.PowerDrain, Modular.RunningInterference
   ],
-  [316695]: [Hero.ScarletWitch],
-  [289222]: [Hero.CaptainAmerica], //TODO: cap modular?
-  [299049]: [Hero.BlackWidow] //TODO: bw modular?
+  [Packs.ScarletWitch]: [Hero.ScarletWitch],
+  [Packs.CaptainAmerica]: [Hero.CaptainAmerica], //TODO: cap modular?
+  [Packs.BlackWidow]: [Hero.BlackWidow] //TODO: bw modular?
 }
 
 export interface MarvelChampionsPlayer extends BaseGamePlayer {
