@@ -22,7 +22,7 @@ import getUuidByString from "uuid-by-string";
 })
 export class ConverterComponent {
   loadExample() {
-    fetch(`./example/mc-example.json`).then(r => r.text()).then(t => this.readFile(t));
+    fetch(`./example/bggcatalog-mc-example.json`).then(r => r.text()).then(t => this.readFile(t));
   }
 
   onFileLoad(event: Event & { target: HTMLInputElement }) {
