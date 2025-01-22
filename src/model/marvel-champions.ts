@@ -52,7 +52,7 @@ export enum Hero {
   Domino,
   Colossus,
   Shadowcat,
-  Warlock,
+  AdamWarlock,
   Spectrum,
   Bishop,
   Magik,
@@ -124,15 +124,26 @@ export enum Difficulty {
 
 export enum Packs {
   Core = MC_GAME_ID,
+  // Heroes
   Deadpool = 398039,
   DoctorStrange = 300878,
   Wolverine = 369039,
-  RiseOfTheRedSkull = 306430,
-  SinisterMotives = 347813,
-  GreenGoblin = 288794,
   ScarletWitch = 316695,
   CaptainAmerica = 289222,
   BlackWidow = 299049,
+  // Expansions
+  RiseOfTheRedSkull = 306430,
+  GalaxysMostWanted = 315896,
+  MadTitansShadow = 339711,
+  SinisterMotives = 347813,
+  MutantGenesis = 363709,
+  NextEvolution = 383818,
+  AgeOfApocalypse = 405724,
+  // Scenario Packs
+  GreenGoblin = 288794,
+  WreckingCrew = 294306,
+  Hood = 343017,
+  MojoMania = 368736,
   END
 }
 
@@ -144,13 +155,26 @@ export const PackContent: Record<number, number[]> = {
     Modular.BombThreat, Modular.MastersOfEvil, Modular.UnderAttack, Modular.DoomsdayChair, Modular.LegionsOfHydra,
     Difficulty.Standard, Difficulty.Expert
   ],
+  // Heroes
   [Packs.Deadpool]: [Aspect.Pool, Hero.Deadpool],
   [Packs.DoctorStrange]: [Hero.DoctorStrange],
   [Packs.Wolverine]: [Hero.Wolverine, Modular.Deathstrike],
+  [Packs.ScarletWitch]: [Hero.ScarletWitch],
+  [Packs.CaptainAmerica]: [Hero.CaptainAmerica],
+  [Packs.BlackWidow]: [Hero.BlackWidow], //TODO: bw modular?
+  // Expansions
   [Packs.RiseOfTheRedSkull]: [
     Hero.Hawkeye, Hero.SpiderWoman,
     Scenario.Crossbones, Scenario.AbsorbingMan, Scenario.TaskMaster, Scenario.Zola, Scenario.RedSkull,
     Modular.HydraAssault, Modular.WeaponMaster, Modular.HydraPatrol, Modular.ExperimentalWeapons
+  ],
+  [Packs.GalaxysMostWanted]: [
+    Hero.Groot, Hero.RocketRaccoon,
+    //TODO: scenarios + modulars
+  ],
+  [Packs.MadTitansShadow]: [
+    Hero.Spectrum, Hero.AdamWarlock,
+    //TODO: scenarios + modulars
   ],
   [Packs.SinisterMotives]: [
     Hero.GhostSpider, Hero.MilesMorales,
@@ -158,14 +182,23 @@ export const PackContent: Record<number, number[]> = {
     Modular.CityInChaos, Modular.DownToEarth, Modular.GoblinGear, Modular.GuerrillaTactics, Modular.OsbornTech,
     Modular.PersonalNightmare, Modular.SinisterAssault, Modular.SymbioticStrength, Modular.WhispersOfParanoia,
   ],
-  // Green Goblin
+  [Packs.MutantGenesis]: [
+    Hero.Shadowcat, Hero.Colossus,
+    //TODO: scenarios + modulars
+  ],
+  [Packs.NextEvolution]: [
+    Hero.Cable, Hero.Domino,
+    //TODO: scenarios + modulars
+  ],
+  [Packs.AgeOfApocalypse]: [
+    Hero.Bishop, Hero.Magik,
+    //TODO: scenarios + modulars
+  ],
+  // Scenario Packs
   [Packs.GreenGoblin]: [
     Scenario.RiskyBusiness, Scenario.MutagenFormula,
     Modular.GoblinGimmicks, Modular.AMessOfThings, Modular.PowerDrain, Modular.RunningInterference
   ],
-  [Packs.ScarletWitch]: [Hero.ScarletWitch],
-  [Packs.CaptainAmerica]: [Hero.CaptainAmerica], //TODO: cap modular?
-  [Packs.BlackWidow]: [Hero.BlackWidow] //TODO: bw modular?
 }
 
 export interface MarvelChampionsPlayer extends BaseGamePlayer {
