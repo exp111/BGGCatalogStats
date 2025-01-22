@@ -118,7 +118,11 @@ export enum Modular {
 
 export enum Difficulty {
   Standard = Modular.END,
+  Standard2,
+  Standard3,
   Expert,
+  Expert2,
+  Expert3,
   END
 }
 
@@ -193,12 +197,23 @@ export const PackContent: Record<number, number[]> = {
   [Packs.AgeOfApocalypse]: [
     Hero.Bishop, Hero.Magik,
     //TODO: scenarios + modulars
+    Difficulty.Standard3, Difficulty.Expert3
   ],
   // Scenario Packs
   [Packs.GreenGoblin]: [
     Scenario.RiskyBusiness, Scenario.MutagenFormula,
     Modular.GoblinGimmicks, Modular.AMessOfThings, Modular.PowerDrain, Modular.RunningInterference
   ],
+  [Packs.WreckingCrew]: [
+    //TODO: scenarios + modulars
+  ],
+  [Packs.Hood]: [
+    //TODO: scenarios + modulars
+    Difficulty.Standard2, Difficulty.Expert2
+  ],
+  [Packs.MojoMania]: [
+    //TODO: scenarios + modulars
+  ]
 }
 
 export interface MarvelChampionsPlayer extends BaseGamePlayer {

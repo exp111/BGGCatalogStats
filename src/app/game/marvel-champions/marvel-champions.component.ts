@@ -50,12 +50,22 @@ export class MarvelChampionsComponent extends BaseGameComponent {
   };
 
   protected override enumBeautifiers = {
-    [Hero.END]: this.beautifyHeroName
+    [Hero.END]: this.beautifyHeroName,
+    [Difficulty.END]: this.beautifyDifficultyName
   }
 
   private beautifyHeroName(e: number) {
     return {
       [Hero.SPdr]: "SP//dr"
+    }[e] ?? null;
+  }
+
+  private beautifyDifficultyName(e: number) {
+    return {
+      [Difficulty.Standard2]: "Standard II",
+      [Difficulty.Standard3]: "Standard III",
+      [Difficulty.Expert2]: "Expert II",
+      [Difficulty.Expert3]: "Expert III",
     }[e] ?? null;
   }
 
