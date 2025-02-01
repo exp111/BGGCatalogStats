@@ -38,8 +38,11 @@ export class MCBackupReaderService extends BaseBackupReaderService {
 
   private normalizeScenarioName(str: string) {
     return {
+      // green goblin
       "RiskantesGesch\xe4ft": "RiskyBusiness",
       "MutagenFormel": "MutagenFormula",
+      // mad titan
+      "Turmverteidigung": "TowerDefense"
     }[str] ?? str;
   }
 
@@ -53,13 +56,16 @@ export class MCBackupReaderService extends BaseBackupReaderService {
 
   private normalizeModularName(str: string) {
     return {
+      // core
       "Bombenbedrohung": "BombThreat",
       "UnterBeschuss": "UnderAttack",
+      // red skull
       "HydrasLegionen": "LegionsOfHydra",
       "HydraAngriff": "HydraAssault",
       "Waffenmeister": "WeaponMaster",
       "HydraPatrouille": "HydraPatrol",
       "ExperimentelleWaffen": "ExperimentalWeapons",
+      // sinister motives
       "StadtImChaos": "CityInChaos",
       "Bodenst\xe4ndig": "DownToEarth",
       "GoblinAusr\xfcstung": "GoblinGear",
@@ -68,10 +74,17 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       "SinistrerAngriff": "SinisterAssault",
       "SymbiotischeSt\xe4rke": "SymbioticStrength",
       "Fl\xfcsterndeParanoia": "WhispersOfParanoia",
+      // green goblin
       "GoblinTricks": "GoblinGimmicks",
       "StechendesChaos": "AMessOfThings",
       "Energieentzug": "PowerDrain",
-      "Ablenkungsman\xf6ver": "RunningInterference"
+      "Ablenkungsman\xf6ver": "RunningInterference",
+      // mad titan
+      "ArmeenVonTitan":"ArmiesOfTitan",
+      "KinderDesThanos":"ChildrenOfThanos",
+      "InfinityHandschuh":"InfinityGauntlet",
+      "LegionenVonHel":"LegionsOfHel",
+      "FrostRiesen": "FrostGiants"
     }[str] ?? str;
   }
 

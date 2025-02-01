@@ -86,6 +86,11 @@ export enum Scenario {
   VenomGoblin,
   RiskyBusiness,
   MutagenFormula,
+  EbonyMaw,
+  TowerDefense,
+  Thanos,
+  Hela,
+  Loki,
   END
 }
 
@@ -113,6 +118,13 @@ export enum Modular {
   AMessOfThings,
   PowerDrain,
   RunningInterference,
+  BlackOrder,
+  ArmiesOfTitan,
+  ChildrenOfThanos,
+  InfinityGauntlet,
+  LegionsOfHel,
+  FrostGiants,
+  Enchantress,
   END
 }
 
@@ -178,7 +190,8 @@ export const PackContent: Record<number, number[]> = {
   ],
   [Packs.MadTitansShadow]: [
     Hero.Spectrum, Hero.AdamWarlock,
-    //TODO: scenarios + modulars
+    Scenario.EbonyMaw, Scenario.TowerDefense, Scenario.Thanos, Scenario.Hela, Scenario.Loki,
+    Modular.BlackOrder, Modular.ArmiesOfTitan, Modular.ChildrenOfThanos, Modular.InfinityGauntlet, Modular.LegionsOfHel, Modular.FrostGiants, Modular.Enchantress
   ],
   [Packs.SinisterMotives]: [
     Hero.GhostSpider, Hero.MilesMorales,
