@@ -5,6 +5,7 @@
   left: calc(1rem + var(--length) * 0.1rem);
 }
 
+// number cards with a big number and a smaller sub text
 .number-card {
   display: flex;
   flex-direction: column;
@@ -31,6 +32,7 @@
   }
 }
 
+// bar chart
 .graph {
   display: flex;
   flex-direction: column;
@@ -40,6 +42,7 @@
     font-weight: bold;
   }
 
+  // inverse bar is placed before the real graph and takes up the remaining ratio to push the real bar to the bottom
   .inverse-bar {
     height: calc(100% - var(--ratio) * 1%);
   }
@@ -61,5 +64,21 @@
     &.pool {
       background: rgb(212, 126, 178);
     }
+  }
+}
+
+// list with a title and multiple items containing a text and a percentage
+.list {
+  .title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .text {
+    font-size: small;
+  }
+  .percentage {
+    font-size: small;
+    margin-left: auto;
   }
 }

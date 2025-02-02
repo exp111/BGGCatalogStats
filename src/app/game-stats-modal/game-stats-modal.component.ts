@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {Aspect, Hero, MarvelChampionsStats} from "../../model/marvel-champions";
+import {Aspect, Hero, MarvelChampionsStats, Scenario} from "../../model/marvel-champions";
 import {FormsModule} from "@angular/forms";
-import {enumToNumberArray} from "../util/enum-utils";
+import {enumToNumberArray, formatFromEnumString} from "../util/enum-utils";
 
 @Component({
   selector: 'app-game-stats-modal',
@@ -76,14 +76,19 @@ export class GameStatsModalComponent {
         highest = val;
       }
     }
+    // normalize to the highest ratio
     for (let a of as) {
       aspects[Aspect[a]] = aspects[Aspect[a]] / highest;
     }
     return Object.entries(aspects);
   }
 
-  getScenarioRatio() {
-
+  getScenarioRatio(end = 4) {
+    let scenarios = {} as Record<string, number>;
+    for (let scenario of enumToNumberArray(Scenario).filter(v => v != Scenario.END)) {
+      scenarios[formatFromEnumString(Scenario[scenario])] = this.data.Plays.filter(p => p.Scenario == scenario).length / this.data.Plays.length;
+    }
+    return Object.entries(scenarios).sort((a, b) => b[1] - a[1]).slice(0, end);
   }
 
   protected readonly String = String;
