@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <h4 class="modal-title">Game Stats</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body container">
+  <!-- Timespan -->
+  <div class="input-group">
+    <span class="input-group-text">Timespan</span>
+    <input type="radio" class="btn-check" name="timespan" id="timespan_month" value="month" [(ngModel)]="timespan">
+    <label class="btn btn-secondary" for="timespan_month">Month</label>
+    <input type="radio" class="btn-check" name="timespan" id="timespan_year" value="year" [(ngModel)]="timespan">
+    <label class="btn btn-secondary" for="timespan_year">Year</label>
+    <input type="radio" class="btn-check" name="timespan" id="timespan_all" value="all" [(ngModel)]="timespan">
+    <label class="btn btn-secondary" for="timespan_all">All</label>
+  </div>
+  <!-- timespan select-->
+  <div>
+    Timespan
+  </div>
+  <hr>
+  <div class="row">
+    <!-- left side -->
+    <div class="col row g-1">
+      @for (e of getHeroes(); track e[0]; let first = $first) {
+        <div class="{{first ? 'col-12 d-flex justify-content-center' : 'col-6'}} position-relative">
+          <img class="align-content-center" width="100rem" src="/img/mc/hero/{{e[0].toLowerCase()}}.jpg">
+          <span class="position-absolute translate-middle badge rounded-pill bg-black border border-white border-2">
+            {{e[1]}}
+          </span>
+        </div>
+      }
+    </div>
+    <div class="col d-flex flex-column gap-1">
+      <div class="h-50 row g-1">
+        <div class="col-6 bg-secondary rounded">1</div>
+        <div class="col-6 bg-secondary rounded">2</div>
+        <div class="col-6 bg-secondary rounded">3</div>
+        <div class="col-6 bg-secondary rounded">4</div>
+        <div class="col-6 bg-secondary rounded">5</div>
+        <div class="col-6 bg-secondary rounded">6</div>
+        <div class="col-6 bg-secondary rounded">7</div>
+        <div class="col-6 bg-secondary rounded">8</div>
+      </div>
+      <div class="h-25 bg-secondary rounded">
+        Something
+      </div>
+      <div class="h-25 bg-secondary rounded">
+        Something
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close()">Close</button>
+</div>

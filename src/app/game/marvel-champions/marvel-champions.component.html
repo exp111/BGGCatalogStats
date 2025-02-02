@@ -19,6 +19,9 @@
       <input id="onlyPlayedCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyPlayed"/>
       <label for="onlyPlayedCheckbox" class="form-check-label">Only played?</label>
     </div>
+    <div class="ms-auto">
+      <button class="btn btn-primary" (click)="onStatsClicked()">Stats</button>
+    </div>
   </div>
   <h4>Total Plays: {{ this.getPlays(this.stats).length }}/ Total Won: {{ this.getWins(this.getPlays(this.stats)) }}</h4>
   <h5>Total Playtime: {{ formatDurationMinutes(this.getPlaytime(this.getPlays(this.stats))) }}/

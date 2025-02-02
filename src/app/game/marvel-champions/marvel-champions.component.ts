@@ -19,6 +19,8 @@ import {formatDurationMinutes} from "../../util/helper";
 import {MCFilterParams, MCFilterPipe, SortOrder, SortType} from "./mc-filter.pipe";
 import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 import {enumToNumberArray} from "../../util/enum-utils";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {GameStatsModalComponent} from "../../game-stats-modal/game-stats-modal.component";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -69,7 +71,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     }[e] ?? null;
   }
 
-  constructor(protected backupService: MCBackupReaderService) {
+  constructor(protected backupService: MCBackupReaderService,
+              protected modalService: NgbModal) {
     super(backupService);
   }
 
@@ -397,6 +400,11 @@ export class MarvelChampionsComponent extends BaseGameComponent {
 
   formatEnumList(enums: any, entries: any[]) {
     return entries ? entries.map(a => this.beautifyEnum(enums, a)).join(", ") : this.beautifyEnum(null, null); // else just return the default value
+  }
+
+  onStatsClicked() {
+    let modal = this.modalService.open(GameStatsModalComponent, {centered: true});
+    modal.componentInstance.setData(this.stats);
   }
 
   protected readonly Hero = Hero;
