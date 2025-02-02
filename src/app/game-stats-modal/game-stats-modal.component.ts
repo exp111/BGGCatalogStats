@@ -22,7 +22,7 @@ export class GameStatsModalComponent {
     this.data = data;
   }
 
-  getHeroes(end = 10) {
+  getHeroes(end = 9) {
     let heroes = this.data.Plays
       .flatMap(play => play.Players.map(p => Hero[p.Hero]))
       .filter(h => h != null);
@@ -53,6 +53,14 @@ export class GameStatsModalComponent {
     return new Set(this.data.Plays
       .map(p => p.Scenario)
       .filter(h => h != null)).size;
+  }
+
+  getPlayerCount() {
+    return new Set(this.data.Plays.flatMap(p => p.Players.map(pl => pl.Name))).size;
+  }
+
+  getHours() {
+    return Math.floor(this.data.Plays.map(p => p.Duration).reduce((a, b) => a + b, 0) / 60);
   }
 
   protected readonly String = String;
