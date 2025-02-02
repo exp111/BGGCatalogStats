@@ -30,3 +30,36 @@
     font-size: smaller;
   }
 }
+
+.graph {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .inverse-bar {
+    height: calc(100% - var(--ratio) * 1%);
+  }
+  .bar {
+    height: calc(var(--ratio) * 1%);
+
+    &.aggression {
+      background: rgb(204, 48, 56);
+    }
+    &.leadership {
+      background: rgb(43, 128, 237);
+    }
+    &.protection {
+      background: rgb(16, 113, 22);
+    }
+    &.justice {
+      background: rgb(228, 228, 0);
+    }
+    &.pool {
+      background: rgb(212, 126, 178);
+    }
+  }
+}

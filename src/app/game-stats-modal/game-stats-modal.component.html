@@ -82,11 +82,19 @@
           </div>
         </div>
       </div>
-      <div class="h-25 bg-secondary-subtle rounded">
-        Play Graph?
+      <div class="h-25 bg-secondary-subtle rounded graph">
+        <div class="title">Aspects</div>
+        <div class="row h-100 g-1 p-1">
+          @for (aspect of getAspectRatio(); track aspect[0]) {
+            <div class="col">
+              <div class="inverse-bar" style="--ratio: {{(aspect[1] * 100).toFixed(0)}}"></div>
+              <div class="bar rounded-1 {{aspect[0].toLowerCase()}}" style="--ratio: {{(aspect[1] * 100).toFixed(0)}}"></div>
+            </div>
+          }
+        </div>
       </div>
       <div class="h-25 bg-secondary-subtle rounded">
-        Scenarios:
+        Scenarios
       </div>
     </div>
   </div>
