@@ -41,7 +41,7 @@ export class GameStatsModalComponent {
             // build date from timestamp. date month is 0 indexed
             let d = new Date(p.Timestamp);
             let date = new NgbDate(d.getFullYear(), d.getMonth() + 1, d.getDate());
-            return this.timespanFrom.before(date) && this.timespanTo!.after(date);
+            return this.timespanFrom.equals(date) || this.timespanTo!.equals(date) || (this.timespanFrom.before(date) && this.timespanTo!.after(date));
           });
         } else {
           // fallback to all plays if time range isnt given
