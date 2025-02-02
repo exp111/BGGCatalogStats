@@ -4,12 +4,14 @@ import {Aspect, Hero, MarvelChampionsStats, Scenario} from "../../model/marvel-c
 import {FormsModule} from "@angular/forms";
 import {enumToNumberArray, formatFromEnumString} from "../util/enum-utils";
 import {DateRangeSelectionComponent} from "./date-range-selection/date-range-selection.component";
+import {MonthSelectionComponent} from "./month-selection/month-selection.component";
 
 @Component({
   selector: 'app-game-stats-modal',
   imports: [
     FormsModule,
-    DateRangeSelectionComponent
+    DateRangeSelectionComponent,
+    MonthSelectionComponent
   ],
   templateUrl: './game-stats-modal.component.html',
   styleUrl: './game-stats-modal.component.scss'
@@ -33,6 +35,7 @@ export class GameStatsModalComponent {
   getPlays() {
     switch (this.timespan) {
       case "custom":
+      case "month":
         if (this.timespanFrom && this.timespanTo) {
           return this.data.Plays.filter(p => {
             // build date from timestamp. date month is 0 indexed

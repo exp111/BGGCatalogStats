@@ -18,6 +18,9 @@
   <!-- timespan select-->
   <div>
     @switch (this.timespan) {
+      @case ("month") {
+        <app-month-selection [(fromDate)]="timespanFrom" [(toDate)]="timespanTo"></app-month-selection>
+      }
       @case ("custom") {
         <app-date-range-selection [(fromDate)]="timespanFrom" [(toDate)]="timespanTo"></app-date-range-selection>
       }
