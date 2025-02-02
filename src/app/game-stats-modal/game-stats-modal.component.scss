@@ -1,7 +1,8 @@
 // play count
 .badge {
-  top: 90%;
-  left: 20%;
+  bottom: -0.7rem;
+  // for each character move it further to the right
+  left: calc(1rem + var(--length) * 0.1rem);
 }
 
 .number-card {

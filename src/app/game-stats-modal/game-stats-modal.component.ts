@@ -54,4 +54,6 @@ export class GameStatsModalComponent {
       .map(p => p.Scenario)
       .filter(h => h != null)).size;
   }
+
+  protected readonly String = String;
 }
