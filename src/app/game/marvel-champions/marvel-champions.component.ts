@@ -19,7 +19,7 @@ import {formatDurationMinutes} from "../../util/helper";
 import {MCFilterParams, MCFilterPipe, SortOrder, SortType} from "./mc-filter.pipe";
 import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 import {enumToNumberArray} from "../../util/enum-utils";
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbAccordionModule, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {GameStatsModalComponent} from "../../game-stats-modal/game-stats-modal.component";
 
 @Component({
@@ -31,6 +31,7 @@ import {GameStatsModalComponent} from "../../game-stats-modal/game-stats-modal.c
     FormsModule,
     MCFilterPipe,
     BaseUploadSelectionComponent,
+    NgbAccordionModule
   ],
   templateUrl: './marvel-champions.component.html',
   styleUrl: './marvel-champions.component.scss'
@@ -404,7 +405,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
 
   onStatsClicked() {
     let modal = this.modalService.open(GameStatsModalComponent, {centered: true});
-    modal.componentInstance.setData(this.stats);
+    (modal.componentInstance as GameStatsModalComponent).setData(this.stats!);
   }
 
   protected readonly Hero = Hero;
