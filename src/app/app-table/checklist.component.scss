@@ -1,4 +1,34 @@
+table {
+  width: min-content;
+  border-spacing: 10px;
+  border-collapse: separate;
+  border-color: transparent;
+}
+
+// (All) Headers
+th {
+  & {
+    width: min-content;
+    // dont wrap text
+    white-space: nowrap;
+  }
+  &.full {
+    color: var(--bs-success);
+  }
+  &.incomplete {
+    color: var(--bs-warning);
+  }
+  &.empty {
+    color: var(--bs-danger);
+  }
+}
+
+// Content Cells
 td {
+  & {
+    width: 25px !important;
+    height: 25px;
+  }
   &.check {
     background: var(--bs-success-bg-subtle);
   }
@@ -10,14 +40,13 @@ td {
   }
 }
 
-th {
-  &.full {
-    background: var(--bs-success);
-  }
-  &.incomplete {
-    background: var(--bs-warning);
-  }
-  &.empty {
-    background: var(--bs-danger);
+// Header
+thead {
+  th {
+    &:not(:first-child) {
+      // Upright text
+      writing-mode: sideways-lr;
+      transform: rotate(15deg);
+    }
   }
 }

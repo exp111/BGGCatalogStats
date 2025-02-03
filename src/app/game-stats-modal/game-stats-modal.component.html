@@ -21,6 +21,9 @@
       @case ("month") {
         <app-month-selection [(fromDate)]="timespanFrom" [(toDate)]="timespanTo"></app-month-selection>
       }
+      @case ("year") {
+        <app-year-selection [(fromDate)]="timespanFrom" [(toDate)]="timespanTo"></app-year-selection>
+      }
       @case ("custom") {
         <app-date-range-selection [(fromDate)]="timespanFrom" [(toDate)]="timespanTo"></app-date-range-selection>
       }

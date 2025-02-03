@@ -3,11 +3,12 @@ import {NgbActiveModal, NgbCalendar, NgbDate} from "@ng-bootstrap/ng-bootstrap";
 import {Aspect, Hero, MarvelChampionsStats, Scenario} from "../../model/marvel-champions";
 import {FormsModule} from "@angular/forms";
 import {enumToNumberArray, formatFromEnumString} from "../util/enum-utils";
-import {DateRangeSelectionComponent} from "./date-range-selection/date-range-selection.component";
-import {MonthSelectionComponent} from "./month-selection/month-selection.component";
-import {BarChartComponent} from "./bar-chart/bar-chart.component";
-import {ListComponent} from "./list/list.component";
-import {NumberCardComponent} from "./number-card/number-card.component";
+import {DateRangeSelectionComponent} from "./date-selection/date-range-selection/date-range-selection.component";
+import {MonthSelectionComponent} from "./date-selection/month-selection/month-selection.component";
+import {BarChartComponent} from "./components/bar-chart/bar-chart.component";
+import {ListComponent} from "./components/list/list.component";
+import {NumberCardComponent} from "./components/number-card/number-card.component";
+import {YearSelectionComponent} from "./date-selection/year-selection/year-selection.component";
 
 @Component({
   selector: 'app-game-stats-modal',
@@ -17,7 +18,8 @@ import {NumberCardComponent} from "./number-card/number-card.component";
     MonthSelectionComponent,
     BarChartComponent,
     ListComponent,
-    NumberCardComponent
+    NumberCardComponent,
+    YearSelectionComponent
   ],
   templateUrl: './game-stats-modal.component.html',
   styleUrl: './game-stats-modal.component.scss'
@@ -42,6 +44,7 @@ export class GameStatsModalComponent {
     switch (this.timespan) {
       case "custom":
       case "month":
+      case "year":
         if (this.timespanFrom && this.timespanTo) {
           return this.data.Plays.filter(p => {
             // build date from timestamp. date month is 0 indexed

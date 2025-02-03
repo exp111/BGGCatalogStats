@@ -48,8 +48,8 @@ export class MonthSelectionComponent {
 
   setRange() {
     this.fromDateChange.emit(new NgbDate(this.selectedYear, this.selectedMonth + 1, 1));
-    // 0 gives last day
-    let date = new Date(this.selectedYear, this.selectedMonth, 0);
+    // 0 gives last day of last month, therefore we need to add 1 to month
+    let date = new Date(this.selectedYear, this.selectedMonth + 1, 0);
     this.toDateChange.emit(new NgbDate(this.selectedYear, this.selectedMonth + 1, date.getDate()));
   }
 }
