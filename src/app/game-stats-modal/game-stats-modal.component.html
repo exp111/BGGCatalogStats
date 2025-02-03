@@ -37,7 +37,7 @@
     <!-- left side -->
     <div class="col row g-1">
       @for (e of getHeroes(); track e[0]; let first = $first; let length = $count) {
-        <div class="{{length % 2 == 1 && first ? 'col-12 d-flex justify-content-center' : 'col-6'}} position-relative">
+        <div class="{{length % 2 == 1 && first ? 'col-12' : 'col-6'}} d-flex justify-content-center position-relative">
           <img width="100rem" src="./img/mc/hero/{{e[0].toLowerCase()}}.jpg">
           <span style="--length: {{String(e[1]).length}}"
                 class="position-absolute translate-middle badge rounded-pill bg-black border border-white border-2">
