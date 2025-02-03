@@ -1,0 +1,9 @@
+<div class="title">{{ title }}</div>
+<div class="d-flex flex-column p-1 pt-0">
+  @for (item of items; track item[0]) {
+    <div class="d-flex">
+      <div class="text">{{ item[0] }}</div>
+      <div class="percentage">{{ (item[1] * 100).toFixed(0) }}%</div>
+    </div>
+  }
+</div>

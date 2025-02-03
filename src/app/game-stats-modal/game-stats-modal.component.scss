@@ -31,19 +31,3 @@
     font-size: smaller;
   }
 }
-
-// list with a title and multiple items containing a text and a percentage
-.list {
-  .title {
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .text {
-    font-size: small;
-  }
-  .percentage {
-    font-size: small;
-    margin-left: auto;
-  }
-}

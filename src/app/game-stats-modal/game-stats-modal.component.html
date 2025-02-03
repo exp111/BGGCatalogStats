@@ -98,15 +98,7 @@
         <app-bar-chart title="Aspects" [ratios]="getAspectRatio()"></app-bar-chart>
       </div>
       <div class="h-25 bg-secondary-subtle rounded list">
-        <div class="title">{{ getScenarioCount() }} Scenarios</div>
-        <div class="d-flex flex-column p-1 pt-0">
-          @for (scenario of getScenarioRatio(); track scenario[0]) {
-            <div class="d-flex">
-              <div class="text">{{ scenario[0] }}</div>
-              <div class="percentage">{{ (scenario[1] * 100).toFixed(0) }}%</div>
-            </div>
-          }
-        </div>
+        <app-list title="{{getScenarioCount()}} Scenarios" [items]="getScenarioRatio()"></app-list>
       </div>
     </div>
   </div>

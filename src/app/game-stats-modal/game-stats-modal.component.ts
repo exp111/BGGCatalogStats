@@ -6,6 +6,7 @@ import {enumToNumberArray, formatFromEnumString} from "../util/enum-utils";
 import {DateRangeSelectionComponent} from "./date-range-selection/date-range-selection.component";
 import {MonthSelectionComponent} from "./month-selection/month-selection.component";
 import {BarChartComponent} from "./bar-chart/bar-chart.component";
+import {ListComponent} from "./list/list.component";
 
 @Component({
   selector: 'app-game-stats-modal',
@@ -13,7 +14,8 @@ import {BarChartComponent} from "./bar-chart/bar-chart.component";
     FormsModule,
     DateRangeSelectionComponent,
     MonthSelectionComponent,
-    BarChartComponent
+    BarChartComponent,
+    ListComponent
   ],
   templateUrl: './game-stats-modal.component.html',
   styleUrl: './game-stats-modal.component.scss'
