@@ -5,13 +5,15 @@ import {FormsModule} from "@angular/forms";
 import {enumToNumberArray, formatFromEnumString} from "../util/enum-utils";
 import {DateRangeSelectionComponent} from "./date-range-selection/date-range-selection.component";
 import {MonthSelectionComponent} from "./month-selection/month-selection.component";
+import {BarChartComponent} from "./bar-chart/bar-chart.component";
 
 @Component({
   selector: 'app-game-stats-modal',
   imports: [
     FormsModule,
     DateRangeSelectionComponent,
-    MonthSelectionComponent
+    MonthSelectionComponent,
+    BarChartComponent
   ],
   templateUrl: './game-stats-modal.component.html',
   styleUrl: './game-stats-modal.component.scss'
