@@ -46,52 +46,28 @@
     <div class="col d-flex flex-column gap-1">
       <div class="h-50 row g-1">
         <div class="col-6">
-          <div class="number-card">
-            <div class="title">{{ getPlayCount() }}</div>
-            <div class="subtitle">Plays</div>
-          </div>
+          <app-number-card title="{{getPlayCount()}}" subtitle="Plays"></app-number-card>
         </div>
         <div class="col-6">
-          <div class="number-card">
-            <div class="title">{{ getVictoryCount() }}</div>
-            <div class="subtitle">Won</div>
-          </div>
+          <app-number-card title="{{getVictoryCount()}}" subtitle="Won"></app-number-card>
         </div>
         <div class="col-6">
-          <div class="number-card">
-            <div class="title">{{ getHeroCount() }}</div>
-            <div class="subtitle">Heroes</div>
-          </div>
+          <app-number-card title="{{getHeroCount()}}" subtitle="Heroes"></app-number-card>
         </div>
         <div class="col-6">
-          <div class="number-card">
-            <div class="title">0</div>
-            <div class="subtitle">New</div>
-          </div>
+          <app-number-card title="0" subtitle="New"></app-number-card>
         </div>
         <div class="col-6">
-          <div class="number-card">
-            <div class="title">{{ getScenarioCount() }}</div>
-            <div class="subtitle">Scenarios</div>
-          </div>
+          <app-number-card title="{{getScenarioCount()}}" subtitle="Scenarios"></app-number-card>
         </div>
         <div class="col-6">
-          <div class="number-card">
-            <div class="title">0</div>
-            <div class="subtitle">New</div>
-          </div>
+          <app-number-card title="0" subtitle="New"></app-number-card>
         </div>
         <div class="col-6">
-          <div class="number-card">
-            <div class="title">{{ getPlayerCount() }}</div>
-            <div class="subtitle">Players</div>
-          </div>
+          <app-number-card title="{{getPlayerCount()}}" subtitle="Players"></app-number-card>
         </div>
         <div class="col-6">
-          <div class="number-card">
-            <div class="title">{{ getHours() }}</div>
-            <div class="subtitle">Hours</div>
-          </div>
+          <app-number-card title="{{getHours()}}" subtitle="Hours"></app-number-card>
         </div>
       </div>
       <div class="h-25 bg-secondary-subtle rounded">

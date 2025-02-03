@@ -4,30 +4,3 @@
   // for each character move it further to the right
   left: calc(1rem + var(--length) * 0.1rem);
 }
-
-// number cards with a big number and a smaller sub text
-.number-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  background: var(--bs-secondary-bg-subtle);
-  height: 100%;
-  border-radius: var(--bs-border-radius);
-
-  // card big number
-  .title {
-    color: black;
-    font-size: large;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  // card explanation
-  .subtitle {
-    color: green;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: smaller;
-  }
-}

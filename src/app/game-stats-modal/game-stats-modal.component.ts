@@ -7,6 +7,7 @@ import {DateRangeSelectionComponent} from "./date-range-selection/date-range-sel
 import {MonthSelectionComponent} from "./month-selection/month-selection.component";
 import {BarChartComponent} from "./bar-chart/bar-chart.component";
 import {ListComponent} from "./list/list.component";
+import {NumberCardComponent} from "./number-card/number-card.component";
 
 @Component({
   selector: 'app-game-stats-modal',
@@ -15,7 +16,8 @@ import {ListComponent} from "./list/list.component";
     DateRangeSelectionComponent,
     MonthSelectionComponent,
     BarChartComponent,
-    ListComponent
+    ListComponent,
+    NumberCardComponent
   ],
   templateUrl: './game-stats-modal.component.html',
   styleUrl: './game-stats-modal.component.scss'

@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: var(--bs-secondary-bg-subtle);
+  height: 100%;
+  border-radius: var(--bs-border-radius);
+
+  // card big number
+  .title {
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  // card explanation
+  .subtitle {
+    color: green;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: smaller;
+  }
+}
