@@ -32,10 +32,10 @@ export enum Hero {
   Nebula,
   Vision,
   WarMachine,
-  SPdr,
+  Spdr,
   SpiderHam,
   Gambit,
-  IronHeart,
+  Ironheart,
   Valkyrie,
   Cyclops,
   Nova,
@@ -58,6 +58,8 @@ export enum Hero {
   Magik,
   RocketRaccoon,
   Groot,
+  MariaHill,
+  NickFury,
   END
 }
 
@@ -125,6 +127,12 @@ export enum Modular {
   LegionsOfHel,
   FrostGiants,
   Enchantress,
+  Exodus,
+  Reavers,
+  Arcade,
+  CrazyGang,
+  Hellfire,
+  KreeFanatic,
   END
 }
 
@@ -147,6 +155,38 @@ export enum Packs {
   ScarletWitch = 316695,
   CaptainAmerica = 289222,
   BlackWidow = 299049,
+  MsMarvel = 291432,
+  Thor = 295782,
+  Hulk = 303708,
+  AntMan = 315981,
+  Quicksilver = 316694,
+  Wasp = 316696,
+  StarLord = 330615,
+  Gamora = 333154,
+  Drax = 333748,
+  Venom = 335739,
+  Nebula = 340900,
+  WarMachine = 342671,
+  Valkyrie = 345587,
+  Vision = 347812,
+  Nova = 356075,
+  Ironheart = 357957,
+  SpiderHam = 360060,
+  Spdr = 361485,
+  Cyclops = 365913,
+  Phoenix = 366645,
+  Storm = 370237,
+  Gambit = 372718,
+  Rogue = 374986,
+  Psylocke = 386959,
+  Angel = 388330,
+  X23 = 391675,
+  Iceman = 413236,
+  Jubilee = 417417,
+  Nightcrawler = 422976,
+  Magneto = 426008,
+  //TODO: new wave
+
   // Expansions
   RiseOfTheRedSkull = 306430,
   GalaxysMostWanted = 315896,
@@ -155,11 +195,15 @@ export enum Packs {
   MutantGenesis = 363709,
   NextEvolution = 383818,
   AgeOfApocalypse = 405724,
+  AgentsOfShield = 430260,
   // Scenario Packs
   GreenGoblin = 288794,
   WreckingCrew = 294306,
   Hood = 343017,
   MojoMania = 368736,
+  Kang = 314028,
+  // Misc
+  KreeFanatic = 316224,
   END
 }
 
@@ -177,7 +221,37 @@ export const PackContent: Record<number, number[]> = {
   [Packs.Wolverine]: [Hero.Wolverine, Modular.Deathstrike],
   [Packs.ScarletWitch]: [Hero.ScarletWitch],
   [Packs.CaptainAmerica]: [Hero.CaptainAmerica],
-  [Packs.BlackWidow]: [Hero.BlackWidow], //TODO: bw modular?
+  [Packs.BlackWidow]: [Hero.BlackWidow],
+  [Packs.MsMarvel]: [Hero.MsMarvel],
+  [Packs.Thor]: [Hero.Thor],
+  [Packs.Hulk]: [Hero.Hulk],
+  [Packs.AntMan]: [Hero.AntMan],
+  [Packs.Quicksilver]: [Hero.Quicksilver],
+  [Packs.Wasp]: [Hero.Wasp],
+  [Packs.StarLord]: [Hero.StarLord],
+  [Packs.Gamora]: [Hero.Gamora],
+  [Packs.Drax]: [Hero.Drax],
+  [Packs.Venom]: [Hero.Venom],
+  [Packs.Nebula]: [Hero.Nebula],
+  [Packs.WarMachine]: [Hero.WarMachine],
+  [Packs.Valkyrie]: [Hero.Valkyrie],
+  [Packs.Vision]: [Hero.Vision],
+  [Packs.Nova]: [Hero.Nova],
+  [Packs.Ironheart]: [Hero.Ironheart],
+  [Packs.SpiderHam]: [Hero.SpiderHam],
+  [Packs.Spdr]: [Hero.Spdr],
+  [Packs.Cyclops]: [Hero.Cyclops],
+  [Packs.Phoenix]: [Hero.Phoenix],
+  [Packs.Storm]: [Hero.Storm],
+  [Packs.Gambit]: [Hero.Gambit, Modular.Exodus],
+  [Packs.Rogue]: [Hero.Rogue, Modular.Reavers],
+  [Packs.Psylocke]: [Hero.Psylocke],
+  [Packs.Angel]: [Hero.Angel],
+  [Packs.X23]: [Hero.X23],
+  [Packs.Iceman]: [Hero.Iceman],
+  [Packs.Jubilee]: [Hero.Jubilee, Modular.Arcade],
+  [Packs.Nightcrawler]: [Hero.Nightcrawler, Modular.CrazyGang],
+  [Packs.Magneto]: [Hero.Magneto, Modular.Hellfire],
   // Expansions
   [Packs.RiseOfTheRedSkull]: [
     Hero.Hawkeye, Hero.SpiderWoman,
@@ -212,6 +286,10 @@ export const PackContent: Record<number, number[]> = {
     //TODO: scenarios + modulars
     Difficulty.Standard3, Difficulty.Expert3
   ],
+  [Packs.AgentsOfShield]: [
+    Hero.MariaHill, Hero.NickFury
+    //TODO: scenarios + modulars
+  ],
   // Scenario Packs
   [Packs.GreenGoblin]: [
     Scenario.RiskyBusiness, Scenario.MutagenFormula,
@@ -226,7 +304,12 @@ export const PackContent: Record<number, number[]> = {
   ],
   [Packs.MojoMania]: [
     //TODO: scenarios + modulars
-  ]
+  ],
+  [Packs.Kang]: [
+    //TODO: scenarios + modulars
+  ],
+  // Misc
+  [Packs.KreeFanatic]: [Modular.KreeFanatic]
 }
 
 export interface MarvelChampionsPlayer extends BaseGamePlayer {

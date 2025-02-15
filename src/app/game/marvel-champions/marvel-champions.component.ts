@@ -59,7 +59,7 @@ export class MarvelChampionsComponent extends BaseGameComponent {
 
   private beautifyHeroName(e: number) {
     return {
-      [Hero.SPdr]: "SP//dr"
+      [Hero.Spdr]: "SP//dr"
     }[e] ?? null;
   }
 
