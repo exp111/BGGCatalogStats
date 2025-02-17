@@ -18,9 +18,10 @@ import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-bac
 import {formatDurationMinutes} from "../../util/helper";
 import {MCFilterParams, MCFilterPipe, SortOrder, SortType} from "./mc-filter.pipe";
 import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
-import {enumToNumberArray} from "../../util/enum-utils";
+import {Enums, enumToNumberArray} from "../../util/enum-utils";
 import {NgbAccordionModule, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {GameStatsModalComponent} from "../../game-stats-modal/game-stats-modal.component";
+import {CompletionBarComponent} from "../completion-bar/completion-bar.component";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -31,7 +32,8 @@ import {GameStatsModalComponent} from "../../game-stats-modal/game-stats-modal.c
     FormsModule,
     MCFilterPipe,
     BaseUploadSelectionComponent,
-    NgbAccordionModule
+    NgbAccordionModule,
+    CompletionBarComponent
   ],
   templateUrl: './marvel-champions.component.html',
   styleUrl: './marvel-champions.component.scss'
@@ -415,6 +417,25 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       let rand = Math.floor(Math.random() * (length - 1)) + 1;
       select.selectedIndex = rand >= length ? 0 : rand;
     }
+  }
+
+  getPercentage(e: Enums, check: (v: any) => boolean) {
+    let values = enumToNumberArray(e).filter(v => v != e["END"]);
+    let count = 0;
+    for (let v of values) {
+      if (check(v)) {
+        count++;
+      }
+    }
+    return count / values.length;
+  }
+
+  getPlayedPercentage(e: Enums) {
+    return this.getPercentage(e, this.playedCheck.bind(this));
+  }
+
+  getOwnedPercentage(e: Enums) {
+    return this.getPercentage(e, this.ownedCheck.bind(this));
   }
 
   protected readonly Hero = Hero;

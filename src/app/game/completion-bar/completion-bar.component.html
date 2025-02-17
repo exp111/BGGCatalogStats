@@ -1,0 +1,13 @@
+{{title}}:
+<ngb-progressbar-stacked>
+  @if (played < owned) {
+    <ngb-progressbar type="danger" ngbTooltip="Played" [value]="played * 100">{{(played * 100).toFixed()}}%</ngb-progressbar>
+    <ngb-progressbar type="warning" ngbTooltip="Owned" [value]="(owned - played) * 100">{{(owned * 100).toFixed()}}%</ngb-progressbar>
+  } @else if (played == owned) {
+    <ngb-progressbar type="danger" ngbTooltip="Played" [value]="played * 100">{{(played * 100).toFixed()}}%</ngb-progressbar>
+  } @else {
+    <ngb-progressbar type="warning" ngbTooltip="Owned" [value]="owned * 100">{{(owned * 100).toFixed()}}%</ngb-progressbar>
+    <ngb-progressbar type="danger" ngbTooltip="Played" [value]="(played - owned) * 100">{{(played * 100).toFixed()}}%</ngb-progressbar>
+  }
+  <ngb-progressbar type="success" ngbTooltip="Total" [value]="(1 - (owned > played ? owned : played)) * 100">100%</ngb-progressbar>
+</ngb-progressbar-stacked>

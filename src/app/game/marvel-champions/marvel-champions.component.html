@@ -406,8 +406,31 @@
                   <button class="btn btn-primary" (click)="setRandomValue(randomizeModularSelect)">Modular</button>
                 </div>
               </div>
-              <button class="btn btn-primary flex-grow-1" (click)="setRandomValue(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">Randomize All</button>
+              <button class="btn btn-primary flex-grow-1"
+                      (click)="setRandomValue(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">
+                Randomize All
+              </button>
             </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div ngbAccordionItem>
+      <h4 ngbAccordionHeader>
+        <button ngbAccordionButton>Completion</button>
+      </h4>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <ng-template>
+            <div class="d-flex gap-1">
+              <span style="color: red">Played</span>
+              <span style="color: orange">Owned</span>
+              <span style="color: green">Total</span>
+            </div>
+            <completion-bar title="Heroes" [played]="getPlayedPercentage(Hero)" [owned]="getOwnedPercentage(Hero)"></completion-bar>
+            <completion-bar title="Aspects" [played]="getPlayedPercentage(Aspect)" [owned]="getOwnedPercentage(Aspect)"></completion-bar>
+            <completion-bar title="Scenarios" [played]="getPlayedPercentage(Scenario)" [owned]="getOwnedPercentage(Scenario)"></completion-bar>
+            <completion-bar title="Modulars" [played]="getPlayedPercentage(Modular)" [owned]="getOwnedPercentage(Modular)"></completion-bar>
           </ng-template>
         </div>
       </div>
