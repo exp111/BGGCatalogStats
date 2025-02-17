@@ -408,6 +408,15 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     (modal.componentInstance as GameStatsModalComponent).setData(this.stats!);
   }
 
+  setRandomValue(...selects: HTMLSelectElement[]) {
+    for (let select of selects) {
+      let length = select.options.length;
+      // skip first item (placeholder)
+      let rand = Math.floor(Math.random() * (length - 1)) + 1;
+      select.selectedIndex = rand >= length ? 0 : rand;
+    }
+  }
+
   protected readonly Hero = Hero;
   protected readonly Aspect = Aspect;
   protected readonly Scenario = Scenario;
