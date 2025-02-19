@@ -362,9 +362,9 @@
               <div>
                 <div class="input-group">
                   <select #randomizeHeroSelect disabled class="form-select">
-                    <option selected>Hero</option>
+                    <option value="" selected>Hero</option>
                     @for (hero of enumToNumberArray(Hero); track hero) {
-                      <option>{{ beautifyEnum(Hero, hero) }}</option>
+                      <option [value]="hero">{{ beautifyEnum(Hero, hero) }}</option>
                     }
                   </select>
                   <button class="btn btn-primary" (click)="setRandomValue(randomizeHeroSelect)">Hero</button>
@@ -374,9 +374,9 @@
                 <!-- Aspect -->
                 <div class="input-group">
                   <select #randomizeAspectSelect disabled class="form-select">
-                    <option selected>Aspect</option>
+                    <option value="" selected>Aspect</option>
                     @for (aspect of enumToNumberArray(Aspect); track aspect) {
-                      <option>{{ beautifyEnum(Aspect, aspect) }}</option>
+                      <option [value]="aspect">{{ beautifyEnum(Aspect, aspect) }}</option>
                     }
                   </select>
                   <button class="btn btn-primary" (click)="setRandomValue(randomizeAspectSelect)">Aspect</button>
@@ -386,9 +386,9 @@
               <div>
                 <div class="input-group">
                   <select #randomizeScenarioSelect disabled class="form-select">
-                    <option selected>Scenario</option>
+                    <option value="" selected>Scenario</option>
                     @for (scenario of enumToNumberArray(Scenario); track scenario) {
-                      <option>{{ beautifyEnum(Scenario, scenario) }}</option>
+                      <option [value]="scenario">{{ beautifyEnum(Scenario, scenario) }}</option>
                     }
                   </select>
                   <button class="btn btn-primary" (click)="setRandomValue(randomizeScenarioSelect)">Scenario</button>
@@ -398,18 +398,24 @@
               <div>
                 <div class="input-group">
                   <select #randomizeModularSelect disabled class="form-select">
-                    <option selected>Modular</option>
+                    <option value="" selected>Modular</option>
                     @for (modular of enumToNumberArray(Modular); track modular) {
-                      <option>{{ beautifyEnum(Modular, modular) }}</option>
+                      <option [value]="modular">{{ beautifyEnum(Modular, modular) }}</option>
                     }
                   </select>
                   <button class="btn btn-primary" (click)="setRandomValue(randomizeModularSelect)">Modular</button>
                 </div>
               </div>
-              <button class="btn btn-primary flex-grow-1"
+              <button class="btn btn-primary col"
                       (click)="setRandomValue(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">
                 Randomize All
               </button>
+            </div>
+            <div class="d-flex gap-1 flex-column flex-lg-row mt-lg-1">
+              <button class="btn btn-primary col" (click)="unplayedHeroAspect(randomizeHeroSelect, randomizeAspectSelect)">Unplayed Hero + Aspect</button>
+              <button class="btn btn-primary col" (click)="unplayedHeroScenario(randomizeHeroSelect, randomizeScenarioSelect)">Unplayed Hero + Scenario</button>
+              <button class="btn btn-primary col" (click)="unplayedScenarioModular(randomizeScenarioSelect, randomizeModularSelect)">Unplayed Scenario + Modular</button>
+              <button class="btn btn-primary col" (click)="unplayedAll(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">Unplayed All</button>
             </div>
           </ng-template>
         </div>

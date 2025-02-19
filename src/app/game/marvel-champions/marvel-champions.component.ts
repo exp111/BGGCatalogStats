@@ -419,6 +419,86 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     }
   }
 
+  unplayedHeroAspect(heroSelect: HTMLSelectElement, aspectSelect: HTMLSelectElement) {
+    let plays = this.getPlays(this.stats!);
+    let heroes = this.enumToNumberArray(Hero);
+    let aspects = this.enumToNumberArray(Aspect);
+    let entries = [];
+    for (let hero of heroes) {
+      for (let aspect of aspects) {
+        // not yet played
+        if (!plays.some(p => this.playHasHero(p, hero, aspect))) {
+          entries.push([hero, aspect]);
+        }
+      }
+    }
+    let entry = entries[Math.floor(Math.random() * entries.length)];
+    heroSelect.value = entry[0].toString();
+    aspectSelect.value = entry[1].toString();
+  }
+
+  unplayedHeroScenario(heroSelect: HTMLSelectElement, scenarioSelect: HTMLSelectElement) {
+    let plays = this.getPlays(this.stats!);
+    let heroes = this.enumToNumberArray(Hero);
+    let scenarios = this.enumToNumberArray(Scenario);
+    let entries = [];
+    for (let hero of heroes) {
+      for (let scenario of scenarios) {
+        // not yet played
+        if (!plays.some(p => p.Scenario == scenario && this.playHasHero(p, hero))) {
+          entries.push([hero, scenario]);
+        }
+      }
+    }
+    let entry = entries[Math.floor(Math.random() * entries.length)];
+    heroSelect.value = entry[0].toString();
+    scenarioSelect.value = entry[1].toString();
+  }
+
+  unplayedScenarioModular(scenarioSelect: HTMLSelectElement, modularSelect: HTMLSelectElement) {
+    let plays = this.getPlays(this.stats!);
+    let scenarios = this.enumToNumberArray(Scenario);
+    let modulars = this.enumToNumberArray(Modular);
+    let entries = [];
+    for (let scenario of scenarios) {
+      for (let modular of modulars) {
+        // not yet played
+        if (!plays.some(p => p.Scenario == scenario && p.Modulars.includes(modular))) {
+          entries.push([scenario, modular]);
+        }
+      }
+    }
+    let entry = entries[Math.floor(Math.random() * entries.length)];
+    scenarioSelect.value = entry[0].toString();
+    modularSelect.value = entry[1].toString();
+  }
+
+  unplayedAll(heroSelect: HTMLSelectElement, aspectSelect: HTMLSelectElement, scenarioSelect: HTMLSelectElement, modularSelect: HTMLSelectElement) {
+    let plays = this.getPlays(this.stats!);
+    let heroes = this.enumToNumberArray(Hero);
+    let aspects = this.enumToNumberArray(Aspect);
+    let scenarios = this.enumToNumberArray(Scenario);
+    let modulars = this.enumToNumberArray(Modular);
+    let entries = [];
+    for (let hero of heroes) {
+      for (let aspect of aspects) {
+        for (let scenario of scenarios) {
+          for (let modular of modulars) {
+            // not yet played
+            if (!plays.some(p => p.Scenario == scenario && p.Modulars.includes(modular) && this.playHasHero(p, hero, aspect))) {
+              entries.push([hero, aspect, scenario, modular]);
+            }
+          }
+        }
+      }
+    }
+    let entry = entries[Math.floor(Math.random() * entries.length)];
+    heroSelect.value = entry[0].toString();
+    aspectSelect.value = entry[1].toString();
+    scenarioSelect.value = entry[2].toString();
+    modularSelect.value = entry[3].toString();
+  }
+
   getPercentage(e: Enums, check: (v: any) => boolean) {
     let values = enumToNumberArray(e).filter(v => v != e["END"]);
     let count = 0;
