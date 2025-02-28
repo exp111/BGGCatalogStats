@@ -42,7 +42,12 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       "RiskantesGesch\xe4ft": "RiskyBusiness",
       "MutagenFormel": "MutagenFormula",
       // mad titan
-      "Turmverteidigung": "TowerDefense"
+      "Turmverteidigung": "TowerDefense",
+      // gmw
+      "BruderschaftDerBadoon": "BrotherhoodOfBadoon",
+      "EinbruchInsMuseum": "InfiltrateTheMuseum",
+      "Flucht aus dem Museum": "EscapeTheMuseum",
+      "RonanDerAnkl\xe4ger": "RonanTheAccuser"
     }[str] ?? str;
   }
 
@@ -84,7 +89,15 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       "KinderDesThanos":"ChildrenOfThanos",
       "InfinityHandschuh":"InfinityGauntlet",
       "LegionenVonHel":"LegionsOfHel",
-      "FrostRiesen": "FrostGiants"
+      "FrostRiesen": "FrostGiants",
+      // gmw
+      "BadoonTrupp": "BandOfBadoon",
+      "GalaktischeArtefake": "GalacticArtifacts",
+      "KreeK\xe4mpfer": "KreeMilitants",
+      "Weltraumpiraten": "SpacePirates",
+      "Schiffskommando": "ShipCommand",
+      "Machtstein": "PowerStone",
+      "BadoonKopfgeldj\xe4ger": "BadoonHeadhunter"
     }[str] ?? str;
   }
 

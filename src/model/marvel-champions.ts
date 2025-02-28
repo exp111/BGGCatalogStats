@@ -93,6 +93,11 @@ export enum Scenario {
   Thanos,
   Hela,
   Loki,
+  BrotherhoodOfBadoon,
+  InfiltrateTheMuseum,
+  EscapeTheMuseum,
+  Nebula,
+  RonanTheAccuser,
   END
 }
 
@@ -133,6 +138,14 @@ export enum Modular {
   CrazyGang,
   Hellfire,
   KreeFanatic,
+  BandOfBadoon,
+  GalacticArtifacts,
+  KreeMilitants,
+  MenagerieMedley,
+  SpacePirates,
+  ShipCommand,
+  PowerStone,
+  BadoonHeadhunter,
   END
 }
 
@@ -260,7 +273,8 @@ export const PackContent: Record<number, number[]> = {
   ],
   [Packs.GalaxysMostWanted]: [
     Hero.Groot, Hero.RocketRaccoon,
-    //TODO: scenarios + modulars
+    Scenario.BrotherhoodOfBadoon, Scenario.InfiltrateTheMuseum, Scenario.EscapeTheMuseum, Scenario.Nebula, Scenario.RonanTheAccuser,
+    Modular.BandOfBadoon, Modular.GalacticArtifacts, Modular.KreeMilitants, Modular.MenagerieMedley, Modular.SpacePirates, Modular.ShipCommand, Modular.PowerStone, Modular.BadoonHeadhunter
   ],
   [Packs.MadTitansShadow]: [
     Hero.Spectrum, Hero.AdamWarlock,
