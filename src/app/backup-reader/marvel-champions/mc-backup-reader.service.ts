@@ -9,7 +9,7 @@ import {
   MarvelChampionsStats,
   MC_GAME_ID,
   Modular,
-  PackContent,
+  PackContent, Packs,
   Scenario
 } from "../../../model/marvel-champions";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
@@ -99,6 +99,25 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       "Machtstein": "PowerStone",
       "BadoonKopfgeldj\xe4ger": "BadoonHeadhunter"
     }[str] ?? str;
+  }
+
+  protected override getEnumName(enums: any) {
+    switch (enums) {
+      case Hero:
+        return "Hero";
+      case Aspect:
+        return "Aspect";
+      case Scenario:
+        return "Scenario";
+      case Modular:
+        return "Modular";
+      case Difficulty:
+        return "Difficulty";
+      case Packs:
+        return "Packs";
+      default:
+        return "Unknown";
+    }
   }
 
   private parsePlayerBGGCatalog(entry: BGGCatalogPlayerPlayEntry, backup: BGGCatalogBackup, heroField: BGGCatalogCustomFieldEntry, aspectField: BGGCatalogCustomFieldEntry, aspectsField: BGGCatalogCustomFieldEntry) {

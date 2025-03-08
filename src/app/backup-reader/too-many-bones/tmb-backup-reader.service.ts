@@ -30,6 +30,19 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
     }[str] ?? str;
   }
 
+  protected override getEnumName(enums: any): string {
+    switch (enums) {
+      case Gearloc:
+        return "Gearloc";
+      case Tyrant:
+        return "Tyrant";
+      case Difficulty:
+        return "Difficulty";
+      default:
+        return "Unknown";
+    }
+  }
+
   private parsePlayer(entry: BGGCatalogPlayerPlayEntry, backup: BGGCatalogBackup, gearlocField: BGGCatalogCustomFieldEntry) {
     let ret = {} as TooManyBonesPlayer;
     // get player

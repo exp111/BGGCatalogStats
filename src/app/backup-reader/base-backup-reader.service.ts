@@ -47,7 +47,7 @@ export abstract class BaseBackupReaderService {
   protected parseEnumValue(enums: any, str: string) {
     let endVal = enums["END"];
     if (!endVal) {
-      console.error(`Can't find 'END' value for ${enums}, value: ${str}`);
+      console.error(`Can't find 'END' value for ${this.getEnumName(enums)}, value: ${str}`);
       endVal = -1;
     }
     let normalizer = this.enumNormalizers[endVal] ?? ((e: string) => e);
@@ -87,7 +87,7 @@ export abstract class BaseBackupReaderService {
     for (let value of values) {
       let val = this.parseEnumValue(enums, value);
       if (val == undefined) {
-        console.error(`Custom Field Value ${formatToEnumString(value)} can not be parsed`);
+        console.error(`Custom Field Value ${formatToEnumString(value)} for enum ${this.getEnumName(enums)} can not be parsed`);
         return ret;
       }
       ret.push(val);
@@ -99,7 +99,7 @@ export abstract class BaseBackupReaderService {
   protected parseCustomFieldValue(entry: BGGCatalogCustomDataEntry, enums: any) {
     let val = this.parseEnumValue(enums, entry.value);
     if (val == undefined) {
-      console.error(`Custom Field Value ${formatToEnumString(entry.value)} can not be parsed`);
+      console.error(`Custom Field Value ${formatToEnumString(entry.value)} for enum ${this.getEnumName(enums)} can not be parsed`);
       return undefined;
     }
     return val;
@@ -131,11 +131,13 @@ export abstract class BaseBackupReaderService {
     // try to find any entry in the roles that matches an entry in the enum
     let val = role?.split("\uff0f").map(r => this.parseEnumValue(enums, r)).filter(r => r != null);
     if (val == undefined || val.length == 0) {
-      console.error(`Custom Field Value ${role} can not be parsed`);
+      console.error(`Custom Field Value ${role} for enum ${this.getEnumName(enums)} can not be parsed`);
       return multi ? [] : undefined;
     }
     return multi ? val : val[0];
   }
+
+  protected abstract getEnumName(enums: any): string;
 
   /* Parses the backup to a parser specific game stats model */
   public abstract parseBGGCatalog(backup: BGGCatalogBackup): BaseGameStats;
