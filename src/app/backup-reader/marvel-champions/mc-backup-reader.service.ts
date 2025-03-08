@@ -46,7 +46,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       // gmw
       "BruderschaftDerBadoon": "BrotherhoodOfBadoon",
       "EinbruchInsMuseum": "InfiltrateTheMuseum",
-      "Flucht aus dem Museum": "EscapeTheMuseum",
+      "FluchtAusDemMuseum": "EscapeTheMuseum",
       "RonanDerAnkl\xe4ger": "RonanTheAccuser"
     }[str] ?? str;
   }
