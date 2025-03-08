@@ -284,8 +284,7 @@ export const PackContent: Record<number, number[]> = {
   [Packs.SinisterMotives]: [
     Hero.GhostSpider, Hero.MilesMorales,
     Scenario.Sandman, Scenario.Venom, Scenario.Mysterio, Scenario.SinisterSix, Scenario.VenomGoblin,
-    Modular.CityInChaos, Modular.DownToEarth, Modular.GoblinGear, Modular.GuerrillaTactics, Modular.OsbornTech,
-    Modular.PersonalNightmare, Modular.SinisterAssault, Modular.SymbioticStrength, Modular.WhispersOfParanoia,
+    Modular.CityInChaos, Modular.DownToEarth, Modular.GoblinGear, Modular.GuerrillaTactics, Modular.OsbornTech, Modular.PersonalNightmare, Modular.SinisterAssault, Modular.SymbioticStrength, Modular.WhispersOfParanoia,
   ],
   [Packs.MutantGenesis]: [
     Hero.Shadowcat, Hero.Colossus,

@@ -108,6 +108,10 @@ export class MarvelChampionsComponent extends BaseGameComponent {
       || this.playHasHero(p, undefined, val));
   }
 
+  ownedPackCheck(val: number) {
+    return this.stats?.OwnedContent.some(p => p == String(val)) ?? false;
+  }
+
   playHasHero(play: MarvelChampionsPlay, hero?: Hero, aspect?: Aspect) {
     return play.Players.some(p => (hero == undefined || p.Hero == hero)
       && (!this.onlyMe || p.IsMe)
@@ -401,6 +405,13 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return this.playsToChecklist(plays.filter(p => p.Scenario == scenario && p.Difficulty == difficulty));
   }
 
+  packPlayedGetter(_: number, pack: number) {
+    if (!this.stats) {
+      return ChecklistState.Empty;
+    }
+    return this.packPlayedCheck(pack) ? ChecklistState.Check : ChecklistState.Empty;
+  }
+
   formatEnumList(enums: any, entries: any[]) {
     return entries ? entries.map(a => this.beautifyEnum(enums, a)).join(", ") : this.beautifyEnum(null, null); // else just return the default value
   }
@@ -510,12 +521,19 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return count / values.length;
   }
 
-  getPlayedPercentage(e: Enums) {
-    return this.getPercentage(e, this.playedCheck.bind(this));
+  getPlayedPercentage(e: Enums, check = this.playedCheck.bind(this)) {
+    return this.getPercentage(e, check);
   }
 
-  getOwnedPercentage(e: Enums) {
-    return this.getPercentage(e, this.ownedCheck.bind(this));
+  getOwnedPercentage(e: Enums, check = this.ownedCheck.bind(this)) {
+    return this.getPercentage(e, check);
+  }
+
+  packPlayedCheck(val: number) {
+    if (!this.stats) {
+      return true;
+    }
+    return this.stats.Plays.some(p => this.playHasPackContent(p, val));
   }
 
   protected readonly Hero = Hero;

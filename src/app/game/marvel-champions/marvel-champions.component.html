@@ -239,6 +239,12 @@
               [YAxis]="enumToNumberArray(Difficulty)"
               [YFormatter]="beautifyEnum.bind(this, Difficulty)"
               [getter]="scenarioDifficultyWonGetter.bind(this)"></app-checklist>
+            <h4>Packs</h4>
+            <app-checklist
+              [XAxis]="['Played']"
+              [YAxis]="packsEnumToNumberArray(Packs)"
+              [YFormatter]="beautifyEnum.bind(this, Packs)"
+              [getter]="packPlayedGetter.bind(this)"></app-checklist>
             <h4>Scenario - Hero - (Winrate)</h4>
             <app-table
               [XAxis]="enumToNumberArray(Scenario)"
@@ -437,6 +443,7 @@
             <completion-bar title="Aspects" [played]="getPlayedPercentage(Aspect)" [owned]="getOwnedPercentage(Aspect)"></completion-bar>
             <completion-bar title="Scenarios" [played]="getPlayedPercentage(Scenario)" [owned]="getOwnedPercentage(Scenario)"></completion-bar>
             <completion-bar title="Modulars" [played]="getPlayedPercentage(Modular)" [owned]="getOwnedPercentage(Modular)"></completion-bar>
+            <completion-bar title="Packs" [played]="getPlayedPercentage(Packs, packPlayedCheck.bind(this))" [owned]="getOwnedPercentage(Packs, ownedPackCheck.bind(this))"></completion-bar>
           </ng-template>
         </div>
       </div>
