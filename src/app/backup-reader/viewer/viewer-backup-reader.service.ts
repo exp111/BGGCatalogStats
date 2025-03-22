@@ -27,7 +27,8 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
     // name
     ret.Name = player.name;
     ret.IsMe = player.me == 1;
-    //TODO: find custom fields
+    let roles = backup.customData.filter(d => d.entityId == entry.playId && d.playerId == entry.id)
+    ret.Roles = roles.map(d => String(d.value));
     return ret;
   }
 
@@ -61,7 +62,8 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
         Notes: play.notes,
         Players: [],
         Timestamp: play.playDate,
-        Won: false
+        Won: false,
+        Data: backup.customData.filter(d => d.entityId == play.id && d.playerId == null).map(d => d.value)
       } as ViewerPlay;
       // players
       let players = backup.playersPlays.filter(p => p.playId == play.id);
@@ -89,7 +91,8 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
         Notes: "", //TODO: notes
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
         Timestamp: play.playDate,
-        Won: play.playerScores.some(p => p.winner)
+        Won: play.playerScores.some(p => p.winner),
+        Data: play.board?.split("\uff0f")
       } as ViewerPlay;
       plays.push(obj);
     }

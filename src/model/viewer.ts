@@ -6,6 +6,7 @@ export interface ViewerPlayer extends BaseGamePlayer {
 
 export interface ViewerPlay extends BaseGamePlay {
   Players: ViewerPlayer[];
+  Data: string[];
 }
 
 export interface ViewerStats extends BaseGameStats {

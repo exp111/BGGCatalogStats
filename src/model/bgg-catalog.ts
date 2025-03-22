@@ -23,19 +23,27 @@ export interface BGGCatalogLocationEntry {
 }
 
 export interface BGGCatalogPlayEntry {
-  id: number; // id of the play
-  playDate: string; // date of the play
-  gameId: number; // id of the game
-  locationId: number; // id of the location of the play
-  length: number; // play time in minutes
+  // id of the play
+  id: number;
+  // date of the play
+  playDate: string;
+  // id of the game
+  gameId: number;
+  // id of the location of the play
+  locationId: number;
+  // play time in minutes
+  length: number;
   notes: string;
-  noInStats: number; // if the play shouldnt be shown in stats
+  // if the play shouldnt be shown in stats
+  noInStats: number;
 }
 
 export interface BGGCatalogPlayerPlayEntry {
   id: number;
-  playId: number; // the id of the play
-  playerId: number; // the id of the player
+  // the id of the play
+  playId: number;
+  // the id of the player
+  playerId: number;
   score: number;
   winner: number;
   team: number;
@@ -58,15 +66,18 @@ export interface BGGCatalogCustomFieldEntry {
   name: string;
   fieldType: CustomFieldTypes;
   entity: CustomFieldEntity;
-  selectedGames: string; // list of game ids, seperated by commas
+  // list of game ids, seperated by commas
+  selectedGames: string;
 }
 
 export interface BGGCatalogCustomDataEntry {
   id: number;
   fieldId: number;
   value: string;
-  entityId: number; // the id of the entity, either the play id or the game id
-  playerId?: number; // the id of the player play entry, NOT THE PLAYER ID
+  // the id of the entity, either the play id or the game id
+  entityId: number;
+  // the id of the player play entry, NOT THE PLAYER ID
+  playerId?: number;
 }
 
 export interface BGGCatalogBackup {
