@@ -1,0 +1,28 @@
+@if (!this.stats) {
+  <app-base-upload-selection
+    title="Play Viewer"
+    [(selectedTool)]="selectedTool"
+    (loadExample)="loadExample()"
+    (onFileLoad)="onFileLoad($event)"
+  ></app-base-upload-selection>
+} @else {
+  <h4>Total Plays: {{ this.getPlays(this.stats).length }}/ Total Won: {{ this.getWins(this.getPlays(this.stats)) }}</h4>
+  <h4>Plays</h4>
+  @for (play of this.getPlays(this.stats); track play.Id) {
+    <div class="card card-body">
+      <p>Id: {{ play.Id }}</p>
+      <p>Timestamp: {{ play.Timestamp }}</p>
+      <p>Players: {{ play.Players.length }}</p>
+      <ul>
+        @for (player of play.Players; track player.Name) {
+          <li>{{ player.Name }}: {{player.Roles}}</li>
+        }
+      </ul>
+      <p>Won: {{ play.Won }}</p>
+      <p>Time: {{ formatDurationMinutes(play.Duration) }}</p>
+      @if (play.Notes) {
+        <p>Comments: {{ play.Notes }}</p>
+      }
+    </div>
+  }
+}

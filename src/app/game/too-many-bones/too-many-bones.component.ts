@@ -20,9 +20,8 @@ import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upl
     templateUrl: './too-many-bones.component.html',
     styleUrl: './too-many-bones.component.scss'
 })
-export class TooManyBonesComponent extends BaseGameComponent {
+export class TooManyBonesComponent extends BaseGameComponent<TooManyBonesStats, TooManyBonesPlay> {
   static override Title = 'Too Many Bones Stats';
-  declare stats?: TooManyBonesStats;
   override exampleFileName = "tmb-example";
 
   protected override enumBeautifiers = {}
@@ -53,12 +52,8 @@ export class TooManyBonesComponent extends BaseGameComponent {
     return `${rate.toFixed(1)}% (${plays}/${totalPlays})`;
   }
 
-  getPlays(stats: TooManyBonesStats) {
+  protected override getPlays(stats: TooManyBonesStats) {
     return stats.Plays.filter(p => this.playHasGearloc(p)); // check if play is valid (ie contains "me")
-  }
-
-  getWins(plays: TooManyBonesPlay[]) {
-    return plays.reduce((a, b) => a + Number(b.Won), 0);
   }
 
   gearlocPlayrateGetter(_: string, gearloc: number) {

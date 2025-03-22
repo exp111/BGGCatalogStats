@@ -1,14 +1,14 @@
 import {BaseBackupReaderService} from "../backup-reader/base-backup-reader.service";
 import {Directive} from "@angular/core";
-import {BaseGamePlay, BaseGameStats} from "../../model/base-game-stats";
+import {BaseGamePlay, BaseGamePlayer, BaseGameStats} from "../../model/base-game-stats";
 import {enumToNumberArray, formatFromEnumString} from "../util/enum-utils";
 import {ChecklistState} from "../app-table/checklist.component";
 
 @Directive()
-export abstract class BaseGameComponent {
+export abstract class BaseGameComponent<S extends BaseGameStats, P extends BaseGamePlay> {
   static Title: string;
   selectedTool = "bgstats";
-  stats?: BaseGameStats;
+  stats?: S;
   onlyMe: boolean = false;
   onlyOwned: boolean = true;
   onlyPlayed: boolean = true;
@@ -38,10 +38,10 @@ export abstract class BaseGameComponent {
     let backup = JSON.parse(text);
     switch (this.selectedTool) {
       case "bggcatalog":
-        this.stats = this.backupReader.parseBGGCatalog(backup);
+        this.stats = this.backupReader.parseBGGCatalog(backup) as S;
         break;
       case "bgstats":
-        this.stats = this.backupReader.parseBGStats(backup);
+        this.stats = this.backupReader.parseBGStats(backup) as S;
         break;
     }
   }
@@ -63,7 +63,7 @@ export abstract class BaseGameComponent {
     return this.stats?.OwnedContent.some(p => this.backupReader.GameContent[p].includes(val)) ?? false;
   }
 
-  protected playedCheck(val: number) {
+  protected playedCheck(_val: number) {
     return true;
   }
 
@@ -86,10 +86,22 @@ export abstract class BaseGameComponent {
     return fallback(val);
   }
 
-  protected playsToChecklist(plays: BaseGamePlay[]): ChecklistState {
+  protected playsToChecklist(plays: P[]): ChecklistState {
     if (plays.length == 0) {
       return ChecklistState.Empty;
     }
     return plays.some(p => p.Won) ? ChecklistState.Check : ChecklistState.Incomplete;
+  }
+
+  protected getPlays(stats: S): P[] {
+    return stats.Plays as P[];
+  }
+
+  protected getWins(plays: P[]) {
+    return plays.reduce((a, b) => a + Number(b.Won), 0);
+  }
+
+  protected getPlaytime(plays: P[]) {
+    return plays.reduce((a, b) => a + (b.Duration ?? 0), 0);
   }
 }

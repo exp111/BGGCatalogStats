@@ -38,9 +38,8 @@ import {CompletionBarComponent} from "../completion-bar/completion-bar.component
   templateUrl: './marvel-champions.component.html',
   styleUrl: './marvel-champions.component.scss'
 })
-export class MarvelChampionsComponent extends BaseGameComponent {
+export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsStats, MarvelChampionsPlay> {
   static override Title = 'Marvel Champions Stats';
-  declare stats?: MarvelChampionsStats;
   override exampleFileName = "mc-example";
 
   filterParams: MCFilterParams = {
@@ -126,16 +125,8 @@ export class MarvelChampionsComponent extends BaseGameComponent {
     return `${rate.toFixed(1)}% (${plays}/${totalPlays})`;
   }
 
-  getPlays(stats: MarvelChampionsStats) {
+  protected override getPlays(stats: MarvelChampionsStats) {
     return stats.Plays.filter(p => this.playHasHero(p)); // check if play is valid (ie contains "me")
-  }
-
-  getWins(plays: MarvelChampionsPlay[]) {
-    return plays.reduce((a, b) => a + Number(b.Won), 0);
-  }
-
-  getPlaytime(plays: MarvelChampionsPlay[]) {
-    return plays.reduce((a, b) => a + (b.Duration ?? 0), 0);
   }
 
   getAveragePlaytime(plays: MarvelChampionsPlay[], onlyWon: boolean | null = null) {
