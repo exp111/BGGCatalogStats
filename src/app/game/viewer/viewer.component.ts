@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BaseGameComponent} from "../base-game.component";
 import {formatDurationMinutes} from "../../util/helper";
-import {BaseGameStats} from "../../../model/base-game-stats";
 import {ViewerBackupReaderService} from "../../backup-reader/viewer/viewer-backup-reader.service";
 import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 import {ViewerPlay, ViewerStats} from "../../../model/viewer";
@@ -19,12 +18,19 @@ import {ViewerPlay, ViewerStats} from "../../../model/viewer";
 })
 export class ViewerComponent extends BaseGameComponent<ViewerStats, ViewerPlay> {
   static override Title = 'Play Viewer';
-  override exampleFileName = "viewer-example";
+  override exampleFileName = "mc-example";
 
   protected override enumBeautifiers = {}
+
+  filterText: string = "";
 
   constructor(protected backupService: ViewerBackupReaderService) {
     super(backupService);
   }
+
+  protected override getPlays(stats: ViewerStats): ViewerPlay[] {
+    return super.getPlays(stats).filter(play => this.filterText.trim() ? eval(this.filterText) : play);
+  }
+
   protected readonly formatDurationMinutes = formatDurationMinutes;
 }
