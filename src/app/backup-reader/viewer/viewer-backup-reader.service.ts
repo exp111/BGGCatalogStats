@@ -56,7 +56,10 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
     let plays = [];
     // plays
     for (let play of backup.plays) {
+      let game = backup.games.find(g => g.id == play.gameId);
       let obj = {
+        Game: game?.name,
+        GameId: game?.bggId,
         Id: String(play.id),
         Duration: play.length,
         Notes: play.notes,
@@ -85,7 +88,10 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
     let plays = [];
     // plays
     for (let play of backup.plays) {
+      let game = backup.games.find(g => g.id == play.gameRefId);
       let obj = {
+        Game: game?.name,
+        GameId: game?.bggId,
         Id: play.uuid,
         Duration: play.durationMin,
         Notes: "", //TODO: notes

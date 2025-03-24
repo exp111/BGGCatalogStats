@@ -5,6 +5,8 @@ export interface ViewerPlayer extends BaseGamePlayer {
 }
 
 export interface ViewerPlay extends BaseGamePlay {
+  Game: string;
+  GameId: number;
   Players: ViewerPlayer[];
   Data: string[];
 }
