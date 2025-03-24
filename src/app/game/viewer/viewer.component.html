@@ -30,7 +30,7 @@
       <p>Timestamp: {{ play.Timestamp }}</p>
       <p>Players: {{ play.Players.length }}</p>
       <ul>
-        @for (player of play.Players; track player.Name) {
+        @for (player of play.Players; track player) {
           <li>{{ player.Name }}: {{player.Roles}}</li>
         }
       </ul>

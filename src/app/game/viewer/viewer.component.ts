@@ -31,17 +31,21 @@ export class ViewerComponent extends BaseGameComponent<ViewerStats, ViewerPlay> 
   }
 
   protected override getPlays(stats: ViewerStats): ViewerPlay[] {
-    return super.getPlays(stats)
+    let plays = super.getPlays(stats)
       .filter(play => this.filterText.trim() ? eval(this.filterText) : play)
       .sort((a, b) => {
         switch (this.sort) {
-          default:
-          case "Name":
-            return a.Game.localeCompare(b.Game);
-          case "Date":
+          case "date":
             return a.Timestamp.localeCompare(b.Timestamp);
+          case "name":
+          default:
+            return a.Game.localeCompare(b.Game);
         }
       });
+    if (!this.sortAscending) {
+      return plays.reverse();
+    }
+    return plays;
   }
 
   protected readonly formatDurationMinutes = formatDurationMinutes;
