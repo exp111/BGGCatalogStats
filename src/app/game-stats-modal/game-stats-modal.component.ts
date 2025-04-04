@@ -63,16 +63,23 @@ export class GameStatsModalComponent {
   }
 
   getHeroes(end = 9) {
-    let heroes = this.getPlays()
+    let heroPlays = this.getPlays()
+      // get all names of heroes played in the play
       .flatMap(play => play.Players.map(p => Hero[p.Hero]))
+      // only actual values
       .filter(h => h != null);
-    let count = {} as Record<string, number>;
-    for (let hero of heroes) {
-      count[hero] = count[hero] ? count[hero] + 1 : 1;
+    let heroCountMap = {} as Record<string, number>;
+    for (let hero of heroPlays) {
+      heroCountMap[hero] = heroCountMap[hero] ? heroCountMap[hero] + 1 : 1;
     }
-    return Object.entries(count)
+    let entries = Object.entries(heroCountMap);
+    return entries
+      // sort by count
       .sort((a, b) => b[1] - a[1])
-      .slice(0, end);
+      // only extract max "end" values
+      .slice(0, end)
+      // fill up any remaining slots with zeroes
+      .concat(new Array(Math.max(end - entries.length, 0)).fill(["", 0]));
   }
 
   getPlayCount() {
@@ -128,7 +135,7 @@ export class GameStatsModalComponent {
     return Object.entries(aspects);
   }
 
-  getScenarioRatio(end = 4) {
+  getScenarioRatio(end = 5) {
     let plays = this.getPlays();
     let scenarios = {} as Record<string, number>;
     for (let scenario of enumToNumberArray(Scenario).filter(v => v != Scenario.END)) {

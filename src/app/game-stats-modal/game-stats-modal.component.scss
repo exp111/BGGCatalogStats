@@ -4,3 +4,9 @@
   // for each character move it further to the right
   left: calc(1.3rem + var(--length) * 0.1rem);
 }
+
+// hero image
+.hero-image {
+  width: 6.25em;
+  height: 6.25em;
+}
