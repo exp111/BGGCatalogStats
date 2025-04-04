@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -7,7 +7,7 @@ import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './month-selection.component.html',
   styleUrl: './month-selection.component.scss'
 })
-export class MonthSelectionComponent {
+export class MonthSelectionComponent implements OnInit {
   @Input()
   fromDate?: NgbDate;
 
@@ -24,6 +24,11 @@ export class MonthSelectionComponent {
 
   selectedMonth: number = new Date().getMonth();
   selectedYear: number = new Date().getFullYear();
+
+  ngOnInit() {
+    // set timespan on init, but only after change detection
+    Promise.resolve().then(() => this.setRange());
+  }
 
   back() {
     if (this.selectedMonth == 0 && this.selectedYear == 0) {
