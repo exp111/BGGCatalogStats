@@ -124,7 +124,7 @@ export abstract class BaseBackupReaderService {
   }
 
   protected getPlayerRoleBGStats(score: BGStatsPlayerScoreEntry) {
-    return score.role ?? score.teamRole ?? "";
+    return score.role || score.teamRole || "";
   }
 
   protected parseFieldBGStats(role: string | undefined, enums: any, multi: boolean = false) {
