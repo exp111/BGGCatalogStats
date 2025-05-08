@@ -97,7 +97,8 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       "Weltraumpiraten": "SpacePirates",
       "Schiffskommando": "ShipCommand",
       "Machtstein": "PowerStone",
-      "BadoonKopfgeldj\xe4ger": "BadoonHeadhunter"
+      "BadoonKopfgeldj\xe4ger": "BadoonHeadhunter",
+      "Krimi": "Crime"
     }[str] ?? str;
   }
 

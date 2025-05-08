@@ -98,6 +98,9 @@ export enum Scenario {
   EscapeTheMuseum,
   Nebula,
   RonanTheAccuser,
+  Magog,
+  Spiral,
+  Mojo,
   END
 }
 
@@ -146,6 +149,13 @@ export enum Modular {
   ShipCommand,
   PowerStone,
   BadoonHeadhunter,
+  Crime,
+  Fantasy,
+  Horror,
+  SciFi,
+  Sitcom,
+  Western,
+  Longshot,
   END
 }
 
@@ -316,7 +326,8 @@ export const PackContent: Record<number, number[]> = {
     Difficulty.Standard2, Difficulty.Expert2
   ],
   [Packs.MojoMania]: [
-    //TODO: scenarios + modulars
+    Scenario.Magog, Scenario.Spiral, Scenario.Mojo,
+    Modular.Crime, Modular.Fantasy, Modular.Horror, Modular.SciFi, Modular.Sitcom, Modular.Western, Modular.Longshot
   ],
   [Packs.Kang]: [
     //TODO: scenarios + modulars

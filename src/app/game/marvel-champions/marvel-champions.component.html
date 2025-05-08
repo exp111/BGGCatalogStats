@@ -418,10 +418,30 @@
               </button>
             </div>
             <div class="d-flex gap-1 flex-column flex-lg-row mt-lg-1">
-              <button class="btn btn-primary col" (click)="unplayedHeroAspect(randomizeHeroSelect, randomizeAspectSelect)">Unplayed Hero + Aspect</button>
-              <button class="btn btn-primary col" (click)="unplayedHeroScenario(randomizeHeroSelect, randomizeScenarioSelect)">Unplayed Hero + Scenario</button>
-              <button class="btn btn-primary col" (click)="unplayedScenarioModular(randomizeScenarioSelect, randomizeModularSelect)">Unplayed Scenario + Modular</button>
-              <button class="btn btn-primary col" (click)="unplayedAll(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">Unplayed All</button>
+              <button class="btn btn-primary col"
+                      (click)="unplayedHeroAspect(randomizeHeroSelect, randomizeAspectSelect)">Unplayed Hero + Aspect
+              </button>
+              <button class="btn btn-primary col"
+                      (click)="unplayedHeroScenario(randomizeHeroSelect, randomizeScenarioSelect)">Unplayed Hero +
+                Scenario
+              </button>
+              <button class="btn btn-primary col"
+                      (click)="unplayedScenarioModular(randomizeScenarioSelect, randomizeModularSelect)">Unplayed
+                Scenario + Modular
+              </button>
+              <button class="btn btn-primary col"
+                      (click)="unplayedAll(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">
+                Unplayed All
+              </button>
+            </div>
+            <div class="input-group mt-1">
+              <select #randomizeMojoModularSelect disabled class="form-select">
+                <option value="" selected>Mojo Modular</option>
+                @for (modular of mojoModulars; track modular) {
+                  <option [value]="modular">{{ beautifyEnum(Modular, modular) }}</option>
+                }
+              </select>
+              <button class="btn btn-primary" (click)="setRandomValue(randomizeMojoModularSelect)">Random Mojo Modular</button>
             </div>
           </ng-template>
         </div>
@@ -439,11 +459,16 @@
               <span style="color: orange">Owned</span>
               <span style="color: green">Total</span>
             </div>
-            <completion-bar title="Heroes" [played]="getPlayedPercentage(Hero)" [owned]="getOwnedPercentage(Hero)"></completion-bar>
-            <completion-bar title="Aspects" [played]="getPlayedPercentage(Aspect)" [owned]="getOwnedPercentage(Aspect)"></completion-bar>
-            <completion-bar title="Scenarios" [played]="getPlayedPercentage(Scenario)" [owned]="getOwnedPercentage(Scenario)"></completion-bar>
-            <completion-bar title="Modulars" [played]="getPlayedPercentage(Modular)" [owned]="getOwnedPercentage(Modular)"></completion-bar>
-            <completion-bar title="Packs" [played]="getPlayedPercentage(Packs, packPlayedCheck.bind(this))" [owned]="getOwnedPercentage(Packs, ownedPackCheck.bind(this))"></completion-bar>
+            <completion-bar title="Heroes" [played]="getPlayedPercentage(Hero)"
+                            [owned]="getOwnedPercentage(Hero)"></completion-bar>
+            <completion-bar title="Aspects" [played]="getPlayedPercentage(Aspect)"
+                            [owned]="getOwnedPercentage(Aspect)"></completion-bar>
+            <completion-bar title="Scenarios" [played]="getPlayedPercentage(Scenario)"
+                            [owned]="getOwnedPercentage(Scenario)"></completion-bar>
+            <completion-bar title="Modulars" [played]="getPlayedPercentage(Modular)"
+                            [owned]="getOwnedPercentage(Modular)"></completion-bar>
+            <completion-bar title="Packs" [played]="getPlayedPercentage(Packs, packPlayedCheck.bind(this))"
+                            [owned]="getOwnedPercentage(Packs, ownedPackCheck.bind(this))"></completion-bar>
           </ng-template>
         </div>
       </div>

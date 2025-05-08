@@ -42,6 +42,8 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
   static override Title = 'Marvel Champions Stats';
   override exampleFileName = "mc-example";
 
+  mojoModulars: Modular[] = [Modular.Crime, Modular.Fantasy, Modular.Horror, Modular.SciFi, Modular.Sitcom, Modular.Western];
+
   filterParams: MCFilterParams = {
     onlyWon: false,
     hero: null,
