@@ -9,7 +9,8 @@ import {
   MarvelChampionsStats,
   MC_GAME_ID,
   Modular,
-  PackContent, Packs,
+  Pack,
+  PackContent,
   Scenario
 } from "../../../model/marvel-champions";
 import {BaseBackupReaderService} from "../base-backup-reader.service";
@@ -114,7 +115,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         return "Modular";
       case Difficulty:
         return "Difficulty";
-      case Packs:
+      case Pack:
         return "Packs";
       default:
         return "Unknown";

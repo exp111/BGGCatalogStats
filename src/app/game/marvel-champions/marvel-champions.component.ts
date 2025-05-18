@@ -10,7 +10,7 @@ import {
   MarvelChampionsStats,
   Modular,
   PackContent,
-  Packs,
+  Pack,
   Scenario
 } from "../../../model/marvel-champions";
 import {BaseGameComponent} from "../base-game.component";
@@ -57,12 +57,19 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
 
   protected override enumBeautifiers = {
     [Hero.END]: this.beautifyHeroName,
+    [Pack.END]: this.beautifyPackName,
     [Difficulty.END]: this.beautifyDifficultyName
   }
 
   private beautifyHeroName(e: number) {
     return {
-      [Hero.Spdr]: "SP//dr"
+      [Hero.SPdr]: "SP//dr"
+    }[e] ?? null;
+  }
+
+  private beautifyPackName(e: number) {
+    return {
+      [Pack.SPdr]: "SP//dr"
     }[e] ?? null;
   }
 
@@ -537,5 +544,5 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
   protected readonly formatDurationMinutes = formatDurationMinutes;
   protected readonly SortOrder = SortOrder;
   protected readonly SortType = SortType;
-  protected readonly Packs = Packs;
+  protected readonly Packs = Pack;
 }

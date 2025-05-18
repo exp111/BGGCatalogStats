@@ -32,7 +32,7 @@ export enum Hero {
   Nebula,
   Vision,
   WarMachine,
-  Spdr,
+  SPdr,
   SpiderHam,
   Gambit,
   Ironheart,
@@ -60,6 +60,10 @@ export enum Hero {
   Groot,
   MariaHill,
   NickFury,
+  Shuri,
+  Silk,
+  Falcon,
+  WinterSoldier,
   END
 }
 
@@ -156,7 +160,13 @@ export enum Modular {
   Sitcom,
   Western,
   Longshot,
-  END
+  Armadillo,
+  Zzzax,
+  Inheritors,
+  IronSpidersSinisterSix,
+  ShadowKing,
+  Sauron,
+  END,
 }
 
 export enum Difficulty {
@@ -169,7 +179,7 @@ export enum Difficulty {
   END
 }
 
-export enum Packs {
+export enum Pack {
   Core = MC_GAME_ID,
   // Heroes
   Deadpool = 398039,
@@ -195,7 +205,7 @@ export enum Packs {
   Nova = 356075,
   Ironheart = 357957,
   SpiderHam = 360060,
-  Spdr = 361485,
+  SPdr = 361485,
   Cyclops = 365913,
   Phoenix = 366645,
   Storm = 370237,
@@ -208,6 +218,10 @@ export enum Packs {
   Jubilee = 417417,
   Nightcrawler = 422976,
   Magneto = 426008,
+  Shuri = 438671,
+  Silk = 439508,
+  Falcon = 446592,
+  WinterSoldier = 446593,
   //TODO: new wave
 
   // Expansions
@@ -231,7 +245,7 @@ export enum Packs {
 }
 
 export const PackContent: Record<number, number[]> = {
-  [Packs.Core]: [
+  [Pack.Core]: [
     Aspect.Aggression, Aspect.Justice, Aspect.Leadership, Aspect.Protection,
     Hero.SpiderMan, Hero.SheHulk, Hero.BlackPanther, Hero.IronMan, Hero.CaptainMarvel,
     Scenario.Rhino, Scenario.Klaw, Scenario.Ultron,
@@ -239,101 +253,105 @@ export const PackContent: Record<number, number[]> = {
     Difficulty.Standard, Difficulty.Expert
   ],
   // Heroes
-  [Packs.Deadpool]: [Aspect.Pool, Hero.Deadpool],
-  [Packs.DoctorStrange]: [Hero.DoctorStrange],
-  [Packs.Wolverine]: [Hero.Wolverine, Modular.Deathstrike],
-  [Packs.ScarletWitch]: [Hero.ScarletWitch],
-  [Packs.CaptainAmerica]: [Hero.CaptainAmerica],
-  [Packs.BlackWidow]: [Hero.BlackWidow],
-  [Packs.MsMarvel]: [Hero.MsMarvel],
-  [Packs.Thor]: [Hero.Thor],
-  [Packs.Hulk]: [Hero.Hulk],
-  [Packs.AntMan]: [Hero.AntMan],
-  [Packs.Quicksilver]: [Hero.Quicksilver],
-  [Packs.Wasp]: [Hero.Wasp],
-  [Packs.StarLord]: [Hero.StarLord],
-  [Packs.Gamora]: [Hero.Gamora],
-  [Packs.Drax]: [Hero.Drax],
-  [Packs.Venom]: [Hero.Venom],
-  [Packs.Nebula]: [Hero.Nebula],
-  [Packs.WarMachine]: [Hero.WarMachine],
-  [Packs.Valkyrie]: [Hero.Valkyrie],
-  [Packs.Vision]: [Hero.Vision],
-  [Packs.Nova]: [Hero.Nova],
-  [Packs.Ironheart]: [Hero.Ironheart],
-  [Packs.SpiderHam]: [Hero.SpiderHam],
-  [Packs.Spdr]: [Hero.Spdr],
-  [Packs.Cyclops]: [Hero.Cyclops],
-  [Packs.Phoenix]: [Hero.Phoenix],
-  [Packs.Storm]: [Hero.Storm],
-  [Packs.Gambit]: [Hero.Gambit, Modular.Exodus],
-  [Packs.Rogue]: [Hero.Rogue, Modular.Reavers],
-  [Packs.Psylocke]: [Hero.Psylocke],
-  [Packs.Angel]: [Hero.Angel],
-  [Packs.X23]: [Hero.X23],
-  [Packs.Iceman]: [Hero.Iceman],
-  [Packs.Jubilee]: [Hero.Jubilee, Modular.Arcade],
-  [Packs.Nightcrawler]: [Hero.Nightcrawler, Modular.CrazyGang],
-  [Packs.Magneto]: [Hero.Magneto, Modular.Hellfire],
+  [Pack.Deadpool]: [Aspect.Pool, Hero.Deadpool],
+  [Pack.DoctorStrange]: [Hero.DoctorStrange],
+  [Pack.Wolverine]: [Hero.Wolverine, Modular.Deathstrike],
+  [Pack.ScarletWitch]: [Hero.ScarletWitch],
+  [Pack.CaptainAmerica]: [Hero.CaptainAmerica],
+  [Pack.BlackWidow]: [Hero.BlackWidow],
+  [Pack.MsMarvel]: [Hero.MsMarvel],
+  [Pack.Thor]: [Hero.Thor],
+  [Pack.Hulk]: [Hero.Hulk],
+  [Pack.AntMan]: [Hero.AntMan],
+  [Pack.Quicksilver]: [Hero.Quicksilver],
+  [Pack.Wasp]: [Hero.Wasp],
+  [Pack.StarLord]: [Hero.StarLord],
+  [Pack.Gamora]: [Hero.Gamora],
+  [Pack.Drax]: [Hero.Drax],
+  [Pack.Venom]: [Hero.Venom],
+  [Pack.Nebula]: [Hero.Nebula],
+  [Pack.WarMachine]: [Hero.WarMachine],
+  [Pack.Valkyrie]: [Hero.Valkyrie],
+  [Pack.Vision]: [Hero.Vision],
+  [Pack.Nova]: [Hero.Nova, Modular.Armadillo],
+  [Pack.Ironheart]: [Hero.Ironheart, Modular.Zzzax],
+  [Pack.SpiderHam]: [Hero.SpiderHam, Modular.Inheritors],
+  [Pack.SPdr]: [Hero.SPdr, Modular.IronSpidersSinisterSix],
+  [Pack.Cyclops]: [Hero.Cyclops],
+  [Pack.Phoenix]: [Hero.Phoenix],
+  [Pack.Storm]: [Hero.Storm, Modular.ShadowKing],
+  [Pack.Gambit]: [Hero.Gambit, Modular.Exodus],
+  [Pack.Rogue]: [Hero.Rogue, Modular.Reavers],
+  [Pack.Psylocke]: [Hero.Psylocke],
+  [Pack.Angel]: [Hero.Angel],
+  [Pack.X23]: [Hero.X23],
+  [Pack.Iceman]: [Hero.Iceman, Modular.Sauron],
+  [Pack.Jubilee]: [Hero.Jubilee, Modular.Arcade],
+  [Pack.Nightcrawler]: [Hero.Nightcrawler, Modular.CrazyGang],
+  [Pack.Magneto]: [Hero.Magneto, Modular.Hellfire],
+  [Pack.Shuri]: [Hero.Shuri],
+  [Pack.Silk]: [Hero.Silk],
+  [Pack.Falcon]: [Hero.Falcon],
+  [Pack.WinterSoldier]: [Hero.WinterSoldier],
   // Expansions
-  [Packs.RiseOfTheRedSkull]: [
+  [Pack.RiseOfTheRedSkull]: [
     Hero.Hawkeye, Hero.SpiderWoman,
     Scenario.Crossbones, Scenario.AbsorbingMan, Scenario.TaskMaster, Scenario.Zola, Scenario.RedSkull,
     Modular.HydraAssault, Modular.WeaponMaster, Modular.HydraPatrol, Modular.ExperimentalWeapons
   ],
-  [Packs.GalaxysMostWanted]: [
+  [Pack.GalaxysMostWanted]: [
     Hero.Groot, Hero.RocketRaccoon,
     Scenario.BrotherhoodOfBadoon, Scenario.InfiltrateTheMuseum, Scenario.EscapeTheMuseum, Scenario.Nebula, Scenario.RonanTheAccuser,
     Modular.BandOfBadoon, Modular.GalacticArtifacts, Modular.KreeMilitants, Modular.MenagerieMedley, Modular.SpacePirates, Modular.ShipCommand, Modular.PowerStone, Modular.BadoonHeadhunter
   ],
-  [Packs.MadTitansShadow]: [
+  [Pack.MadTitansShadow]: [
     Hero.Spectrum, Hero.AdamWarlock,
     Scenario.EbonyMaw, Scenario.TowerDefense, Scenario.Thanos, Scenario.Hela, Scenario.Loki,
     Modular.BlackOrder, Modular.ArmiesOfTitan, Modular.ChildrenOfThanos, Modular.InfinityGauntlet, Modular.LegionsOfHel, Modular.FrostGiants, Modular.Enchantress
   ],
-  [Packs.SinisterMotives]: [
+  [Pack.SinisterMotives]: [
     Hero.GhostSpider, Hero.MilesMorales,
     Scenario.Sandman, Scenario.Venom, Scenario.Mysterio, Scenario.SinisterSix, Scenario.VenomGoblin,
     Modular.CityInChaos, Modular.DownToEarth, Modular.GoblinGear, Modular.GuerrillaTactics, Modular.OsbornTech, Modular.PersonalNightmare, Modular.SinisterAssault, Modular.SymbioticStrength, Modular.WhispersOfParanoia,
   ],
-  [Packs.MutantGenesis]: [
+  [Pack.MutantGenesis]: [
     Hero.Shadowcat, Hero.Colossus,
     //TODO: scenarios + modulars
   ],
-  [Packs.NextEvolution]: [
+  [Pack.NextEvolution]: [
     Hero.Cable, Hero.Domino,
     //TODO: scenarios + modulars
   ],
-  [Packs.AgeOfApocalypse]: [
+  [Pack.AgeOfApocalypse]: [
     Hero.Bishop, Hero.Magik,
     //TODO: scenarios + modulars
     Difficulty.Standard3, Difficulty.Expert3
   ],
-  [Packs.AgentsOfShield]: [
+  [Pack.AgentsOfShield]: [
     Hero.MariaHill, Hero.NickFury
     //TODO: scenarios + modulars
   ],
   // Scenario Packs
-  [Packs.GreenGoblin]: [
+  [Pack.GreenGoblin]: [
     Scenario.RiskyBusiness, Scenario.MutagenFormula,
     Modular.GoblinGimmicks, Modular.AMessOfThings, Modular.PowerDrain, Modular.RunningInterference
   ],
-  [Packs.WreckingCrew]: [
+  [Pack.WreckingCrew]: [
     //TODO: scenarios + modulars
   ],
-  [Packs.Hood]: [
+  [Pack.Hood]: [
     //TODO: scenarios + modulars
     Difficulty.Standard2, Difficulty.Expert2
   ],
-  [Packs.MojoMania]: [
+  [Pack.MojoMania]: [
     Scenario.Magog, Scenario.Spiral, Scenario.Mojo,
     Modular.Crime, Modular.Fantasy, Modular.Horror, Modular.SciFi, Modular.Sitcom, Modular.Western, Modular.Longshot
   ],
-  [Packs.Kang]: [
+  [Pack.Kang]: [
     //TODO: scenarios + modulars
   ],
   // Misc
-  [Packs.KreeFanatic]: [Modular.KreeFanatic]
+  [Pack.KreeFanatic]: [Modular.KreeFanatic]
 }
 
 export interface MarvelChampionsPlayer extends BaseGamePlayer {
