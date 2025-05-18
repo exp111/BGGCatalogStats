@@ -19,6 +19,7 @@ export interface BGStatsGameEntry {
   highestWins?: boolean;
   name: string;
   uuid: UUID;
+  GameNotes?: string;
 }
 
 export interface BGStatsPlayerEntry {
@@ -66,6 +67,7 @@ export interface BGStatsPlayEntry {
   scoringSetting: number; //TODO:?
   usesTeams: boolean;
   uuid: UUID;
+  comments?: string;
 }
 
 export interface BGStatsUserInfo {

@@ -222,7 +222,6 @@ export enum Pack {
   Silk = 439508,
   Falcon = 446592,
   WinterSoldier = 446593,
-  //TODO: new wave
 
   // Expansions
   RiseOfTheRedSkull = 306430,

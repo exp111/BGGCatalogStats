@@ -237,7 +237,7 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       let obj = {
         Id: play.uuid,
         Duration: play.durationMin,
-        Notes: "", //TODO: notes
+        Notes: play.comments ?? "",
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
         Timestamp: play.playDate
       } as MarvelChampionsPlay;

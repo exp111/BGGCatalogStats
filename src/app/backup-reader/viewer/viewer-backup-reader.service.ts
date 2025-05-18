@@ -94,7 +94,7 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
         GameId: game?.bggId,
         Id: play.uuid,
         Duration: play.durationMin,
-        Notes: "", //TODO: notes
+        Notes: play.comments ?? "",
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
         Timestamp: play.playDate,
         Won: play.playerScores.some(p => p.winner),
