@@ -46,7 +46,7 @@ thead {
     &:not(:first-child) {
       // Upright text
       writing-mode: sideways-lr;
-      transform: rotate(15deg);
+      transform: translate(50%) rotate(15deg);
     }
   }
 }
