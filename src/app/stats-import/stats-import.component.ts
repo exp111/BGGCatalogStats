@@ -17,9 +17,13 @@ export class StatsImportComponent {
 
   constructor(private stats: StatService,
               private router: Router) {
+    if (this.stats.hasStats) {
+      this.selectedTool = this.stats.stats!.selectedTool;
+    }
   }
 
   onFileLoad(event: Event & { target: HTMLInputElement }) {
+    console.log(`Got file ${event?.target?.value}.`);
     const files = event.target.files;
     if (files?.length != null && files?.length > 0) {
       const file = files[0];
@@ -28,7 +32,7 @@ export class StatsImportComponent {
   }
 
   loadExample() {
-    //TODO: load example
+    console.log("Loading example");
     fetch(`./example/${this.selectedTool}-example.json`).then(r => r.text()).then(t => this.readFile(t));
   }
 

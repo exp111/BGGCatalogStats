@@ -24,6 +24,7 @@ export class StatService {
   }
 
   saveStats(tool: StatTool, data: object) {
+    console.log(`Saving stats for tool ${tool}`);
     this.stats = {
       selectedTool: tool,
       data: data
