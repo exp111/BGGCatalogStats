@@ -39,16 +39,18 @@ export class MCBackupReaderService extends BaseBackupReaderService {
 
   private normalizeScenarioName(str: string) {
     return {
-      // green goblin
-      "RiskantesGesch\xe4ft": "RiskyBusiness",
-      "MutagenFormel": "MutagenFormula",
-      // mad titan
-      "Turmverteidigung": "TowerDefense",
-      // gmw
+      // GMW
       "BruderschaftDerBadoon": "BrotherhoodOfBadoon",
       "EinbruchInsMuseum": "InfiltrateTheMuseum",
       "FluchtAusDemMuseum": "EscapeTheMuseum",
-      "RonanDerAnkl\xe4ger": "RonanTheAccuser"
+      "RonanDerAnkl\xe4ger": "RonanTheAccuser",
+      // MTS
+      "Turmverteidigung": "TowerDefense",
+      // MG
+      "MansionAngriff": "MansionAttack",
+      // Green Goblin
+      "RiskantesGesch\xe4ft": "RiskyBusiness",
+      "MutagenFormel": "MutagenFormula",
     }[str] ?? str;
   }
 
@@ -65,13 +67,27 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       // core
       "Bombenbedrohung": "BombThreat",
       "UnterBeschuss": "UnderAttack",
-      // red skull
+      // RoRS
       "HydrasLegionen": "LegionsOfHydra",
       "HydraAngriff": "HydraAssault",
       "Waffenmeister": "WeaponMaster",
       "HydraPatrouille": "HydraPatrol",
       "ExperimentelleWaffen": "ExperimentalWeapons",
-      // sinister motives
+      // GMW
+      "BadoonTrupp": "BandOfBadoon",
+      "GalaktischeArtefake": "GalacticArtifacts",
+      "KreeK\xe4mpfer": "KreeMilitants",
+      "Weltraumpiraten": "SpacePirates",
+      "Schiffskommando": "ShipCommand",
+      "Machtstein": "PowerStone",
+      "BadoonKopfgeldj\xe4ger": "BadoonHeadhunter",
+      // MTS
+      "ArmeenVonTitan":"ArmiesOfTitan",
+      "KinderDesThanos":"ChildrenOfThanos",
+      "InfinityHandschuh":"InfinityGauntlet",
+      "LegionenVonHel":"LegionsOfHel",
+      "FrostRiesen": "FrostGiants",
+      // SM
       "StadtImChaos": "CityInChaos",
       "Bodenst\xe4ndig": "DownToEarth",
       "GoblinAusr\xfcstung": "GoblinGear",
@@ -80,25 +96,16 @@ export class MCBackupReaderService extends BaseBackupReaderService {
       "SinistrerAngriff": "SinisterAssault",
       "SymbiotischeSt\xe4rke": "SymbioticStrength",
       "Fl\xfcsterndeParanoia": "WhispersOfParanoia",
-      // green goblin
+      // MG
+      "NullToleranz": "ZeroTolerance",
+      "Bruderschaft": "Brotherhood",
+      "ZukunftIstVergangenheit": "FuturePast",
+      // Green Goblin
       "GoblinTricks": "GoblinGimmicks",
       "StechendesChaos": "AMessOfThings",
       "Energieentzug": "PowerDrain",
       "Ablenkungsman\xf6ver": "RunningInterference",
-      // mad titan
-      "ArmeenVonTitan":"ArmiesOfTitan",
-      "KinderDesThanos":"ChildrenOfThanos",
-      "InfinityHandschuh":"InfinityGauntlet",
-      "LegionenVonHel":"LegionsOfHel",
-      "FrostRiesen": "FrostGiants",
-      // gmw
-      "BadoonTrupp": "BandOfBadoon",
-      "GalaktischeArtefake": "GalacticArtifacts",
-      "KreeK\xe4mpfer": "KreeMilitants",
-      "Weltraumpiraten": "SpacePirates",
-      "Schiffskommando": "ShipCommand",
-      "Machtstein": "PowerStone",
-      "BadoonKopfgeldj\xe4ger": "BadoonHeadhunter",
+      // Mojo
       "Krimi": "Crime"
     }[str] ?? str;
   }

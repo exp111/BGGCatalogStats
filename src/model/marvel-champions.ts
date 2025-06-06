@@ -77,31 +77,44 @@ export enum Aspect {
 }
 
 export enum Scenario {
+  // Core
   Rhino = Aspect.END,
   Klaw,
   Ultron,
+  // RoRS
   Crossbones,
   AbsorbingMan,
   TaskMaster,
   Zola,
   RedSkull,
-  Sandman,
-  Venom,
-  Mysterio,
-  SinisterSix,
-  VenomGoblin,
-  RiskyBusiness,
-  MutagenFormula,
-  EbonyMaw,
-  TowerDefense,
-  Thanos,
-  Hela,
-  Loki,
+  // GMW
   BrotherhoodOfBadoon,
   InfiltrateTheMuseum,
   EscapeTheMuseum,
   Nebula,
   RonanTheAccuser,
+  // MTS
+  EbonyMaw,
+  TowerDefense,
+  Thanos,
+  Hela,
+  Loki,
+  // SM
+  Sandman,
+  Venom,
+  Mysterio,
+  SinisterSix,
+  VenomGoblin,
+  // MG
+  Sabretooth,
+  ProjectWideawake,
+  MasterMold,
+  MansionAttack,
+  Magneto,
+  // Green Goblin
+  RiskyBusiness,
+  MutagenFormula,
+  // Mojo
   Magog,
   Spiral,
   Mojo,
@@ -109,16 +122,36 @@ export enum Scenario {
 }
 
 export enum Modular {
+  /* Boxes */
+  // Core
   BombThreat = Scenario.END,
   MastersOfEvil,
   UnderAttack,
   DoomsdayChair,
   LegionsOfHydra,
+  // RoRS
   HydraAssault,
   WeaponMaster,
   HydraPatrol,
   ExperimentalWeapons,
-  Deathstrike,
+  // GMW
+  BandOfBadoon,
+  GalacticArtifacts,
+  KreeMilitants,
+  MenagerieMedley,
+  SpacePirates,
+  ShipCommand,
+  PowerStone,
+  BadoonHeadhunter,
+  // MTS
+  BlackOrder,
+  ArmiesOfTitan,
+  ChildrenOfThanos,
+  InfinityGauntlet,
+  LegionsOfHel,
+  FrostGiants,
+  Enchantress,
+  // SM
   CityInChaos,
   DownToEarth,
   GoblinGear,
@@ -128,31 +161,20 @@ export enum Modular {
   SinisterAssault,
   SymbioticStrength,
   WhispersOfParanoia,
+  // MG
+  Sentinels,
+  ZeroTolerance,
+  Mystique,
+  Brotherhood,
+  Acolytes,
+  FuturePast,
+  /* Scenario Packs */
+  // Green Goblin
   GoblinGimmicks,
   AMessOfThings,
   PowerDrain,
   RunningInterference,
-  BlackOrder,
-  ArmiesOfTitan,
-  ChildrenOfThanos,
-  InfinityGauntlet,
-  LegionsOfHel,
-  FrostGiants,
-  Enchantress,
-  Exodus,
-  Reavers,
-  Arcade,
-  CrazyGang,
-  Hellfire,
-  KreeFanatic,
-  BandOfBadoon,
-  GalacticArtifacts,
-  KreeMilitants,
-  MenagerieMedley,
-  SpacePirates,
-  ShipCommand,
-  PowerStone,
-  BadoonHeadhunter,
+  // Mojo
   Crime,
   Fantasy,
   Horror,
@@ -160,12 +182,33 @@ export enum Modular {
   Sitcom,
   Western,
   Longshot,
+  /* Heroes */
+  // Nova
   Armadillo,
+  // Ironheart
   Zzzax,
+  // SpiderHam
   Inheritors,
+  // SPdr
   IronSpidersSinisterSix,
+  // Wolverine
+  Deathstrike,
+  // Gambit
+  Exodus,
+  // Rogue
+  Reavers,
+  // Storm
   ShadowKing,
+  // Iceman
   Sauron,
+  // Jubilee
+  Arcade,
+  // Nightcrawler
+  CrazyGang,
+  // Magneto
+  Hellfire,
+  /// Other
+  KreeFanatic,
   END,
 }
 
@@ -315,7 +358,8 @@ export const PackContent: Record<number, number[]> = {
   ],
   [Pack.MutantGenesis]: [
     Hero.Shadowcat, Hero.Colossus,
-    //TODO: scenarios + modulars
+    Scenario.Sabretooth, Scenario.ProjectWideawake, Scenario.MasterMold, Scenario.MansionAttack, Scenario.Magneto,
+    Modular.Sentinels, Modular.ZeroTolerance, Modular.Mystique, Modular.Brotherhood, Modular.Acolytes, Modular.FuturePast,
   ],
   [Pack.NextEvolution]: [
     Hero.Cable, Hero.Domino,
