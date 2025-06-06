@@ -1,6 +1,6 @@
 import {BaseBackupReaderService} from "../backup-reader/base-backup-reader.service";
 import {Directive} from "@angular/core";
-import {BaseGamePlay, BaseGamePlayer, BaseGameStats} from "../../model/base-game-stats";
+import {BaseGamePlay, BaseGameStats} from "../../model/base-game-stats";
 import {enumToNumberArray, formatFromEnumString} from "../util/enum-utils";
 import {ChecklistState} from "../app-table/checklist.component";
 
@@ -57,6 +57,10 @@ export abstract class BaseGameComponent<S extends BaseGameStats, P extends BaseG
       .filter(v => v != endMarker) // ignore end marker
       .filter(v => !this.onlyOwned || this.ownedCheck(v)) // only show owned
       .filter(v => !this.onlyPlayed || this.playedCheck(v)) as number[];
+  }
+
+  protected sortedEnumToNumberArray(e: any) {
+    return this.enumToNumberArray(e).sort((a,b) => e[a].localeCompare(e[b]));
   }
 
   protected ownedCheck(val: number) {

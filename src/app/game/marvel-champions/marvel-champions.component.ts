@@ -9,8 +9,8 @@ import {
   MarvelChampionsPlay,
   MarvelChampionsStats,
   Modular,
-  PackContent,
   Pack,
+  PackContent,
   Scenario
 } from "../../../model/marvel-champions";
 import {BaseGameComponent} from "../base-game.component";
@@ -421,8 +421,16 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
     (modal.componentInstance as GameStatsModalComponent).setData(this.stats!);
   }
 
+  isSelectLocked(select: HTMLSelectElement) {
+    return select.disabled;
+  }
+
   setRandomValue(...selects: HTMLSelectElement[]) {
     for (let select of selects) {
+      // skip any selects which are locked (disabled item)
+      if (this.isSelectLocked(select)) {
+        continue;
+      }
       let length = select.options.length;
       // skip first item (placeholder)
       let rand = Math.floor(Math.random() * (length - 1)) + 1;
@@ -430,10 +438,15 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
     }
   }
 
+  // get possible values, either the selected value if locked or any in the enum
+  getPossibleEnumValues(select: HTMLSelectElement, e: Enums) {
+    return this.isSelectLocked(select) ? [Number(select.selectedOptions[0].value)] : this.enumToNumberArray(e);
+  }
+
   unplayedHeroAspect(heroSelect: HTMLSelectElement, aspectSelect: HTMLSelectElement) {
     let plays = this.getPlays(this.stats!);
-    let heroes = this.enumToNumberArray(Hero);
-    let aspects = this.enumToNumberArray(Aspect);
+    let heroes = this.getPossibleEnumValues(heroSelect, Hero);
+    let aspects = this.getPossibleEnumValues(aspectSelect, Aspect);
     let entries = [];
     for (let hero of heroes) {
       for (let aspect of aspects) {
@@ -450,8 +463,8 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
 
   unplayedHeroScenario(heroSelect: HTMLSelectElement, scenarioSelect: HTMLSelectElement) {
     let plays = this.getPlays(this.stats!);
-    let heroes = this.enumToNumberArray(Hero);
-    let scenarios = this.enumToNumberArray(Scenario);
+    let heroes = this.getPossibleEnumValues(heroSelect, Hero);
+    let scenarios = this.getPossibleEnumValues(scenarioSelect, Scenario);
     let entries = [];
     for (let hero of heroes) {
       for (let scenario of scenarios) {
@@ -468,8 +481,8 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
 
   unplayedScenarioModular(scenarioSelect: HTMLSelectElement, modularSelect: HTMLSelectElement) {
     let plays = this.getPlays(this.stats!);
-    let scenarios = this.enumToNumberArray(Scenario);
-    let modulars = this.enumToNumberArray(Modular);
+    let scenarios = this.getPossibleEnumValues(scenarioSelect, Scenario);
+    let modulars = this.getPossibleEnumValues(modularSelect, Modular);
     let entries = [];
     for (let scenario of scenarios) {
       for (let modular of modulars) {
@@ -486,10 +499,10 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
 
   unplayedAll(heroSelect: HTMLSelectElement, aspectSelect: HTMLSelectElement, scenarioSelect: HTMLSelectElement, modularSelect: HTMLSelectElement) {
     let plays = this.getPlays(this.stats!);
-    let heroes = this.enumToNumberArray(Hero);
-    let aspects = this.enumToNumberArray(Aspect);
-    let scenarios = this.enumToNumberArray(Scenario);
-    let modulars = this.enumToNumberArray(Modular);
+    let heroes = this.getPossibleEnumValues(heroSelect, Hero);
+    let aspects = this.getPossibleEnumValues(aspectSelect, Aspect);
+    let scenarios = this.getPossibleEnumValues(scenarioSelect, Scenario);
+    let modulars = this.getPossibleEnumValues(modularSelect, Modular);
     let entries = [];
     for (let hero of heroes) {
       for (let aspect of aspects) {

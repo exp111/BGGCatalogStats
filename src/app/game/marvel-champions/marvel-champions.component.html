@@ -367,51 +367,62 @@
               <!-- Hero -->
               <div>
                 <div class="input-group">
-                  <select #randomizeHeroSelect disabled class="form-select">
-                    <option value="" selected>Hero</option>
-                    @for (hero of enumToNumberArray(Hero); track hero) {
+                  <button class="btn btn-primary" (click)="setRandomValue(randomizeHeroSelect)">Hero</button>
+                  <select #randomizeHeroSelect class="form-select">
+                    <option value="" disabled selected>Hero</option>
+                    @for (hero of sortedEnumToNumberArray(Hero); track hero) {
                       <option [value]="hero">{{ beautifyEnum(Hero, hero) }}</option>
                     }
                   </select>
-                  <button class="btn btn-primary" (click)="setRandomValue(randomizeHeroSelect)">Hero</button>
+                  <input type="checkbox" class="btn-check" id="randomizeHeroLock" [(ngModel)]="randomizeHeroSelect.disabled">
+                  <label class="btn btn-outline-primary" for="randomizeHeroLock">Lock</label>
                 </div>
               </div>
               <div>
                 <!-- Aspect -->
                 <div class="input-group">
-                  <select #randomizeAspectSelect disabled class="form-select">
-                    <option value="" selected>Aspect</option>
-                    @for (aspect of enumToNumberArray(Aspect); track aspect) {
+                  <button class="btn btn-primary" (click)="setRandomValue(randomizeAspectSelect)">Aspect</button>
+                  <select #randomizeAspectSelect class="form-select">
+                    <option value="" disabled selected>Aspect</option>
+                    @for (aspect of sortedEnumToNumberArray(Aspect); track aspect) {
                       <option [value]="aspect">{{ beautifyEnum(Aspect, aspect) }}</option>
                     }
                   </select>
-                  <button class="btn btn-primary" (click)="setRandomValue(randomizeAspectSelect)">Aspect</button>
+                  <input type="checkbox" class="btn-check" id="randomizeAspectLock" [(ngModel)]="randomizeAspectSelect.disabled">
+                  <label class="btn btn-outline-primary" for="randomizeAspectLock">Lock</label>
                 </div>
               </div>
               <!-- Scenario -->
               <div>
                 <div class="input-group">
-                  <select #randomizeScenarioSelect disabled class="form-select">
-                    <option value="" selected>Scenario</option>
-                    @for (scenario of enumToNumberArray(Scenario); track scenario) {
+                  <button class="btn btn-primary" (click)="setRandomValue(randomizeScenarioSelect)">Scenario</button>
+                  <select #randomizeScenarioSelect class="form-select">
+                    <option value="" disabled selected>Scenario</option>
+                    @for (scenario of sortedEnumToNumberArray(Scenario); track scenario) {
                       <option [value]="scenario">{{ beautifyEnum(Scenario, scenario) }}</option>
                     }
                   </select>
-                  <button class="btn btn-primary" (click)="setRandomValue(randomizeScenarioSelect)">Scenario</button>
+                  <input type="checkbox" class="btn-check" id="randomizeScenarioLock" [(ngModel)]="randomizeScenarioSelect.disabled">
+                  <label class="btn btn-outline-primary" for="randomizeScenarioLock">Lock</label>
                 </div>
               </div>
               <!-- Modular -->
               <div>
                 <div class="input-group">
-                  <select #randomizeModularSelect disabled class="form-select">
-                    <option value="" selected>Modular</option>
-                    @for (modular of enumToNumberArray(Modular); track modular) {
+                  <button class="btn btn-primary" (click)="setRandomValue(randomizeModularSelect)">Modular</button>
+                  <select #randomizeModularSelect class="form-select">
+                    <option value="" disabled selected>Modular</option>
+                    @for (modular of sortedEnumToNumberArray(Modular); track modular) {
                       <option [value]="modular">{{ beautifyEnum(Modular, modular) }}</option>
                     }
                   </select>
-                  <button class="btn btn-primary" (click)="setRandomValue(randomizeModularSelect)">Modular</button>
+                  <input type="checkbox" class="btn-check" id="randomizeModularLock" [(ngModel)]="randomizeModularSelect.disabled">
+                  <label class="btn btn-outline-primary" for="randomizeModularLock">Lock</label>
                 </div>
               </div>
+
+            </div>
+            <div class="d-flex gap-1 flex-column flex-lg-row mt-lg-1">
               <button class="btn btn-primary col"
                       (click)="setRandomValue(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">
                 Randomize All
