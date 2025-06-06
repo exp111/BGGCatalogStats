@@ -3,22 +3,21 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BaseGameComponent} from "../base-game.component";
 import {formatDurationMinutes} from "../../util/helper";
 import {ViewerBackupReaderService} from "../../backup-reader/viewer/viewer-backup-reader.service";
-import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 import {ViewerPlay, ViewerStats} from "../../../model/viewer";
+import {Router} from "@angular/router";
+import {StatService} from "../../../services/stat.service";
 
 @Component({
   selector: 'app-viewer',
   imports: [
     ReactiveFormsModule,
-    FormsModule,
-    BaseUploadSelectionComponent,
+    FormsModule
   ],
   templateUrl: './viewer.component.html',
   styleUrl: './viewer.component.scss'
 })
 export class ViewerComponent extends BaseGameComponent<ViewerStats, ViewerPlay> {
   static override Title = 'Play Viewer';
-  override exampleFileName = "mc-example";
 
   protected override enumBeautifiers = {}
 
@@ -26,8 +25,10 @@ export class ViewerComponent extends BaseGameComponent<ViewerStats, ViewerPlay> 
   sort = "name";
   sortAscending = true;
 
-  constructor(protected backupService: ViewerBackupReaderService) {
-    super(backupService);
+  constructor(protected backupService: ViewerBackupReaderService,
+              statService: StatService,
+              router: Router) {
+    super(backupService, statService, router);
   }
 
   protected override getPlays(stats: ViewerStats): ViewerPlay[] {

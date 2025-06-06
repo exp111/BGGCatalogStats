@@ -11,6 +11,7 @@ See the help page for documentation on how to use the website.
 - Tests: Parsing
 - "Top" entry for tables: Most played, shortest/longest (avg) playtime
 - Pack Filter for plays
+- add bgstats to help
 - Stats Export:
   - generic base class => TMB 
   - hide unused aspects (?)

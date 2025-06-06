@@ -3,47 +3,44 @@ import {Directive} from "@angular/core";
 import {BaseGamePlay, BaseGameStats} from "../../model/base-game-stats";
 import {enumToNumberArray, formatFromEnumString} from "../util/enum-utils";
 import {ChecklistState} from "../app-table/checklist.component";
+import {StatService} from "../../services/stat.service";
+import {BGGCatalogBackup} from "../../model/bgg-catalog";
+import {BGStatsBackup} from "../../model/bg-stats";
+import {Router} from "@angular/router";
 
 @Directive()
 export abstract class BaseGameComponent<S extends BaseGameStats, P extends BaseGamePlay> {
   static Title: string;
-  selectedTool = "bgstats";
-  stats?: S;
+  stats!: S;
   onlyMe: boolean = false;
   onlyOwned: boolean = true;
   onlyPlayed: boolean = true;
-  abstract exampleFileName: string;
+
   /**
    * Can contain enum beatifiers that transform enum values to their beautified string value.
    **/
   protected abstract enumBeautifiers: { [end: number]: (e: number) => string | null };
 
-  constructor(protected backupReader: BaseBackupReaderService) {
+  constructor(protected backupReader: BaseBackupReaderService,
+              protected statService: StatService,
+              protected router: Router) {
     (window as any).app = this;
-  }
-
-  public loadExample() {
-    fetch(`./example/${this.selectedTool}-${this.exampleFileName}.json`).then(r => r.text()).then(t => this.readFile(t));
-  }
-
-  public onFileLoad(event: Event & { target: HTMLInputElement }) {
-    const files = event.target.files;
-    if (files?.length != null && files?.length > 0) {
-      const file = files[0];
-      file.text().then((f) => this.readFile(f));
+    if (this.statService.hasStats) {
+      this.stats = this.loadData();
+    } else {
+      // route back
+      this.router.navigate(["/import"]);
     }
   }
 
-  public readFile(text: string) {
-    let backup = JSON.parse(text);
-    switch (this.selectedTool) {
+  public loadData() {
+    switch (this.statService.stats?.selectedTool) {
       case "bggcatalog":
-        this.stats = this.backupReader.parseBGGCatalog(backup) as S;
-        break;
+        return this.backupReader.parseBGGCatalog(this.statService.stats.data as BGGCatalogBackup) as S;
       case "bgstats":
-        this.stats = this.backupReader.parseBGStats(backup) as S;
-        break;
+        return this.backupReader.parseBGStats(this.statService.stats.data as BGStatsBackup) as S;
     }
+    throw new Error(`Can't load data for tool ${this.statService.stats?.selectedTool}`);
   }
 
   public winrateCellClassGetter(value: string) {

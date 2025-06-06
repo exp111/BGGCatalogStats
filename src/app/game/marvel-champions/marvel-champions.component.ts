@@ -17,11 +17,12 @@ import {BaseGameComponent} from "../base-game.component";
 import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-backup-reader.service";
 import {formatDurationMinutes} from "../../util/helper";
 import {MCFilterParams, MCFilterPipe, SortOrder, SortType} from "./mc-filter.pipe";
-import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
 import {Enums, enumToNumberArray} from "../../util/enum-utils";
 import {NgbAccordionModule, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {GameStatsModalComponent} from "../../game-stats-modal/game-stats-modal.component";
 import {CompletionBarComponent} from "../completion-bar/completion-bar.component";
+import {StatService} from "../../../services/stat.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -31,7 +32,6 @@ import {CompletionBarComponent} from "../completion-bar/completion-bar.component
     TableComponent,
     FormsModule,
     MCFilterPipe,
-    BaseUploadSelectionComponent,
     NgbAccordionModule,
     CompletionBarComponent
   ],
@@ -40,7 +40,6 @@ import {CompletionBarComponent} from "../completion-bar/completion-bar.component
 })
 export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsStats, MarvelChampionsPlay> {
   static override Title = 'Marvel Champions Stats';
-  override exampleFileName = "mc-example";
 
   mojoModulars: Modular[] = [Modular.Crime, Modular.Fantasy, Modular.Horror, Modular.SciFi, Modular.Sitcom, Modular.Western];
 
@@ -83,8 +82,10 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
   }
 
   constructor(protected backupService: MCBackupReaderService,
+              statService: StatService,
+              router: Router,
               protected modalService: NgbModal) {
-    super(backupService);
+    super(backupService, statService, router);
   }
 
   playHasPackContent(play: MarvelChampionsPlay, pack: number) {

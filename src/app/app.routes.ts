@@ -6,6 +6,7 @@ import {HelpPageComponent} from "./help-page/help-page.component";
 import {MakeExampleComponent} from "./make-example/make-example.component";
 import {ConverterComponent} from "./converter/converter.component";
 import {ViewerComponent} from "./game/viewer/viewer.component";
+import {StatsImportComponent} from "./stats-import/stats-import.component";
 
 export const routes: Routes = [
   {path: "marvelchampions", component: MarvelChampionsComponent, title: MarvelChampionsComponent.Title},
@@ -14,5 +15,6 @@ export const routes: Routes = [
   {path: "converter", component: ConverterComponent, title: "Converter"},
   {path: "help", component: HelpPageComponent, title: HelpPageComponent.Title},
   {path: "make-example", component: MakeExampleComponent, title: MakeExampleComponent.Title},
+  {path: "import", component: StatsImportComponent, title: "Import"},
   {path: "**", component: StartComponent, title: StartComponent.Title},
 ];

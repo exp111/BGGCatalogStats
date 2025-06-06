@@ -6,28 +6,30 @@ import {BaseGameComponent} from "../base-game.component";
 import {Difficulty, Gearloc, TooManyBonesPlay, TooManyBonesStats, Tyrant} from "../../../model/too-many-bones";
 import {TMBBackupReaderService} from "../../backup-reader/too-many-bones/tmb-backup-reader.service";
 import {formatDurationMinutes} from "../../util/helper";
-import {BaseUploadSelectionComponent} from "../../base-upload-selection/base-upload-selection.component";
+import {StatService} from "../../../services/stat.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-marvel-champions',
-    imports: [
-        ChecklistComponent,
-        ReactiveFormsModule,
-        TableComponent,
-        FormsModule,
-        BaseUploadSelectionComponent,
-    ],
+  imports: [
+    ChecklistComponent,
+    ReactiveFormsModule,
+    TableComponent,
+    FormsModule,
+
+  ],
     templateUrl: './too-many-bones.component.html',
     styleUrl: './too-many-bones.component.scss'
 })
 export class TooManyBonesComponent extends BaseGameComponent<TooManyBonesStats, TooManyBonesPlay> {
   static override Title = 'Too Many Bones Stats';
-  override exampleFileName = "tmb-example";
 
   protected override enumBeautifiers = {}
 
-  constructor(protected backupService: TMBBackupReaderService) {
-    super(backupService);
+  constructor(protected backupService: TMBBackupReaderService,
+              statService: StatService,
+              router: Router) {
+    super(backupService, statService, router);
   }
 
   protected override playedCheck(val: number): boolean {

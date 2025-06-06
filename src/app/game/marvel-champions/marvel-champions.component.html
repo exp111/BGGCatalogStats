@@ -1,488 +1,484 @@
-@if (!this.stats) {
-  <app-base-upload-selection
-    title="Marvel Champions"
-    [(selectedTool)]="selectedTool"
-    (loadExample)="loadExample()"
-    (onFileLoad)="onFileLoad($event)"
-  ></app-base-upload-selection>
-} @else {
-  <div class="sticky-top bg-white d-flex gap-3 pt-2 pb-2">
-    <div class="form-check">
-      <input id="onlyMeCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyMe"/>
-      <label for="onlyMeCheckbox" class="form-check-label">Only me?</label>
-    </div>
-    <div class="form-check">
-      <input id="onlyOwnedCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyOwned"/>
-      <label for="onlyOwnedCheckbox" class="form-check-label">Only owned?</label>
-    </div>
-    <div class="form-check">
-      <input id="onlyPlayedCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyPlayed"/>
-      <label for="onlyPlayedCheckbox" class="form-check-label">Only played?</label>
-    </div>
-    <div class="ms-auto">
-      <button class="btn btn-primary" (click)="onStatsClicked()">Stats</button>
+<div class="sticky-top bg-white d-flex gap-3 pt-2 pb-2">
+  <div class="form-check">
+    <input id="onlyMeCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyMe"/>
+    <label for="onlyMeCheckbox" class="form-check-label">Only me?</label>
+  </div>
+  <div class="form-check">
+    <input id="onlyOwnedCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyOwned"/>
+    <label for="onlyOwnedCheckbox" class="form-check-label">Only owned?</label>
+  </div>
+  <div class="form-check">
+    <input id="onlyPlayedCheckbox" type="checkbox" class="form-check-input" [(ngModel)]="onlyPlayed"/>
+    <label for="onlyPlayedCheckbox" class="form-check-label">Only played?</label>
+  </div>
+  <div class="ms-auto">
+    <button class="btn btn-primary" (click)="onStatsClicked()">Stats</button>
+  </div>
+</div>
+<h4>Total Plays: {{ this.getPlays(this.stats).length }}/ Total Won: {{ this.getWins(this.getPlays(this.stats)) }}</h4>
+<h5>Total Playtime: {{ formatDurationMinutes(this.getPlaytime(this.getPlays(this.stats))) }}/
+  Average Playtime: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats))) }}<br>
+  Average Playtime per Win: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), true)) }}/
+  Average Playtime per Loss: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), false)) }}
+</h5>
+<div ngbAccordion>
+  <div ngbAccordionItem>
+    <h4 ngbAccordionHeader>
+      <button ngbAccordionButton>Playrate</button>
+    </h4>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <h4>Hero Playrate</h4>
+          <app-table
+            [XAxis]="['Playrate']"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [getter]="heroPlayrateGetter.bind(this)"></app-table>
+          <h4>Aspect Playrate</h4>
+          <app-table
+            [XAxis]="['Playrate']"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="aspectPlayrateGetter.bind(this)"></app-table>
+          <h4>Scenario Playrate</h4>
+          <app-table
+            [XAxis]="['Playrate']"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="scenarioPlayrateGetter.bind(this)"></app-table>
+          <h4>Pack Playrate</h4>
+          <app-table
+            [XAxis]="['Playrate']"
+            [YAxis]="packsEnumToNumberArray(Packs)"
+            [YFormatter]="beautifyEnum.bind(this, Packs)"
+            [getter]="packPlayrateGetter.bind(this)"></app-table>
+        </ng-template>
+      </div>
     </div>
   </div>
-  <h4>Total Plays: {{ this.getPlays(this.stats).length }}/ Total Won: {{ this.getWins(this.getPlays(this.stats)) }}</h4>
-  <h5>Total Playtime: {{ formatDurationMinutes(this.getPlaytime(this.getPlays(this.stats))) }}/
-    Average Playtime: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats))) }}<br>
-    Average Playtime per Win: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), true)) }}/
-    Average Playtime per Loss: {{ formatDurationMinutes(this.getAveragePlaytime(this.getPlays(this.stats), false)) }}
-  </h5>
-  <div ngbAccordion>
-    <div ngbAccordionItem>
-      <h4 ngbAccordionHeader>
-        <button ngbAccordionButton>Playrate</button>
-      </h4>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <ng-template>
-            <h4>Hero Playrate</h4>
-            <app-table
-              [XAxis]="['Playrate']"
-              [YAxis]="enumToNumberArray(Hero)"
-              [YFormatter]="beautifyEnum.bind(this, Hero)"
-              [getter]="heroPlayrateGetter.bind(this)"></app-table>
-            <h4>Aspect Playrate</h4>
-            <app-table
-              [XAxis]="['Playrate']"
-              [YAxis]="enumToNumberArray(Aspect)"
-              [YFormatter]="beautifyEnum.bind(this, Aspect)"
-              [getter]="aspectPlayrateGetter.bind(this)"></app-table>
-            <h4>Scenario Playrate</h4>
-            <app-table
-              [XAxis]="['Playrate']"
-              [YAxis]="enumToNumberArray(Scenario)"
-              [YFormatter]="beautifyEnum.bind(this, Scenario)"
-              [getter]="scenarioPlayrateGetter.bind(this)"></app-table>
-            <h4>Pack Playrate</h4>
-            <app-table
-              [XAxis]="['Playrate']"
-              [YAxis]="packsEnumToNumberArray(Packs)"
-              [YFormatter]="beautifyEnum.bind(this, Packs)"
-              [getter]="packPlayrateGetter.bind(this)"></app-table>
-          </ng-template>
-        </div>
+  <div ngbAccordionItem>
+    <h4 ngbAccordionHeader>
+      <button ngbAccordionButton>Winrate</button>
+    </h4>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <h4>Hero Winrate</h4>
+          <app-table
+            [XAxis]="['Winrate']"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [cellClassGetter]="winrateCellClassGetter.bind(this)"
+            [getter]="heroWinrateGetter.bind(this)"></app-table>
+          <h4>Aspect Winrate</h4>
+          <app-table
+            [XAxis]="['Winrate']"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [cellClassGetter]="winrateCellClassGetter.bind(this)"
+            [getter]="aspectWinrateGetter.bind(this)"></app-table>
+          <h4>Scenario Winrate</h4>
+          <app-table
+            [XAxis]="['Winrate']"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
+            [getter]="scenarioWinrateGetter.bind(this)"></app-table>
+        </ng-template>
       </div>
     </div>
-    <div ngbAccordionItem>
-      <h4 ngbAccordionHeader>
-        <button ngbAccordionButton>Winrate</button>
-      </h4>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <ng-template>
-            <h4>Hero Winrate</h4>
-            <app-table
-              [XAxis]="['Winrate']"
-              [YAxis]="enumToNumberArray(Hero)"
-              [YFormatter]="beautifyEnum.bind(this, Hero)"
-              [cellClassGetter]="winrateCellClassGetter.bind(this)"
-              [getter]="heroWinrateGetter.bind(this)"></app-table>
-            <h4>Aspect Winrate</h4>
-            <app-table
-              [XAxis]="['Winrate']"
-              [YAxis]="enumToNumberArray(Aspect)"
-              [YFormatter]="beautifyEnum.bind(this, Aspect)"
-              [cellClassGetter]="winrateCellClassGetter.bind(this)"
-              [getter]="aspectWinrateGetter.bind(this)"></app-table>
-            <h4>Scenario Winrate</h4>
-            <app-table
-              [XAxis]="['Winrate']"
-              [YAxis]="enumToNumberArray(Scenario)"
-              [YFormatter]="beautifyEnum.bind(this, Scenario)"
-              [cellClassGetter]="this.winrateCellClassGetter.bind(this)"
-              [getter]="scenarioWinrateGetter.bind(this)"></app-table>
-          </ng-template>
-        </div>
+  </div>
+  <div ngbAccordionItem>
+    <h4 ngbAccordionHeader>
+      <button ngbAccordionButton>Playtime</button>
+    </h4>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <h4>Hero Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [getter]="heroPlaytimeGetter.bind(this)"></app-table>
+          <h4>Aspect Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="aspectPlaytimeGetter.bind(this)"></app-table>
+          <h4>Scenario Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="scenarioPlaytimeGetter.bind(this)"></app-table>
+          <h4>Modular Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="enumToNumberArray(Modular)"
+            [YFormatter]="beautifyEnum.bind(this, Modular)"
+            [getter]="modularPlaytimeGetter.bind(this)"></app-table>
+          <h4>Playercount Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="[1,2,3,4]"
+            [getter]="playerCountPlaytimeGetter.bind(this)"></app-table>
+          <h4>Pack Playtime</h4>
+          <app-table
+            [XAxis]="['Playtime']"
+            [YAxis]="packsEnumToNumberArray(Packs)"
+            [YFormatter]="beautifyEnum.bind(this, Packs)"
+            [getter]="packPlaytimeGetter.bind(this)"></app-table>
+          <h4>Hero - Scenario Playtime</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Hero)"
+            [XFormatter]="beautifyEnum.bind(this, Hero)"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="heroScenarioPlaytimeGetter.bind(this)"></app-table>
+        </ng-template>
       </div>
     </div>
-    <div ngbAccordionItem>
-      <h4 ngbAccordionHeader>
-        <button ngbAccordionButton>Playtime</button>
-      </h4>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <ng-template>
-            <h4>Hero Playtime</h4>
-            <app-table
-              [XAxis]="['Playtime']"
-              [YAxis]="enumToNumberArray(Hero)"
-              [YFormatter]="beautifyEnum.bind(this, Hero)"
-              [getter]="heroPlaytimeGetter.bind(this)"></app-table>
-            <h4>Aspect Playtime</h4>
-            <app-table
-              [XAxis]="['Playtime']"
-              [YAxis]="enumToNumberArray(Aspect)"
-              [YFormatter]="beautifyEnum.bind(this, Aspect)"
-              [getter]="aspectPlaytimeGetter.bind(this)"></app-table>
-            <h4>Scenario Playtime</h4>
-            <app-table
-              [XAxis]="['Playtime']"
-              [YAxis]="enumToNumberArray(Scenario)"
-              [YFormatter]="beautifyEnum.bind(this, Scenario)"
-              [getter]="scenarioPlaytimeGetter.bind(this)"></app-table>
-            <h4>Modular Playtime</h4>
-            <app-table
-              [XAxis]="['Playtime']"
-              [YAxis]="enumToNumberArray(Modular)"
-              [YFormatter]="beautifyEnum.bind(this, Modular)"
-              [getter]="modularPlaytimeGetter.bind(this)"></app-table>
-            <h4>Playercount Playtime</h4>
-            <app-table
-              [XAxis]="['Playtime']"
-              [YAxis]="[1,2,3,4]"
-              [getter]="playerCountPlaytimeGetter.bind(this)"></app-table>
-            <h4>Pack Playtime</h4>
-            <app-table
-              [XAxis]="['Playtime']"
-              [YAxis]="packsEnumToNumberArray(Packs)"
-              [YFormatter]="beautifyEnum.bind(this, Packs)"
-              [getter]="packPlaytimeGetter.bind(this)"></app-table>
-            <h4>Hero - Scenario Playtime</h4>
-            <app-table
-              [XAxis]="enumToNumberArray(Hero)"
-              [XFormatter]="beautifyEnum.bind(this, Hero)"
-              [YAxis]="enumToNumberArray(Scenario)"
-              [YFormatter]="beautifyEnum.bind(this, Scenario)"
-              [getter]="heroScenarioPlaytimeGetter.bind(this)"></app-table>
-          </ng-template>
-        </div>
+  </div>
+  <div ngbAccordionItem>
+    <h4 ngbAccordionHeader>
+      <button ngbAccordionButton>Average Playtime</button>
+    </h4>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <h4>Average Hero Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [getter]="avgHeroPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Aspect Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="avgAspectPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Scenario Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="avgScenarioPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Modular Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="enumToNumberArray(Modular)"
+            [YFormatter]="beautifyEnum.bind(this, Modular)"
+            [getter]="avgModularPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Playercount Playtime</h4>
+          <app-table
+            [XAxis]="['Average Playtime']"
+            [YAxis]="[1,2,3,4]"
+            [getter]="avgPlayerCountPlaytimeGetter.bind(this)"></app-table>
+          <h4>Average Hero - Scenario Playtime</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Hero)"
+            [XFormatter]="beautifyEnum.bind(this, Hero)"
+            [YAxis]="enumToNumberArray(Scenario)"
+            [YFormatter]="beautifyEnum.bind(this, Scenario)"
+            [getter]="avgHeroScenarioPlaytimeGetter.bind(this)"></app-table>
+        </ng-template>
       </div>
     </div>
-    <div ngbAccordionItem>
-      <h4 ngbAccordionHeader>
-        <button ngbAccordionButton>Average Playtime</button>
-      </h4>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <ng-template>
-            <h4>Average Hero Playtime</h4>
-            <app-table
-              [XAxis]="['Average Playtime']"
-              [YAxis]="enumToNumberArray(Hero)"
-              [YFormatter]="beautifyEnum.bind(this, Hero)"
-              [getter]="avgHeroPlaytimeGetter.bind(this)"></app-table>
-            <h4>Average Aspect Playtime</h4>
-            <app-table
-              [XAxis]="['Average Playtime']"
-              [YAxis]="enumToNumberArray(Aspect)"
-              [YFormatter]="beautifyEnum.bind(this, Aspect)"
-              [getter]="avgAspectPlaytimeGetter.bind(this)"></app-table>
-            <h4>Average Scenario Playtime</h4>
-            <app-table
-              [XAxis]="['Average Playtime']"
-              [YAxis]="enumToNumberArray(Scenario)"
-              [YFormatter]="beautifyEnum.bind(this, Scenario)"
-              [getter]="avgScenarioPlaytimeGetter.bind(this)"></app-table>
-            <h4>Average Modular Playtime</h4>
-            <app-table
-              [XAxis]="['Average Playtime']"
-              [YAxis]="enumToNumberArray(Modular)"
-              [YFormatter]="beautifyEnum.bind(this, Modular)"
-              [getter]="avgModularPlaytimeGetter.bind(this)"></app-table>
-            <h4>Average Playercount Playtime</h4>
-            <app-table
-              [XAxis]="['Average Playtime']"
-              [YAxis]="[1,2,3,4]"
-              [getter]="avgPlayerCountPlaytimeGetter.bind(this)"></app-table>
-            <h4>Average Hero - Scenario Playtime</h4>
-            <app-table
-              [XAxis]="enumToNumberArray(Hero)"
-              [XFormatter]="beautifyEnum.bind(this, Hero)"
-              [YAxis]="enumToNumberArray(Scenario)"
-              [YFormatter]="beautifyEnum.bind(this, Scenario)"
-              [getter]="avgHeroScenarioPlaytimeGetter.bind(this)"></app-table>
-          </ng-template>
-        </div>
+  </div>
+  <div ngbAccordionItem>
+    <h4 ngbAccordionHeader>
+      <button ngbAccordionButton>Checklists</button>
+    </h4>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <h4>Hero - Aspect</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Hero)"
+            [XFormatter]="beautifyEnum.bind(this, Hero)"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="heroAspectWonGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Hero</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [getter]="scenarioHeroWonGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Aspect</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [getter]="scenarioAspectWonGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Modular</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Modular)"
+            [YFormatter]="beautifyEnum.bind(this, Modular)"
+            [getter]="scenarioModularWonGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Difficulty</h4>
+          <app-checklist
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Difficulty)"
+            [YFormatter]="beautifyEnum.bind(this, Difficulty)"
+            [getter]="scenarioDifficultyWonGetter.bind(this)"></app-checklist>
+          <h4>Packs</h4>
+          <app-checklist
+            [XAxis]="['Played']"
+            [YAxis]="packsEnumToNumberArray(Packs)"
+            [YFormatter]="beautifyEnum.bind(this, Packs)"
+            [getter]="packPlayedGetter.bind(this)"></app-checklist>
+          <h4>Scenario - Hero - (Winrate)</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Hero)"
+            [YFormatter]="beautifyEnum.bind(this, Hero)"
+            [cellClassGetter]="this.winrateCellClassGetter"
+            [getter]="scenarioHeroWinrateGetter.bind(this)"></app-table>
+          <h4>Hero - Aspect (Winrate)</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Hero)"
+            [XFormatter]="beautifyEnum.bind(this, Hero)"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [cellClassGetter]="this.winrateCellClassGetter"
+            [getter]="heroAspectWinrateGetter.bind(this)"></app-table>
+          <h4>Scenario - Aspect (Winrate)</h4>
+          <app-table
+            [XAxis]="enumToNumberArray(Scenario)"
+            [XFormatter]="beautifyEnum.bind(this, Scenario)"
+            [YAxis]="enumToNumberArray(Aspect)"
+            [YFormatter]="beautifyEnum.bind(this, Aspect)"
+            [cellClassGetter]="this.winrateCellClassGetter"
+            [getter]="scenarioAspectWinrateGetter.bind(this)"></app-table>
+        </ng-template>
       </div>
     </div>
-    <div ngbAccordionItem>
-      <h4 ngbAccordionHeader>
-        <button ngbAccordionButton>Checklists</button>
-      </h4>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <ng-template>
-            <h4>Hero - Aspect</h4>
-            <app-checklist
-              [XAxis]="enumToNumberArray(Hero)"
-              [XFormatter]="beautifyEnum.bind(this, Hero)"
-              [YAxis]="enumToNumberArray(Aspect)"
-              [YFormatter]="beautifyEnum.bind(this, Aspect)"
-              [getter]="heroAspectWonGetter.bind(this)"></app-checklist>
-            <h4>Scenario - Hero</h4>
-            <app-checklist
-              [XAxis]="enumToNumberArray(Scenario)"
-              [XFormatter]="beautifyEnum.bind(this, Scenario)"
-              [YAxis]="enumToNumberArray(Hero)"
-              [YFormatter]="beautifyEnum.bind(this, Hero)"
-              [getter]="scenarioHeroWonGetter.bind(this)"></app-checklist>
-            <h4>Scenario - Aspect</h4>
-            <app-checklist
-              [XAxis]="enumToNumberArray(Scenario)"
-              [XFormatter]="beautifyEnum.bind(this, Scenario)"
-              [YAxis]="enumToNumberArray(Aspect)"
-              [YFormatter]="beautifyEnum.bind(this, Aspect)"
-              [getter]="scenarioAspectWonGetter.bind(this)"></app-checklist>
-            <h4>Scenario - Modular</h4>
-            <app-checklist
-              [XAxis]="enumToNumberArray(Scenario)"
-              [XFormatter]="beautifyEnum.bind(this, Scenario)"
-              [YAxis]="enumToNumberArray(Modular)"
-              [YFormatter]="beautifyEnum.bind(this, Modular)"
-              [getter]="scenarioModularWonGetter.bind(this)"></app-checklist>
-            <h4>Scenario - Difficulty</h4>
-            <app-checklist
-              [XAxis]="enumToNumberArray(Scenario)"
-              [XFormatter]="beautifyEnum.bind(this, Scenario)"
-              [YAxis]="enumToNumberArray(Difficulty)"
-              [YFormatter]="beautifyEnum.bind(this, Difficulty)"
-              [getter]="scenarioDifficultyWonGetter.bind(this)"></app-checklist>
-            <h4>Packs</h4>
-            <app-checklist
-              [XAxis]="['Played']"
-              [YAxis]="packsEnumToNumberArray(Packs)"
-              [YFormatter]="beautifyEnum.bind(this, Packs)"
-              [getter]="packPlayedGetter.bind(this)"></app-checklist>
-            <h4>Scenario - Hero - (Winrate)</h4>
-            <app-table
-              [XAxis]="enumToNumberArray(Scenario)"
-              [XFormatter]="beautifyEnum.bind(this, Scenario)"
-              [YAxis]="enumToNumberArray(Hero)"
-              [YFormatter]="beautifyEnum.bind(this, Hero)"
-              [cellClassGetter]="this.winrateCellClassGetter"
-              [getter]="scenarioHeroWinrateGetter.bind(this)"></app-table>
-            <h4>Hero - Aspect (Winrate)</h4>
-            <app-table
-              [XAxis]="enumToNumberArray(Hero)"
-              [XFormatter]="beautifyEnum.bind(this, Hero)"
-              [YAxis]="enumToNumberArray(Aspect)"
-              [YFormatter]="beautifyEnum.bind(this, Aspect)"
-              [cellClassGetter]="this.winrateCellClassGetter"
-              [getter]="heroAspectWinrateGetter.bind(this)"></app-table>
-            <h4>Scenario - Aspect (Winrate)</h4>
-            <app-table
-              [XAxis]="enumToNumberArray(Scenario)"
-              [XFormatter]="beautifyEnum.bind(this, Scenario)"
-              [YAxis]="enumToNumberArray(Aspect)"
-              [YFormatter]="beautifyEnum.bind(this, Aspect)"
-              [cellClassGetter]="this.winrateCellClassGetter"
-              [getter]="scenarioAspectWinrateGetter.bind(this)"></app-table>
-          </ng-template>
-        </div>
-      </div>
-    </div>
-    <div ngbAccordionItem>
-      <h4 ngbAccordionHeader>
-        <button ngbAccordionButton>Plays</button>
-      </h4>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <ng-template>
-            <h4>Plays</h4>
-            <div class="d-flex">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" [(ngModel)]="filterParams.onlyWon">
-                <label class="form-check-label">
-                  Only Won
-                </label>
-              </div>
-              <select class="form-select form-select-sm" [(ngModel)]="filterParams.hero">
-                <option [ngValue]="null">Hero</option>
-                @for (hero of enumToNumberArray(Hero); track hero) {
-                  <option [ngValue]="hero">{{ beautifyEnum(Hero, hero) }}</option>
-                }
-              </select>
-              <select class="form-select form-select-sm" [(ngModel)]="filterParams.aspect">
-                <option [ngValue]="null">Aspect</option>
-                @for (aspect of enumToNumberArray(Aspect); track aspect) {
-                  <option [ngValue]="aspect">{{ beautifyEnum(Aspect, aspect) }}</option>
-                }
-              </select>
-              <select class="form-select form-select-sm" [(ngModel)]="filterParams.scenario">
-                <option [ngValue]="null">Scenario</option>
-                @for (scenario of enumToNumberArray(Scenario); track scenario) {
-                  <option [ngValue]="scenario">{{ beautifyEnum(Scenario, scenario) }}</option>
-                }
-              </select>
-              <select class="form-select form-select-sm" [(ngModel)]="filterParams.modular">
-                <option [ngValue]="null">Modular</option>
-                @for (modular of enumToNumberArray(Modular); track modular) {
-                  <option [ngValue]="modular">{{ beautifyEnum(Modular, modular) }}</option>
-                }
-              </select>
-              <select class="form-select form-select-sm" [(ngModel)]="filterParams.difficulty">
-                <option [ngValue]="null">Difficulty</option>
-                @for (difficulty of enumToNumberArray(Difficulty); track difficulty) {
-                  <option [ngValue]="difficulty">{{ beautifyEnum(Difficulty, difficulty) }}</option>
-                }
-              </select>
-              <select class="form-select" [(ngModel)]="filterParams.sortBy">
-                <option [ngValue]="null">Default</option>
-                <option [ngValue]="SortType.Timestamp">Timestamp</option>
-                <option [ngValue]="SortType.Duration">Duration</option>
-              </select>
-              <select class="form-select" [(ngModel)]="filterParams.sortOrder">
-                <option [ngValue]="SortOrder.Ascending">Asc</option>
-                <option [ngValue]="SortOrder.Descending">Desc</option>
-              </select>
+  </div>
+  <div ngbAccordionItem>
+    <h4 ngbAccordionHeader>
+      <button ngbAccordionButton>Plays</button>
+    </h4>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <h4>Plays</h4>
+          <div class="d-flex">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="filterParams.onlyWon">
+              <label class="form-check-label">
+                Only Won
+              </label>
             </div>
-            @for (play of this.getPlays(this.stats!) | MCFilterPipe:filterParams; track play.Id) {
-              <div class="card card-body">
-                <p>Id: {{ play.Id }}</p>
-                <p>Timestamp: {{ play.Timestamp }}</p>
-                <p>Scenario: {{ this.beautifyEnum(Scenario, play.Scenario) }}</p>
-                <p>Modular: {{ this.formatEnumList(Modular, play.Modulars) }}</p>
-                <p>Difficulty: {{ this.beautifyEnum(Difficulty, play.Difficulty) }}</p>
-                <p>Players: {{ play.Players.length }}</p>
-                <ul>
-                  @for (player of play.Players; track player.Name) {
-                    <li>{{ player.Name }}: {{ this.beautifyEnum(Hero, player.Hero) }}
-                      ({{ this.formatEnumList(Aspect, player.Aspects) }})
-                    </li>
+            <select class="form-select form-select-sm" [(ngModel)]="filterParams.hero">
+              <option [ngValue]="null">Hero</option>
+              @for (hero of enumToNumberArray(Hero); track hero) {
+                <option [ngValue]="hero">{{ beautifyEnum(Hero, hero) }}</option>
+              }
+            </select>
+            <select class="form-select form-select-sm" [(ngModel)]="filterParams.aspect">
+              <option [ngValue]="null">Aspect</option>
+              @for (aspect of enumToNumberArray(Aspect); track aspect) {
+                <option [ngValue]="aspect">{{ beautifyEnum(Aspect, aspect) }}</option>
+              }
+            </select>
+            <select class="form-select form-select-sm" [(ngModel)]="filterParams.scenario">
+              <option [ngValue]="null">Scenario</option>
+              @for (scenario of enumToNumberArray(Scenario); track scenario) {
+                <option [ngValue]="scenario">{{ beautifyEnum(Scenario, scenario) }}</option>
+              }
+            </select>
+            <select class="form-select form-select-sm" [(ngModel)]="filterParams.modular">
+              <option [ngValue]="null">Modular</option>
+              @for (modular of enumToNumberArray(Modular); track modular) {
+                <option [ngValue]="modular">{{ beautifyEnum(Modular, modular) }}</option>
+              }
+            </select>
+            <select class="form-select form-select-sm" [(ngModel)]="filterParams.difficulty">
+              <option [ngValue]="null">Difficulty</option>
+              @for (difficulty of enumToNumberArray(Difficulty); track difficulty) {
+                <option [ngValue]="difficulty">{{ beautifyEnum(Difficulty, difficulty) }}</option>
+              }
+            </select>
+            <select class="form-select" [(ngModel)]="filterParams.sortBy">
+              <option [ngValue]="null">Default</option>
+              <option [ngValue]="SortType.Timestamp">Timestamp</option>
+              <option [ngValue]="SortType.Duration">Duration</option>
+            </select>
+            <select class="form-select" [(ngModel)]="filterParams.sortOrder">
+              <option [ngValue]="SortOrder.Ascending">Asc</option>
+              <option [ngValue]="SortOrder.Descending">Desc</option>
+            </select>
+          </div>
+          @for (play of this.getPlays(this.stats!) | MCFilterPipe:filterParams; track play.Id) {
+            <div class="card card-body">
+              <p>Id: {{ play.Id }}</p>
+              <p>Timestamp: {{ play.Timestamp }}</p>
+              <p>Scenario: {{ this.beautifyEnum(Scenario, play.Scenario) }}</p>
+              <p>Modular: {{ this.formatEnumList(Modular, play.Modulars) }}</p>
+              <p>Difficulty: {{ this.beautifyEnum(Difficulty, play.Difficulty) }}</p>
+              <p>Players: {{ play.Players.length }}</p>
+              <ul>
+                @for (player of play.Players; track player.Name) {
+                  <li>{{ player.Name }}: {{ this.beautifyEnum(Hero, player.Hero) }}
+                    ({{ this.formatEnumList(Aspect, player.Aspects) }})
+                  </li>
+                }
+              </ul>
+              <p>Won: {{ play.Won }}</p>
+              <p>Time: {{ formatDurationMinutes(play.Duration) }}</p>
+              @if (play.Notes) {
+                <p>Comments: {{ play.Notes }}</p>
+              }
+            </div>
+          } @empty {
+            No plays found.
+          }
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div ngbAccordionItem>
+    <h4 ngbAccordionHeader>
+      <button ngbAccordionButton>Randomizer</button>
+    </h4>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <div class="d-flex gap-1 flex-column flex-lg-row">
+            <!-- Hero -->
+            <div>
+              <div class="input-group">
+                <button class="btn btn-primary" (click)="setRandomValue(randomizeHeroSelect)">Hero</button>
+                <select #randomizeHeroSelect class="form-select">
+                  <option value="" disabled selected>Hero</option>
+                  @for (hero of sortedEnumToNumberArray(Hero); track hero) {
+                    <option [value]="hero">{{ beautifyEnum(Hero, hero) }}</option>
                   }
-                </ul>
-                <p>Won: {{ play.Won }}</p>
-                <p>Time: {{ formatDurationMinutes(play.Duration) }}</p>
-                @if (play.Notes) {
-                  <p>Comments: {{ play.Notes }}</p>
-                }
+                </select>
+                <input type="checkbox" class="btn-check" id="randomizeHeroLock"
+                       [(ngModel)]="randomizeHeroSelect.disabled">
+                <label class="btn btn-outline-primary" for="randomizeHeroLock">Lock</label>
               </div>
-            } @empty {
-              No plays found.
-            }
-          </ng-template>
-        </div>
-      </div>
-    </div>
-    <div ngbAccordionItem>
-      <h4 ngbAccordionHeader>
-        <button ngbAccordionButton>Randomizer</button>
-      </h4>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <ng-template>
-            <div class="d-flex gap-1 flex-column flex-lg-row">
-              <!-- Hero -->
-              <div>
-                <div class="input-group">
-                  <button class="btn btn-primary" (click)="setRandomValue(randomizeHeroSelect)">Hero</button>
-                  <select #randomizeHeroSelect class="form-select">
-                    <option value="" disabled selected>Hero</option>
-                    @for (hero of sortedEnumToNumberArray(Hero); track hero) {
-                      <option [value]="hero">{{ beautifyEnum(Hero, hero) }}</option>
-                    }
-                  </select>
-                  <input type="checkbox" class="btn-check" id="randomizeHeroLock" [(ngModel)]="randomizeHeroSelect.disabled">
-                  <label class="btn btn-outline-primary" for="randomizeHeroLock">Lock</label>
-                </div>
+            </div>
+            <div>
+              <!-- Aspect -->
+              <div class="input-group">
+                <button class="btn btn-primary" (click)="setRandomValue(randomizeAspectSelect)">Aspect</button>
+                <select #randomizeAspectSelect class="form-select">
+                  <option value="" disabled selected>Aspect</option>
+                  @for (aspect of sortedEnumToNumberArray(Aspect); track aspect) {
+                    <option [value]="aspect">{{ beautifyEnum(Aspect, aspect) }}</option>
+                  }
+                </select>
+                <input type="checkbox" class="btn-check" id="randomizeAspectLock"
+                       [(ngModel)]="randomizeAspectSelect.disabled">
+                <label class="btn btn-outline-primary" for="randomizeAspectLock">Lock</label>
               </div>
-              <div>
-                <!-- Aspect -->
-                <div class="input-group">
-                  <button class="btn btn-primary" (click)="setRandomValue(randomizeAspectSelect)">Aspect</button>
-                  <select #randomizeAspectSelect class="form-select">
-                    <option value="" disabled selected>Aspect</option>
-                    @for (aspect of sortedEnumToNumberArray(Aspect); track aspect) {
-                      <option [value]="aspect">{{ beautifyEnum(Aspect, aspect) }}</option>
-                    }
-                  </select>
-                  <input type="checkbox" class="btn-check" id="randomizeAspectLock" [(ngModel)]="randomizeAspectSelect.disabled">
-                  <label class="btn btn-outline-primary" for="randomizeAspectLock">Lock</label>
-                </div>
+            </div>
+            <!-- Scenario -->
+            <div>
+              <div class="input-group">
+                <button class="btn btn-primary" (click)="setRandomValue(randomizeScenarioSelect)">Scenario</button>
+                <select #randomizeScenarioSelect class="form-select">
+                  <option value="" disabled selected>Scenario</option>
+                  @for (scenario of sortedEnumToNumberArray(Scenario); track scenario) {
+                    <option [value]="scenario">{{ beautifyEnum(Scenario, scenario) }}</option>
+                  }
+                </select>
+                <input type="checkbox" class="btn-check" id="randomizeScenarioLock"
+                       [(ngModel)]="randomizeScenarioSelect.disabled">
+                <label class="btn btn-outline-primary" for="randomizeScenarioLock">Lock</label>
               </div>
-              <!-- Scenario -->
-              <div>
-                <div class="input-group">
-                  <button class="btn btn-primary" (click)="setRandomValue(randomizeScenarioSelect)">Scenario</button>
-                  <select #randomizeScenarioSelect class="form-select">
-                    <option value="" disabled selected>Scenario</option>
-                    @for (scenario of sortedEnumToNumberArray(Scenario); track scenario) {
-                      <option [value]="scenario">{{ beautifyEnum(Scenario, scenario) }}</option>
-                    }
-                  </select>
-                  <input type="checkbox" class="btn-check" id="randomizeScenarioLock" [(ngModel)]="randomizeScenarioSelect.disabled">
-                  <label class="btn btn-outline-primary" for="randomizeScenarioLock">Lock</label>
-                </div>
+            </div>
+            <!-- Modular -->
+            <div>
+              <div class="input-group">
+                <button class="btn btn-primary" (click)="setRandomValue(randomizeModularSelect)">Modular</button>
+                <select #randomizeModularSelect class="form-select">
+                  <option value="" disabled selected>Modular</option>
+                  @for (modular of sortedEnumToNumberArray(Modular); track modular) {
+                    <option [value]="modular">{{ beautifyEnum(Modular, modular) }}</option>
+                  }
+                </select>
+                <input type="checkbox" class="btn-check" id="randomizeModularLock"
+                       [(ngModel)]="randomizeModularSelect.disabled">
+                <label class="btn btn-outline-primary" for="randomizeModularLock">Lock</label>
               </div>
-              <!-- Modular -->
-              <div>
-                <div class="input-group">
-                  <button class="btn btn-primary" (click)="setRandomValue(randomizeModularSelect)">Modular</button>
-                  <select #randomizeModularSelect class="form-select">
-                    <option value="" disabled selected>Modular</option>
-                    @for (modular of sortedEnumToNumberArray(Modular); track modular) {
-                      <option [value]="modular">{{ beautifyEnum(Modular, modular) }}</option>
-                    }
-                  </select>
-                  <input type="checkbox" class="btn-check" id="randomizeModularLock" [(ngModel)]="randomizeModularSelect.disabled">
-                  <label class="btn btn-outline-primary" for="randomizeModularLock">Lock</label>
-                </div>
-              </div>
+            </div>
 
-            </div>
-            <div class="d-flex gap-1 flex-column flex-lg-row mt-lg-1">
-              <button class="btn btn-primary col"
-                      (click)="setRandomValue(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">
-                Randomize All
-              </button>
-            </div>
-            <div class="d-flex gap-1 flex-column flex-lg-row mt-lg-1">
-              <button class="btn btn-primary col"
-                      (click)="unplayedHeroAspect(randomizeHeroSelect, randomizeAspectSelect)">Unplayed Hero + Aspect
-              </button>
-              <button class="btn btn-primary col"
-                      (click)="unplayedHeroScenario(randomizeHeroSelect, randomizeScenarioSelect)">Unplayed Hero +
-                Scenario
-              </button>
-              <button class="btn btn-primary col"
-                      (click)="unplayedScenarioModular(randomizeScenarioSelect, randomizeModularSelect)">Unplayed
-                Scenario + Modular
-              </button>
-              <button class="btn btn-primary col"
-                      (click)="unplayedAll(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">
-                Unplayed All
-              </button>
-            </div>
-            <div class="input-group mt-1">
-              <select #randomizeMojoModularSelect disabled class="form-select">
-                <option value="" selected>Mojo Modular</option>
-                @for (modular of mojoModulars; track modular) {
-                  <option [value]="modular">{{ beautifyEnum(Modular, modular) }}</option>
-                }
-              </select>
-              <button class="btn btn-primary" (click)="setRandomValue(randomizeMojoModularSelect)">Random Mojo Modular</button>
-            </div>
-          </ng-template>
-        </div>
-      </div>
-    </div>
-    <div ngbAccordionItem>
-      <h4 ngbAccordionHeader>
-        <button ngbAccordionButton>Completion</button>
-      </h4>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <ng-template>
-            <div class="d-flex gap-1">
-              <span style="color: red">Played</span>
-              <span style="color: orange">Owned</span>
-              <span style="color: green">Total</span>
-            </div>
-            <completion-bar title="Heroes" [played]="getPlayedPercentage(Hero)"
-                            [owned]="getOwnedPercentage(Hero)"></completion-bar>
-            <completion-bar title="Aspects" [played]="getPlayedPercentage(Aspect)"
-                            [owned]="getOwnedPercentage(Aspect)"></completion-bar>
-            <completion-bar title="Scenarios" [played]="getPlayedPercentage(Scenario)"
-                            [owned]="getOwnedPercentage(Scenario)"></completion-bar>
-            <completion-bar title="Modulars" [played]="getPlayedPercentage(Modular)"
-                            [owned]="getOwnedPercentage(Modular)"></completion-bar>
-            <completion-bar title="Packs" [played]="getPlayedPercentage(Packs, packPlayedCheck.bind(this))"
-                            [owned]="getOwnedPercentage(Packs, ownedPackCheck.bind(this))"></completion-bar>
-          </ng-template>
-        </div>
+          </div>
+          <div class="d-flex gap-1 flex-column flex-lg-row mt-lg-1">
+            <button class="btn btn-primary col"
+                    (click)="setRandomValue(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">
+              Randomize All
+            </button>
+          </div>
+          <div class="d-flex gap-1 flex-column flex-lg-row mt-lg-1">
+            <button class="btn btn-primary col"
+                    (click)="unplayedHeroAspect(randomizeHeroSelect, randomizeAspectSelect)">Unplayed Hero + Aspect
+            </button>
+            <button class="btn btn-primary col"
+                    (click)="unplayedHeroScenario(randomizeHeroSelect, randomizeScenarioSelect)">Unplayed Hero +
+              Scenario
+            </button>
+            <button class="btn btn-primary col"
+                    (click)="unplayedScenarioModular(randomizeScenarioSelect, randomizeModularSelect)">Unplayed
+              Scenario + Modular
+            </button>
+            <button class="btn btn-primary col"
+                    (click)="unplayedAll(randomizeHeroSelect, randomizeAspectSelect, randomizeScenarioSelect, randomizeModularSelect)">
+              Unplayed All
+            </button>
+          </div>
+          <div class="input-group mt-1">
+            <select #randomizeMojoModularSelect disabled class="form-select">
+              <option value="" selected>Mojo Modular</option>
+              @for (modular of mojoModulars; track modular) {
+                <option [value]="modular">{{ beautifyEnum(Modular, modular) }}</option>
+              }
+            </select>
+            <button class="btn btn-primary" (click)="setRandomValue(randomizeMojoModularSelect)">Random Mojo Modular
+            </button>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
-}
+  <div ngbAccordionItem>
+    <h4 ngbAccordionHeader>
+      <button ngbAccordionButton>Completion</button>
+    </h4>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <div class="d-flex gap-1">
+            <span style="color: red">Played</span>
+            <span style="color: orange">Owned</span>
+            <span style="color: green">Total</span>
+          </div>
+          <completion-bar title="Heroes" [played]="getPlayedPercentage(Hero)"
+                          [owned]="getOwnedPercentage(Hero)"></completion-bar>
+          <completion-bar title="Aspects" [played]="getPlayedPercentage(Aspect)"
+                          [owned]="getOwnedPercentage(Aspect)"></completion-bar>
+          <completion-bar title="Scenarios" [played]="getPlayedPercentage(Scenario)"
+                          [owned]="getOwnedPercentage(Scenario)"></completion-bar>
+          <completion-bar title="Modulars" [played]="getPlayedPercentage(Modular)"
+                          [owned]="getOwnedPercentage(Modular)"></completion-bar>
+          <completion-bar title="Packs" [played]="getPlayedPercentage(Packs, packPlayedCheck.bind(this))"
+                          [owned]="getOwnedPercentage(Packs, ownedPackCheck.bind(this))"></completion-bar>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

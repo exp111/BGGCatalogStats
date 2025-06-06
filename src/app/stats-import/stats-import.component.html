@@ -1,0 +1,24 @@
+<div class="position-absolute top-50 w-100 d-flex justify-content-center">
+  <div class="w-75 p-5 card">
+    <div class="card-body">
+      <h5 class="card-title">You need to import your stats first</h5>
+      <div class="d-flex flex-column gap-1">
+        <div class="btn-group">
+          <input type="radio" class="btn-check" name="tool" id="bggcatalog" [value]="StatTool.BGG_CATALOG" [ngModel]="selectedTool">
+          <label class="btn btn-outline-primary" for="bggcatalog">BGG Catalog</label>
+          <input type="radio" class="btn-check" name="tool" id="bgstats" [value]="StatTool.BG_STATS" [ngModel]="selectedTool">
+          <label class="btn btn-outline-primary" for="bgstats">BG Stats</label>
+        </div>
+        <div class="input-group">
+          <button class="btn btn-outline-primary" (click)="loadExample()">Load Example</button>
+          <label class="input-group-text" for="fileInput">Upload Export here</label>
+          <input id="fileInput"
+                 type="file"
+                 class="form-control"
+                 accept=".json"
+                 (change)="onFileLoad($any($event))">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
