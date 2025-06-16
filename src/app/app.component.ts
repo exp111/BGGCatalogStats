@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Component, inject} from '@angular/core';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {StatService} from "../services/stat.service";
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,14 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 export class AppComponent {
   static GithubLink = "https://www.github.com/exp111/BGGCatalogStats";
   GithubLink = AppComponent.GithubLink;
+
+  statService = inject(StatService);
+  router = inject(Router);
+
+  clearData() {
+    this.statService.clearStats();
+    this.router.navigateByUrl(this.router.url, {
+      onSameUrlNavigation: "reload"
+    });
+  }
 }

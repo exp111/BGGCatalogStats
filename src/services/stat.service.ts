@@ -14,6 +14,12 @@ export class StatService {
     this.loadStats();
   }
 
+  clearStats() {
+    this.stats = undefined;
+    this.hasStats = false;
+    localStorage.removeItem(this.LOCAL_STORAGE_KEY);
+  }
+
   loadStats() {
     let data = localStorage.getItem(this.LOCAL_STORAGE_KEY);
     if (!data) {
