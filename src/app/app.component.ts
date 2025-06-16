@@ -21,8 +21,7 @@ export class AppComponent {
 
   clearData() {
     this.statService.clearStats();
-    this.router.navigateByUrl(this.router.url, {
-      onSameUrlNavigation: "reload"
-    });
+    //TODO: reload same site?
+    this.router.navigateByUrl("/");
   }
 }
