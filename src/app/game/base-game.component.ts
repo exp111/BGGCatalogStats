@@ -29,7 +29,7 @@ export abstract class BaseGameComponent<S extends BaseGameStats, P extends BaseG
       this.stats = this.loadData();
     } else {
       // route back
-      this.router.navigate(["/import"]);
+      this.router.navigateByUrl(`/import?redirect=${this.router.url}`);
     }
   }
 

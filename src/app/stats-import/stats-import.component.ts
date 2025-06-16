@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {StatService} from "../../services/stat.service";
 import { StatTool } from '../../model/stats';
@@ -14,6 +14,9 @@ import {Router} from "@angular/router";
 })
 export class StatsImportComponent {
   selectedTool = StatTool.BG_STATS;
+
+  @Input()
+  redirect = "";
 
   constructor(private stats: StatService,
               private router: Router) {
@@ -38,11 +41,11 @@ export class StatsImportComponent {
 
   readFile(data: string) {
     this.stats.saveStats(this.selectedTool, JSON.parse(data));
-    this.routeToStart();
+    this.routeBack();
   }
 
-  routeToStart() {
-    this.router.navigate(['/']);
+  routeBack() {
+    this.router.navigateByUrl(this.redirect ? this.redirect : '/');
   }
 
   protected readonly StatTool = StatTool;
