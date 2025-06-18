@@ -44,9 +44,19 @@ td {
 thead {
   th {
     &:not(:first-child) {
-      // Upright text
-      writing-mode: sideways-lr;
-      transform: translate(50%) rotate(15deg);
+      // make rows small
+      max-width: 25px;
+
+      // make the header high enough as its just rotated
+      height: 10rem;
+      padding: 0;
+
+      & > span {
+        display: block;
+        // Upright text (INFO: this is a hack as ios does not support writing-mode: sideways-lr
+        transform: translate(75%) rotate(295deg);
+        transform-origin: bottom left;
+      }
     }
   }
 }
