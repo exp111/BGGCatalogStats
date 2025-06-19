@@ -23,6 +23,7 @@ import {GameStatsModalComponent} from "../../game-stats-modal/game-stats-modal.c
 import {CompletionBarComponent} from "../completion-bar/completion-bar.component";
 import {StatService} from "../../../services/stat.service";
 import {Router} from "@angular/router";
+import {MarvelChampionsGameStatsModalComponent} from "../../game-stats-modal/game/mc-game-stats-modal.component";
 
 @Component({
   selector: 'app-marvel-champions',
@@ -418,8 +419,8 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
   }
 
   onStatsClicked() {
-    let modal = this.modalService.open(GameStatsModalComponent, {centered: true});
-    (modal.componentInstance as GameStatsModalComponent).setData(this.stats!);
+    let modal = this.modalService.open(MarvelChampionsGameStatsModalComponent, {centered: true});
+    (modal.componentInstance as MarvelChampionsGameStatsModalComponent).setData(this.stats!);
   }
 
   isSelectLocked(select: HTMLSelectElement) {

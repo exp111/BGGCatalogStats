@@ -9,6 +9,7 @@ import {BarChartComponent} from "./components/bar-chart/bar-chart.component";
 import {ListComponent} from "./components/list/list.component";
 import {NumberCardComponent} from "./components/number-card/number-card.component";
 import {YearSelectionComponent} from "./date-selection/year-selection/year-selection.component";
+import {BaseGamePlay, BaseGameStats} from "../../model/base-game-stats";
 
 @Component({
   selector: 'app-game-stats-modal',
@@ -24,8 +25,8 @@ import {YearSelectionComponent} from "./date-selection/year-selection/year-selec
   templateUrl: './game-stats-modal.component.html',
   styleUrl: './game-stats-modal.component.scss'
 })
-export class GameStatsModalComponent {
-  data!: MarvelChampionsStats;
+export abstract class GameStatsModalComponent<S extends BaseGameStats, P extends BaseGamePlay> {
+  data!: S;
   timespan = "all";
   timespanFrom: NgbDate;
   timespanTo?: NgbDate;
@@ -36,11 +37,11 @@ export class GameStatsModalComponent {
     (window as any).modal = this;
   }
 
-  setData(data: MarvelChampionsStats) {
+  setData(data: S) {
     this.data = data;
   }
 
-  getPlays() {
+  getPlays(): P[] {
     switch (this.timespan) {
       case "custom":
       case "month":
@@ -51,36 +52,18 @@ export class GameStatsModalComponent {
             let d = new Date(p.Timestamp);
             let date = new NgbDate(d.getFullYear(), d.getMonth() + 1, d.getDate());
             return this.timespanFrom.equals(date) || this.timespanTo!.equals(date) || (this.timespanFrom.before(date) && this.timespanTo!.after(date));
-          });
+          }) as P[];
         } else {
           // fallback to all plays if time range isnt given
-          return this.data.Plays;
+          return this.data.Plays as P[];
         }
       case "all":
       default:
-        return this.data.Plays;
+        return this.data.Plays as P[];
     }
   }
 
-  getHeroes(end = 9) {
-    let heroPlays = this.getPlays()
-      // get all names of heroes played in the play
-      .flatMap(play => play.Players.map(p => Hero[p.Hero]))
-      // only actual values
-      .filter(h => h != null);
-    let heroCountMap = {} as Record<string, number>;
-    for (let hero of heroPlays) {
-      heroCountMap[hero] = heroCountMap[hero] ? heroCountMap[hero] + 1 : 1;
-    }
-    let entries = Object.entries(heroCountMap);
-    return entries
-      // sort by count
-      .sort((a, b) => b[1] - a[1])
-      // only extract max "end" values
-      .slice(0, end)
-      // fill up any remaining slots with zeroes
-      .concat(new Array(Math.max(end - entries.length, 0)).fill(["", 0]));
-  }
+  abstract getEntries(end: number): [string, number][];
 
   getPlayCount() {
     return this.getPlays().length;
@@ -88,18 +71,6 @@ export class GameStatsModalComponent {
 
   getVictoryCount() {
     return this.getPlays().filter(play => play.Won).length;
-  }
-
-  getHeroCount() {
-    return new Set(this.getPlays()
-      .flatMap(p => p.Players.map(pl => pl.Hero))
-      .filter(h => h != null)).size;
-  }
-
-  getScenarioCount() {
-    return new Set(this.getPlays()
-      .map(p => p.Scenario)
-      .filter(h => h != null)).size;
   }
 
   getPlayerCount() {
@@ -113,40 +84,10 @@ export class GameStatsModalComponent {
       / 60);
   }
 
-  // ratio of plays in which an aspect was used
-  getAspectRatio() {
-    let plays = this.getPlays();
-    let aspects = {} as Record<string, number>;
-    let highest = 0;
-    let as = enumToNumberArray(Aspect).filter(v => v != Aspect.END);
-    for (let a of as) {
-      let val = (plays.filter(p => p.Players.some(pl => pl.Aspects.includes(a))).length / plays.length) || 0;
-      aspects[Aspect[a]] = val;
-      if (highest < val) {
-        highest = val;
-      }
-    }
-    // normalize to the highest ratio
-    if (highest > 0) {
-      for (let a of as) {
-        aspects[Aspect[a]] = aspects[Aspect[a]] / highest;
-      }
-    }
-    return Object.entries(aspects);
-  }
-
-  getScenarioRatio(end = 5) {
-    let plays = this.getPlays();
-    let scenarios = {} as Record<string, number>;
-    for (let scenario of enumToNumberArray(Scenario).filter(v => v != Scenario.END)) {
-      let val = (plays.filter(p => p.Scenario == scenario).length / plays.length) || 0;
-      // only add scenario if played
-      if (val > 0) {
-        scenarios[formatFromEnumString(Scenario[scenario])] = val;
-      }
-    }
-    return Object.entries(scenarios).sort((a, b) => b[1] - a[1]).slice(0, end);
-  }
+  abstract getHeroCount(): number;
+  abstract getScenarioCount(): number;
+  abstract getAspectRatio(): [string, number][];
+  abstract getScenarioRatio(): [string, number][];
 
   protected readonly String = String;
 }
