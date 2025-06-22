@@ -104,23 +104,15 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
         continue;
       }
       let obj = {
-        Id: String(play.id),
-        Duration: play.length,
-        Notes: play.notes,
-        Players: [] as TooManyBonesPlayer[],
-        Timestamp: play.playDate,
-        Location: backup.locations.find(l => l.id == play.locationId)?.name
+        ...this.parseBasePlayBGGCatalog(backup, play),
+        Tyrant: this.parseCustomFieldValuePlay(backup, play, Tyrant, tyrantField),
+        Difficulty: this.parseCustomFieldValuePlay(backup, play, Difficulty, difficultyField)
       } as TooManyBonesPlay;
       // players
       let players = backup.playersPlays.filter(p => p.playId == play.id);
       for (let player of players) {
         obj.Players.push(this.parsePlayer(player, backup, gearlocField));
       }
-      // tyrant
-      obj.Tyrant = this.parseCustomFieldValuePlay(backup, play, Tyrant, tyrantField);
-      // difficulty
-      obj.Difficulty = this.parseCustomFieldValuePlay(backup, play, Difficulty, difficultyField);
-      obj.Won = players.some(p => p.winner == 1)
       plays.push(obj);
     }
     ret.Plays = plays;
@@ -147,18 +139,11 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
         continue;
       }
       let obj = {
-        Id: play.uuid,
-        Duration: play.durationMin,
-        Notes: play.comments ?? "",
+        ...this.parseBasePlayBGStats(backup, play),
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
-        Timestamp: play.playDate,
-        Location: backup.locations.find(l => l.id == play.locationRefId)?.name
+        Tyrant: this.parseFieldBGStats(play.board, Tyrant),
+        Difficulty: this.parseFieldBGStats(play.board, Difficulty)
       } as TooManyBonesPlay;
-      // scenario
-      obj.Tyrant = this.parseFieldBGStats(play.board, Tyrant);
-      // difficulty
-      obj.Difficulty = this.parseFieldBGStats(play.board, Difficulty);
-      obj.Won = play.playerScores.some(p => p.winner)
       plays.push(obj);
     }
     ret.Plays = plays;

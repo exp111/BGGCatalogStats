@@ -198,25 +198,16 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         continue;
       }
       let obj = {
-        Id: String(play.id),
-        Duration: play.length,
-        Notes: play.notes,
-        Players: [] as MarvelChampionsPlayer[],
-        Timestamp: play.playDate,
-        Location: backup.locations.find(l => l.id == play.locationId)?.name
+        ...this.parseBasePlayBGGCatalog(backup, play),
+        Scenario: this.parseCustomFieldValuePlay(backup, play, Scenario, scenarioField!),
+        Modulars: this.parseCustomFieldValuePlay(backup, play, Modular, modularField!, modularsField),
+        Difficulty: this.parseCustomFieldValuePlay(backup, play, Difficulty, difficultyField!)
       } as MarvelChampionsPlay;
       // players
       let players = backup.playersPlays.filter(p => p.playId == play.id);
       for (let player of players) {
         obj.Players.push(this.parsePlayerBGGCatalog(player, backup, heroField!, aspectField!, aspectsField!));
       }
-      // scenario
-      obj.Scenario = this.parseCustomFieldValuePlay(backup, play, Scenario, scenarioField!);
-      // modular
-      obj.Modulars = this.parseCustomFieldValuePlay(backup, play, Modular, modularField!, modularsField);
-      // difficulty
-      obj.Difficulty = this.parseCustomFieldValuePlay(backup, play, Difficulty, difficultyField!);
-      obj.Won = players.some(p => p.winner == 1)
       plays.push(obj);
     }
     ret.Plays = plays;
@@ -243,20 +234,12 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         continue;
       }
       let obj = {
-        Id: play.uuid,
-        Duration: play.durationMin,
-        Notes: play.comments ?? "",
+        ...this.parseBasePlayBGStats(backup, play),
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
-        Timestamp: play.playDate,
-        Location: backup.locations.find(l => l.id == play.locationRefId)?.name
+        Scenario: this.parseFieldBGStats(play.board, Scenario),
+        Modulars: this.parseFieldBGStats(play.board, Modular, true),
+        Difficulty: this.parseFieldBGStats(play.board, Difficulty)
       } as MarvelChampionsPlay;
-      // scenario
-      obj.Scenario = this.parseFieldBGStats(play.board, Scenario);
-      // modular
-      obj.Modulars = this.parseFieldBGStats(play.board, Modular, true);
-      // difficulty
-      obj.Difficulty = this.parseFieldBGStats(play.board, Difficulty);
-      obj.Won = play.playerScores.some(p => p.winner)
       plays.push(obj);
     }
     ret.Plays = plays;

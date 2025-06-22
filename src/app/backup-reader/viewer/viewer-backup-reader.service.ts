@@ -58,15 +58,9 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
     for (let play of backup.plays) {
       let game = backup.games.find(g => g.id == play.gameId);
       let obj = {
+        ...this.parseBasePlayBGGCatalog(backup, play),
         Game: game?.name,
         GameId: game?.bggId,
-        Id: String(play.id),
-        Duration: play.length,
-        Notes: play.notes,
-        Players: [],
-        Timestamp: play.playDate,
-        Won: false, // set later
-        Location: backup.locations.find(l => l.id == play.locationId)?.name,
         Data: backup.customData.filter(d => d.entityId == play.id && d.playerId == null).map(d => d.value)
       } as ViewerPlay;
       // players
@@ -74,7 +68,6 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
       for (let player of players) {
         obj.Players.push(this.parsePlayer(player, backup));
       }
-      obj.Won = players.some(p => p.winner == 1)
       plays.push(obj);
     }
     ret.Plays = plays;
@@ -91,15 +84,10 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
     for (let play of backup.plays) {
       let game = backup.games.find(g => g.id == play.gameRefId);
       let obj = {
+        ...this.parseBasePlayBGStats(backup, play),
         Game: game?.name,
         GameId: game?.bggId,
-        Id: play.uuid,
-        Duration: play.durationMin,
-        Notes: play.comments ?? "",
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
-        Timestamp: play.playDate,
-        Won: play.playerScores.some(p => p.winner),
-        Location: backup.locations.find(l => l.id == play.locationRefId)?.name,
         Data: play.board?.split("\uff0f")
       } as ViewerPlay;
       plays.push(obj);

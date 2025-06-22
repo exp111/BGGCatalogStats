@@ -12,7 +12,6 @@ See the help page for documentation on how to use the website.
 - "Top" entry for tables: Most played, shortest/longest (avg) playtime
 - Pack Filter for plays
 - add bgstats to help
-- parse base play in shared function
 - Stats Export:
   - generic base class => TMB 
   - hide unused aspects (?)

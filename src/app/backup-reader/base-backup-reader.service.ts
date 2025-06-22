@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BGGCatalogBackup, BGGCatalogCustomDataEntry, BGGCatalogCustomFieldEntry, BGGCatalogPlayEntry, BGGCatalogPlayerPlayEntry} from "../../model/bgg-catalog";
-import {BaseGameStats} from "../../model/base-game-stats";
+import {BaseGamePlay, BaseGamePlayer, BaseGameStats} from "../../model/base-game-stats";
 import {formatToEnumString, getEnumValue} from "../util/enum-utils";
-import {BGStatsBackup, BGStatsPlayerScoreEntry} from "../../model/bg-stats";
+import {BGStatsBackup, BGStatsPlayEntry, BGStatsPlayerScoreEntry} from "../../model/bg-stats";
 
 @Injectable({
   providedIn: 'root'
@@ -135,6 +135,30 @@ export abstract class BaseBackupReaderService {
       return multi ? [] : undefined;
     }
     return multi ? val : val[0];
+  }
+
+  protected parseBasePlayBGGCatalog(backup: BGGCatalogBackup, play: BGGCatalogPlayEntry) {
+    return {
+      Id: String(play.id),
+      Players: [],
+      Duration: play.length,
+      Won: backup.playersPlays.filter(p => p.playId == play.id).some(p => p.winner == 1),
+      Notes: play.notes ?? "",
+      Timestamp: play.playDate,
+      Location: backup.locations.find(l => l.id == play.locationId)?.name,
+    } as BaseGamePlay;
+  }
+
+  protected parseBasePlayBGStats(backup: BGStatsBackup, play: BGStatsPlayEntry) {
+    return {
+      Id: play.uuid,
+      Players: [],
+      Duration: play.durationMin,
+      Won: play.playerScores.some(p => p.winner),
+      Notes: play.comments ?? "",
+      Timestamp: play.playDate,
+      Location: backup.locations.find(l => l.id == play.locationRefId)?.name,
+    } as BaseGamePlay;
   }
 
   protected abstract getEnumName(enums: any): string;
