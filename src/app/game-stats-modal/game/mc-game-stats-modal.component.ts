@@ -26,6 +26,17 @@ import {enumToNumberArray, formatFromEnumString} from "../../util/enum-utils";
   styleUrl: '../game-stats-modal.component.scss'
 })
 export class MarvelChampionsGameStatsModalComponent extends GameStatsModalComponent<MarvelChampionsStats, MarvelChampionsPlay> {
+  imgPath = "mc/hero";
+  insightName1 = "Heroes";
+  insightName2 = "New";
+  insightName3 = "Scenarios";
+  insightName4 = "New";
+  barChartTitle = "Aspects";
+
+  get listTitle() {
+    return `${this.getScenarioCount()} Scenarios`;
+  }
+
   getEntries(end: number) {
     let heroPlays = this.getPlays()
       // get all names of heroes played in the play
@@ -44,6 +55,30 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
       .slice(0, end)
       // fill up any remaining slots with zeroes
       .concat(new Array(Math.max(end - entries.length, 0)).fill(["", 0]));
+  }
+
+  getInsightCount1() {
+    return this.getHeroCount();
+  }
+
+  getInsightCount2() {
+    return 0; //TODO: new heroes
+  }
+
+  getInsightCount3() {
+    return this.getScenarioCount();
+  }
+
+  getInsightCount4() {
+    return 0; //TODO: new scenarios
+  }
+
+  getBarChartItems() {
+    return this.getAspectRatio();
+  }
+
+  getListItems() {
+    return this.getScenarioRatio();
   }
 
   getHeroCount() {

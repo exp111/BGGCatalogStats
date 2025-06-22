@@ -31,6 +31,14 @@ export abstract class GameStatsModalComponent<S extends BaseGameStats, P extends
   timespanFrom: NgbDate;
   timespanTo?: NgbDate;
 
+  abstract imgPath: string;
+  abstract insightName1: string;
+  abstract insightName2: string;
+  abstract insightName3: string;
+  abstract insightName4: string;
+  abstract barChartTitle: string;
+  abstract listTitle: string;
+
   constructor(protected activeModal: NgbActiveModal,
               protected calendar: NgbCalendar) {
     this.timespanFrom = this.calendar.getToday();
@@ -84,10 +92,12 @@ export abstract class GameStatsModalComponent<S extends BaseGameStats, P extends
       / 60);
   }
 
-  abstract getHeroCount(): number;
-  abstract getScenarioCount(): number;
-  abstract getAspectRatio(): [string, number][];
-  abstract getScenarioRatio(): [string, number][];
+  abstract getInsightCount1(): number;
+  abstract getInsightCount2(): number;
+  abstract getInsightCount3(): number;
+  abstract getInsightCount4(): number;
+  abstract getBarChartItems(): [string, number][];
+  abstract getListItems(): [string, number][];
 
   protected readonly String = String;
 }
