@@ -14,7 +14,6 @@ See the help page for documentation on how to use the website.
 - add bgstats to help
 - Stats Export:
   - TMB 
-  - hide unused aspects (?)
   - fix uncentered hero images (ie deadpool)
   - background color
   - allow user to select:

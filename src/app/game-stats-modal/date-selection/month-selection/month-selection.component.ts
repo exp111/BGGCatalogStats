@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
+import {monthShortNames} from "../../../util/date-utils";
 
 @Component({
   selector: 'app-month-selection',
@@ -20,8 +21,6 @@ export class MonthSelectionComponent implements OnInit {
   @Output()
   toDateChange = new EventEmitter<NgbDate | null>();
 
-  monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
   selectedMonth: number = new Date().getMonth();
   selectedYear: number = new Date().getFullYear();
 
@@ -36,7 +35,7 @@ export class MonthSelectionComponent implements OnInit {
     }
     this.selectedMonth -= 1;
     if (this.selectedMonth < 0) {
-      this.selectedMonth = this.monthNames.length - 1;
+      this.selectedMonth = monthShortNames.length - 1;
       this.selectedYear -= 1;
     }
     this.setRange();
@@ -44,7 +43,7 @@ export class MonthSelectionComponent implements OnInit {
 
   next() {
     this.selectedMonth += 1;
-    if (this.selectedMonth >= this.monthNames.length) {
+    if (this.selectedMonth >= monthShortNames.length) {
       this.selectedMonth = 0;
       this.selectedYear += 1;
     }
@@ -57,4 +56,6 @@ export class MonthSelectionComponent implements OnInit {
     let date = new Date(this.selectedYear, this.selectedMonth + 1, 0);
     this.toDateChange.emit(new NgbDate(this.selectedYear, this.selectedMonth + 1, date.getDate()));
   }
+
+  protected readonly monthShortNames = monthShortNames;
 }

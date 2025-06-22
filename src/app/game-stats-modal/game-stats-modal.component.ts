@@ -10,6 +10,7 @@ import {ListComponent} from "./components/list/list.component";
 import {NumberCardComponent} from "./components/number-card/number-card.component";
 import {YearSelectionComponent} from "./date-selection/year-selection/year-selection.component";
 import {BaseGamePlay, BaseGameStats} from "../../model/base-game-stats";
+import {monthLongNames, monthShortNames} from "../util/date-utils";
 
 @Component({
   selector: 'app-game-stats-modal',
@@ -72,6 +73,25 @@ export abstract class GameStatsModalComponent<S extends BaseGameStats, P extends
     let d = new Date(play.Timestamp);
     let date = new NgbDate(d.getFullYear(), d.getMonth() + 1, d.getDate());
     return this.timespanFrom.equals(date) || this.timespanTo!.equals(date) || (this.timespanFrom.before(date) && this.timespanTo!.after(date));
+  }
+
+  getTimeSpanName() {
+    let formatDate = (d: NgbDate) => d ? `${d.day}.${d.month}.${d.year}` : "";
+    switch (this.timespan) {
+      case "year":
+        return this.timespanFrom.year;
+      case "month":
+        return `${monthLongNames[this.timespanFrom.month - 1]} ${this.timespanFrom.year}`;
+      case "custom":
+        if (this.shouldFilterTimeSpan()) {
+          return this.timespanTo?.equals(this.timespanFrom) ? formatDate(this.timespanFrom) : `${formatDate(this.timespanFrom)} - ${formatDate(this.timespanTo!)}`;
+        } else {
+          return "";
+        }
+      case "all":
+      default:
+        return "";
+    }
   }
 
   abstract getEntries(end: number): [string, number][];

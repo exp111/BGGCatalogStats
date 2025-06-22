@@ -52,7 +52,10 @@
       }
     </div>
     <div class="col d-flex flex-column gap-1">
-      <div class="h-50 row g-1">
+      <div class="text-center fw-bold">
+        {{ getTimeSpanName() }}
+      </div>
+      <div class="flex-grow-1 row g-1">
         <div class="col-6">
           <app-number-card title="{{getPlayCount()}}" subtitle="Plays"></app-number-card>
         </div>
