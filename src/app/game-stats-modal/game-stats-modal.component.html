@@ -36,7 +36,7 @@
   <div class="row">
     <!-- left side -->
     <div class="col row g-1">
-      @for (e of getEntries(9); track e[0]; let first = $first) {
+      @for (e of getEntries(9); track $index + e[0]; let first = $first) {
         <div class="{{first ? 'col-12' : 'col-6'}} d-flex justify-content-center position-relative">
           @if (e[0]) {
             <img class="hero-image" src="./img/{{imgPath}}/{{e[0].toLowerCase()}}.jpg">

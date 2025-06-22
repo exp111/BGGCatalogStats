@@ -13,7 +13,7 @@ See the help page for documentation on how to use the website.
 - Pack Filter for plays
 - add bgstats to help
 - Stats Export:
-  - generic base class => TMB 
+  - TMB 
   - hide unused aspects (?)
   - fix uncentered hero images (ie deadpool)
   - background color
