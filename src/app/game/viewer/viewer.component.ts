@@ -6,6 +6,8 @@ import {ViewerBackupReaderService} from "../../backup-reader/viewer/viewer-backu
 import {ViewerPlay, ViewerStats} from "../../../model/viewer";
 import {Router} from "@angular/router";
 import {StatService} from "../../../services/stat.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ViewerDocModalComponent} from "./viewer-doc-modal/viewer-doc-modal.component";
 
 @Component({
   selector: 'app-viewer',
@@ -26,6 +28,7 @@ export class ViewerComponent extends BaseGameComponent<ViewerStats, ViewerPlay> 
   sortAscending = true;
 
   constructor(protected backupService: ViewerBackupReaderService,
+              protected modalService: NgbModal,
               statService: StatService,
               router: Router) {
     super(backupService, statService, router);
@@ -51,6 +54,10 @@ export class ViewerComponent extends BaseGameComponent<ViewerStats, ViewerPlay> 
       return plays.reverse();
     }
     return plays;
+  }
+
+  openDocs() {
+    this.modalService.open(ViewerDocModalComponent, {centered: true});
   }
 
   protected readonly formatDurationMinutes = formatDurationMinutes;

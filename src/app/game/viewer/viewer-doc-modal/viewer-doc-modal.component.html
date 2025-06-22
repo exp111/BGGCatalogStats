@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Filter Documentation</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+  The filter is a javascript evaluated expression running inside a <code>plays.filter(play => ...)</code>.<br>
+  This means you can run most/all things you can run with javascript.<br>
+  This also means that this is a <b>massive security vulnerability</b> if you paste anything here, if you dont know what it does.
+  <h5>Variables</h5>
+  You should have access to the <code>play</code> variable, which is of the type <code>ViewerPlay</code>.
+
+  <h5>Type Documentation</h5>
+  <h6><b>ViewerPlay</b></h6>
+  <pre><code>{{VIEWER_PLAY.join("\n")}}</code></pre>
+  The field <code>Players</code> is of the type <code>ViewerPlayer</code>.
+  <h6><b>ViewerPlayer</b></h6>
+  <pre><code>{{VIEWER_PLAYER.join("\n")}}</code></pre>
+</div>
