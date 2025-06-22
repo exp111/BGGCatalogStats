@@ -1,10 +1,13 @@
 <div class="title">{{ title }}</div>
 <div class="row h-100 g-1 p-1">
-  @for (ratio of ratios; track ratio[0]) {
+  @for (item of ratios; track item[0]) {
+    @let perc = Math.round(item[1] * 100);
+    @let min = 5;
+    @let ratio = Math.max(perc, min);
     <div class="col">
-      <div class="inverse-bar" style="--ratio: {{(ratio[1] * 100).toFixed(0)}}"></div>
-      <div class="bar rounded-1 {{ratio[0].toLowerCase()}}"
-           style="--ratio: {{(ratio[1] * 100).toFixed(0)}}"></div>
+      <div class="inverse-bar" style="--ratio: {{ratio}}"></div>
+      <div class="bar rounded-1 {{item[0].toLowerCase()}}"
+           style="--ratio: {{ratio}}"></div>
     </div>
   }
 </div>

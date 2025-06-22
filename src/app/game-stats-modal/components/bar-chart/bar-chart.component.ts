@@ -14,4 +14,5 @@ export class BarChartComponent {
 
   @Input()
   ratios!: [string, number][];
+  protected readonly Math = Math;
 }
