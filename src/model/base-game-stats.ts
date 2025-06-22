@@ -10,6 +10,7 @@ export interface BaseGamePlay {
   Won: boolean;
   Notes: string;
   Timestamp: string;
+  Location: string;
 }
 
 export interface BaseGameStats {

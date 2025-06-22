@@ -65,7 +65,8 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
         Notes: play.notes,
         Players: [],
         Timestamp: play.playDate,
-        Won: false,
+        Won: false, // set later
+        Location: backup.locations.find(l => l.id == play.locationId)?.name,
         Data: backup.customData.filter(d => d.entityId == play.id && d.playerId == null).map(d => d.value)
       } as ViewerPlay;
       // players
@@ -98,6 +99,7 @@ export class ViewerBackupReaderService extends BaseBackupReaderService {
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
         Timestamp: play.playDate,
         Won: play.playerScores.some(p => p.winner),
+        Location: backup.locations.find(l => l.id == play.locationRefId)?.name,
         Data: play.board?.split("\uff0f")
       } as ViewerPlay;
       plays.push(obj);

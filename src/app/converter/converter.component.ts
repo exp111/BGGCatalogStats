@@ -21,6 +21,10 @@ import getUuidByString from "uuid-by-string";
     styleUrl: './converter.component.scss'
 })
 export class ConverterComponent {
+  constructor() {
+    (window as any).converter = this;
+  }
+
   loadExample() {
     fetch(`./example/bggcatalog-mc-example.json`).then(r => r.text()).then(t => this.readFile(t));
   }

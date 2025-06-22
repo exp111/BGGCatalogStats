@@ -19,7 +19,6 @@ import {formatDurationMinutes} from "../../util/helper";
 import {MCFilterParams, MCFilterPipe, SortOrder, SortType} from "./mc-filter.pipe";
 import {Enums, enumToNumberArray} from "../../util/enum-utils";
 import {NgbAccordionModule, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {GameStatsModalComponent} from "../../game-stats-modal/game-stats-modal.component";
 import {CompletionBarComponent} from "../completion-bar/completion-bar.component";
 import {StatService} from "../../../services/stat.service";
 import {Router} from "@angular/router";

@@ -97,7 +97,15 @@ export class MakeExampleComponent {
     // player plays
     example.playersPlays = json.playersPlays.filter(p => example.players.some(player => p.playerId == player.id) // player in any game play
       && example.plays.some(play => play.id == p.playId)); // play is game play
-    example.locations = [];
+    // Location
+    let locationCount = 1;
+    example.locations = json.locations.filter(l =>
+      example.plays.some(play => play.locationId == l.id))
+      .map(l => {
+        l.name = `Location ${locationCount++}`;
+        return l;
+      });
+    // custom data
     example.customFields = json.customFields.filter(f => f.selectedGames.split(",").includes(String(gameId)));
     example.customData = json.customData.filter(d => example.customFields.some(f => f.id == d.fieldId));
     return example;

@@ -108,7 +108,8 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
         Duration: play.length,
         Notes: play.notes,
         Players: [] as TooManyBonesPlayer[],
-        Timestamp: play.playDate
+        Timestamp: play.playDate,
+        Location: backup.locations.find(l => l.id == play.locationId)?.name
       } as TooManyBonesPlay;
       // players
       let players = backup.playersPlays.filter(p => p.playId == play.id);
@@ -150,7 +151,8 @@ export class TMBBackupReaderService extends BaseBackupReaderService {
         Duration: play.durationMin,
         Notes: play.comments ?? "",
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
-        Timestamp: play.playDate
+        Timestamp: play.playDate,
+        Location: backup.locations.find(l => l.id == play.locationRefId)?.name
       } as TooManyBonesPlay;
       // scenario
       obj.Tyrant = this.parseFieldBGStats(play.board, Tyrant);

@@ -202,7 +202,8 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         Duration: play.length,
         Notes: play.notes,
         Players: [] as MarvelChampionsPlayer[],
-        Timestamp: play.playDate
+        Timestamp: play.playDate,
+        Location: backup.locations.find(l => l.id == play.locationId)?.name
       } as MarvelChampionsPlay;
       // players
       let players = backup.playersPlays.filter(p => p.playId == play.id);
@@ -246,7 +247,8 @@ export class MCBackupReaderService extends BaseBackupReaderService {
         Duration: play.durationMin,
         Notes: play.comments ?? "",
         Players: play.playerScores.map(score => this.parsePlayerBGStats(score, backup)),
-        Timestamp: play.playDate
+        Timestamp: play.playDate,
+        Location: backup.locations.find(l => l.id == play.locationRefId)?.name
       } as MarvelChampionsPlay;
       // scenario
       obj.Scenario = this.parseFieldBGStats(play.board, Scenario);

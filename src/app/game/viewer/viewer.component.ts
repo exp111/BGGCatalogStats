@@ -40,6 +40,8 @@ export class ViewerComponent extends BaseGameComponent<ViewerStats, ViewerPlay> 
             return a.Timestamp.localeCompare(b.Timestamp);
           case "duration":
             return a.Duration - b.Duration;
+          case "location":
+            return a.Location?.localeCompare(b.Location);
           case "name":
           default:
             return a.Game.localeCompare(b.Game);
