@@ -81,18 +81,18 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
     return this.getScenarioRatio();
   }
 
-  getNewItemCountOfSet(oldSet: Set<unknown>, newSet: Set<unknown>) {
+  getNewItemsOfSet(oldSet: Set<unknown>, newSet: Set<unknown>) {
     if (oldSet.size == 0) {
-      return newSet.size;
+      return newSet;
     }
+    let items = new Set();
     // count which new items are not in the old timespan
-    let count = 0;
     for (let item of newSet) {
       if (!oldSet.has(item)) {
-        count++;
+        items.add(item);
       }
     }
-    return count;
+    return items;
   }
 
   // Heroes
@@ -107,7 +107,7 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
   }
 
   getNewHeroCount() {
-    return this.getNewItemCountOfSet(this.getHeroes(this.getOlderPlays()), this.getHeroes())
+    return this.getNewItemsOfSet(this.getHeroes(this.getOlderPlays()), this.getHeroes()).size;
   }
 
   // Scenarios
@@ -122,7 +122,7 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
   }
 
   getNewScenarioCount() {
-    return this.getNewItemCountOfSet(this.getScenarios(this.getOlderPlays()), this.getScenarios());
+    return this.getNewItemsOfSet(this.getScenarios(this.getOlderPlays()), this.getScenarios()).size;
   }
 
   // ratio of plays in which an aspect was used

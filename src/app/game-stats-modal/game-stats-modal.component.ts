@@ -42,7 +42,7 @@ export abstract class GameStatsModalComponent<S extends BaseGameStats, P extends
   constructor(protected activeModal: NgbActiveModal,
               protected calendar: NgbCalendar) {
     this.timespanFrom = this.calendar.getToday();
-    (window as any).modal = this;
+    (window as any).statsModal = this;
   }
 
   setData(data: S) {
