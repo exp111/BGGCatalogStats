@@ -50,25 +50,22 @@ export abstract class GameStatsModalComponent<S extends BaseGameStats, P extends
   }
 
   getPlays(): P[] {
-    switch (this.timespan) {
-      case "custom":
-      case "month":
-      case "year":
-        if (this.timespanFrom && this.timespanTo) {
-          return this.data.Plays.filter(p => {
-            // build date from timestamp. date month is 0 indexed
-            let d = new Date(p.Timestamp);
-            let date = new NgbDate(d.getFullYear(), d.getMonth() + 1, d.getDate());
-            return this.timespanFrom.equals(date) || this.timespanTo!.equals(date) || (this.timespanFrom.before(date) && this.timespanTo!.after(date));
-          }) as P[];
-        } else {
-          // fallback to all plays if time range isnt given
-          return this.data.Plays as P[];
-        }
-      case "all":
-      default:
-        return this.data.Plays as P[];
-    }
+    return this.shouldFilterTimeSpan() ?
+      this.data.Plays.filter(p => this.isInTimeRange(p)) as P[]
+      : this.data.Plays as P[];
+  }
+
+  // returns if the timespan is currently being restricted
+  shouldFilterTimeSpan() {
+    return this.timespan != null && this.timespan != "all" && this.timespanFrom != null && this.timespanTo != null;
+  }
+
+  // checks if a given play falls into the restricted timespan
+  isInTimeRange(play: BaseGamePlay) {
+    // build date from timestamp. date month is 0 indexed
+    let d = new Date(play.Timestamp);
+    let date = new NgbDate(d.getFullYear(), d.getMonth() + 1, d.getDate());
+    return this.timespanFrom.equals(date) || this.timespanTo!.equals(date) || (this.timespanFrom.before(date) && this.timespanTo!.after(date));
   }
 
   abstract getEntries(end: number): [string, number][];
@@ -93,10 +90,15 @@ export abstract class GameStatsModalComponent<S extends BaseGameStats, P extends
   }
 
   abstract getInsightCount1(): number;
+
   abstract getInsightCount2(): number;
+
   abstract getInsightCount3(): number;
+
   abstract getInsightCount4(): number;
+
   abstract getBarChartItems(): [string, number][];
+
   abstract getListItems(): [string, number][];
 
   protected readonly String = String;

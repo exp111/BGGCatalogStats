@@ -62,7 +62,7 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
   }
 
   getInsightCount2() {
-    return 0; //TODO: new heroes
+    return this.getNewHeroCount();
   }
 
   getInsightCount3() {
@@ -70,7 +70,7 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
   }
 
   getInsightCount4() {
-    return 0; //TODO: new scenarios
+    return this.getNewScenarioCount();
   }
 
   getBarChartItems() {
@@ -81,16 +81,48 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
     return this.getScenarioRatio();
   }
 
-  getHeroCount() {
-    return new Set(this.getPlays()
+  getHeroes(plays: MarvelChampionsPlay[] = this.getPlays()) {
+    return new Set(plays
       .flatMap(p => p.Players.map(pl => pl.Hero))
-      .filter(h => h != null)).size;
+      .filter(h => h != null));
+  }
+
+  getHeroCount() {
+    return this.getHeroes().size;
+  }
+
+  getNewHeroCount() {
+    // if not filtered, just return 0
+    if (!this.shouldFilterTimeSpan()) {
+      return 0;
+    }
+    // get heroes in the timespan
+    let newHeroes = this.getHeroes();
+    // get heroes not in the timespan
+    let olderPlays = this.data.Plays.filter(p => !this.isInTimeRange(p));
+    let olderHeroes = this.getHeroes(olderPlays);
+    // count which new heroes are not in the old timespan
+    let count = 0;
+    for (let hero of newHeroes) {
+      if (!olderHeroes.has(hero)) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  getScenarios(plays: MarvelChampionsPlay[] = this.getPlays()) {
+    return new Set(plays
+      .map(p => p.Scenario)
+      .filter(h => h != null));
   }
 
   getScenarioCount() {
-    return new Set(this.getPlays()
-      .map(p => p.Scenario)
-      .filter(h => h != null)).size;
+    return this.getScenarios().size;
+  }
+
+  getNewScenarioCount() {
+    return 0; //TODO:
   }
 
   // ratio of plays in which an aspect was used
