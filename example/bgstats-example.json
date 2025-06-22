@@ -1,1 +1,1963 @@
-{"about":"","games":[{"bggId":285774,"bggName":"Marvel Champions: The Card Game","bggYear":2019,"id":33,"name":"Marvel Champions: The Card Game","uuid":"EBC2CF9D-50C9-5C32-84A4-C3D3BE25173C"},{"bggId":192135,"bggName":"Too Many Bones","bggYear":2017,"id":49,"name":"Too Many Bones","uuid":"CB191EFC-EF3F-56DC-A945-414EC223D750"}],"locations":[],"players":[{"id":5,"bggUsername":"","isAnonymous":false,"metaData":"{\"isNpc\":0}","modificationDate":"2025-01-01 14:30:00","name":"Player 1","uuid":"256EC006-69E8-580B-B302-5C1DA95827BC"},{"id":3,"bggUsername":"","isAnonymous":false,"metaData":"{\"isNpc\":0}","modificationDate":"2025-01-01 14:30:00","name":"Me","uuid":"94563EC3-83E2-5AA3-B43A-BD9B337B2E08"},{"id":5,"bggUsername":"","isAnonymous":false,"metaData":"{\"isNpc\":0}","modificationDate":"2025-01-01 14:30:00","name":"Player 1","uuid":"256EC006-69E8-580B-B302-5C1DA95827BC"},{"id":6,"bggUsername":"","isAnonymous":false,"metaData":"{\"isNpc\":0}","modificationDate":"2025-01-01 14:30:00","name":"Player 2","uuid":"C5EB5F9E-2CEE-5EF3-BE27-ADF7E9BB1514"},{"id":3,"bggUsername":"","isAnonymous":false,"metaData":"{\"isNpc\":0}","modificationDate":"2025-01-01 14:30:00","name":"Me","uuid":"94563EC3-83E2-5AA3-B43A-BD9B337B2E08"},{"id":7,"bggUsername":"","isAnonymous":false,"metaData":"{\"isNpc\":0}","modificationDate":"2025-01-01 14:30:00","name":"Player 3","uuid":"E3E91FFF-AAB2-52FF-AF48-953372007A23"}],"plays":[{"board":"Absorbing Man／Hydra-Patrouille／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"DEE1F3A2-9CB9-5828-95AF-ECB282913C71","durationMin":35,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Spider-Woman／Aggression／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Standard／Crossbones／Hydra-Angriff／Waffenmeister／Hydras Legionen","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"D524039A-3E45-51B6-9240-C1EEC33FF803","durationMin":30,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Spider-Woman／Aggression／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"765A23E1-8D00-52F6-B3E7-2C6FA1A62FFD","durationMin":23,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Spider Man／Pool","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"42A1CDDA-2C37-54D6-A063-E7A1E5E18266","durationMin":20,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Deadpool／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Doomsday Chair／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"60E4D1F3-8BBC-5B90-B410-02D2909516EC","durationMin":20,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Deadpool／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Expert","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"D8E0E9FD-1EE6-59F2-95AE-53FD5C0CE700","durationMin":15,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Deadpool／Pool","score":"","seatOrder":0,"startPlayer":false,"winner":false,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"AC051836-6782-521D-8E27-0928B9DA279A","durationMin":23,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"She Hulk／Aggression","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Ultron／Unter Beschuss／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"1DB7E8B9-E8F6-5BC8-A0DB-F82201D0C855","durationMin":45,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Deadpool／Pool","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Ultron／Unter Beschuss／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"5E596B86-658C-5C1F-A1BB-F1388DFB9002","durationMin":27,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Deadpool／Pool","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Ultron／Unter Beschuss／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"77673427-2973-521B-B7F3-404241AF43D5","durationMin":21,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Iron Man／Aggression","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Ultron／Unter Beschuss／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"CFDC5EA7-B456-59E4-BBB1-74A1860D9A7E","durationMin":15,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"","score":"","seatOrder":0,"startPlayer":false,"winner":false,"team":""}]},{"board":"Ultron／Unter Beschuss／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"8A695474-2D2F-5639-B28E-1432FA9DD35C","durationMin":41,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Iron Man／Aggression","score":"","seatOrder":0,"startPlayer":false,"winner":false,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"9B11A71C-047A-5072-83FB-F4E72337B177","durationMin":40,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Iron Man／Aggression","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"72D86CD7-A251-5A17-ADC2-350F4F6B0CF4","durationMin":25,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Iron Man／Aggression","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"BEC3651B-0E6F-5AAB-9A94-5AD95E77EC38","durationMin":25,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Spider Man／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Expert","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"48E36098-8311-5A9E-A09B-C5E392D28184","durationMin":14,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Spider Man／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":false,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"8C4486C3-B9AA-54CB-AF92-AB5354D70628","durationMin":20,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Black Panther／Schutz","score":"","seatOrder":0,"startPlayer":false,"winner":false,"team":""}]},{"board":"Ultron／Unter Beschuss／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"99062EE3-DA8B-543E-B872-85CCF4EDA8BE","durationMin":46,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Spider Man／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"69C13F43-AE95-5B45-92BD-44ED6DA0FE70","durationMin":20,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Deadpool／Pool","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Hydras Legionen／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"70FF2150-653D-5EF5-A82B-6FDE4A91DE4E","durationMin":13,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Deadpool／Pool／Prebuilt","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"50849851-193E-5A7C-8006-C5E78E8901C2","durationMin":40,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Captain Marvel／Führung","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"DE1E7089-7260-57EB-B7C1-4C13B1CF6F7D","durationMin":26,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Spider Man／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"6BFD9A32-5265-5E11-B52E-F7F9A490A10D","durationMin":21,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Black Panther／Schutz／Prebuilt","score":"","seatOrder":0,"startPlayer":false,"winner":false,"team":""}]},{"board":"Klaw／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"2AD80685-EA0E-5AF5-86CF-574289B8CDBB","durationMin":49,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Black Panther／Schutz","score":"","seatOrder":0,"startPlayer":false,"winner":false,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"68D8978C-A6F9-5C15-ACF1-DC4932CC4EAF","durationMin":13,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"She Hulk／Aggression／Prebuilt","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"8DFFEB11-EF15-5A8A-924C-C52E56AF650E","durationMin":47,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Spider Man／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""},{"newPlayer":false,"playerRefId":5,"rank":0,"role":"Prebuilt／Captain Marvel／Aggression","score":"","seatOrder":1,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"3045E006-FC42-5495-9529-7B7FD6E320F6","durationMin":null,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Aggression／Black Panther／Aggression","score":"","seatOrder":0,"startPlayer":false,"winner":false,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"F436D75C-2CC0-5358-8CB5-3FD5C7CD6C4D","durationMin":36,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Black Panther／Schutz","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"C112D63B-42D5-5AD8-BBDE-04D4EA9DDABD","durationMin":26,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Captain Marvel／Aggression","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"197C28FF-218E-5D97-B9F9-FDD71D26D827","durationMin":21,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Captain Marvel／Aggression","score":"","seatOrder":0,"startPlayer":false,"winner":false,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"97755C40-1756-51D4-993C-EF5851A78D9D","durationMin":54,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Spider Man／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"CC6014B5-E3B5-5CAE-B4FD-B590E601A92C","durationMin":33,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Iron Man／Aggression","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Masters of Evil／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"7069D001-007A-56A5-945A-93CF5E0145E9","durationMin":32,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Spider Man／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"485BA89A-3CA0-5864-8242-72ACDBF8D73F","durationMin":37,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Spider Man／Gerechtigkeit","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"59AE444B-B4D2-594C-9DE9-5D79D186A4CA","durationMin":null,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""},{"newPlayer":false,"playerRefId":5,"rank":0,"role":"","score":"","seatOrder":2,"startPlayer":false,"winner":false,"team":""}]},{"board":"Rhino／Bombenbedrohung／Standard","gameRefId":33,"ignored":false,"expansionPlays":[],"uuid":"7AC7667F-34CD-5500-A7E7-21FC04C7AD91","durationMin":null,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Prebuilt／Spider Man／Gerechtigkeit","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""}]},{"board":"Mulmesh／Adventurer","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"49D1E595-6314-592D-B0AE-A9DC9E4362E0","durationMin":41,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Boomer","score":"","seatOrder":1,"startPlayer":false,"winner":true,"team":""}]},{"board":"Heroic／Marrow","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"579AE2D6-09EC-5D3E-AD16-DBD8F4E54DB1","durationMin":110,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Picket","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Mulmesh／Heroic","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"B4F44659-81D9-582E-AB95-8559060F81F1","durationMin":50,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Patches","score":"","seatOrder":0,"startPlayer":false,"winner":true,"team":""}]},{"board":"Nom／Heroic","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"F98ADDB3-5226-5738-98DD-CE9ABD8656B5","durationMin":42,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Tantrum","score":"","seatOrder":1,"startPlayer":false,"winner":true,"team":""}]},{"board":"Nom／Heroic","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"D2AE9066-F787-5F38-A9CD-E09E46CDAB24","durationMin":22,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Tantrum","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""}]},{"board":"Mulmesh／Adventurer","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"8FBA6A6F-FEAD-5E9E-B2AA-8A719FF01C89","durationMin":50,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Tantrum","score":"","seatOrder":1,"startPlayer":false,"winner":true,"team":""}]},{"board":"Mulmesh／Heroic","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"EA75FA42-A84A-515F-AFAD-BC22C196CBE2","durationMin":72,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Tantrum","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""}]},{"board":"Legendary／Mulmesh","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"47C5C1DC-8965-5E1E-B9FE-0127328A7A7F","durationMin":60,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Tantrum","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""}]},{"board":"Adventurer／Goblin König","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"C72AE2A1-5A39-5C8A-830E-677301DB456E","durationMin":90,"locationRefId":1,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Tantrum","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""},{"newPlayer":false,"playerRefId":5,"rank":0,"role":"Boomer","score":"","seatOrder":2,"startPlayer":false,"winner":false,"team":""},{"newPlayer":false,"playerRefId":6,"rank":0,"role":"Patches","score":"","seatOrder":3,"startPlayer":false,"winner":false,"team":""},{"newPlayer":false,"playerRefId":7,"rank":0,"role":"Picket","score":"","seatOrder":4,"startPlayer":false,"winner":false,"team":""}]},{"board":"Mulmesh／Adventurer","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"994A25DC-B79F-5660-A7D6-B6524599A434","durationMin":46,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Picket","score":"","seatOrder":1,"startPlayer":false,"winner":true,"team":""}]},{"board":"Mulmesh／Adventurer","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"197E0D93-5B1F-5EB0-A0BB-9A7A13F361D4","durationMin":10,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Picket","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""}]},{"board":"Mulmesh／Adventurer","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"52F8DAD0-7CB5-5B97-8EC5-7CDB92AF59C0","durationMin":150,"locationRefId":1,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Picket","score":"","seatOrder":1,"startPlayer":false,"winner":true,"team":""},{"newPlayer":false,"playerRefId":5,"rank":0,"role":"Boomer","score":"","seatOrder":2,"startPlayer":false,"winner":true,"team":""},{"newPlayer":false,"playerRefId":6,"rank":0,"role":"Patches","score":"","seatOrder":3,"startPlayer":false,"winner":true,"team":""},{"newPlayer":false,"playerRefId":7,"rank":0,"role":"Tantrum","score":"","seatOrder":4,"startPlayer":false,"winner":true,"team":""}]},{"board":"Mulmesh／Adventurer","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"246D09AD-766F-55FA-8A4A-E3A7AC63EF3F","durationMin":null,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Picket","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""},{"newPlayer":false,"playerRefId":5,"rank":0,"role":"Boomer","score":"","seatOrder":2,"startPlayer":false,"winner":false,"team":""}]},{"board":"Mulmesh／Adventurer","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"6498041E-18B0-5DFD-AE9D-5B1421185CA3","durationMin":null,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Picket","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""},{"newPlayer":false,"playerRefId":5,"rank":0,"role":"Boomer","score":"","seatOrder":2,"startPlayer":false,"winner":false,"team":""}]},{"board":"Mulmesh／Adventurer","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"2798C76B-24F6-59D6-8DEA-5BCA385BCF6A","durationMin":180,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Picket","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""},{"newPlayer":false,"playerRefId":5,"rank":0,"role":"Boomer","score":"","seatOrder":2,"startPlayer":false,"winner":false,"team":""}]},{"board":"Nom／Legendary","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"2920FE03-F652-5067-9A7D-3467A7D6DF45","durationMin":120,"locationRefId":2,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Patches","score":"","seatOrder":1,"startPlayer":false,"winner":true,"team":""}]},{"board":"Nom／Legendary","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"DF614F9D-B10F-5675-BB77-7158F274776F","durationMin":null,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Patches","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""}]},{"board":"Nom／Legendary","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"22BA21E2-B0FF-5A15-9CAA-CEC5414F0517","durationMin":null,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Patches","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""}]},{"board":"Nom／Legendary","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"2D1842A1-4D71-5C80-898B-D5A8F558F0E5","durationMin":null,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Patches","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""}]},{"board":"Nom／Legendary","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"13790379-B88E-5CB4-A0DC-193A55914C72","durationMin":null,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Patches","score":"","seatOrder":1,"startPlayer":false,"winner":true,"team":""}]},{"board":"Nom／Adventurer","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"B2EE3ADD-3D40-5982-A32A-BA1012F5E30C","durationMin":null,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Patches","score":"","seatOrder":1,"startPlayer":false,"winner":true,"team":""}]},{"board":"Nom／Legendary","gameRefId":49,"ignored":false,"expansionPlays":[],"uuid":"AA607A82-1068-516B-8E27-8F7E938C5DA4","durationMin":null,"locationRefId":4,"playDate":"1970-01-01 00:00:00","playDateYmd":19700101,"entryDate":"1970-01-01 00:00:00","modificationDate":"1970-01-01 00:00:00","usesTeams":false,"manualWinner":false,"scoringSetting":0,"rounds":0,"playerScores":[{"newPlayer":false,"playerRefId":3,"rank":0,"role":"Patches","score":"","seatOrder":1,"startPlayer":false,"winner":false,"team":""}]}],"userInfo":{"meRefId":3}}
+{
+  "about": "",
+  "games": [
+    {
+      "bggId": 285774,
+      "bggName": "Marvel Champions: The Card Game",
+      "bggYear": 2019,
+      "id": 33,
+      "name": "Marvel Champions: The Card Game",
+      "uuid": "EBC2CF9D-50C9-5C32-84A4-C3D3BE25173C"
+    },
+    {
+      "bggId": 192135,
+      "bggName": "Too Many Bones",
+      "bggYear": 2017,
+      "id": 49,
+      "name": "Too Many Bones",
+      "uuid": "CB191EFC-EF3F-56DC-A945-414EC223D750"
+    }
+  ],
+  "locations": [
+    {
+      "id" : 1,
+      "modificationDate" : "2025-01-01 14:30:00",
+      "name" : "Location 1",
+      "uuid" : "5B700365-A9C3-5D72-A30E-941D64014B49"
+    },
+    {
+      "id" : 2,
+      "modificationDate" : "2025-01-01 14:30:00",
+      "name" : "Location 2",
+      "uuid" : "E090BD85-E83E-5A33-9FE5-C015A6474CBC"
+    },
+    {
+      "id" : 4,
+      "modificationDate" : "2025-01-01 14:30:00",
+      "name" : "Location 3",
+      "uuid" : "58DD9B92-EF6F-53E6-905F-EDC54F383A0D"
+    }
+  ],
+  "players": [
+    {
+      "id": 5,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Player 1",
+      "uuid": "256EC006-69E8-580B-B302-5C1DA95827BC"
+    },
+    {
+      "id": 3,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Me",
+      "uuid": "94563EC3-83E2-5AA3-B43A-BD9B337B2E08"
+    },
+    {
+      "id": 5,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Player 1",
+      "uuid": "256EC006-69E8-580B-B302-5C1DA95827BC"
+    },
+    {
+      "id": 6,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Player 2",
+      "uuid": "C5EB5F9E-2CEE-5EF3-BE27-ADF7E9BB1514"
+    },
+    {
+      "id": 3,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Me",
+      "uuid": "94563EC3-83E2-5AA3-B43A-BD9B337B2E08"
+    },
+    {
+      "id": 7,
+      "bggUsername": "",
+      "isAnonymous": false,
+      "metaData": "{\"isNpc\":0}",
+      "modificationDate": "2025-01-01 14:30:00",
+      "name": "Player 3",
+      "uuid": "E3E91FFF-AAB2-52FF-AF48-953372007A23"
+    }
+  ],
+  "plays": [
+    {
+      "board": "Absorbing Man／Hydra-Patrouille／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "DEE1F3A2-9CB9-5828-95AF-ECB282913C71",
+      "durationMin": 35,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Spider-Woman／Aggression／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Standard／Crossbones／Hydra-Angriff／Waffenmeister／Hydras Legionen",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "D524039A-3E45-51B6-9240-C1EEC33FF803",
+      "durationMin": 30,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Spider-Woman／Aggression／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "765A23E1-8D00-52F6-B3E7-2C6FA1A62FFD",
+      "durationMin": 23,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Spider Man／Pool",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "42A1CDDA-2C37-54D6-A063-E7A1E5E18266",
+      "durationMin": 20,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Deadpool／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Doomsday Chair／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "60E4D1F3-8BBC-5B90-B410-02D2909516EC",
+      "durationMin": 20,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Deadpool／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Expert",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "D8E0E9FD-1EE6-59F2-95AE-53FD5C0CE700",
+      "durationMin": 15,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Deadpool／Pool",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "AC051836-6782-521D-8E27-0928B9DA279A",
+      "durationMin": 23,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "She Hulk／Aggression",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Ultron／Unter Beschuss／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "1DB7E8B9-E8F6-5BC8-A0DB-F82201D0C855",
+      "durationMin": 45,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Deadpool／Pool",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Ultron／Unter Beschuss／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "5E596B86-658C-5C1F-A1BB-F1388DFB9002",
+      "durationMin": 27,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Deadpool／Pool",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Ultron／Unter Beschuss／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "77673427-2973-521B-B7F3-404241AF43D5",
+      "durationMin": 21,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Iron Man／Aggression",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Ultron／Unter Beschuss／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "CFDC5EA7-B456-59E4-BBB1-74A1860D9A7E",
+      "durationMin": 15,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Ultron／Unter Beschuss／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "8A695474-2D2F-5639-B28E-1432FA9DD35C",
+      "durationMin": 41,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Iron Man／Aggression",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "9B11A71C-047A-5072-83FB-F4E72337B177",
+      "durationMin": 40,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Iron Man／Aggression",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "72D86CD7-A251-5A17-ADC2-350F4F6B0CF4",
+      "durationMin": 25,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Iron Man／Aggression",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "BEC3651B-0E6F-5AAB-9A94-5AD95E77EC38",
+      "durationMin": 25,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Spider Man／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Expert",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "48E36098-8311-5A9E-A09B-C5E392D28184",
+      "durationMin": 14,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Spider Man／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "8C4486C3-B9AA-54CB-AF92-AB5354D70628",
+      "durationMin": 20,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Black Panther／Schutz",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Ultron／Unter Beschuss／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "99062EE3-DA8B-543E-B872-85CCF4EDA8BE",
+      "durationMin": 46,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Spider Man／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "69C13F43-AE95-5B45-92BD-44ED6DA0FE70",
+      "durationMin": 20,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Deadpool／Pool",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Hydras Legionen／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "70FF2150-653D-5EF5-A82B-6FDE4A91DE4E",
+      "durationMin": 13,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Deadpool／Pool／Prebuilt",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "50849851-193E-5A7C-8006-C5E78E8901C2",
+      "durationMin": 40,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Captain Marvel／Führung",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "DE1E7089-7260-57EB-B7C1-4C13B1CF6F7D",
+      "durationMin": 26,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Spider Man／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "6BFD9A32-5265-5E11-B52E-F7F9A490A10D",
+      "durationMin": 21,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Black Panther／Schutz／Prebuilt",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Klaw／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "2AD80685-EA0E-5AF5-86CF-574289B8CDBB",
+      "durationMin": 49,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Black Panther／Schutz",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "68D8978C-A6F9-5C15-ACF1-DC4932CC4EAF",
+      "durationMin": 13,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "She Hulk／Aggression／Prebuilt",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "8DFFEB11-EF15-5A8A-924C-C52E56AF650E",
+      "durationMin": 47,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Spider Man／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Prebuilt／Captain Marvel／Aggression",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "3045E006-FC42-5495-9529-7B7FD6E320F6",
+      "durationMin": null,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Aggression／Black Panther／Aggression",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "F436D75C-2CC0-5358-8CB5-3FD5C7CD6C4D",
+      "durationMin": 36,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Black Panther／Schutz",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "C112D63B-42D5-5AD8-BBDE-04D4EA9DDABD",
+      "durationMin": 26,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Captain Marvel／Aggression",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "197C28FF-218E-5D97-B9F9-FDD71D26D827",
+      "durationMin": 21,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Captain Marvel／Aggression",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "97755C40-1756-51D4-993C-EF5851A78D9D",
+      "durationMin": 54,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Spider Man／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "CC6014B5-E3B5-5CAE-B4FD-B590E601A92C",
+      "durationMin": 33,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Iron Man／Aggression",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Masters of Evil／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "7069D001-007A-56A5-945A-93CF5E0145E9",
+      "durationMin": 32,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Spider Man／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "485BA89A-3CA0-5864-8242-72ACDBF8D73F",
+      "durationMin": 37,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Spider Man／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "59AE444B-B4D2-594C-9DE9-5D79D186A4CA",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Rhino／Bombenbedrohung／Standard",
+      "gameRefId": 33,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "7AC7667F-34CD-5500-A7E7-21FC04C7AD91",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Prebuilt／Spider Man／Gerechtigkeit",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "49D1E595-6314-592D-B0AE-A9DC9E4362E0",
+      "durationMin": 41,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Heroic／Marrow",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "579AE2D6-09EC-5D3E-AD16-DBD8F4E54DB1",
+      "durationMin": 110,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Heroic",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "B4F44659-81D9-582E-AB95-8559060F81F1",
+      "durationMin": 50,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 0,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Heroic",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "F98ADDB3-5226-5738-98DD-CE9ABD8656B5",
+      "durationMin": 42,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Heroic",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "D2AE9066-F787-5F38-A9CD-E09E46CDAB24",
+      "durationMin": 22,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "8FBA6A6F-FEAD-5E9E-B2AA-8A719FF01C89",
+      "durationMin": 50,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Heroic",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "EA75FA42-A84A-515F-AFAD-BC22C196CBE2",
+      "durationMin": 72,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Legendary／Mulmesh",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "47C5C1DC-8965-5E1E-B9FE-0127328A7A7F",
+      "durationMin": 60,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Adventurer／Goblin König",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "C72AE2A1-5A39-5C8A-830E-677301DB456E",
+      "durationMin": 90,
+      "locationRefId": 1,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 6,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 3,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 7,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 4,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "994A25DC-B79F-5660-A7D6-B6524599A434",
+      "durationMin": 46,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "197E0D93-5B1F-5EB0-A0BB-9A7A13F361D4",
+      "durationMin": 10,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "52F8DAD0-7CB5-5B97-8EC5-7CDB92AF59C0",
+      "durationMin": 150,
+      "locationRefId": 1,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 6,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 3,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 7,
+          "rank": 0,
+          "role": "Tantrum",
+          "score": "",
+          "seatOrder": 4,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "246D09AD-766F-55FA-8A4A-E3A7AC63EF3F",
+      "durationMin": null,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "6498041E-18B0-5DFD-AE9D-5B1421185CA3",
+      "durationMin": null,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Mulmesh／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "2798C76B-24F6-59D6-8DEA-5BCA385BCF6A",
+      "durationMin": 180,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Picket",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        },
+        {
+          "newPlayer": false,
+          "playerRefId": 5,
+          "rank": 0,
+          "role": "Boomer",
+          "score": "",
+          "seatOrder": 2,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "2920FE03-F652-5067-9A7D-3467A7D6DF45",
+      "durationMin": 120,
+      "locationRefId": 2,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "DF614F9D-B10F-5675-BB77-7158F274776F",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "22BA21E2-B0FF-5A15-9CAA-CEC5414F0517",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "2D1842A1-4D71-5C80-898B-D5A8F558F0E5",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "13790379-B88E-5CB4-A0DC-193A55914C72",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Adventurer",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "B2EE3ADD-3D40-5982-A32A-BA1012F5E30C",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": true,
+          "team": ""
+        }
+      ]
+    },
+    {
+      "board": "Nom／Legendary",
+      "gameRefId": 49,
+      "ignored": false,
+      "expansionPlays": [],
+      "uuid": "AA607A82-1068-516B-8E27-8F7E938C5DA4",
+      "durationMin": null,
+      "locationRefId": 4,
+      "playDate": "1970-01-01 00:00:00",
+      "playDateYmd": 19700101,
+      "entryDate": "1970-01-01 00:00:00",
+      "modificationDate": "1970-01-01 00:00:00",
+      "usesTeams": false,
+      "manualWinner": false,
+      "scoringSetting": 0,
+      "rounds": 0,
+      "playerScores": [
+        {
+          "newPlayer": false,
+          "playerRefId": 3,
+          "rank": 0,
+          "role": "Patches",
+          "score": "",
+          "seatOrder": 1,
+          "startPlayer": false,
+          "winner": false,
+          "team": ""
+        }
+      ]
+    }
+  ],
+  "userInfo": {
+    "meRefId": 3
+  }
+}
