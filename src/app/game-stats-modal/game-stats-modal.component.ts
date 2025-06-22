@@ -55,6 +55,12 @@ export abstract class GameStatsModalComponent<S extends BaseGameStats, P extends
       : this.data.Plays as P[];
   }
 
+  getOlderPlays(): P[] {
+    return this.shouldFilterTimeSpan() ?
+      this.data.Plays.filter(p => !this.isInTimeRange(p)) as P[]
+      : [] as P[];
+  }
+
   // returns if the timespan is currently being restricted
   shouldFilterTimeSpan() {
     return this.timespan != null && this.timespan != "all" && this.timespanFrom != null && this.timespanTo != null;

@@ -81,6 +81,21 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
     return this.getScenarioRatio();
   }
 
+  getNewItemCountOfSet(oldSet: Set<unknown>, newSet: Set<unknown>) {
+    if (oldSet.size == 0) {
+      return newSet.size;
+    }
+    // count which new items are not in the old timespan
+    let count = 0;
+    for (let item of newSet) {
+      if (!oldSet.has(item)) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  // Heroes
   getHeroes(plays: MarvelChampionsPlay[] = this.getPlays()) {
     return new Set(plays
       .flatMap(p => p.Players.map(pl => pl.Hero))
@@ -92,25 +107,10 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
   }
 
   getNewHeroCount() {
-    // if not filtered, just return 0
-    if (!this.shouldFilterTimeSpan()) {
-      return 0;
-    }
-    // get heroes in the timespan
-    let newHeroes = this.getHeroes();
-    // get heroes not in the timespan
-    let olderPlays = this.data.Plays.filter(p => !this.isInTimeRange(p));
-    let olderHeroes = this.getHeroes(olderPlays);
-    // count which new heroes are not in the old timespan
-    let count = 0;
-    for (let hero of newHeroes) {
-      if (!olderHeroes.has(hero)) {
-        count++;
-      }
-    }
-    return count;
+    return this.getNewItemCountOfSet(this.getHeroes(this.getOlderPlays()), this.getHeroes())
   }
 
+  // Scenarios
   getScenarios(plays: MarvelChampionsPlay[] = this.getPlays()) {
     return new Set(plays
       .map(p => p.Scenario)
@@ -122,7 +122,7 @@ export class MarvelChampionsGameStatsModalComponent extends GameStatsModalCompon
   }
 
   getNewScenarioCount() {
-    return 0; //TODO:
+    return this.getNewItemCountOfSet(this.getScenarios(this.getOlderPlays()), this.getScenarios());
   }
 
   // ratio of plays in which an aspect was used
