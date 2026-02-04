@@ -134,7 +134,7 @@ export enum Scenario {
   Spiral,
   Mojo,
   // Trickster Takeover
-  Enchantress,
+  EnchantressScenario, //TODO: fix TT scenario having same name as MTS modular
   LokiGodOfLies,
   // Synthezoid Smackdown
   SheHulk,
@@ -431,7 +431,7 @@ export const PackContent: Record<number, number[]> = {
     //TODO: scenarios + modulars
   ],
   [Pack.TricksterTakeover]: [
-    Scenario.Enchantress, Scenario.LokiGodOfLies
+    Scenario.EnchantressScenario, Scenario.LokiGodOfLies
     //TODO: modulars
   ],
   [Pack.SynthezoidSmackdown]: [
