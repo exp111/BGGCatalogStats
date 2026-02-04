@@ -64,6 +64,10 @@ export enum Hero {
   Silk,
   Falcon,
   WinterSoldier,
+  Tigra,
+  Hulkling,
+  WonderMan,
+  Hercules,
   END
 }
 
@@ -111,6 +115,17 @@ export enum Scenario {
   MasterMold,
   MansionAttack,
   Magneto,
+  //TODO: NeXt Evolution
+  //TODO: AoA
+  //TODO: AoS
+  // CW
+  IronMan,
+  CaptainAmerica,
+  CaptainMarvel,
+  SpiderWoman,
+  //TODO: Hood
+  //TODO: Wrecking Crew
+  //TODO: Kang
   // Green Goblin
   RiskyBusiness,
   MutagenFormula,
@@ -118,6 +133,12 @@ export enum Scenario {
   Magog,
   Spiral,
   Mojo,
+  // Trickster Takeover
+  Enchantress,
+  LokiGodOfLies,
+  // Synthezoid Smackdown
+  SheHulk,
+  Vision,
   END
 }
 
@@ -168,6 +189,10 @@ export enum Modular {
   Brotherhood,
   Acolytes,
   FuturePast,
+  //TODO: NeXt Evolution
+  //TODO: AoA
+  //TODO: AoS
+  //TODO: CW
   /* Scenario Packs */
   // Green Goblin
   GoblinGimmicks,
@@ -265,6 +290,8 @@ export enum Pack {
   Silk = 439508,
   Falcon = 446592,
   WinterSoldier = 446593,
+  WonderMan = 463073,
+  Hercules = 463072,
 
   // Expansions
   RiseOfTheRedSkull = 306430,
@@ -275,12 +302,15 @@ export enum Pack {
   NextEvolution = 383818,
   AgeOfApocalypse = 405724,
   AgentsOfShield = 430260,
+  CivilWar = 448997,
   // Scenario Packs
   GreenGoblin = 288794,
   WreckingCrew = 294306,
   Hood = 343017,
   MojoMania = 368736,
   Kang = 314028,
+  TricksterTakeover = 447650,
+  SynthezoidSmackdown = 453128,
   // Misc
   KreeFanatic = 316224,
   END
@@ -335,6 +365,8 @@ export const PackContent: Record<number, number[]> = {
   [Pack.Silk]: [Hero.Silk],
   [Pack.Falcon]: [Hero.Falcon],
   [Pack.WinterSoldier]: [Hero.WinterSoldier],
+  [Pack.WonderMan]: [Hero.WonderMan],
+  [Pack.Hercules]: [Hero.Hercules],
   // Expansions
   [Pack.RiseOfTheRedSkull]: [
     Hero.Hawkeye, Hero.SpiderWoman,
@@ -374,6 +406,11 @@ export const PackContent: Record<number, number[]> = {
     Hero.MariaHill, Hero.NickFury
     //TODO: scenarios + modulars
   ],
+  [Pack.CivilWar]: [
+    Hero.Tigra, Hero.Hulkling,
+    Scenario.CaptainMarvel, Scenario.CaptainAmerica, Scenario.IronMan, Scenario.SpiderWoman
+    //TODO: modulars
+  ],
   // Scenario Packs
   [Pack.GreenGoblin]: [
     Scenario.RiskyBusiness, Scenario.MutagenFormula,
@@ -392,6 +429,14 @@ export const PackContent: Record<number, number[]> = {
   ],
   [Pack.Kang]: [
     //TODO: scenarios + modulars
+  ],
+  [Pack.TricksterTakeover]: [
+    Scenario.Enchantress, Scenario.LokiGodOfLies
+    //TODO: modulars
+  ],
+  [Pack.SynthezoidSmackdown]: [
+    Scenario.SheHulk, Scenario.Vision
+    //TODO: modulars
   ],
   // Misc
   [Pack.KreeFanatic]: [Modular.KreeFanatic]
