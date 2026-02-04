@@ -11,7 +11,8 @@ import {
   Modular,
   Pack,
   PackContent,
-  Scenario
+  Scenario,
+  Waves
 } from "../../../model/marvel-champions";
 import {BaseGameComponent} from "../base-game.component";
 import {MCBackupReaderService} from "../../backup-reader/marvel-champions/mc-backup-reader.service";
@@ -535,6 +536,14 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
     return count / values.length;
   }
 
+  getScenariosForWave(wave: number | string) {
+    return this.enumToNumberArray(Waves[wave as number].flatMap(w => PackContent[w].filter(c => Scenario[c] && c != Scenario.END)));
+  }
+
+  getHeroesForWave(wave: number | string) {
+    return this.enumToNumberArray(Waves[wave as number].flatMap(w => PackContent[w].filter(c => Hero[c] && c != Hero.END)));
+  }
+
   getPlayedPercentage(e: Enums, check = this.playedCheck.bind(this)) {
     return this.getPercentage(e, check);
   }
@@ -559,4 +568,6 @@ export class MarvelChampionsComponent extends BaseGameComponent<MarvelChampionsS
   protected readonly SortOrder = SortOrder;
   protected readonly SortType = SortType;
   protected readonly Packs = Pack;
+  protected readonly Waves = Waves;
+  protected readonly Object = Object;
 }

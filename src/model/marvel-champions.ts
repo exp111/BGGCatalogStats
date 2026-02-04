@@ -442,6 +442,19 @@ export const PackContent: Record<number, number[]> = {
   [Pack.KreeFanatic]: [Modular.KreeFanatic]
 }
 
+export const Waves: Record<number, number[]> = {
+  1: [Pack.Core, Pack.GreenGoblin, Pack.CaptainAmerica, Pack.MsMarvel, Pack.WreckingCrew, Pack.Thor, Pack.BlackWidow, Pack.DoctorStrange, Pack.Hulk],
+  2: [Pack.RiseOfTheRedSkull, Pack.Kang, Pack.AntMan, Pack.Wasp, Pack.Quicksilver, Pack.ScarletWitch],
+  3: [Pack.GalaxysMostWanted, Pack.StarLord, Pack.Gamora, Pack.Drax, Pack.Venom],
+  4: [Pack.MadTitansShadow, Pack.Nebula, Pack.WarMachine, Pack.Hood, Pack.Valkyrie, Pack.Vision],
+  5: [Pack.SinisterMotives, Pack.Nova, Pack.Ironheart, Pack.SpiderHam, Pack.SPdr],
+  6: [Pack.MutantGenesis, Pack.Cyclops, Pack.Phoenix, Pack.MojoMania, Pack.Wolverine, Pack.Storm, Pack.Gambit, Pack.Rogue],
+  7: [Pack.NextEvolution, Pack.Psylocke, Pack.Angel, Pack.X23, Pack.Deadpool],
+  8: [Pack.AgeOfApocalypse, Pack.Iceman, Pack.Jubilee, Pack.Nightcrawler, Pack.Magneto],
+  9: [Pack.AgentsOfShield, Pack.Shuri, Pack.Silk, Pack.Falcon, Pack.WinterSoldier, Pack.TricksterTakeover],
+  10: [Pack.CivilWar, Pack.SynthezoidSmackdown, Pack.WonderMan, Pack.Hercules]
+}
+
 export interface MarvelChampionsPlayer extends BaseGamePlayer {
   Hero: Hero;
   Aspects: Aspect[];

@@ -267,6 +267,27 @@
   </div>
   <div ngbAccordionItem>
     <h4 ngbAccordionHeader>
+      <button ngbAccordionButton>Wave Checklists</button>
+    </h4>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <h4>Wave Completion</h4>
+          @for (wave of Object.keys(Waves); track wave) {
+            <h5>Wave {{wave}}</h5>
+            <app-checklist
+              [XAxis]="getScenariosForWave(wave)"
+              [XFormatter]="beautifyEnum.bind(this, Scenario)"
+              [YAxis]="getHeroesForWave(wave)"
+              [YFormatter]="beautifyEnum.bind(this, Hero)"
+              [getter]="scenarioHeroWonGetter.bind(this)"></app-checklist>
+          }
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div ngbAccordionItem>
+    <h4 ngbAccordionHeader>
       <button ngbAccordionButton>Plays</button>
     </h4>
     <div ngbAccordionCollapse>
