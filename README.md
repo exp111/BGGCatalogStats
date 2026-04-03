@@ -3,12 +3,14 @@
 See the help page for documentation on how to use the website.
 
 ## TODO:
+- Automatic tool detection for import (default selected). Detect by file name, otherwise ask for tool.
 - Use AG Grid/Charts?
+- fix mobile table
 - Support for alternative/custom fields names
 - Get Games/Content by name/localized name if bgg id doesnt exist
 - Move playtime getter to base game comp
 - Features for tmb (better view, plays filter, (avg) play time)
-- Tests: Parsing
+- Tests: Parsing, Filtering
 - "Top" entry for tables: Most played, shortest/longest (avg) playtime
 - Pack Filter for plays
 - add bgstats to help

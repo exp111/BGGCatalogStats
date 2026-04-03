@@ -123,12 +123,13 @@ export enum Scenario {
   CaptainAmerica,
   CaptainMarvel,
   SpiderWoman,
-  //TODO: Hood
-  //TODO: Wrecking Crew
+  // Wrecking Crew
+  WreckingCrew,
   //TODO: Kang
   // Green Goblin
   RiskyBusiness,
   MutagenFormula,
+  //TODO: Hood
   // Mojo
   Magog,
   Spiral,
@@ -417,7 +418,7 @@ export const PackContent: Record<number, number[]> = {
     Modular.GoblinGimmicks, Modular.AMessOfThings, Modular.PowerDrain, Modular.RunningInterference
   ],
   [Pack.WreckingCrew]: [
-    //TODO: scenarios + modulars
+    Scenario.WreckingCrew
   ],
   [Pack.Hood]: [
     //TODO: scenarios + modulars
